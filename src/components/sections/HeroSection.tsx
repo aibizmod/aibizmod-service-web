@@ -21,6 +21,7 @@ import {
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
 import { TextReveal } from "@/components/ui/cascade-text";
+import AIVisibilityHero from "@/components/sections/AIVisibilityHero";
 
 const socials = [
   {
@@ -121,7 +122,7 @@ function handleMagneticLeave(event: React.MouseEvent<HTMLAnchorElement>) {
 
 export default function HeroSection() {
   return (
-    <section className="relative isolate pt-[68px] h-screen overflow-hidden bg-white">
+    <section className="relative isolate pt-[68px] min-h-screen overflow-hidden bg-white">
       <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
 
       <div className="pointer-events-none absolute inset-0 z-10 hidden md:block" aria-hidden="true">
@@ -137,7 +138,7 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 mx-auto flex h-full max-w-5xl flex-col items-center justify-center px-6 py-16 text-center">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-16 text-center">
         <h1
           className="max-w-4xl font-display font-thin text-[#0F172A] text-balance"
           style={{ fontSize: "clamp(34px, 5vw, 58px)", lineHeight: 1.04 }}
@@ -190,6 +191,10 @@ export default function HeroSection() {
               <Icon color={color} size={18} aria-hidden="true" />
             </a>
           ))}
+        </div>
+
+        <div className="mt-12 w-full">
+          <AIVisibilityHero />
         </div>
       </div>
     </section>
