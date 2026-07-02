@@ -54,12 +54,12 @@ const data: ServicePageData = {
 			"A lot of digital marketing spend goes in before anyone has checked whether the tracking actually works. Tags fire on the wrong pages, form submissions don't register as conversions, and the reporting dashboard shows sessions instead of the leads that matter. Before campaigns scale, those foundations need to be solid. The work here covers auditing what's already set up, configuring GA4 and Google Tag Manager correctly, fixing Search Console errors that stop pages from being indexed, and building Looker Studio dashboards that show what's actually happening rather than what looks good in a weekly report.",
 		],
 		benefits: [
-			'Accurate Google Analytics attribution',
-			'Fixed Search Console crawl indexing errors',
-			'Custom conversion tracking configuration',
-			'Competitor search term comparisons',
-			'Unified dashboards in Looker Studio',
-			'Structured paid campaign frameworks',
+			'Accurate Google Analytics Attribution',
+			'Fixed Search Console Crawl Indexing Errors',
+			'Custom Conversion Tracking Configuration',
+			'Competitor Search Term Comparisons',
+			'Unified Dashboards in Looker Studio',
+			'Structured Paid Campaign Frameworks',
 		],
 	},
 

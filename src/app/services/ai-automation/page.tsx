@@ -52,12 +52,12 @@ const data: ServicePageData = {
 			'Most businesses reach a point where someone is downloading a spreadsheet, copying it into another tool, and sending it somewhere else. Every day. That kind of manual work is slow, error-prone, and quietly expensive. The work here is figuring out exactly where those friction points are, then connecting your existing tools so the data moves on its own. That might mean routing invoice emails directly into your accounting system, syncing form submissions into your CRM, or generating a management report without anyone touching a keyboard. You get the logic documented, the error handling built in, and the whole thing handed over so your team can understand and maintain it.',
 		],
 		benefits: [
-			'No more manual copy-pasting',
-			'Error fallback and retry triggers',
-			'Direct CRM-to-database connections',
-			'Weekly automatic report delivery',
-			'Handover runbooks and workflows',
-			'No licensing cost markup',
+			'No More Manual Copy-Pasting',
+			'Error Fallback and Retry Triggers',
+			'Direct CRM-to-Database Connections',
+			'Weekly Automatic Report Delivery',
+			'Handover Runbooks and Workflows',
+			'No Licensing Cost Markup',
 		],
 	},
 

@@ -103,9 +103,9 @@ export default function ServicesPageContent() {
                   className="mt-7 max-w-3xl font-display font-thin text-[#0F172A] text-balance"
                   style={{ fontSize: "clamp(40px, 6vw, 76px)", lineHeight: 1.02 }}
                 >
-                  Services built for{" "}
-                  <span className="gradient-text font-normal">connected</span>{" "}
-                  growth
+                  Services Built for{" "}
+                  <span className="gradient-text font-normal">Connected</span>{" "}
+                  Growth
                 </h1>
                 <p className="mt-6 max-w-2xl rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-base leading-8 text-slate-600 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md md:text-lg">
                   Strategy, engineering, infrastructure, AI & automation, and growth
@@ -174,7 +174,7 @@ export default function ServicesPageContent() {
                   className="mt-5 font-display font-thin text-[#0F172A] text-balance"
                   style={{ fontSize: "clamp(34px, 5vw, 58px)", lineHeight: 1.08 }}
                 >
-                  Choose the capability your business needs next.
+                  Choose the Capability Your Business Needs Next
                 </h2>
               </AnimatedSection>
 
@@ -223,7 +223,7 @@ export default function ServicesPageContent() {
                   className="font-display font-thin text-[#0F172A]"
                   style={{ fontSize: "clamp(30px, 4.5vw, 48px)", lineHeight: 1.1 }}
                 >
-                  Ready to achieve more?
+                  Ready to Achieve More?
                 </h2>
                 <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-slate-600 md:text-base">
                   We partner with ambitious companies to solve complex challenges, improve operations and deliver real results using tailored digital solutions.

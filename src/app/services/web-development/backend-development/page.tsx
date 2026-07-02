@@ -4,8 +4,7 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title:
-		'Backend Development Services | APIs, Databases, Authentication | aibizmod',
+	title: 'Backend Development Services | APIs, Databases, Authentication | aibizmod',
 	description:
 		'Professional backend development for web and mobile products. APIs, databases, authentication systems, and server-side logic — documented, tested, and yours to own.',
 	keywords: [
@@ -75,7 +74,7 @@ const data: SubservicePageData = {
 			title: 'Database Development',
 			description:
 				'Schema design for relational databases like PostgreSQL or MySQL, including indexes, foreign keys, and migration paths for schema changes.',
-			image: '/services/web-development/backend-development-database-development.jpg',
+			image: '/services/web-development/backend-development-database-development.png',
 			imageAlt: 'Web Development Database Development capability illustration.',
 		},
 		{

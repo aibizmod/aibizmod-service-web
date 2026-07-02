@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'users',
-			title: 'Multi-author Workflows',
+			title: 'Multi-Author Workflows',
 			description:
 				'Configure draft, review, and publish stages with role-based permissions so content goes through the right approval steps before it goes live.',
 			image: '/services/web-development/cms-development-multiauthor-workflows.jpg',
@@ -137,7 +137,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Franchise',
-			title: 'Multi-site Content Network',
+			title: 'Multi-Site Content Network',
 			description:
 				'A franchise operator managing 12 regional websites needed a single CMS where national content was shared and each location could manage its own local pages.',
 		},
@@ -185,7 +185,7 @@ const data: SubservicePageData = {
 				'Every content change is logged. If a page goes live with an error, you can roll back to the previous version in seconds without developer involvement.',
 		},
 		{
-			title: 'Multi-site Ready',
+			title: 'Multi-Site Ready',
 			description:
 				'The same CMS installation can serve multiple domains or regions, with shared global content and locally controlled pages per site.',
 		},

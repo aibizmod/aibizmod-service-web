@@ -57,7 +57,7 @@ export default function CareersPage() {
                   style={{ fontSize: "clamp(38px, 6vw, 72px)", lineHeight: 1.02 }}
                 >
                   Join the{" "}
-                  <span className="font-semibold text-[#0891B2]">team</span>
+                  <span className="font-semibold text-[#0891B2]">Team</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
                   We are always looking for talented people who share our passion for technology and building great products.
@@ -72,7 +72,7 @@ export default function CareersPage() {
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E293B] shadow-[0_10px_24px_rgba(15,23,42,0.16)]"
                 >
-                  Get in touch
+                  Get in Touch
                 </Link>
               </div>
             </div>

@@ -4,8 +4,7 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title:
-		'Customer Intelligence & Analytics Services | Data Insights | aibizmod',
+	title: 'Customer Intelligence & Analytics Services | Data Insights | aibizmod',
 	description:
 		'Customer analytics and retention tracking systems. Surface actionable insights about customer behavior, risk, value, and satisfaction drivers.',
 	keywords: [
@@ -120,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Retail',
-			title: 'RFM Segmentation for E-commerce Brand',
+			title: 'RFM Segmentation for E-Commerce Brand',
 			description:
 				'An online retailer segmented their customer base into six RFM tiers, directing loyalty offers to high-frequency buyers and win-back campaigns to lapsed purchasers with historical high spend.',
 		},
@@ -186,7 +185,7 @@ const data: SubservicePageData = {
 				'Cohort analysis reveals which channels and campaigns are acquiring customers who actually stay and spend, rather than just those with the lowest initial cost per acquisition.',
 		},
 		{
-			title: 'Evidence-based Retention Decisions',
+			title: 'Evidence-Based Retention Decisions',
 			description:
 				'Knowing which satisfaction drivers are most correlated with retention lets you prioritise operational and product improvements where they will have the greatest effect on customer behaviour.',
 		},

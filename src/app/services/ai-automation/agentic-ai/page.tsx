@@ -4,7 +4,7 @@ import SubservicePageLayout, {
 } from "@/components/SubservicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Agentic AI & The Feedback Flow | Autonomous Execution | aibizmod",
+  title: "Agentic AI & the Feedback Flow | Autonomous Execution | aibizmod",
   description:
     "Move beyond passive data analysis to active project execution. Autonomous software agents that understand high-level objectives, formulate multi-step plans, and execute across your software ecosystem.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://aibizmod.com/services/ai-automation/agentic-ai",
   },
   openGraph: {
-    title: "Agentic AI & The Feedback Flow | aibizmod",
+    title: "Agentic AI & the Feedback Flow | aibizmod",
     description:
       "Autonomous software agents that understand high-level objectives, formulate multi-step plans, and execute across your software ecosystem.",
     url: "/services/ai-automation/agentic-ai",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 const data: SubservicePageData = {
-  name: "Agentic AI & The Feedback Flow",
+  name: "Agentic AI & the Feedback Flow",
   parentName: "AI & Automation",
   parentSlug: "ai-automation",
   slug: "agentic-ai",
@@ -74,7 +74,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'refreshCw',
-			title: 'Continuous Learning Loops (The Feedback Flow)',
+			title: 'Continuous Learning Loops (the Feedback Flow)',
 			description:
 				'Deploy a self-correcting cycle where the agent Executes an action, Evaluates the real-world outcome data against operational targets, and instantly Optimizes its planning logic for subsequent tasks.',
 			image: '/services/ai-automation/agentic-ai-continuous-learning-loops-the-feedback-flow.jpg',

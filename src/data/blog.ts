@@ -99,14 +99,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "How AI answer engines are changing the way people find service providers",
+        heading: "How AI Answer Engines Are Changing the Way People Find Service Providers",
         paragraphs: [
           "Traditional search engines return a list of blue links. AI answer engines — such as ChatGPT, Google AI Overviews, Perplexity, and Bing Copilot — generate a direct written response that synthesises information from multiple sources. For a service business, this changes the discovery process: a potential client may receive a paragraph about service providers without clicking through to any single website.",
           "Generative Engine Optimisation, or GEO, is the work of making a business's expertise easy for these AI systems to understand, summarise, and cite. If a service page is well structured, fact-specific, and clearly attributed, an AI system is more likely to reference it as a source. If the page contains only generic marketing language, the AI system will draw from competitors who provide more extractable content.",
         ],
       },
       {
-        heading: "What makes a page citable by an AI system",
+        heading: "What Makes a Page Citable by an AI System",
         paragraphs: [
           "AI answer engines evaluate web content differently from traditional search engines. They prioritise pages that state specific facts directly, describe processes clearly, name tools and methodologies, and provide verifiable evidence. Pages that rely on aspirational language — 'we deliver world-class solutions' — rarely get cited because the AI cannot corroborate or meaningfully extract those claims.",
           "A citable service page typically includes: a clear description of who the service is for, what the engagement process includes, which tools and platforms are used, what specific deliverables a client receives, and what outcomes a client can realistically expect. These details give an AI system concrete material to reference.",
@@ -120,7 +120,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Structured data: helping AI systems identify your business as a trusted source",
+        heading: "Structured Data: Helping AI Systems Identify Your Business as a Trusted Source",
         paragraphs: [
           "Structured data markup — using Schema.org vocabulary in JSON-LD format — helps AI systems identify your business entity, the services you offer, and the questions you answer. The most important schemas for GEO are Organisation, Service, and FAQPage. When these are present and accurate, an AI system can confidently attribute information to your business rather than treating it as anonymous web content.",
           "Adding structured data does not guarantee citation, but its absence makes it harder for AI systems to distinguish your content from the thousands of similar service pages on the web.",
@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "How to start a practical GEO improvement plan today",
+        heading: "How to Start a Practical GEO Improvement Plan Today",
         paragraphs: [
           "A GEO improvement plan starts with content hygiene: removing duplicate sections across similar pages, giving each service page a single clear purpose, and ensuring that important facts — pricing context, deliverables, process steps, geographic coverage — are easy to extract without reading the entire page.",
           "The pages that benefit most from GEO work are those that answer the questions a buyer asks before contacting a supplier. If your website already contains those answers but buries them in lengthy paragraphs, the practical work is restructuring, not rewriting.",
@@ -182,14 +182,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "The fundamental difference: rules versus judgment",
+        heading: "The Fundamental Difference: Rules Versus Judgment",
         paragraphs: [
           "Traditional automation tools — Robotic Process Automation (RPA), workflow engines like n8n and Make, and integration platforms like Zapier — operate on fixed rules. When an invoice arrives as a CSV file, the system extracts column A, maps it to field B, and enters it into the accounting software. The process never varies because the inputs are predictable.",
           "AI agents work differently. They use large language models to interpret what a piece of content means, not just what it says. An AI agent can read a customer email that says 'I need to update my billing address and also I think I was overcharged last month' — and decide that this requires two actions: an account update and a billing review. A traditional automation tool cannot make that judgment call.",
         ],
       },
       {
-        heading: "When to use traditional automation",
+        heading: "When to Use Traditional Automation",
         paragraphs: [
           "Traditional automation is the right choice when a task meets three criteria: the inputs are structured or predictable, the rules can be defined in advance, and the output is the same every time. Common examples include data entry between systems, invoice matching against purchase orders, scheduled report generation, and form-triggered email responses.",
           "The advantage of traditional automation is reliability. A well-configured workflow will run the same way thousands of times without error. The disadvantage is brittleness: if the input format changes, the automation breaks until a human updates the rules.",
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "When to use AI agents",
+        heading: "When to Use AI Agents",
         paragraphs: [
           "AI agents are valuable when tasks involve unstructured inputs, require understanding context, or need adaptation to new situations. Common applications include processing customer enquiries from email and chat, classifying and routing support tickets, extracting information from scanned documents and PDFs, and generating personalised responses at scale.",
           "The advantage of AI agents is flexibility. They handle variations in language, incomplete information, and edge cases without manual reprogramming. The disadvantage is that they can produce unexpected outputs — AI agents need guardrails, human review for high-stakes decisions, and continuous monitoring.",
@@ -215,7 +215,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "How to decide which approach fits your business",
+        heading: "How to Decide Which Approach Fits Your Business",
         paragraphs: [
           "The decision between traditional automation and AI agents depends on the nature of the task, not the popularity of the technology. A practical approach is to audit your team's repetitive work and classify each task: is it rule-driven or judgment-driven?",
           "Rule-driven tasks — where the decision path can be drawn as a flowchart — are candidates for traditional automation. Judgment-driven tasks — where a human currently reads, interprets, and decides — are candidates for AI agents. Many real-world processes combine both: an AI agent reads and classifies an incoming enquiry, then a traditional workflow routes it to the correct team and triggers a response.",
@@ -259,14 +259,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Where AI automation delivers the fastest return",
+        heading: "Where AI Automation Delivers the Fastest Return",
         paragraphs: [
           "The fastest returns from AI automation come from replacing manual processing of unstructured information. When a business receives hundreds of emails, invoices, or support tickets per week, a significant portion of team time is spent reading, classifying, and entering information into systems. AI automation can handle the classification and entry steps, leaving the team to focus on responses that require human judgment.",
           "A typical implementation for a mid-sized business might process 200–500 invoices per week, extracting line items, matching against purchase orders, and entering data into the accounting system. Before automation, this consumes 15–25 hours of finance team time. After automation, the team reviews exceptions only, reducing the time to 2–4 hours.",
         ],
       },
       {
-        heading: "Cost savings: what the numbers look like",
+        heading: "Cost Savings: What the Numbers Look Like",
         paragraphs: [
           "The cost of implementing AI automation varies by scope, but a focused workflow automation project typically costs between a few thousand and twenty thousand pounds, depending on complexity. The return calculation is straightforward: if a process consumes 20 hours per week of a team member's time at an effective hourly cost of 25 per hour including overhead, the annual cost is approximately 26,000. Automation that reduces this by 80 per cent saves roughly 20,000 per year per workflow.",
           "Most businesses recover their automation investment within three to six months. The ongoing cost is maintenance and monitoring — typically a fraction of the initial implementation — plus the cost of AI API usage, which ranges from a few pence to a few pounds per thousand transactions depending on the provider and model.",
@@ -279,7 +279,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Five high-impact processes to automate first",
+        heading: "Five High-Impact Processes to Automate First",
         paragraphs: [
           "The most successful automation projects target specific bottlenecks rather than attempting to redesign entire departments. These five processes consistently deliver strong returns across service businesses:",
         ],
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "How to start without overinvesting",
+        heading: "How to Start Without Overinvesting",
         paragraphs: [
           "The recommended approach is to run a process audit before purchasing any automation platform. List every task that consumes more than two hours of team time per week, measure the current time cost, classify each as rule-driven or judgment-driven, and estimate the complexity of automation.",
           "Start with one high-impact, low-complexity process. Implement it, measure the time saved, and use that result to build the business case for the next process. This incremental approach avoids the common failure mode of attempting a large-scale automation programme that stalls before delivering measurable value.",
@@ -337,14 +337,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Why most redesigns lose traffic — and how to prevent it",
+        heading: "Why Most Redesigns Lose Traffic — and How to Prevent It",
         paragraphs: [
           "A website redesign is one of the riskiest projects a business can undertake from an SEO perspective. When a site changes structure, URLs, content, and design simultaneously, search engines effectively see a new website that needs to rebuild trust from scratch. The most common outcome is a traffic drop that takes three to six months to recover.",
           "The way to prevent this is to treat the redesign as a migration. Every old URL needs a 301 redirect to its new equivalent. Every page that previously ranked needs its content preserved or improved. Every analytics event needs re-verification. The checklist below covers the critical checks that prevent post-launch traffic loss.",
         ],
       },
       {
-        heading: "1. Content and conversion path",
+        heading: "1. Content and Conversion Path",
         paragraphs: [
           "Before launch, verify that every page answers a clear question for a specific audience. Remove vague placeholder text, ensure calls-to-action are visible without scrolling on mobile, and test the complete contact or enquiry flow on a real phone.",
         ],
@@ -357,7 +357,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "2. Technical SEO and redirects",
+        heading: "2. Technical SEO and Redirects",
         paragraphs: [
           "Technical errors during a redesign can undo years of accumulated search equity. The most critical technical check is the redirect map — every old URL must either redirect to its new equivalent or return a proper 410 (gone) if the page genuinely no longer exists.",
         ],
@@ -389,7 +389,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "4. Mobile and accessibility",
+        heading: "4. Mobile and Accessibility",
         paragraphs: [
           "More than half of B2B enquiries now start on a mobile device. If the mobile experience is incomplete — overlapping elements, hard-to-tap buttons, missing content — the redesign will underperform regardless of how good the desktop version looks.",
         ],
@@ -402,7 +402,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "5. Analytics and tracking",
+        heading: "5. Analytics and Tracking",
         paragraphs: [
           "Launching a redesigned site without confirmed analytics is like flying without instruments. Verify that all tracking fires correctly before making the site live.",
         ],
@@ -441,14 +441,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Why buying a domain clarifies the business idea",
+        heading: "Why Buying a Domain Clarifies the Business Idea",
         paragraphs: [
           "Buying aibizmod.com was not the finish line. Registering the domain was the moment the idea stopped floating and became something that required definition. A name on a domain raises practical questions: what does this business actually do, who is it for, and what should a visitor understand within the first ten seconds of arriving?",
           "aibizmod treated the domain as a starting point rather than a milestone. Before adding animations or service pages, the team wrote down the core promise: help businesses use websites, apps, automation, cloud systems, and marketing without making the process feel heavier than the underlying problem.",
         ],
       },
       {
-        heading: "What to decide before opening a design tool",
+        heading: "What to Decide Before Opening a Design Tool",
         paragraphs: [
           "The first planning notes were not glamorous. aibizmod listed the services that could be explained without jargon, the clients the team could help immediately, and the claims to avoid until real project evidence existed.",
           "That exercise changed the website structure. Instead of leading with every possible service, the team kept the first path simple: understand the company, review the services, read a few honest notes, and contact the team without a long form maze.",
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Why the first version does not need to say everything",
+        heading: "Why the First Version Does Not Need to Say Everything",
         paragraphs: [
           "New business websites often try to explain the entire company at once. aibizmod took the opposite approach: a clear homepage, service pages that each address one specific question, and a contact flow that collects enough information to give a useful response.",
           "The domain gave the team a place to test language. The team could see which words felt natural, which sections sounded identical to every other agency, and which claims needed evidence before they deserved space on the page.",
@@ -472,7 +472,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "What aibizmod plans to keep improving",
+        heading: "What aibizmod Plans to Keep Improving",
         paragraphs: [
           "The next step is not adding more pages. The priority is making existing pages more useful — clearer project examples, stronger technical SEO foundations, more specific service explanations, and more honest descriptions of how aibizmod works with clients.",
           "The blog is intended to be a record of real decisions rather than a stream of recycled advice. When aibizmod tests something on its own site, the plan is to write about what changed, what did not work, and what would be done differently for a client.",
@@ -519,7 +519,7 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Which SEO fundamentals still determine whether a service site gets found",
+        heading: "Which SEO Fundamentals Still Determine Whether a Service Site Gets Found",
         paragraphs: [
           "SEO for service businesses can become a collection of dashboards and tools very quickly. A more focused starting point is to verify four things: the site can be found by search engines, pages are understood correctly, the business appears trustworthy, and key actions are being measured.",
           "For a service business, that typically means correcting page titles, matching each page to a specific search intent, adding concrete service details, and configuring analytics before chasing traffic volume.",
@@ -532,14 +532,14 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Why targeting fewer keywords produces better results for service businesses",
+        heading: "Why Targeting Fewer Keywords Produces Better Results for Service Businesses",
         paragraphs: [
           "Writing for every keyword a tool suggests is the fastest way to produce thin content. A more effective approach is to start narrower: one page should address one buyer intent, and the answer on that page should help a real decision-maker take the next step.",
           "For aibizmod, that means writing around the questions that appear in early sales conversations — what a service website should include, when a business should rebuild rather than patch an existing system, how much content is enough for a service page, and which technical changes actually affect enquiry rates.",
         ],
       },
       {
-        heading: "The technical SEO checklist aibizmod uses before publishing new content",
+        heading: "The Technical SEO Checklist aibizmod Uses Before Publishing New Content",
         paragraphs: [
           "Before publishing new content, aibizmod reviews the technical foundation. If service pages load slowly, duplicate each other, or fail to describe the service clearly, additional blog posts will not solve the underlying visibility problem.",
         ],
@@ -561,7 +561,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "How SEO content shortens the sales conversation for service businesses",
+        heading: "How SEO Content Shortens the Sales Conversation for Service Businesses",
         paragraphs: [
           "The goal of SEO for a service business is not ranking for every broad keyword. The goal is to help the right visitor understand whether aibizmod can solve their specific problem before they pick up the phone.",
           "aibizmod's content roadmap focuses on practical pages first: service explanations with specific deliverables, comparison articles that help buyers evaluate options, and guides that answer the questions clients typically ask before making contact.",
@@ -613,21 +613,21 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "What GEO is and why it raises the bar rather than replacing SEO",
+        heading: "What GEO Is and Why It Raises the Bar Rather Than Replacing SEO",
         paragraphs: [
           "Generative Engine Optimisation, or GEO, is the work of making a business's expertise easier for AI search systems to understand, summarise, and cite. GEO does not replace traditional SEO. Instead, GEO raises the bar for content clarity — the same specificity that makes a page citable by an AI system also makes it more useful to a human reader.",
           "If a service page repeats the same general claims as hundreds of other websites, an answer engine has no reason to reference it. A page that explains who the service is for, what the engagement process includes, which tools are used, and what evidence supports the claims becomes a candidate for citation.",
         ],
       },
       {
-        heading: "What facts answer engines need to confidently cite a service page",
+        heading: "What Facts Answer Engines Need to Confidently Cite a Service Page",
         paragraphs: [
           "A service page that only states 'we build scalable solutions' provides little for a search system to work with. A more citable page names the target audience, describes the delivery process, lists the specific deliverables a client receives, and explains how the team handles questions and follow-up after the project.",
           "Improving GEO does not mean adding schema markup for its own sake or writing artificial question-and-answer blocks. The goal is to make the genuinely useful facts visible enough that both a human visitor and an AI extraction system can find them without effort.",
         ],
       },
       {
-        heading: "How aibizmod is applying GEO principles to its own pages",
+        heading: "How aibizmod Is Applying GEO Principles to Its Own Pages",
         paragraphs: [
           "aibizmod is removing vague claims from its own service pages and replacing them with specific answers — what happens during a discovery session, what documents and files a client receives at handover, which platforms and tools are used in delivery, and where aibizmod is a strong fit versus where a different provider would be more appropriate.",
         ],
@@ -639,7 +639,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Where to start a practical GEO improvement plan",
+        heading: "Where to Start a Practical GEO Improvement Plan",
         paragraphs: [
           "A GEO improvement plan begins with content hygiene: removing duplicate sections across similar pages, giving each service page a single clear purpose, and ensuring that important facts — pricing context, deliverables, process steps, geographic coverage — are easy to extract without reading the entire page.",
           "aibizmod is keeping examples close to the relevant service. A web development page covers performance benchmarks, CMS options, integration methods, and handover process. A digital marketing page covers tracking setup, keyword mapping, reporting dashboards, and campaign structure. Those concrete details are more extractable than aspirational positioning language.",
@@ -686,21 +686,21 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "How quickly a visitor forms a trust judgment — and what triggers doubt",
+        heading: "How Quickly a Visitor Forms a Trust Judgment — and What Triggers Doubt",
         paragraphs: [
           "A website does not need to be visually elaborate to convert visitors. A website needs to answer four basic questions quickly: who is this business, what does it offer, can it handle the visitor's specific type of problem, and what happens if the visitor makes contact?",
           "Before investing in SEO or paid advertising, aibizmod recommends running a trust audit — a focused review of the pages a new visitor will encounter before deciding whether to enquire or leave.",
         ],
       },
       {
-        heading: "Why trust signals compound — and why fixing one is not enough",
+        heading: "Why Trust Signals Compound — and Why Fixing One Is Not Enough",
         paragraphs: [
           "Visitors notice more than the headline. A visitor registers whether the navigation is logical, whether the contact page appears active, whether the service descriptions read as original or copied from a template, and whether the mobile version of the site has been maintained with the same care as the desktop version.",
           "No individual detail is decisive on its own. Together, these signals determine whether a visitor feels comfortable sharing a project brief, a phone number, or a budget range with the business.",
         ],
       },
       {
-        heading: "What a website trust audit checks — and which fixes have the highest impact",
+        heading: "What a Website Trust Audit Checks — and Which Fixes Have the Highest Impact",
         paragraphs: [
           "The highest-impact fixes identified in a trust audit are usually straightforward: replace vague headline copy with a clear statement of what the business delivers, add specific examples to service pages, simplify the contact path, provide verifiable proof points, and verify that the mobile layout is complete and functional.",
         ],
@@ -712,7 +712,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Why trust work produces better returns from SEO and advertising investment",
+        heading: "Why Trust Work Produces Better Returns from SEO and Advertising Investment",
         paragraphs: [
           "SEO and paid advertising can deliver visitors to a website. Neither can make an unclear or unconvincing page generate enquiries. Content clarity, page speed, mobile layout, and a logical contact path are marketing investments, not only technical maintenance tasks.",
           "Before increasing traffic volume, aibizmod focuses on removing the specific doubts that prevent conversion: vague service names, outdated placeholder content, missing next-step prompts, ambiguous pricing language, and page copy that does not address a specific audience.",
@@ -759,21 +759,21 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "The shift toward relational databases and collaborative hubs",
+        heading: "The Shift Toward Relational Databases and Collaborative Hubs",
         paragraphs: [
           "Project management tools have evolved from static lists into flexible relational database hubs. Teams in 2026 rarely rely on traditional isolated Excel sheets or static Gantt charts. Instead, they build custom workflows on top of platforms like Airtable, Notion, or Asana. These platforms allow the same project task to be viewed as a board by developers, a timeline by managers, and a budget spreadsheet by finance directors.",
           "This database-first approach reduces data duplication and ensures that when a developer updates a task status, the billing projection is automatically adjusted in the client-facing dashboard.",
         ],
       },
       {
-        heading: "How AI is changing project tracking and forecasting",
+        heading: "How AI Is Changing Project Tracking and Forecasting",
         paragraphs: [
           "In 2026, the most significant change in project management is the integration of predictive intelligence. Rather than relying on managers to guess task durations, modern platforms analyze past sprint velocity and historical developer output to forecast delivery dates. If a database migration has historically taken four days, the system automatically flags a two-day estimate as a scheduling risk.",
           "AI is also taking over routine coordination tasks: drafting status reports, summarizing sprint reviews, and auto-assigning subtasks based on team capacity. This shifts the project manager's role from administrative coordination to strategic architecture and blocker removal.",
         ],
       },
       {
-        heading: "Evaluating the top platforms for different business profiles",
+        heading: "Evaluating the Top Platforms for Different Business Profiles",
         paragraphs: [
           "No single platform is ideal for every business model. Selecting the correct system requires matching the tool's structure to your delivery model:",
         ],
@@ -824,14 +824,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Why generic project management tools fail technical teams",
+        heading: "Why Generic Project Management Tools Fail Technical Teams",
         paragraphs: [
           "Many organizations attempt to manage technical projects using generic task lists or boards designed for marketing or general operations. While these tools work well for simple tasks, they fail when applied to software development or cloud infrastructure rollouts. Technical teams need to link project tasks directly to code commits, pull requests, and automated build pipelines.",
           "Without these integrations, developers are forced to manually update their task status in a separate system, leading to stale boards, inaccurate tracking, and communication silos between developers and project managers.",
         ],
       },
       {
-        heading: "Critical evaluation criteria for IT project software",
+        heading: "Critical Evaluation Criteria for IT Project Software",
         paragraphs: [
           "When evaluating IT project management platforms, look beyond user interface aesthetics. Prioritize functionality that supports the technical lifecycle:",
         ],
@@ -843,7 +843,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Security, compliance, and vendor lock-in checks",
+        heading: "Security, Compliance, and Vendor Lock-in Checks",
         paragraphs: [
           "IT project boards contain highly sensitive information about your systems architecture, open security vulnerabilities, and proprietary code. Before committing to a vendor, verify their compliance credentials (SOC 2 Type II or ISO 27001) and ensure they support Single Sign-On (SSO) for employee access management.",
           "Additionally, check the database export options. A good IT project tool allows you to export your complete task history, comments, and attachments in standard formats (such as JSON or CSV) so that you can migrate to another tool or archive the data if necessary.",
@@ -888,14 +888,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "The cost of manual proposal creation",
+        heading: "The Cost of Manual Proposal Creation",
         paragraphs: [
           "For professional service firms, writing proposals is a critical but resource-intensive commercial activity. Senior consultants, engineers, and legal advisors spend hours writing custom responses to recurring RFP questions about company security, team bios, and project methodology. When done manually using word processors and local files, this process leads to version control errors, inconsistent formatting, and missed deadlines.",
           "Bid management software addresses these inefficiencies by creating a single, searchable repository for pre-approved content, allowing teams to assemble the core of a proposal in minutes rather than days.",
         ],
       },
       {
-        heading: "Core features that drive bid success",
+        heading: "Core Features That Drive Bid Success",
         paragraphs: [
           "Effective proposal platforms go beyond simple document storage. Look for features that actively improve collaboration and draft quality:",
         ],
@@ -907,7 +907,7 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "Chasing the right deals: data-driven bidding",
+        heading: "Chasing the Right Deals: Data-Driven Bidding",
         paragraphs: [
           "Winning more bids is not only about writing more pages; it is about selecting the projects where your firm has a high probability of success. Modern bid management platforms track key metrics — such as win rates by industry, competitor analysis, and final project profitability.",
           "By analyzing this historical data, professional service firms can establish a clear qualification framework. This prevents the team from spending expensive consulting hours chasing low-probability, low-margin tenders, redirecting resources to high-value opportunities instead.",
@@ -953,14 +953,14 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Why cloud project management is now the default",
+        heading: "Why Cloud Project Management Is Now the Default",
         paragraphs: [
           "Five years ago, project management software was a mix of desktop installations, self-hosted servers, and a handful of cloud tools. In 2026, the cloud is the default. The shift was driven by three forces: distributed teams that need real-time access, the rise of mobile work, and the cost advantage of subscription pricing over upfront licence fees. Google search data confirms the trend — queries for cloud based project management software and cloud project management software have grown 9,900% year on year.",
           "For most teams the question is no longer whether to use a cloud system, but which one. The build-vs-buy question matters most when off-the-shelf options either do not exist for the specific workflow or become uneconomical at scale.",
         ],
       },
       {
-        heading: "The build-vs-buy decision framework",
+        heading: "The Build-vs-Buy Decision Framework",
         paragraphs: [
           "Most teams default to buying because that is what the market offers. The honest framework is to start with three diagnostic questions and only move to build if at least two of them point that direction.",
         ],
@@ -977,28 +977,28 @@ export const blogPosts: BlogPost[] = [
         ],
       },
       {
-        heading: "When buying is the right answer",
+        heading: "When Buying Is the Right Answer",
         paragraphs: [
           "For teams under twenty users with reasonably standard workflows, the answer is almost always to buy. Off-the-shelf tools — Monday.com, ClickUp, Asana, Linear for engineering teams, Notion for flexible workspaces — cover the majority of use cases at a price point that no custom build can match. Implementation is measured in days rather than months, and the vendor handles security, uptime, and feature updates.",
           "The buying path also wins when speed to value matters more than competitive differentiation. A new team, a new department, or a short-term project does not need a custom system. It needs a working system next week.",
         ],
       },
       {
-        heading: "When building is the right answer",
+        heading: "When Building Is the Right Answer",
         paragraphs: [
           "Three patterns consistently lead teams to build. First, workflow specificity: if your team's project management process is genuinely different from your industry's norm, an off-the-shelf tool will force workarounds that cost more than the licence savings. Second, scale economics: a team of fifty paying £25 per user per month spends £15,000 per year on software alone — that is a meaningful fraction of a custom build. Third, integration depth: if you need to model proprietary data structures (for example, complex regulatory compliance tracking or engineering workflows tied to specific deployment pipelines), no off-the-shelf tool will match the fit.",
           "The economic case for build typically becomes clear between twenty and fifty users, or sooner if the workflow is highly specific. A focused cloud based project management software project at aibizmod typically costs between £25,000 and £80,000 depending on scope and pays back within 12–24 months through per-seat savings and workflow efficiency.",
         ],
       },
       {
-        heading: "What a custom build delivers that off-the-shelf cannot",
+        heading: "What a Custom Build Delivers That Off-the-Shelf Cannot",
         paragraphs: [
           "A custom cloud project management system gives you three advantages that buying cannot. Data ownership: every record sits in your database, on your infrastructure, and can be exported at any time in standard formats. Workflow fit: the system models your actual process rather than a generalised process, removing the workarounds and manual reconciliation that off-the-shelf tools force on specific industries. Cost predictability: per-seat pricing disappears, replaced by a fixed infrastructure cost that scales with usage rather than headcount.",
           "The most common reason custom builds fail is scope. A custom system that tries to be a full Monday.com replacement for one hundred users is a different project from a focused cloud project management system for a specific team. The build decision should always start with one team, one workflow, and a clear scope boundary.",
         ],
       },
       {
-        heading: "How to make the build decision safely",
+        heading: "How to Make the Build Decision Safely",
         paragraphs: [
           "If the build case looks plausible, the safe path is to run a focused scoping engagement before committing. Map the existing workflow in detail, identify the specific points where off-the-shelf tools fall short, and estimate the cost of the workarounds. Then compare that cost against a phased custom build. In most cases, the answer becomes clear within two to three weeks of structured discovery.",
           "At aibizmod we build cloud based project management software for teams that have outgrown off-the-shelf tools but do not want to pay enterprise pricing for features they do not use. The systems are cloud-hosted, owned outright, and designed to be modified as the team grows.",
@@ -1045,42 +1045,42 @@ export const blogPosts: BlogPost[] = [
     ],
     sections: [
       {
-        heading: "Why engineering project tools are a category of their own",
+        heading: "Why Engineering Project Tools Are a Category of Their Own",
         paragraphs: [
           "Generic project management tools — Asana, Monday.com, Trello — were not designed for software delivery. They treat a task as a card on a board, with little understanding of code commits, pull requests, build status, or deployment history. Engineering teams that try to use them end up with two parallel systems: the project tool for visibility, and the issue tracker for actual work. The result is stale data, manual updates, and an inaccurate view of progress.",
           "The category of project management tools for software development has matured into its own segment, with platforms that understand the technical lifecycle. Searches for this category have grown 900% year on year, reflecting how much engineering organisations are willing to invest in tools that fit how they actually work.",
         ],
       },
       {
-        heading: "Linear: the default for small engineering teams",
+        heading: "Linear: The Default for Small Engineering Teams",
         paragraphs: [
           "Linear has become the strongest default for small engineering teams in 2026. It is fast, opinionated, and tightly integrated with GitHub and GitLab. When a developer opens a pull request, the linked issue moves to In Review automatically. When the PR is merged, it moves to Done. The project manager's view of progress is always accurate because the source of truth is the code repository, not manual updates.",
           "Linear is best for teams of up to about fifty engineers working on a single product. Beyond that scale, organisations typically need more configuration than Linear's opinionated model allows, and the conversation shifts to Jira or a custom build.",
         ],
       },
       {
-        heading: "Notion and Airtable: flexibility for mixed teams",
+        heading: "Notion and Airtable: Flexibility for Mixed Teams",
         paragraphs: [
           "For service businesses where engineering is one of several workflows the project tool must support, Notion and Airtable offer more flexibility than developer-first tools. A digital agency, for example, can model engineering tasks, client deliverables, design reviews, and finance tracking in the same workspace. The trade-off is that engineering-specific integrations (CI/CD, repository sync, deployment status) require third-party connectors that do not match Linear's native depth.",
           "Notion and Airtable work best when the engineering team is small and the broader team's visibility into engineering work matters more than engineering's internal efficiency.",
         ],
       },
       {
-        heading: "Jira: the enterprise standard with real overhead",
+        heading: "Jira: The Enterprise Standard with Real Overhead",
         paragraphs: [
           "Jira remains the enterprise standard for software project management in 2026, particularly in organisations with strict compliance, audit, and reporting requirements. Its strength is configurability: workflows, fields, permissions, and automations can be modelled to match any process. Its weakness is the same configurability — Jira projects routinely require dedicated administrators to maintain them, and the cost in configuration time often exceeds the licence cost.",
           "Jira is the right choice for engineering organisations above one hundred developers where the configuration work is justified by the scale. For smaller teams, the configuration overhead is usually disproportionate to the value.",
         ],
       },
       {
-        heading: "GitHub Projects and Plane: lightweight alternatives",
+        heading: "GitHub Projects and Plane: Lightweight Alternatives",
         paragraphs: [
           "For teams whose work lives entirely in GitHub, GitHub Projects provides project tracking without leaving the repository. The integration is native, the data is always current, and the tool is included in GitHub pricing. The limitation is that GitHub Projects does not handle the cross-functional planning that larger organisations need.",
           "Plane is an emerging open-source alternative that combines Linear's developer-first ergonomics with more flexibility for cross-team workflows. It is worth evaluating for teams that want Linear's speed without the opinionated structure.",
         ],
       },
       {
-        heading: "When to build a custom project management system",
+        heading: "When to Build a Custom Project Management System",
         paragraphs: [
           "For most engineering teams, one of the tools above is the right answer. The exception is teams whose workflow is genuinely unusual — for example, a consulting firm that bills engineering work by the hour against fixed-price client contracts, or a regulated industry where every task change requires compliance evidence.",
           "In those cases, building a focused project management system that integrates with the existing repository and CI/CD pipeline is often cheaper than configuring an off-the-shelf tool to match the process. A custom build also removes per-seat licensing and gives the organisation full control of the data model.",

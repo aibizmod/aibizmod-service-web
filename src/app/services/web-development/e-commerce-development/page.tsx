@@ -186,7 +186,7 @@ const data: SubservicePageData = {
 				"Custom builds don't carry the additional platform transaction fees that platform stores typically add on top of Stripe's own processing rate.",
 		},
 		{
-			title: 'Scales With You',
+			title: 'Scales with You',
 			description:
 				"The codebase is yours and built to be extended. Adding a new product type, a new payment method, or a new fulfilment flow doesn't require a platform upgrade.",
 		},

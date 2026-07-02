@@ -35,7 +35,7 @@ export default function TopicsPage() {
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-7xl">
               <AnimatedSection className="text-center">
-                <SectionHeading eyebrow="Topic Hubs" heading="Explore by topic" centered />
+                <SectionHeading eyebrow="Topic Hubs" heading="Explore by Topic" centered />
                 <p className="mt-6 text-lg leading-relaxed text-slate-500 max-w-2xl mx-auto">
                   Curated collections of guides, comparisons, and services organised around the technology decisions that matter most to your business.
                 </p>

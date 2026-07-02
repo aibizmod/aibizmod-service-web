@@ -586,7 +586,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
             />
             <div className="relative mx-auto max-w-7xl">
               <AnimatedSection className="text-center mb-14">
-                <SectionHeading eyebrow="The Problem" heading="What this service solves" centered />
+                <SectionHeading eyebrow="The Problem" heading="What This Service Solves" centered />
               </AnimatedSection>
 
               <ProblemSolutionCard
@@ -620,7 +620,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
                       lineHeight: 1.08,
                     }}
                   >
-                    Everything you need, nothing you don&apos;t
+                    Everything You Need, Nothing You Don&apos;t
                   </h2>
                 </AnimatedSection>
 
@@ -701,7 +701,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
             <div className="relative z-10 pt-20 pb-4">
               <div className="px-6">
                 <AnimatedSection className="text-center mb-10">
-                  <SectionHeading eyebrow="Use Cases" heading="How businesses use this" centered />
+                  <SectionHeading eyebrow="Use Cases" heading="How Businesses Use This" centered />
                   <p className="mt-4 text-[15px] leading-relaxed text-slate-500 max-w-xl mx-auto">
                     Real-world applications across industries — drag or click the cards to explore.
                   </p>
@@ -733,7 +733,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
             />
             <div className="relative max-w-7xl mx-auto">
               <AnimatedSection className="text-center mb-14">
-                <SectionHeading eyebrow="Why It Matters" heading="Business outcomes you can expect" centered />
+                <SectionHeading eyebrow="Why It Matters" heading="Business Outcomes You Can Expect" centered />
               </AnimatedSection>
 
               <div className="mt-12 w-full">

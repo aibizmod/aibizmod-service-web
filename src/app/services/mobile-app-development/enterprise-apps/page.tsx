@@ -70,7 +70,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'layers',
-			title: 'Employee Self-service Apps',
+			title: 'Employee Self-Service Apps',
 			description:
 				'Build internal apps for HR workflows including leave requests, shift management, payslip access, and expense claims — integrated with your HRMS.',
 			image: '/services/mobile-app-development/enterprise-employee-selfservice.png',
@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'network',
-			title: 'Offline-first Architecture',
+			title: 'Offline-First Architecture',
 			description:
 				'Design applications with local data persistence and sync queues so business-critical functions work without connectivity and data is reconciled when the device reconnects.',
 			image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=600&auto=format&fit=crop&q=60',
@@ -102,7 +102,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'settings',
-			title: 'Role-based Access Control',
+			title: 'Role-Based Access Control',
 			description:
 				'Implement role-based access within the app so different employee roles see only the functions and data relevant to them, with authentication through your existing identity provider.',
 			image: '/services/mobile-app-development/enterprise-rbac.png',
@@ -186,7 +186,7 @@ const data: SubservicePageData = {
 				'MDM-compatible deployment means updates, configuration changes, and app rollout are handled centrally rather than requiring each device to be updated individually.',
 		},
 		{
-			title: 'Role-appropriate Access',
+			title: 'Role-Appropriate Access',
 			description:
 				'Role-based access controls show each employee the data and functions relevant to their role, reducing complexity and the risk of inappropriate data access.',
 		},

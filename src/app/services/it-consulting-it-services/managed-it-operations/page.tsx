@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'Professional Services',
-			title: 'IT Support for a 50-person Firm',
+			title: 'IT Support for a 50-Person Firm',
 			description:
 				'A professional services firm outgrew their part-time IT person but was not ready to hire a full IT team. We provided managed IT support covering helpdesk, infrastructure management, and strategic advisory.',
 		},
@@ -185,7 +185,7 @@ const data: SubservicePageData = {
 				'Regular infrastructure review identifies maintenance needs before they become failures, reducing the frequency of reactive incidents that cause downtime.',
 		},
 		{
-			title: 'Expert Input Without Full-time Cost',
+			title: 'Expert Input Without Full-Time Cost',
 			description:
 				'Access to technical advisory for purchasing decisions, contract negotiations, and infrastructure strategy without the cost of a full-time senior IT employee.',
 		},

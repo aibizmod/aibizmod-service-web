@@ -42,11 +42,11 @@ export default function GlobalPresence() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-border bg-[#FBF8FF] p-6 text-center">
                 <p className="text-3xl font-display font-bold text-ink">5+</p>
-                <p className="mt-2 text-sm text-muted-foreground">Main markets supported</p>
+                <p className="mt-2 text-sm text-muted-foreground">Main Markets Supported</p>
               </div>
               <div className="rounded-2xl border border-border bg-[#FBF8FF] p-6 text-center">
                 <p className="text-3xl font-display font-bold text-ink">24/7</p>
-                <p className="mt-2 text-sm text-muted-foreground">Support across time zones</p>
+                <p className="mt-2 text-sm text-muted-foreground">Support Across Time Zones</p>
               </div>
             </div>
           </AnimatedSection>

@@ -131,7 +131,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Hospitality',
-			title: 'Multi-channel Attribution Dashboard',
+			title: 'Multi-Channel Attribution Dashboard',
 			description:
 				'A hotel group needed to understand which marketing channels were driving direct bookings. We built a Looker Studio dashboard connecting GA4, Google Ads, and Meta Ads data to booking confirmation events.',
 		},
@@ -184,7 +184,7 @@ const data: SubservicePageData = {
 				'A/B testing infrastructure means changes are validated before full deployment, building a record of improvements rather than reverting to debate about what might work.',
 		},
 		{
-			title: 'Cross-channel View of Performance',
+			title: 'Cross-Channel View of Performance',
 			description:
 				'A unified dashboard covering all channels in one place removes the need to log into multiple platforms to understand overall marketing performance.',
 		},

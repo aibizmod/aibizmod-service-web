@@ -112,7 +112,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'Finance',
-			title: 'Pre-audit Security Remediation',
+			title: 'Pre-Audit Security Remediation',
 			description:
 				'A financial services firm needed to pass a third-party security audit. Our pre-audit assessment identified 14 findings across server hardening, dependency vulnerabilities, and access controls, all resolved before the formal audit.',
 		},

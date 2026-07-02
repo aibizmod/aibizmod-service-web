@@ -56,12 +56,12 @@ const data: ServicePageData = {
 			"When a support agent can't see a customer's order history, previous tickets, or billing status in one place, the conversation starts badly. Usually the data exists somewhere. It's just split across tools that don't talk to each other, or sitting in a CRM that hasn't been cleaned since it was set up. The work here is practical: deduplicating contact records, configuring ticket routing so queries reach the right team, connecting WhatsApp or email channels into a shared inbox, and making sure the information agents actually need shows up in the right place at the right time.",
 		],
 		benefits: [
-			'Deduplicated and structured CRM contacts',
-			'Automated ticket routing rules',
-			'Unified customer support histories',
-			'Post-support CSAT survey logs',
-			'WhatsApp Business text configurations',
-			'Shared agent inboxes in Intercom',
+			'Deduplicated and Structured CRM Contacts',
+			'Automated Ticket Routing Rules',
+			'Unified Customer Support Histories',
+			'Post-Support CSAT Survey Logs',
+			'WhatsApp Business Text Configurations',
+			'Shared Agent Inboxes in Intercom',
 		],
 	},
 

@@ -101,7 +101,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'zap',
-			title: 'Real-time Vision APIs',
+			title: 'Real-Time Vision APIs',
 			description:
 				'Deploy vision inference endpoints your existing applications can call at request time, with response times suited to interactive or near-real-time workflows.',
 			image: '/services/ai-automation/ai-vision-realtime-vision-apis.jpg',

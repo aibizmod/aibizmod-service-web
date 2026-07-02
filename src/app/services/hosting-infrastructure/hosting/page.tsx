@@ -124,25 +124,25 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'SaaS',
-			title: 'Multi-environment Hosting Setup on Render',
+			title: 'Multi-Environment Hosting Setup on Render',
 			description:
 				'A SaaS product needed separate staging and production environments with matching configuration. We set up both environments on Render with environment-specific variables and deployment triggers from the CI pipeline.',
 		},
 		{
 			industry: 'Media',
-			title: 'Dedicated Server for a High-traffic Publication',
+			title: 'Dedicated Server for a High-Traffic Publication',
 			description:
 				'A media publication outgrew VPS resources due to high simultaneous reader traffic. We provisioned a dedicated server with Nginx and configured caching layers to handle traffic spikes without performance degradation.',
 		},
 		{
 			industry: 'Healthcare',
-			title: 'Hosting with GDPR-compliant Data Residency',
+			title: 'Hosting with GDPR-Compliant Data Residency',
 			description:
 				'A healthcare organisation required hosting with UK data residency for patient data. We configured a UK-based VPS with encrypted storage and documented data processing agreements.',
 		},
 		{
 			industry: 'Non-profit',
-			title: 'Cost-effective Managed Hosting Migration',
+			title: 'Cost-Effective Managed Hosting Migration',
 			description:
 				'A non-profit organisation was overpaying for hosting that exceeded their requirements. We moved their WordPress site to a correctly sized Cloudways managed hosting environment, reducing monthly costs by 60 percent.',
 		},
@@ -169,7 +169,7 @@ const data: SubservicePageData = {
 				'A correctly sized hosting environment performs better and costs less than one chosen by guesswork or lowest price, without the overhead of over-provisioning.',
 		},
 		{
-			title: 'Properly Configured From the Start',
+			title: 'Properly Configured from the Start',
 			description:
 				'A server that is set up with security hardening, appropriate web server configuration, and monitored backups is significantly more reliable than one provisioned and left in its default state.',
 		},

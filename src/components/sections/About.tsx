@@ -1,10 +1,10 @@
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const stats = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "98%", label: "Client satisfaction" },
-  { value: "12+", label: "Countries served" },
-  { value: "5yrs", label: "In operation" },
+  { value: "50+", label: "Projects Delivered" },
+  { value: "98%", label: "Client Satisfaction" },
+  { value: "12+", label: "Countries Served" },
+  { value: "5yrs", label: "In Operation" },
 ];
 
 export default function About() {
@@ -17,8 +17,8 @@ export default function About() {
               About Us
             </span>
             <h2 className="mt-5 font-heading text-3xl md:text-5xl font-bold leading-tight text-primary">
-              We are the team{" "}
-              <span className="gradient-text">behind the tech</span>
+              We Are the Team{" "}
+              <span className="gradient-text">Behind the Tech</span>
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               aibizmod was founded by engineers who believed that technology

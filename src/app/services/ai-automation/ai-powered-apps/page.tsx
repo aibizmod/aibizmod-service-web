@@ -4,8 +4,7 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title:
-		'AI-Powered Application Development | Machine Learning Apps | aibizmod',
+	title: 'AI-Powered Application Development | Machine Learning Apps | aibizmod',
 	description:
 		'AI-powered application development that integrates machine learning and AI features. Smart systems that learn and improve over time.',
 	keywords: [
@@ -70,7 +69,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'cpu',
-			title: 'Model Fine-tuning',
+			title: 'Model Fine-Tuning',
 			description:
 				'Adapt foundation models to your domain, vocabulary, and use case using supervised fine-tuning on your proprietary dataset for specialised, domain-relevant performance.',
 			image: '/services/ai-automation/ai-powered-apps-model-finetuning.jpg',

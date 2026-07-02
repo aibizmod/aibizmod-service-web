@@ -78,7 +78,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'layers',
-			title: 'Platform-specific Adaptations',
+			title: 'Platform-Specific Adaptations',
 			description:
 				'Implement platform-specific navigation patterns, styling, and interaction behaviour where the experience should differ between iOS and Android.',
 			image: '/services/mobile-app-development/cross-platform-adaptation.png',
@@ -143,7 +143,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Healthcare',
-			title: 'Patient Self-service App',
+			title: 'Patient Self-Service App',
 			description:
 				'A healthcare group built a React Native app for patients to view appointments, access test results, and message their care team, with the same codebase deployed to both platforms.',
 		},
@@ -166,7 +166,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Both Platforms From One Build',
+			title: 'Both Platforms from One Build',
 			description:
 				'A single codebase means features are built once, bugs are fixed once, and both platforms are always in sync — removing the coordination overhead of parallel native development.',
 		},
@@ -176,12 +176,12 @@ const data: SubservicePageData = {
 				'For standard mobile applications, cross-platform development costs 40 to 60 percent less than building and maintaining equivalent separate native codebases.',
 		},
 		{
-			title: 'Native-quality Performance',
+			title: 'Native-Quality Performance',
 			description:
 				'Modern cross-platform frameworks — particularly Flutter — render at 60fps and produce smooth, responsive applications that users cannot distinguish from native apps in standard interactions.',
 		},
 		{
-			title: 'Shared Codebase With Appropriate Platform Adaptation',
+			title: 'Shared Codebase with Appropriate Platform Adaptation',
 			description:
 				'Business logic, data fetching, and state management are shared. Platform-specific navigation patterns and styling can be adapted where the experience genuinely needs to differ.',
 		},

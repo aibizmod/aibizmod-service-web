@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'SaaS',
-			title: 'Google Search Campaign for Trial Sign-ups',
+			title: 'Google Search Campaign for Trial Sign-Ups',
 			description:
 				'A SaaS company restructured their Google Search campaigns around high-intent keywords, improved landing page relevance, and reduced cost per trial sign-up by 35 percent over 90 days.',
 		},

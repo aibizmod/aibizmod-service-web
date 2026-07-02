@@ -164,7 +164,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Organic Traffic That Does Not Require Per-click Spend',
+			title: 'Organic Traffic That Does Not Require Per-Click Spend',
 			description:
 				'Well-ranked pages continue to drive qualified traffic without an ongoing media spend, improving the overall efficiency of your marketing budget over time.',
 		},
@@ -174,7 +174,7 @@ const data: SubservicePageData = {
 				'Keyword research focused on commercial and transactional intent means the traffic you gain is from users looking for what you provide, not just high-volume informational queries.',
 		},
 		{
-			title: 'Technical Foundations That Support Long-term Rankings',
+			title: 'Technical Foundations That Support Long-Term Rankings',
 			description:
 				'Fixing crawl, indexation, and speed issues removes the technical ceiling on ranking performance, allowing content quality to determine visibility rather than infrastructure problems.',
 		},

@@ -57,12 +57,12 @@ const data: ServicePageData = {
 			"Bad deployments are almost always a process problem, not a code problem. Someone pushed directly to production, there was no staging environment to catch the issue first, and now the rollback is manual and stressful. Getting the infrastructure right means putting those safeguards in before they're needed: separate environments for testing and live, automated backups that actually get tested, deployment pipelines that can roll back in under a minute, and monitoring that alerts the right people before users notice something is wrong. The setup is documented in plain language so your team understands what's running and what it costs.",
 		],
 		benefits: [
-			'Separated staging and production systems',
-			'Automated deployment with rollback triggers',
-			'Configured daily database backups',
-			'Active CPU and HTTP alert monitors',
-			'Plain business language billing estimates',
-			'Complete infrastructure codebase access',
+			'Separated Staging and Production Systems',
+			'Automated Deployment with Rollback Triggers',
+			'Configured Daily Database Backups',
+			'Active CPU and HTTP Alert Monitors',
+			'Plain Business Language Billing Estimates',
+			'Complete Infrastructure Codebase Access',
 		],
 	},
 

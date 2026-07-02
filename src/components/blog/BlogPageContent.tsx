@@ -127,8 +127,8 @@ export default function BlogPageContent() {
 								className='mx-auto mt-7 max-w-3xl font-display font-thin text-[#0F172A] text-balance'
 								style={{ fontSize: 'clamp(34px, 5vw, 58px)', lineHeight: 1.04 }}
 							>
-								Practical notes from building a{' '}
-								<span className='gradient-text font-normal'>service brand</span>
+								Practical Notes From Building a{' '}
+								<span className='gradient-text font-normal'>Service Brand</span>
 							</h1>
 							<p className='mx-auto mt-6 max-w-2xl rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-base leading-8 text-stone-600 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md md:text-lg'>
 								Field notes on the aibizmod domain, our SEO service journey,
@@ -196,7 +196,7 @@ export default function BlogPageContent() {
 							<div className='flex h-16 w-16 items-center justify-center rounded-full bg-stone-100 text-stone-400 mb-4'>
 								<Search size={28} aria-hidden='true' />
 							</div>
-							<h3 className='font-display text-xl font-semibold text-[#0F172A]'>No articles found</h3>
+							<h3 className='font-display text-xl font-semibold text-[#0F172A]'>No Articles Found</h3>
 							<p className='mt-2 text-stone-500 max-w-md text-sm leading-6'>
 								We couldn&apos;t find any articles matching &quot;{searchQuery}&quot; in the &quot;{activeCategory}&quot; category. Try typing something else or selecting a different category.
 							</p>

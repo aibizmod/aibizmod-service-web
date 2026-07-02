@@ -63,7 +63,7 @@ export default function AutomationRoiCalculatorPage() {
             <div className="max-w-5xl mx-auto grid gap-12 lg:grid-cols-2">
               {/* Inputs */}
               <AnimatedSection direction="left">
-                <SectionHeading eyebrow="Your inputs" heading="Adjust to your team" />
+                <SectionHeading eyebrow="Your inputs" heading="Adjust to Your Team" />
                 <div className="mt-8 space-y-6">
                   <div>
                     <label className="flex items-center gap-2 text-sm font-medium text-slate-700 mb-2">
@@ -122,7 +122,7 @@ export default function AutomationRoiCalculatorPage() {
               {/* Results */}
               <AnimatedSection direction="right" delay={0.1}>
                 <div className="rounded-[28px] border border-cyan-100 bg-white/70 p-8 shadow-[0_18px_55px_rgba(59,130,246,0.10)] backdrop-blur-md lg:sticky lg:top-24">
-                  <SectionHeading eyebrow="Estimated result" heading="Your annual savings" />
+                  <SectionHeading eyebrow="Estimated result" heading="Your Annual Savings" />
                   <p className="mt-6 text-5xl font-display font-bold text-cyan-700">
                     {formatCurrency(annualSavings)}
                   </p>
@@ -167,7 +167,7 @@ export default function AutomationRoiCalculatorPage() {
           <section className="px-6 py-16 bg-white">
             <div className="max-w-3xl mx-auto">
               <AnimatedSection>
-                <SectionHeading eyebrow="How it works" heading="Calculation methodology" centered />
+                <SectionHeading eyebrow="How it works" heading="Calculation Methodology" centered />
               </AnimatedSection>
 
               <div className="mt-10 space-y-6 text-slate-600 leading-relaxed text-sm">
@@ -186,7 +186,7 @@ export default function AutomationRoiCalculatorPage() {
               </div>
 
               <AnimatedSection delay={0.08} className="mt-10">
-                <SectionHeading eyebrow="Related" heading="Automation resources" centered />
+                <SectionHeading eyebrow="Related" heading="Automation Resources" centered />
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Link href="/services/ai-automation" className="rounded-full border border-cyan-100 bg-white px-4 py-2 text-sm font-medium text-cyan-700 hover:bg-cyan-50 transition-colors">
                     AI Automation Services

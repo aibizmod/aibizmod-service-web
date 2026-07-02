@@ -119,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Retail',
-			title: 'E-commerce Infrastructure Scaling',
+			title: 'E-Commerce Infrastructure Scaling',
 			description:
 				'An online retailer needed infrastructure that could handle peak load during sale events without paying for peak capacity year-round. A cloud architecture with auto-scaling groups and a CDN resolved both problems.',
 		},
@@ -164,7 +164,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Capacity That Scales With Demand',
+			title: 'Capacity That Scales with Demand',
 			description:
 				'Cloud resources scale up during peak load and down during quiet periods, removing the choice between over-provisioning for peaks or under-provisioning for normal load.',
 		},

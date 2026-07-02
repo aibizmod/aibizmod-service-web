@@ -53,12 +53,12 @@ const data: ServicePageData = {
 			"A website that just looks good but can't connect to your CRM, take a booking, or show a client their account history isn't doing much for the business. The work starts with understanding what the site actually needs to do, not just how it should look. From there, everything is built to spec: the database structure, the user flows, the admin tools, the handover docs. You end up with a codebase you own, a staging environment to review changes before they go live, and a clear record of how everything is set up so any developer can pick it up later.",
 		],
 		benefits: [
-			'Version-controlled codebase ownership',
-			'Staging environment for previewing updates',
-			'Custom database and API integrations',
-			'No proprietary platform licensing fees',
-			'Direct CRM and dashboard synchronization',
-			'Clean Google Search Console index configuration',
+			'Version-Controlled Codebase Ownership',
+			'Staging Environment for Previewing Updates',
+			'Custom Database and API Integrations',
+			'No Proprietary Platform Licensing Fees',
+			'Direct CRM and Dashboard Synchronization',
+			'Clean Google Search Console Index Configuration',
 		],
 	},
 
@@ -146,7 +146,7 @@ const serviceCards: ServiceCard[] = [
 	{
 		title: 'Frontend Development',
 		image:
-			'https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&auto=format&fit=crop',
+			'/services/web-development/frontend-development-hero.png',
 		bullets: [
 			'Responsive Websites',
 			'Landing Pages',

@@ -172,7 +172,7 @@ const data: SubservicePageData = {
 				'Native development provides unrestricted access to every API and capability the platform exposes, without waiting for a cross-platform framework to add or fix support.',
 		},
 		{
-			title: 'Platform-appropriate User Experience',
+			title: 'Platform-Appropriate User Experience',
 			description:
 				'Native applications use the interaction patterns, navigation conventions, and animation characteristics that users expect on each platform, producing a more natural experience.',
 		},

@@ -55,7 +55,7 @@ export default function Services() {
             What We Build
           </span>
           <h2 className="mt-5 font-heading text-3xl md:text-5xl font-bold text-primary">
-            What we <span className="gradient-text">build</span>
+            What We <span className="gradient-text">Build</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
             A full spectrum of technology services to accelerate your growth.

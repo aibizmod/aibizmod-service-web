@@ -143,7 +143,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'E-commerce',
-			title: 'Post-purchase CRM Flows',
+			title: 'Post-Purchase CRM Flows',
 			description:
 				'An e-commerce brand connected their Shopify store to HubSpot CRM, triggering post-purchase sequences, review requests, and loyalty offers based on purchase data.',
 		},
@@ -174,7 +174,7 @@ const data: SubservicePageData = {
 				'Sales leadership has real-time visibility into deal volume, stage distribution, and forecast accuracy without relying on manual reports from the team.',
 		},
 		{
-			title: 'Fewer Missed Follow-ups',
+			title: 'Fewer Missed Follow-Ups',
 			description:
 				'Automated task creation and reminder workflows mean opportunities do not fall through the gap between CRM entry and actual follow-through.',
 		},

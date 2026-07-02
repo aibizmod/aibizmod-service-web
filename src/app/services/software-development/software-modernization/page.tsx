@@ -70,7 +70,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'code2',
-			title: 'Application Re-engineering',
+			title: 'Application Re-Engineering',
 			description:
 				'Rebuild legacy applications from the ground up in modern technology with improved architecture, maintainability, and integration capability — while preserving validated business logic.',
 			image: '/services/software-development/software-modernization-application-reengineering.jpg',
@@ -180,7 +180,7 @@ const data: SubservicePageData = {
 				'The domain knowledge embedded in a legacy system — years of edge cases, regulatory adaptations, and operational exceptions — is documented and preserved in the new system rather than lost in a replacement.',
 		},
 		{
-			title: 'Data Migrated With Validated Integrity',
+			title: 'Data Migrated with Validated Integrity',
 			description:
 				'Data migration executed with reconciliation checks at each stage confirms that the new system contains what the old system contained, removing the data loss risk from migration.',
 		},

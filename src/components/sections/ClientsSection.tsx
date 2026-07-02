@@ -24,7 +24,7 @@ export default function ClientsSection() {
             className="mt-7 font-display font-bold"
             style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15, color: "#0E7490" }}
           >
-            Trusted by teams that build the future
+            Trusted by Teams That Build the Future
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg mx-auto leading-relaxed" style={{ fontSize: 16 }}>
             We are proud to work with innovative companies that push the boundaries of technology.

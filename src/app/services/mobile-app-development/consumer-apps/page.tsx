@@ -62,7 +62,7 @@ const data: SubservicePageData = {
 	capabilities: [
 		{
 			icon: 'smartphone',
-			title: 'E-commerce App Development',
+			title: 'E-Commerce App Development',
 			description:
 				'Build mobile e-commerce apps with product catalogue, search, cart, saved lists, checkout, and order tracking — integrated with your existing e-commerce backend or Shopify.',
 			image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&auto=format&fit=crop&q=60',
@@ -86,7 +86,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'zap',
-			title: 'On-demand Service Apps',
+			title: 'On-Demand Service Apps',
 			description:
 				'Build marketplace and on-demand service apps with provider and customer sides, real-time dispatch, location tracking, and payment processing.',
 			image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&auto=format&fit=crop&q=60',
@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'bell',
-			title: 'Push Notification and Re-engagement',
+			title: 'Push Notification and Re-Engagement',
 			description:
 				'Configure push notification strategy including permission prompts, segmented notification campaigns, and in-app messaging to drive habitual app use after initial download.',
 			image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=600&auto=format&fit=crop&q=60',
@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'Retail',
-			title: 'Mobile E-commerce App',
+			title: 'Mobile E-Commerce App',
 			description:
 				'A fashion retailer built a native iOS and Android app for their e-commerce store, with push notifications for personalised offers and order updates improving purchase frequency among app users.',
 		},
@@ -137,7 +137,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Marketplace',
-			title: 'On-demand Home Services App',
+			title: 'On-Demand Home Services App',
 			description:
 				'A home services marketplace built a two-sided app covering customer booking and provider dispatch, with real-time job tracking and in-app communication between customer and provider.',
 		},
@@ -186,7 +186,7 @@ const data: SubservicePageData = {
 				"Consumer apps are compared against every other app on a user's device. Slow launch times, janky scroll performance, and inconsistent navigation cause uninstalls that reviews and search ranking permanently record.",
 		},
 		{
-			title: 'Measurable From Day One',
+			title: 'Measurable from Day One',
 			description:
 				'Analytics instrumented at launch produces retention curves, funnel data, and engagement metrics from the first cohort, enabling evidence-based iteration rather than assumption-driven guesswork.',
 		},

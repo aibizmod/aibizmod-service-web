@@ -101,7 +101,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
           <section className="px-6 py-12 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
-                <SectionHeading eyebrow="Start here" heading="Core resource" centered />
+                <SectionHeading eyebrow="Start here" heading="Core Resource" centered />
                 <p className="mt-4 text-slate-500 text-center max-w-2xl mx-auto text-sm">
                   This is the primary page for this topic — start here to understand the fundamentals.
                 </p>
@@ -137,7 +137,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
           <section className="px-6 py-16 bg-white">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
-                <SectionHeading eyebrow="Dive deeper" heading={`${hub.supportingAssets.length} supporting resources`} centered />
+                <SectionHeading eyebrow="Dive deeper" heading={`${hub.supportingAssets.length} Supporting Resources`} centered />
               </AnimatedSection>
 
               <div className="mt-10 grid gap-5 md:grid-cols-2">

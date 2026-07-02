@@ -143,7 +143,7 @@ export default function FAQPage() {
 								className='mt-7 font-display font-thin text-[#0F172A] text-balance'
 								style={{ fontSize: 'clamp(38px, 6vw, 72px)', lineHeight: 1.02 }}
 							>
-								Questions about building with{' '}
+								Questions About Building With{' '}
 								<span className='inline-flex items-center font-normal tracking-tight'>
 									<span className='font-normal text-stone-600'>ai</span>
 									<TextReveal

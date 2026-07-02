@@ -4,8 +4,7 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title:
-		'CX IT Consulting | Customer Experience Technology Strategy | aibizmod',
+	title: 'CX IT Consulting | Customer Experience Technology Strategy | aibizmod',
 	description:
 		'Customer experience IT consulting and technology advisory. Platform selection, implementation guidance, and digital transformation roadmaps.',
 	keywords: [

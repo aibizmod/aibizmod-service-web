@@ -86,7 +86,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'bell',
-			title: 'Re-engagement Campaigns',
+			title: 'Re-Engagement Campaigns',
 			description:
 				'Build automated campaigns that identify lapsing customers from engagement signals and trigger personalised win-back sequences through the most effective channel.',
 			image: '/services/customer-experience-management/customer-engagement-reengagement-campaigns.jpg',
@@ -125,7 +125,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Fitness',
-			title: 'Re-engagement Campaign for a Gym Chain',
+			title: 'Re-Engagement Campaign for a Gym Chain',
 			description:
 				'A gym operator set up automated re-engagement flows for members who had not visited in 30 days, with personalised incentive offers sent through their preferred channel.',
 		},
@@ -137,7 +137,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'E-commerce',
-			title: 'Post-purchase Engagement Sequence',
+			title: 'Post-Purchase Engagement Sequence',
 			description:
 				'An online retailer built a post-purchase sequence covering delivery updates, product usage tips, a review request, and a repurchase offer timed to expected reorder cycle.',
 		},

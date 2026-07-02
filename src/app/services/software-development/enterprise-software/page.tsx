@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'Manufacturing',
-			title: 'Custom ERP for a Mid-size Manufacturer',
+			title: 'Custom ERP for a Mid-Size Manufacturer',
 			description:
 				'A manufacturer with a complex production process could not find an off-the-shelf ERP that handled their job costing model correctly. A custom ERP was built around their actual costing method, replacing four separate spreadsheet-based systems.',
 		},
@@ -125,7 +125,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Retail',
-			title: 'Multi-location Inventory System',
+			title: 'Multi-Location Inventory System',
 			description:
 				'A retailer with 20 locations needed real-time inventory visibility across all sites and an automated reorder process. Their existing system required manual stock counts — the custom system provided real-time visibility.',
 		},
@@ -143,7 +143,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Logistics',
-			title: 'Custom WMS for a Third-party Logistics Operator',
+			title: 'Custom WMS for a Third-Party Logistics Operator',
 			description:
 				'A 3PL needed a warehouse management system that supported their specific client billing model and integration with multiple client ERPs. No standard WMS supported their configuration requirements.',
 		},
@@ -175,7 +175,7 @@ const data: SubservicePageData = {
 				'A system built to handle your actual requirements removes the workarounds and parallel processes that organisations develop to fill gaps in off-the-shelf software.',
 		},
 		{
-			title: 'Integrations Built From the Start',
+			title: 'Integrations Built from the Start',
 			description:
 				'Custom systems are designed with your existing integrations in mind rather than requiring costly post-purchase integration work to connect disparate platforms.',
 		},

@@ -179,7 +179,7 @@ const data: SubservicePageData = {
 				'Monitoring that shows application behaviour before and after each deployment makes it straightforward to verify that a release did not introduce performance regressions.',
 		},
 		{
-			title: 'Data-driven Scaling Decisions',
+			title: 'Data-Driven Scaling Decisions',
 			description:
 				'Capacity planning based on measured baselines and growth projections replaces reactive scrambling when performance degrades under load.',
 		},
@@ -189,7 +189,7 @@ const data: SubservicePageData = {
 				'Runbooks and documented procedures mean infrastructure incidents can be handled by any team member with appropriate access, not just the person who originally built the system.',
 		},
 		{
-			title: 'Noise-free Alerting',
+			title: 'Noise-Free Alerting',
 			description:
 				'Well-tuned alert thresholds that fire on meaningful conditions rather than transient spikes mean on-call engineers respond to real issues rather than developing alert fatigue.',
 		},

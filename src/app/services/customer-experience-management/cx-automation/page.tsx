@@ -137,7 +137,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Hospitality',
-			title: 'Guest Services Automation via WhatsApp',
+			title: 'Guest Services Automation Via WhatsApp',
 			description:
 				'A hotel chain deployed a WhatsApp chatbot handling check-in instructions, room service ordering, and maintenance requests, reducing front desk call volume during peak hours.',
 		},
@@ -165,7 +165,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'High-volume Simple Queries Handled Without Agents',
+			title: 'High-Volume Simple Queries Handled Without Agents',
 			description:
 				'Automating FAQ, status, and self-service interactions means your support team handles the interactions that actually require judgement rather than spending their shift on lookups.',
 		},

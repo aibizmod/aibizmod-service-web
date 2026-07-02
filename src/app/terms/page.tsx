@@ -118,8 +118,8 @@ export default function TermsPage() {
                   className="mt-7 font-display font-thin text-[#0F172A]"
                   style={{ fontSize: "clamp(38px, 6vw, 72px)", lineHeight: 1.02 }}
                 >
-                  How we{" "}
-                  <span className="font-semibold text-[#0891B2]">work together</span>
+                  How We{" "}
+                  <span className="font-semibold text-[#0891B2]">Work Together</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
                   These terms govern your use of our website and the services we provide.

@@ -125,7 +125,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Logistics',
-			title: 'Last-mile Delivery Management Platform',
+			title: 'Last-Mile Delivery Management Platform',
 			description:
 				'A last-mile logistics operator built a delivery management platform covering route optimisation, driver app integration, proof of delivery capture, and customer tracking portal.',
 		},
@@ -165,7 +165,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Domain Knowledge Built Into the Software',
+			title: 'Domain Knowledge Built into the Software',
 			description:
 				"Software built with an understanding of your industry's specific requirements is designed correctly from the start rather than requiring expensive modifications to fit a generic foundation.",
 		},
@@ -175,7 +175,7 @@ const data: SubservicePageData = {
 				'Compliance requirements — audit trails, data governance, document control, reporting formats — are built into the system architecture rather than added as afterthoughts.',
 		},
 		{
-			title: 'Integration With Industry Systems',
+			title: 'Integration with Industry Systems',
 			description:
 				'Industry-specific external systems, data standards, and API formats are handled by a team that has built the integrations before, reducing integration risk and timeline.',
 		},
@@ -190,7 +190,7 @@ const data: SubservicePageData = {
 				'Software designed for a specific industry replaces more of the manual work that exists in that industry compared to a generic platform that approximates the requirements without fully addressing them.',
 		},
 		{
-			title: 'User Adoption That Comes From Fit',
+			title: 'User Adoption That Comes from Fit',
 			description:
 				"Systems that match how people in a specific role actually work achieve higher adoption than generic platforms that require users to adapt their workflow to the software's model.",
 		},

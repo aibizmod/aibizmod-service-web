@@ -119,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'SaaS',
-			title: 'Authentication System for a Mobile-first Product',
+			title: 'Authentication System for a Mobile-First Product',
 			description:
 				'A SaaS product needed passwordless authentication for their mobile app, with magic link delivery via email and session management that balanced security with mobile UX.',
 		},
@@ -137,7 +137,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Healthcare',
-			title: 'FHIR-compliant Mobile API',
+			title: 'FHIR-Compliant Mobile API',
 			description:
 				'A healthcare application needed a mobile API layer that handled authentication against an existing NHS identity provider and exposed patient data in FHIR-compatible format.',
 		},
@@ -167,7 +167,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'API Security From the Start',
+			title: 'API Security from the Start',
 			description:
 				'Authentication, rate limiting, and input validation built into the API before it goes to production protects user data and prevents the most common categories of API attack.',
 		},
@@ -182,7 +182,7 @@ const data: SubservicePageData = {
 				'Payment integrations built on current SDKs with proper error handling and server-side validation are reliable across operating system updates and edge cases in the checkout flow.',
 		},
 		{
-			title: 'Backend That Scales With the App',
+			title: 'Backend That Scales with the App',
 			description:
 				'An API designed for mobile workload patterns — with pagination, caching, and autoscaling configured — handles user growth without requiring architectural rework at scale.',
 		},

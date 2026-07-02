@@ -54,12 +54,12 @@ const data: ServicePageData = {
 			"Off-the-shelf software works until the business outgrows it. At that point you're either paying for features you don't use or working around the ones you need. Custom software is slower to start but built around how the business actually runs: the approval steps that matter, the reports that get pulled every Monday, the way stock moves through a warehouse, the fields your team actually fills in. The database is designed for your data, the access controls reflect your team structure, and the documentation covers how to run it without needing to call anyone.",
 		],
 		benefits: [
-			'Direct database schema access',
-			'Custom business logic configuration',
-			'Automated reporting pipelines',
-			'Role-based permission controls',
-			'No licensing cost per user',
-			'Complete source code ownership',
+			'Direct Database Schema Access',
+			'Custom Business Logic Configuration',
+			'Automated Reporting Pipelines',
+			'Role-Based Permission Controls',
+			'No Licensing Cost Per User',
+			'Complete Source Code Ownership',
 		],
 	},
 

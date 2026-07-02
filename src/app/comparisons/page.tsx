@@ -29,7 +29,7 @@ export default function ComparisonsPage() {
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-7xl">
               <AnimatedSection className="text-center">
-                <SectionHeading eyebrow="Comparisons" heading="Technology decisions, compared" centered />
+                <SectionHeading eyebrow="Comparisons" heading="Technology Decisions, Compared" centered />
                 <p className="mt-6 text-lg leading-relaxed text-slate-500 max-w-2xl mx-auto">
                   Evidence-led comparisons covering build vs buy, platform choice, and architecture decisions — with clear decision rules and limitations so you can choose with confidence.
                 </p>

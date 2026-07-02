@@ -55,12 +55,12 @@ const data: ServicePageData = {
 			'Building a mobile app is straightforward when the spec is clear. The hard part is usually getting to a clear spec. What does the app need to do offline? How does it handle a bad network connection in the field? What happens when a user submits a form twice? These questions matter more than the choice of framework. The app gets designed around actual use: the technician who needs job details without a signal, the customer who wants to track a delivery, the warehouse team scanning items into a system. It ships with crash reporting connected, the App Store submission handled, and the source code yours to keep.',
 		],
 		benefits: [
-			'Direct database API integration',
-			'Tested on physical devices, not just emulators',
-			'Offline local storage configuration',
-			'Push notification delivery setup',
-			'App Store and Play Store compliance support',
-			'Full source code and repository access',
+			'Direct Database API Integration',
+			'Tested on Physical Devices, Not Just Emulators',
+			'Offline Local Storage Configuration',
+			'Push Notification Delivery Setup',
+			'App Store and Play Store Compliance Support',
+			'Full Source Code and Repository Access',
 		],
 	},
 

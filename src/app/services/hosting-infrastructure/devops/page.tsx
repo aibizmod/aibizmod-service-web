@@ -136,13 +136,13 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Media',
-			title: 'Blue-green Deployment Setup',
+			title: 'Blue-Green Deployment Setup',
 			description:
 				'A media platform needed zero-downtime deployments for their high-traffic site. We implemented a blue-green deployment strategy on AWS with load balancer switching and automated rollback on health check failure.',
 		},
 		{
 			industry: 'Logistics',
-			title: 'Multi-environment Pipeline Setup',
+			title: 'Multi-Environment Pipeline Setup',
 			description:
 				'A logistics software company needed consistent environments for development, staging, and production. Docker Compose for local development and Kubernetes for staging and production gave the team identical runtime behaviour across all environments.',
 		},
@@ -165,7 +165,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Deployments Go From Hours to Minutes',
+			title: 'Deployments Go from Hours to Minutes',
 			description:
 				'Automated CI/CD pipelines remove the manual coordination overhead from releases, allowing teams to deploy frequently and confidently.',
 		},

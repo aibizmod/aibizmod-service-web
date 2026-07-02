@@ -131,7 +131,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Finance',
-			title: 'Post-acquisition Technology Integration Plan',
+			title: 'Post-Acquisition Technology Integration Plan',
 			description:
 				'A financial services group needed to integrate the technology stack of an acquired business into their own. We assessed both estates and produced an integration plan that minimised disruption to customer-facing systems.',
 		},

@@ -165,7 +165,7 @@ export default function ServiceCardsSection({ cards }: { cards: ServiceCard[] })
         <AnimatedSection direction="up" className="mb-14">
           <SectionHeading
             eyebrow="What We Offer"
-            heading="End-to-end digital services for modern businesses"
+            heading="End-to-End Digital Services for Modern Businesses"
             centered
           />
         </AnimatedSection>

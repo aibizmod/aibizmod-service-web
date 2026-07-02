@@ -119,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Retail',
-			title: 'Multi-cloud Governance Framework',
+			title: 'Multi-Cloud Governance Framework',
 			description:
 				'A retailer had AWS and Azure environments managed by different teams with no unified governance. We designed a governance framework covering tagging standards, cost attribution, and access control policies applied across both environments.',
 		},
@@ -169,7 +169,7 @@ const data: SubservicePageData = {
 				'A cloud strategy built on your actual requirements rather than vendor defaults produces infrastructure that is appropriately sized, secure, and aligned to how the organisation needs to operate.',
 		},
 		{
-			title: 'Migration With Defined Outcomes',
+			title: 'Migration with Defined Outcomes',
 			description:
 				'A sequenced migration plan with success criteria for each workload reduces the risk of a migration that produces an unstable cloud environment rather than a reliable improvement.',
 		},
@@ -184,7 +184,7 @@ const data: SubservicePageData = {
 				'A unified security baseline applied across all cloud accounts and environments is more manageable and auditable than security configuration that varies by team or project.',
 		},
 		{
-			title: 'Vendor-independent Recommendations',
+			title: 'Vendor-Independent Recommendations',
 			description:
 				'Cloud recommendations not driven by vendor partnership produce designs that are right for your workload rather than skewed toward services that carry referral incentives.',
 		},

@@ -85,7 +85,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'globe',
-			title: 'Multi-channel Deployment',
+			title: 'Multi-Channel Deployment',
 			description:
 				'Deploy the same underlying AI assistant across web chat, WhatsApp Business, Slack, Microsoft Teams, and email simultaneously.',
 			image: '/services/ai-automation/conversational-ai-multichannel-deployment.jpg',
@@ -136,7 +136,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Healthcare',
-			title: 'Appointment Booking and Pre-visit Information',
+			title: 'Appointment Booking and Pre-Visit Information',
 			description:
 				'Patients book appointments, receive pre-appointment instructions, and ask general service questions via an AI assistant integrated with the scheduling system.',
 		},

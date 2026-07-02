@@ -57,12 +57,12 @@ const data: ServicePageData = {
 			"Most technology decisions get made without a clear picture of what's already there. A company pays for three tools that overlap, runs servers twice the size they need, and has no documented process for what happens if a key system goes down. An IT audit starts by mapping what exists: the architecture, the access controls, the billing, and the vendor contracts. From there it identifies where the real risks and inefficiencies are. The output is a set of specific, prioritised recommendations. Not a deck full of frameworks, but a document your technical team can act on.",
 		],
 		benefits: [
-			'Cloud cost reduction recommendations',
-			'Systems vulnerability security checklists',
-			'Detailed software vendor comparison charts',
-			'12-month release roadmap planning',
-			'Documented database architecture reviews',
-			'Objective, vendor-neutral assessments',
+			'Cloud Cost Reduction Recommendations',
+			'Systems Vulnerability Security Checklists',
+			'Detailed Software Vendor Comparison Charts',
+			'12-Month Release Roadmap Planning',
+			'Documented Database Architecture Reviews',
+			'Objective, Vendor-Neutral Assessments',
 		],
 	},
 

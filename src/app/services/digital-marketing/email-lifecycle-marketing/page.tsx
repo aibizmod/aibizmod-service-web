@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'E-commerce',
-			title: 'Post-purchase Retention Sequence for an Online Retailer',
+			title: 'Post-Purchase Retention Sequence for an Online Retailer',
 			description:
 				'An online retailer built a six-email post-purchase sequence covering delivery confirmation, product tips, a review request, a repurchase offer at the expected reorder window, and a loyalty programme invitation.',
 		},
@@ -137,13 +137,13 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Retail',
-			title: 'Win-back Campaign for Lapsed Customers',
+			title: 'Win-Back Campaign for Lapsed Customers',
 			description:
 				'A retailer segmented customers who had not purchased in 180 days and ran a four-email win-back campaign with a tiered incentive, recovering 8 percent of the lapsed segment.',
 		},
 		{
 			industry: 'Hospitality',
-			title: 'Pre-arrival and Post-stay Email Programme',
+			title: 'Pre-Arrival and Post-Stay Email Programme',
 			description:
 				'A hotel group built automated sequences triggered by booking confirmation and checkout, covering pre-arrival upsells, check-in instructions, and a post-stay review request.',
 		},
@@ -163,7 +163,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Revenue From the List You Already Have',
+			title: 'Revenue from the List You Already Have',
 			description:
 				'Structured automation converts more of your existing subscribers and leads than broadcast campaigns alone, without requiring more acquisition spend.',
 		},
@@ -173,12 +173,12 @@ const data: SubservicePageData = {
 				'Segmented, lifecycle-triggered emails are more relevant to recipients than batch-and-blast campaigns, producing higher engagement rates and lower unsubscribe rates.',
 		},
 		{
-			title: 'Lead Nurturing Without Manual Follow-up',
+			title: 'Lead Nurturing Without Manual Follow-Up',
 			description:
 				'Automated sequences keep leads warm through a long buying cycle without relying on sales reps to manually follow up at the right intervals.',
 		},
 		{
-			title: 'Post-purchase Revenue Without Additional Acquisition Cost',
+			title: 'Post-Purchase Revenue Without Additional Acquisition Cost',
 			description:
 				'Retention and reorder automations drive repeat purchases from existing customers at a fraction of the cost of acquiring new ones.',
 		},

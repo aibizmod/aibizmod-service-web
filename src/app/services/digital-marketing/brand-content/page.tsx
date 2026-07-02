@@ -69,7 +69,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'pencil',
-			title: 'Blog Writing and Long-form Content',
+			title: 'Blog Writing and Long-Form Content',
 			description:
 				'Research-backed articles, guides, and long-form pieces written for specific search queries and audience knowledge levels, optimised for both rankings and reader engagement.',
 			image: '/services/digital-marketing/brand-content-blog-writing-and-longform-content.jpg',

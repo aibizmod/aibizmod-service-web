@@ -293,7 +293,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#0F172A] transition hover:gap-3"
               >
-                More aibizmod notes
+                More aibizmod Notes
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </AnimatedSection>

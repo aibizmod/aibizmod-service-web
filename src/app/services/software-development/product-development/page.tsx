@@ -102,7 +102,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'activity',
-			title: 'Post-launch Product Iteration',
+			title: 'Post-Launch Product Iteration',
 			description:
 				'Ongoing development cycles based on user feedback and analytics data — building the features that usage data shows users need, not the ones assumed during initial design.',
 			image: '/services/software-development/product-development-postlaunch-product-iteration.jpg',
@@ -119,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Marketplace',
-			title: 'Two-sided Marketplace MVP',
+			title: 'Two-Sided Marketplace MVP',
 			description:
 				'A marketplace product needed both a supply-side (providers) and demand-side (customers) experience. We built the MVP with separate onboarding flows, payment escrow, and the matching logic specific to their market.',
 		},
@@ -166,7 +166,7 @@ const data: SubservicePageData = {
 
 	benefits: [
 		{
-			title: 'Production-ready From Day One',
+			title: 'Production-Ready from Day One',
 			description:
 				'An MVP that is production-ready at launch — with proper authentication, monitoring, and billing — can onboard paying customers immediately rather than requiring further infrastructure work before commercial use.',
 		},

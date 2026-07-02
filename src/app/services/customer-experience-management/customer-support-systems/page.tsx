@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'users',
-			title: 'Multi-channel Support Configuration',
+			title: 'Multi-Channel Support Configuration',
 			description:
 				'Unify email, live chat, social, and phone contact into a single ticketing queue so agents have a complete picture regardless of how the customer contacted you.',
 			image: '/services/customer-experience-management/customer-support-systems-multichannel-support-configuration.jpg',
@@ -119,7 +119,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'SaaS',
-			title: 'In-app Support Chat for Software Product',
+			title: 'In-App Support Chat for Software Product',
 			description:
 				'A SaaS company added in-app live chat via Intercom, connected to their existing CRM so support agents saw account and subscription context before the conversation started.',
 		},
@@ -131,7 +131,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Logistics',
-			title: 'Multi-channel Support Consolidation',
+			title: 'Multi-Channel Support Consolidation',
 			description:
 				'A logistics company was managing support across email, WhatsApp, and phone with no unified view. A Freshdesk implementation consolidated all channels into a single queue.',
 		},

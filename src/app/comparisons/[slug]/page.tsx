@@ -94,7 +94,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           <section className="px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-5xl mx-auto">
               <AnimatedSection>
-                <SectionHeading eyebrow="Side-by-side comparison" heading="Feature comparison" centered />
+                <SectionHeading eyebrow="Side-by-side comparison" heading="Feature Comparison" centered />
               </AnimatedSection>
 
               <div className="mt-10 overflow-x-auto">
@@ -124,7 +124,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           <section className="px-6 py-16 bg-white">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
-                <SectionHeading eyebrow="How to decide" heading="Decision rules" centered />
+                <SectionHeading eyebrow="How to decide" heading="Decision Rules" centered />
                 <p className="mt-4 text-slate-500 text-center max-w-2xl mx-auto">
                   Match your situation to the scenarios below to find the right approach.
                 </p>
@@ -192,7 +192,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
               </AnimatedSection>
 
               <AnimatedSection delay={0.1}>
-                <SectionHeading eyebrow="Related" heading="Related services" />
+                <SectionHeading eyebrow="Related" heading="Related Services" />
                 <ul className="mt-6 space-y-3">
                   {c.relatedServices.map((svc, i) => (
                     <li key={i}>

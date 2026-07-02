@@ -4,8 +4,7 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title:
-		'IT Architecture & System Design Consulting | Technology Architecture | aibizmod',
+	title: 'IT Architecture & System Design Consulting | Technology Architecture | aibizmod',
 	description:
 		'Solution architecture and system design consulting services. Define how systems should be built before development begins — reducing rework, integration risk, and technical debt.',
 	keywords: [
@@ -176,7 +175,7 @@ const data: SubservicePageData = {
 				'Designing integration patterns before both systems are built prevents the category of problem where two independently correct implementations cannot talk to each other.',
 		},
 		{
-			title: 'Technology Choices With Documented Rationale',
+			title: 'Technology Choices with Documented Rationale',
 			description:
 				'A structured technology evaluation produces a defensible decision and a record of what was considered, preventing repeated reopening of the same decision when the team changes.',
 		},

@@ -57,7 +57,7 @@ function getCapabilityAltText(index: number, title: string): string {
 
 export default function CapabilitiesRollingSection({
   capabilities,
-  heading = "What this service includes",
+  heading = "What This Service Includes",
 }: {
   capabilities: CapabilityItem[];
   heading?: string;

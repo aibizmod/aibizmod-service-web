@@ -102,7 +102,7 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'eye',
-			title: 'Third-party Risk Assessment',
+			title: 'Third-Party Risk Assessment',
 			description:
 				'Assess the security posture of key suppliers and technology partners whose access to your systems or data creates risk that requires management.',
 			image: '/services/it-consulting-it-services/security-compliance-thirdparty-risk-assessment.jpg',
@@ -113,7 +113,7 @@ const data: SubservicePageData = {
 	useCases: [
 		{
 			industry: 'Finance',
-			title: 'Pre-audit Security Assessment',
+			title: 'Pre-Audit Security Assessment',
 			description:
 				'A fintech company was preparing for a regulatory audit. Our pre-audit assessment identified 11 control gaps, all addressed before the formal audit, which passed without material findings.',
 		},
@@ -174,7 +174,7 @@ const data: SubservicePageData = {
 				'A gap analysis translates abstract compliance requirements into specific technical and procedural controls your team can implement, removing the ambiguity from what compliance actually requires.',
 		},
 		{
-			title: 'Risk-prioritised Remediation',
+			title: 'Risk-Prioritised Remediation',
 			description:
 				'Not all security gaps are equally important. A risk-prioritised findings report focuses effort on the gaps that matter most for your specific threat environment and compliance obligations.',
 		},

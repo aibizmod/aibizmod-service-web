@@ -18,7 +18,7 @@ export default function LatestBlogsSection() {
             className="mt-7 font-display font-bold"
             style={{ fontSize: "clamp(26px, 3.5vw, 38px)", lineHeight: 1.1, color: "#0E7490" }}
           >
-            Latest from our blog
+            Latest From Our Blog
           </h2>
           <p className="mt-4 text-muted-foreground max-w-lg mx-auto leading-relaxed" style={{ fontSize: 16 }}>
             Practical notes on building a service brand — from AI automation to GEO and website strategy.
@@ -36,7 +36,7 @@ export default function LatestBlogsSection() {
             href="/blog"
             className="inline-flex items-center gap-2 rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E293B] shadow-[0_10px_24px_rgba(15,23,42,0.16)]"
           >
-            View all articles
+            View All Articles
             <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </AnimatedSection>

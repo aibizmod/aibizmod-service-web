@@ -123,7 +123,7 @@ function NextStepCard() {
 	return (
 		<div className='mt-6 rounded-2xl border border-cyan-100 bg-[#ECFEFF]/70 p-5'>
 			<p className='text-sm font-semibold text-[#0F172A]'>
-				What happens next?
+				What Happens Next?
 			</p>
 			<p className='mt-2 text-sm leading-7 text-slate-600'>
 				We review your note, clarify goals, and suggest the simplest next step
@@ -133,7 +133,7 @@ function NextStepCard() {
 				href='/services'
 				className='mt-4 inline-flex items-center gap-2 text-sm font-semibold text-cyan-700 hover:text-cyan-900'
 			>
-				View services
+				View Services
 				<ArrowRight size={14} aria-hidden='true' />
 			</Link>
 		</div>
@@ -267,7 +267,7 @@ export default function ContactPageContent() {
 									<CheckCircle size={32} aria-hidden='true' />
 								</div>
 								<h2 className='font-display text-2xl font-semibold text-[#0F172A]'>
-									Message sent
+									Message Sent
 								</h2>
 								<p className='mt-3 max-w-sm text-sm leading-7 text-slate-600'>
 									Thanks{firstName ? `, ${firstName}` : ''}. We have your
@@ -521,7 +521,7 @@ export default function ContactPageContent() {
 
 					<aside className='rounded-[28px] border border-white/70 bg-white/85 p-6 shadow-[0_18px_55px_rgba(59,130,246,0.12)]'>
 						<h2 className='font-display text-2xl font-semibold text-[#0F172A]'>
-							Direct contact
+							Direct Contact
 						</h2>
 						<p className='mt-3 text-sm leading-7 text-slate-600'>
 							Prefer a shorter path? Reach us through any channel below and we

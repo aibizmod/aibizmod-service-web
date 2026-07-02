@@ -39,7 +39,7 @@ const data: SubservicePageData = {
 	tagline:
 		'Responsive websites, landing pages, SPAs, and progressive web apps built to a spec — not a template. Every component is written for your data model and tested across devices before it ships.',
 	heroImage:
-		'https://images.unsplash.com/photo-1547658719-da2b51169166?w=1000&q=80&auto=format&fit=crop',
+		'/services/web-development/frontend-development-hero.png',
 
 	solves: {
 		challenge:
@@ -66,7 +66,7 @@ const data: SubservicePageData = {
 			title: 'React & Next.js Development',
 			description:
 				'Component-based frontend built with React and Next.js, with server-side rendering or static generation depending on what the page needs.',
-			image: '/services/web-development/frontend-development-react-nextjs-development.jpg',
+			image: '/services/web-development/frontend-development-react-nextjs-development.png',
 			imageAlt: 'Web Development React & Next.js Development capability illustration.',
 		},
 		{
@@ -74,7 +74,7 @@ const data: SubservicePageData = {
 			title: 'Responsive Design Implementation',
 			description:
 				'Layouts that adapt cleanly across screen sizes, tested on physical devices rather than just browser resize.',
-			image: '/services/web-development/frontend-development-responsive-design-implementation.jpg',
+			image: '/services/web-development/frontend-development-responsive-design-implementation.png',
 			imageAlt: 'Web Development Responsive Design Implementation capability illustration.',
 		},
 		{

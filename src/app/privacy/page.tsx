@@ -124,8 +124,8 @@ export default function PrivacyPage() {
                   className="mt-7 font-display font-thin text-[#0F172A]"
                   style={{ fontSize: "clamp(38px, 6vw, 72px)", lineHeight: 1.02 }}
                 >
-                  How we handle{" "}
-                  <span className="font-semibold text-[#0891B2]">your data</span>
+                  How We Handle{" "}
+                  <span className="font-semibold text-[#0891B2]">Your Data</span>
                 </h1>
                 <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
                   Last updated: June 2026. This policy explains what data we collect, why we collect it, and what we do with it.

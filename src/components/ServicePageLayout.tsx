@@ -410,7 +410,7 @@ export default function ServicePageLayout({
 
               {/* Left: description */}
               <AnimatedSection direction="left" className="lg:col-span-3">
-                <SectionHeading eyebrow="Overview" heading="What we deliver" className="mb-6" />
+                <SectionHeading eyebrow="Overview" heading="What We Deliver" className="mb-6" />
                 <div className="mt-6 space-y-4">
                   {data.overview.paragraphs.map((p, i) => (
                     <p
@@ -530,7 +530,7 @@ export default function ServicePageLayout({
                   letterSpacing: "-0.02em",
                 }}
               >
-                Our process
+                Our Process
               </h2>
             </AnimatedSection>
 
@@ -542,7 +542,7 @@ export default function ServicePageLayout({
         <section className="py-20 px-6 bg-[#F8FEFF] border-y border-cyan-100">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection className="text-center mb-10">
-              <SectionHeading eyebrow="Tech Stack & Tools" heading="Technologies we work with" centered />
+              <SectionHeading eyebrow="Tech Stack & Tools" heading="Technologies We Work With" centered />
             </AnimatedSection>
 
             {data.techStack && data.techStack.length > 0 ? (

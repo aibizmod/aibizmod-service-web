@@ -131,7 +131,7 @@ const data: SubservicePageData = {
 		},
 		{
 			industry: 'Hospitality',
-			title: 'Multi-platform Social Management for a Hotel Group',
+			title: 'Multi-Platform Social Management for a Hotel Group',
 			description:
 				'A hotel group needed consistent content across Instagram, Facebook, and TikTok. We built a content system where a single shoot produced assets optimised for each platform.',
 		},
