@@ -113,22 +113,17 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  // Trap wheel events inside contact dropdown — only the dropdown scrolls, never the page
+  // Lock body scroll when mobile menu or contact dropdown is open
   useEffect(() => {
-    if (!contactOpen) return;
-    const handleWheel = (e: WheelEvent) => {
-      const container = contactRef.current;
-      if (!container || !container.contains(e.target as Node)) return;
-      e.preventDefault();
-      const dropdown = desktopDropdownRef.current || mobileDropdownRef.current;
-      if (dropdown) {
-        const max = dropdown.scrollHeight - dropdown.clientHeight;
-        dropdown.scrollTop = Math.max(0, Math.min(max, dropdown.scrollTop + e.deltaY));
-      }
+    if (menuOpen || contactOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
     };
-    document.addEventListener("wheel", handleWheel, { passive: false });
-    return () => document.removeEventListener("wheel", handleWheel);
-  }, [contactOpen]);
+  }, [menuOpen, contactOpen]);
 
   // Auto-cycle through countries every 4s, pause when dropdown is open
   useEffect(() => {
@@ -484,6 +479,7 @@ export default function Navbar() {
                       style={{ whiteSpace: "normal" }}
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
+                      data-lenis-prevent
                     >
                       {countries.map((country) => (
                         <div
@@ -568,6 +564,7 @@ export default function Navbar() {
             }`}
             role="navigation"
             aria-label="Mobile navigation"
+            data-lenis-prevent
           >
             <ul className="px-4 pt-3 pb-5 flex flex-col gap-0.5" role="list">
               {navLinks.map((item) => {
@@ -724,6 +721,7 @@ export default function Navbar() {
                         style={{ whiteSpace: "normal" }}
                         ref={mobileDropdownRef}
                         onMouseEnter={openContact}
+                        data-lenis-prevent
                       >
                         {countries.map((country) => (
                            <div
