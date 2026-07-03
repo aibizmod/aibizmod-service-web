@@ -13,12 +13,12 @@ import { MdEmail } from "react-icons/md";
 import { countries } from "@/lib/countries";
 
 const services = [
+  { label: "AI & Automation",              href: "/services/ai-automation" },
+  { label: "Digital Marketing",            href: "/services/digital-marketing" },
   { label: "Web Development",              href: "/services/web-development" },
   { label: "Custom Software Development",   href: "/services/software-development" },
   { label: "Mobile App Development",       href: "/services/mobile-app-development" },
-  { label: "Digital Marketing",            href: "/services/digital-marketing" },
   { label: "Hosting & Infrastructure",     href: "/services/hosting-infrastructure" },
-  { label: "AI & Automation",              href: "/services/ai-automation" },
   { label: "Customer Experience",          href: "/services/customer-experience-management" },
   { label: "IT Consulting & IT Services",  href: "/services/it-consulting-it-services" },
 ];

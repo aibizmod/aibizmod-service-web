@@ -22,6 +22,18 @@ const serviceItems: {
   href: string;
 }[] = [
   {
+    icon: Zap,
+    name: "AI & Automation",
+    desc: "AI agents, workflows & automation",
+    href: "/services/ai-automation",
+  },
+  {
+    icon: TrendingUp,
+    name: "Digital Marketing",
+    desc: "Campaign tracking & search optimization",
+    href: "/services/digital-marketing",
+  },
+  {
     icon: Code2,
     name: "Web Development",
     desc: "Fast, responsive websites & web apps",
@@ -40,24 +52,11 @@ const serviceItems: {
     href: "/services/mobile-app-development",
   },
   {
-    icon: TrendingUp,
-    name: "Digital Marketing",
-    desc: "Campaign tracking & search optimization",
-    href: "/services/digital-marketing",
-  },
-  {
     icon: Server,
     name: "Hosting & Infrastructure",
     desc: "Scalable cloud with environment backups",
     href: "/services/hosting-infrastructure",
   },
-  {
-    icon: Zap,
-    name: "AI & Automation",
-    desc: "AI agents, workflows & automation",
-    href: "/services/ai-automation",
-  },
-
   {
     icon: Users,
     name: "Customer Experience",

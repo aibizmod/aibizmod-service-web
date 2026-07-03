@@ -14,6 +14,42 @@ export interface ServiceData {
 
 export const services: ServiceData[] = [
   {
+    id: "ai-automation",
+    name: "AI & Automation",
+    description:
+      "We build AI agents, predictive ML models, generative AI pipelines, computer vision systems, and workflow automations that eliminate manual work and unlock intelligent operations.",
+    capabilities: [
+      "AI agents & agentic workflows",
+      "Predictive analytics & ML models",
+      "Generative AI & LLM integration",
+      "Computer vision & AI vision pipelines",
+      "Process & workflow automation",
+    ],
+    href: "/services/ai-automation",
+    icon: Zap,
+    gradient: "from-yellow-400/15 to-orange-400/15",
+    iconColor: "text-yellow-600",
+    borderHover: "hover:border-yellow-400/40",
+  },
+  {
+    id: "digital-marketing",
+    name: "Digital Marketing",
+    description:
+      "We set up conversion tracking, audit search visibility, map keywords, and manage campaigns to help you reach customers using Search Console and GA4.",
+    capabilities: [
+      "SEO audits and keyword mapping",
+      "Paid search campaign structures",
+      "GA4 and conversion tracking setup",
+      "Search Console setup and analysis",
+      "Custom Looker Studio reporting dashboards",
+    ],
+    href: "/services/digital-marketing",
+    icon: TrendingUp,
+    gradient: "from-emerald-500/15 to-teal-400/15",
+    iconColor: "text-emerald-600",
+    borderHover: "hover:border-emerald-400/40",
+  },
+  {
     id: "web-development",
     name: "Web Development",
     description:
@@ -68,24 +104,6 @@ export const services: ServiceData[] = [
     borderHover: "hover:border-cyan-400/40",
   },
   {
-    id: "digital-marketing",
-    name: "Digital Marketing",
-    description:
-      "We set up conversion tracking, audit search visibility, map keywords, and manage campaigns to help you reach customers using Search Console and GA4.",
-    capabilities: [
-      "SEO audits and keyword mapping",
-      "Paid search campaign structures",
-      "GA4 and conversion tracking setup",
-      "Search Console setup and analysis",
-      "Custom Looker Studio reporting dashboards",
-    ],
-    href: "/services/digital-marketing",
-    icon: TrendingUp,
-    gradient: "from-emerald-500/15 to-teal-400/15",
-    iconColor: "text-emerald-600",
-    borderHover: "hover:border-emerald-400/40",
-  },
-  {
     id: "hosting-infrastructure",
     name: "Hosting & Infrastructure",
     description:
@@ -102,24 +120,6 @@ export const services: ServiceData[] = [
     gradient: "from-orange-500/15 to-amber-400/15",
     iconColor: "text-orange-500",
     borderHover: "hover:border-orange-400/40",
-  },
-  {
-    id: "ai-automation",
-    name: "AI & Automation",
-    description:
-      "We build AI agents, predictive ML models, generative AI pipelines, computer vision systems, and workflow automations that eliminate manual work and unlock intelligent operations.",
-    capabilities: [
-      "AI agents & agentic workflows",
-      "Predictive analytics & ML models",
-      "Generative AI & LLM integration",
-      "Computer vision & AI vision pipelines",
-      "Process & workflow automation",
-    ],
-    href: "/services/ai-automation",
-    icon: Zap,
-    gradient: "from-yellow-400/15 to-orange-400/15",
-    iconColor: "text-yellow-600",
-    borderHover: "hover:border-yellow-400/40",
   },
   {
     id: "customer-experience-management",
