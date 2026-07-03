@@ -36,6 +36,9 @@ yarn-error.log*
 __pycache__/
 *.pyc
 
+# Local dev API route (production uses Python function in api/)
+src/app/api/geo-audit/
+
 # vercel
 .vercel
 
