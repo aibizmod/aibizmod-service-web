@@ -61,7 +61,7 @@ export const countries: Country[] = [
     address: "Middle East Regional Office, Dubai, UAE",
   },
   {
-    code: "SGP",
+    code: "Singapore",
     flag: <SGPFlag />,
     phone: "+65 86 111 900",
     email: "sg@aibizmod.com",
