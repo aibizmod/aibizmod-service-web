@@ -12,7 +12,7 @@ import ShaderBackground from "@/components/ui/shader-background";
 //   CardsContainer,
 //   ContainerScroll,
 // } from "@/components/ui/animated-cards-stack";
-import { LogoCloud } from "@/components/ui/logo-cloud-3";
+import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
 
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -29,12 +29,42 @@ const values: Value[] = [
 ];
 
 const logos = [
-  { src: "/clients/spacelean.png", alt: "SpaceLean company branding logo representing strategic partnership" },
-  { src: "/clients/pmspace.png", alt: "PMSpace brand logo representing corporate collaboration" },
-  { src: "/clients/spaceapp.png", alt: "SpaceApp tech company logo showing client integration" },
-  { src: "/clients/spacesign.png", alt: "SpaceSign enterprise client logo showing platform integration" },
-  { src: "/clients/spacehr.png", alt: "SpaceHR organization logo showing human resource management client" },
-  { src: "/clients/texastech.svg", alt: "Texas Tech Services enterprise logo representing technology sector partner" },
+  {
+    src: "/clients/spacelean.png",
+    alt: "SpaceLean",
+    website: "https://spacelean.ai/",
+    gradient: { from: "#0E7490", via: "#22D3EE", to: "#ECFEFF" },
+  },
+  {
+    src: "/clients/pmspace.png",
+    alt: "PMSpace",
+    website: "https://pmspace.ai/",
+    gradient: { from: "#0284C7", via: "#38BDF8", to: "#F0F9FF" },
+  },
+  {
+    src: "/clients/spaceapp.png",
+    alt: "SpaceApp",
+    website: "https://spacelean.ai/",
+    gradient: { from: "#0F172A", via: "#475569", to: "#F8FAFC" },
+  },
+  {
+    src: "/clients/spacesign.png",
+    alt: "SpaceSign",
+    website: "https://space-sign.ai/",
+    gradient: { from: "#0891B2", via: "#22D3EE", to: "#ECFEFF" },
+  },
+  {
+    src: "/clients/spacehr.png",
+    alt: "SpaceHR",
+    website: "https://spacehr.net/",
+    gradient: { from: "#06B6D4", via: "#67E8F9", to: "#CFFAFE" },
+  },
+  {
+    src: "/clients/texastech.svg",
+    alt: "Texas Tech",
+    website: "https://texastechserv.com/",
+    gradient: { from: "#2563EB", via: "#3B82F6", to: "#DBEAFE" },
+  },
 ];
 
 // ─── Main export ──────────────────────────────────────────────────────────────
@@ -100,7 +130,7 @@ export default function AboutPageContent() {
               className="mt-6 font-display font-thin text-primary text-balance"
               style={{ fontSize: "clamp(28px, 3.8vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#0E7490" }}
             >
-              A Small Team That Takes the Work Seriously
+              A small team that takes the work seriously
             </h2>
             <p className="mt-5 text-muted-foreground leading-[1.8]" style={{ fontSize: 16 }}>
               We are not a large agency with layers of account managers. We are a team
@@ -132,26 +162,14 @@ export default function AboutPageContent() {
 
       <section className="py-20 px-6 bg-canvas border-t border-border">
         <div className="mx-auto max-w-5xl">
-          <AnimatedSection className="text-center mb-12">
-            <span
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-100 bg-white/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700 shadow-[0_12px_35px_rgba(59,130,246,0.10)] backdrop-blur-md"
-            >
-              Our Clients
-            </span>
-            <h2
-              className="mt-7 font-display font-bold"
-              style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15, color: "#0E7490" }}
-            >
-              Trusted by Teams That Build the Future
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-lg mx-auto leading-relaxed" style={{ fontSize: 16 }}>
-              We are proud to work with innovative companies that push the boundaries of technology.
-            </p>
+          <AnimatedSection>
+            <MarqueeLogoScroller
+              title="Trusted by Businesses Worldwide"
+              description="Founders, developers, and business leaders across the globe choose us for their digital asset operations."
+              logos={logos}
+              speed="normal"
+            />
           </AnimatedSection>
-
-          <div className="rounded-2xl border border-border/60 bg-white/60 p-8 shadow-sm backdrop-blur-sm">
-            <LogoCloud logos={logos} />
-          </div>
         </div>
       </section>
 
@@ -174,7 +192,7 @@ export default function AboutPageContent() {
                 className="mt-6 font-display font-bold text-ink"
                 style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15, letterSpacing: "-0.02em", color: "#0E7490" }}
               >
-                How We Got Here
+                How we got here
               </h2>
               <div className="mt-8 space-y-6 text-muted-foreground leading-[1.8]" style={{ fontSize: 15 }}>
                 <p>

@@ -44,6 +44,20 @@ export function FocusRail({
 }: FocusRailProps) {
   const [active, setActive] = React.useState(initialIndex);
   const [isHovering, setIsHovering] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState<number>(1024);
+
+  React.useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowWidth < 640;
+  const isTablet = windowWidth >= 640 && windowWidth < 1024;
+
+  const cardWidth = isMobile ? 260 : isTablet ? 320 : 380;
+  const spacing = isMobile ? 220 : isTablet ? 290 : 380;
 
   const count = items.length;
   const activeIndex = wrap(0, count, active);
@@ -114,7 +128,7 @@ export function FocusRail({
             const isCenter   = offset === 0;
             const dist       = Math.abs(offset);
             // landscape: wider spacing between cards
-            const xOffset    = offset * 380;
+            const xOffset    = offset * spacing;
             const zOffset    = -dist * 100;
             const scale      = isCenter ? 1 : 0.82;
             const rotateY    = offset * -14;
@@ -126,7 +140,7 @@ export function FocusRail({
                 key={absIndex}
                 className={cn(
                   // landscape ratio — 16:10 gives a cinematic card shape
-                  "absolute aspect-[16/10] w-[300px] md:w-[380px] overflow-hidden rounded-[20px]",
+                  "absolute aspect-[16/10] overflow-hidden rounded-[20px]",
                   "border border-cyan-100 bg-white shadow-md",
                   isCenter
                     ? "z-20 shadow-[0_24px_70px_rgba(8,145,178,0.20),0_4px_20px_rgba(0,0,0,0.07)]"
@@ -142,7 +156,7 @@ export function FocusRail({
                   opacity: BASE_SPRING,
                   scale: isCenter ? TAP_SPRING : BASE_SPRING,
                 }}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{ transformStyle: "preserve-3d", width: cardWidth }}
                 onClick={() => {
                   if (offset !== 0) setActive((p) => p + offset);
                 }}

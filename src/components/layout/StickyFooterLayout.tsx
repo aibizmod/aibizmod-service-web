@@ -66,42 +66,34 @@ export default function StickyFooterLayout({
 
   return (
     <>
-      {/* ── Black backdrop — covers the full viewport behind everything.
-           This makes the page background black so the rounded card corners,
-           the transparent spacer, and the footer all blend seamlessly. */}
+      {/* Black backdrop for card rounding */}
       <div className="fixed inset-0 bg-black" style={{ zIndex: -1 }} aria-hidden="true" />
 
-      {/* ── Content layer (z-10) ───────────────────────────────────────
-       * We use `pointer-events-none` so that clicks can pass through the transparent bottom spacer
-       * to reach the fixed footer underneath.
-       */}
+      {/* ── Content layer ── */}
       <div className="relative z-10 pointer-events-none">
-        {/*
-         * Sections wrapped in the white card — rounded bottom edge.
-         * We restore `pointer-events-auto` here so that the homepage content is fully clickable.
-         */}
-        <div className="bg-canvas pointer-events-auto rounded-b-[40px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] [&_main]:rounded-b-[40px] [&_section:last-of-type]:rounded-b-[40px] [&_>_*:last-child]:rounded-b-[40px]">
+        <div className="bg-canvas pointer-events-auto rounded-b-[20px] md:rounded-b-[40px] shadow-[0_8px_40px_rgba(0,0,0,0.12)] [&_main]:rounded-b-[20px] [&_main]:md:rounded-b-[40px] [&_section:last-of-type]:rounded-b-[20px] [&_section:last-of-type]:md:rounded-b-[40px] [&_>_*:last-child]:rounded-b-[20px] [&_>_*:last-child]:md:rounded-b-[40px]">
           {children}
         </div>
 
-        {/*
-         * Transparent gap below the card, exactly as tall as the footer.
-         * Because this is transparent and z-10, the fixed footer (z-0)
-         * shows through it — this is where the reveal happens.
-         */}
-        <div style={{ height: footerHeight }} aria-hidden="true" />
+        {/* Spacer — only on desktop where footer is fixed */}
+        <div className="hidden md:block" style={{ height: footerHeight }} aria-hidden="true" />
       </div>
 
-      {/* ── Footer (z-0) — fixed to viewport bottom ── */}
+      {/* ── Desktop: fixed footer (z-0) ── */}
       <div
         ref={footerRef}
-        className="fixed bottom-0 left-0 right-0 transition-opacity duration-500 ease-in-out"
+        className="hidden md:block fixed bottom-0 left-0 right-0 transition-opacity duration-500 ease-in-out"
         style={{
           zIndex: 0,
           opacity: showFooter ? 1 : 0,
-          pointerEvents: showFooter ? "auto" : "none",
+          pointerEvents: (showFooter ? "auto" : "none") as React.CSSProperties['pointerEvents'],
         }}
       >
+        {footer}
+      </div>
+
+      {/* ── Mobile: footer in normal flow (no sticky) ── */}
+      <div className="block md:hidden">
         {footer}
       </div>
     </>

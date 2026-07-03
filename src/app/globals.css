@@ -1,3 +1,5 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@1,2,3,4,5,6,7&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,23 +7,22 @@
 @layer base {
   :root {
     /* ── Cyber Cyan & Gold — CSS custom properties ────────────────── */
-    --canvas: #F8FAFC;
-    --surface: #FFFFFF;
-    --ink: #0F172A;
-    --muted: #475569;
-    --border: #E0F2FE;
-    --royal: #0891B2;
-    --royal-deep: #0E7490;
-    --gold: #B8860B;
-    --gold-light: #D4AF37;
-    --tint: #ECFEFF;
-    --gradient: linear-gradient(120deg, #06B6D4, #3B82F6);
-    --radius: 1rem;
-    /* 16px */
-    --radius-md: 0.625rem;
-    /* 10px */
-    --demo-bg: #ffffff;
-    --demo-text: #1a1a1a;
+    --canvas:      #F8FAFC;
+    --surface:     #FFFFFF;
+    --ink:         #0F172A;
+    --muted:       #475569;
+    --border:      #E0F2FE;
+    --royal:       #0891B2;
+    --royal-deep:  #0E7490;
+    --gold:        #B8860B;
+    --gold-light:  #D4AF37;
+    --tint:        #ECFEFF;
+    --gradient:    linear-gradient(120deg, #06B6D4, #3B82F6);
+    --radius:      1rem;      /* 16px */
+    --radius-md:   0.625rem;  /* 10px */
+    --demo-bg:     #ffffff;
+    --demo-text:   #1a1a1a;
+    --font-satoshi: 'Satoshi', sans-serif;
   }
 
   * {
@@ -466,3 +467,13 @@ body.is-scrolling [class*="backdrop-blur"] {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 200ms ease-out;
+}
+
+

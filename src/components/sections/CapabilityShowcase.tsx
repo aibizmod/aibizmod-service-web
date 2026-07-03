@@ -574,8 +574,8 @@ export default function CapabilityShowcase() {
     stage.style.setProperty("--my", percentY + "%");
 
     if (isDraggingRef.current) return;
-    const rotateY = (px / rect.width - 0.5) * 10;
-    const rotateX = -(py / rect.height - 0.5) * 10;
+    const rotateY = (px / rect.width - 0.5) * 20;
+    const rotateX = -(py / rect.height - 0.5) * 20;
     stage.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
@@ -610,7 +610,7 @@ export default function CapabilityShowcase() {
         /* Spotlight border overlay inside card */
         .stage-card::after {
           content: ''; position: absolute; inset: 0; border-radius: inherit;
-          padding: 1.5px;
+          padding: 2.5px;
           background: radial-gradient(240px circle at var(--mx) var(--my), rgba(34,211,238,0.95), transparent 65%);
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
