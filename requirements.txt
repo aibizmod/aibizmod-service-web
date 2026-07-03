@@ -1,0 +1,6 @@
+geo-optimizer-skill==4.14.1
+beautifulsoup4
+click
+lxml
+requests
+urllib3
