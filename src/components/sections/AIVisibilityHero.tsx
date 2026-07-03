@@ -8,10 +8,10 @@ import ShaderBackground from "@/components/ui/shader-background";
 interface AuditResult {
   score: number;
   band: string;
-  citability: number;
-  scoreBreakdown: Record<string, number>;
+  citability?: number;
+  scoreBreakDown?: Record<string, number>;
   recommendations: string[];
-  checkedAt: string;
+  checkedAt?: string;
 }
 
 const BAND_COLORS: Record<string, { bg: string; text: string; border: string }> = {
@@ -177,32 +177,38 @@ export default function AIVisibilityHero() {
                     Category Breakdown
                   </div>
                   <div className="space-y-3">
-                    {Object.entries(result.scoreBreakdown).map(([key, value]) => {
-                      const maxScores: Record<string, number> = {
-                        robots: 18, llms: 18, schema: 16, meta: 14,
-                        content: 12, brand: 10, signals: 6, ai_discovery: 6,
-                      };
-                      const max = maxScores[key] || 20;
-                      const pct = Math.round((value / max) * 100);
-                      return (
-                        <div key={key} className="space-y-1">
-                          <div className="flex justify-between text-sm">
-                            <span className="font-medium text-stone-700">{CATEGORY_LABELS[key] || key}</span>
-                            <span className="text-stone-500">{value} / {max}</span>
+                    {result.scoreBreakDown && Object.entries(result.scoreBreakDown).length > 0 ? (
+                      Object.entries(result.scoreBreakDown).map(([key, value]) => {
+                        const maxScores: Record<string, number> = {
+                          robots: 18, llms: 18, schema: 16, meta: 14,
+                          content: 12, brand: 10, signals: 6, ai_discovery: 6,
+                        };
+                        const max = maxScores[key] || 20;
+                        const pct = Math.round((value / max) * 100);
+                        return (
+                          <div key={key} className="space-y-1">
+                            <div className="flex justify-between text-sm">
+                              <span className="font-medium text-stone-700">{CATEGORY_LABELS[key] || key}</span>
+                              <span className="text-stone-500">{value} / {max}</span>
+                            </div>
+                            <div className="h-2 rounded-full bg-stone-100 overflow-hidden">
+                              <div
+                                className="h-full rounded-full transition-all duration-500"
+                                style={{
+                                  width: `${pct}%`,
+                                  backgroundColor:
+                                    pct >= 80 ? "#22c55e" : pct >= 60 ? "#06b6d4" : pct >= 40 ? "#eab308" : "#ef4444",
+                                }}
+                              />
+                            </div>
                           </div>
-                          <div className="h-2 rounded-full bg-stone-100 overflow-hidden">
-                            <div
-                              className="h-full rounded-full transition-all duration-500"
-                              style={{
-                                width: `${pct}%`,
-                                backgroundColor:
-                                  pct >= 80 ? "#22c55e" : pct >= 60 ? "#06b6d4" : pct >= 40 ? "#eab308" : "#ef4444",
-                              }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })
+                    ) : (
+                      <div className="py-8 text-center text-stone-500">
+                        Detailed breakdown not available
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -249,7 +255,7 @@ export default function AIVisibilityHero() {
               </div>
 
               <p className="mt-6 text-xs text-stone-500 text-center">
-                Audited {formatDomain(domain)} · {new Date(result.checkedAt).toLocaleString()} · Powered by
+                Audited {formatDomain(domain)} · {new Date(result.checkedAt ?? Date.now()).toLocaleString()} · Powered by
                 <a href="https://github.com/Auriti-Labs/geo-optimizer-skill" target="_blank" rel="noopener noreferrer" className="text-cyan-600 hover:underline ml-1">
                   GEO Optimizer
                 </a>

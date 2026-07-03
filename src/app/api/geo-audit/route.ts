@@ -4,7 +4,17 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
-async function runGEOAudit(url: string) {
+interface PythonOutput {
+  score: number;
+  band: string;
+  citability: number | null;
+  score_breakdown: Record<string, number>;
+  recommendations: string[];
+  checked_at: string | null;
+  error?: string;
+}
+
+async function runGEOAudit(url: string): Promise<PythonOutput> {
   const pythonScript = `
 import sys
 import json
@@ -19,7 +29,7 @@ async def main():
             "citability": result.citability.total_score if result.citability else None,
             "score_breakdown": result.score_breakdown,
             "recommendations": result.recommendations,
-            "checkedAt": result.checked_at,
+            "checked_at": result.timestamp or None,
         }
         print(json.dumps(output))
     except Exception as e:
@@ -53,7 +63,7 @@ if __name__ == "__main__":
       }
 
       try {
-        const result = JSON.parse(stdout);
+        const result: PythonOutput = JSON.parse(stdout);
         if (result.error) {
           reject(new Error(result.error));
           return;
@@ -86,13 +96,14 @@ export async function POST(request: NextRequest) {
 
     const result = await runGEOAudit(targetUrl);
 
+    // Convert to camelCase for frontend compatibility
     return NextResponse.json({
       score: result.score,
       band: result.band,
       citability: result.citability,
-      scoreBreakdown: result.score_breakdown,
+      scoreBreakDown: result.score_breakdown,
       recommendations: result.recommendations,
-      checkedAt: result.checkedAt || new Date().toISOString(),
+      checkedAt: result.checked_at || new Date().toISOString(),
     });
   } catch (error) {
     console.error("GEO audit error:", error);

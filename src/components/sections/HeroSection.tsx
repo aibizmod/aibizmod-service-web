@@ -1,15 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaPinterestP,
-  FaWhatsapp,
-} from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { useState, FormEvent } from "react";
+import { ArrowRight, Search } from "lucide-react";
 import {
   SiGoogleanalytics,
   SiGooglemaps,
@@ -19,48 +11,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import ShaderBackground from "@/components/ui/shader-background";
-import { StarButton } from "@/components/ui/star-button";
 import { TextReveal } from "@/components/ui/cascade-text";
-import AIVisibilityHero from "@/components/sections/AIVisibilityHero";
-
-const socials = [
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/aibizmod",
-    icon: FaLinkedinIn,
-    color: "#0A66C2",
-  },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/aibizmod",
-    icon: FaInstagram,
-    color: "#E4405F",
-  },
-  {
-    label: "Pinterest",
-    href: "https://pinterest.com/aibizmod",
-    icon: FaPinterestP,
-    color: "#E60023",
-  },
-  {
-    label: "Facebook",
-    href: "https://facebook.com/aibizmod",
-    icon: FaFacebookF,
-    color: "#1877F2",
-  },
-  {
-    label: "WhatsApp",
-    href: "https://wa.me/442079460958",
-    icon: FaWhatsapp,
-    color: "#25D366",
-  },
-  {
-    label: "Email",
-    href: "mailto:hello@aibizmod.com",
-    icon: MdEmail,
-    color: "#EA4335",
-  },
-];
 
 const techStack = [
   {
@@ -107,20 +58,15 @@ const techStack = [
   },
 ];
 
-function handleMagneticMove(event: React.MouseEvent<HTMLAnchorElement>) {
-  const link = event.currentTarget;
-  const rect = link.getBoundingClientRect();
-  const x = event.clientX - rect.left - rect.width / 2;
-  const y = event.clientY - rect.top - rect.height / 2;
-
-  link.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px) scale(1.08)`;
-}
-
-function handleMagneticLeave(event: React.MouseEvent<HTMLAnchorElement>) {
-  event.currentTarget.style.transform = "translate(0, 0) scale(1)";
-}
-
 export default function HeroSection() {
+  const [domain, setDomain] = useState("");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!domain.trim()) return;
+    window.open(`/ai-visibility-audit-report?domain=${encodeURIComponent(domain.trim())}`, "_blank");
+  };
+
   return (
     <section className="relative isolate pt-[68px] min-h-screen overflow-hidden bg-white">
       <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
@@ -162,39 +108,42 @@ export default function HeroSection() {
           </p>
         </div>
 
-        <div className="mt-9 flex items-center justify-center">
-          <Link href="/contact" aria-label="Get started">
-            <StarButton
-              as="span"
-              lightColor="#38bdf8"
-              backgroundColor="#0f172a"
-              className="h-12 font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)] transition hover:-translate-y-0.5 duration-300"
-            >
-              Get Started <ArrowRight size={16} aria-hidden="true" />
-            </StarButton>
-          </Link>
-        </div>
-
-        <div className="mt-10 flex items-center justify-center gap-3">
-          {socials.map(({ label, href, icon: Icon, color }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-              aria-label={label}
-              title={label}
-              onMouseMove={handleMagneticMove}
-              onMouseLeave={handleMagneticLeave}
-              className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-stone-950/10 bg-white/85 shadow-[0_12px_28px_rgba(28,25,23,0.10)] transition-[transform,box-shadow,border-color,background-color] duration-300 ease-out hover:border-stone-950/15 hover:bg-white hover:shadow-[0_18px_36px_rgba(28,25,23,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600/40"
-            >
-              <Icon color={color} size={18} aria-hidden="true" />
-            </a>
-          ))}
-        </div>
-
-        <div className="mt-12 w-full">
-          <AIVisibilityHero />
+        <div className="mt-12 w-full max-w-2xl">
+          <div className="relative rounded-2xl border border-stone-200 bg-white/95 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md overflow-hidden">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none text-stone-400">
+              <Search className="h-5 w-5" />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                value={domain}
+                onChange={(e) => setDomain(e.target.value)}
+                placeholder="Enter your domain (e.g., aibizmod.com)"
+                className="w-full h-14 pl-12 pr-32 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-0"
+                aria-label="Domain to audit"
+              />
+              <button
+                type="submit"
+                disabled={!domain.trim()}
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-10 px-5 rounded-xl text-white text-sm font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)] hover:-translate-y-0.5 duration-300 disabled:opacity-50 disabled:hover:shadow-none disabled:cursor-not-allowed"
+                style={{
+                  backgroundColor: !domain.trim() ? "#0f172a" : undefined,
+                }}
+              >
+                <span
+                  className="flex items-center gap-2 h-full w-full px-3 rounded-lg font-semibold"
+                  style={{
+                    background: domain.trim()
+                      ? "linear-gradient(115deg, #0f172a 0%, #1e293b 100%)"
+                      : undefined,
+                    color: "#fff",
+                  }}
+                >
+                  Audit <ArrowRight size={16} aria-hidden="true" />
+                </span>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
