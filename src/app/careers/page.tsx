@@ -35,7 +35,7 @@ export default function CareersPage() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(careersSchema) }}
           />
-          <section className="relative overflow-hidden bg-white px-6 py-24 md:py-32">
+          <section className="relative overflow-hidden bg-white px-4 sm:px-6 py-24 md:py-32">
             <div
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,rgba(210,247,255,0.48),transparent_32%)]"
               style={{
@@ -70,7 +70,7 @@ export default function CareersPage() {
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E293B] shadow-[0_10px_24px_rgba(15,23,42,0.16)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#0F172A] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1E293B] shadow-[0_10px_24px_rgba(15,23,42,0.16)] w-full sm:w-auto justify-center"
                 >
                   Get in Touch
                 </Link>

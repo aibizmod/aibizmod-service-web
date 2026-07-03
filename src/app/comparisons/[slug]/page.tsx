@@ -58,7 +58,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
           {/* Hero */}
-          <section className="relative isolate overflow-hidden px-6 pb-16 pt-32 md:pb-20 md:pt-36">
+          <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-16 pt-32 md:pb-20 md:pt-36">
             <ShaderBackground className="absolute inset-0 z-0 h-full w-full opacity-80" />
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-4xl">
@@ -91,14 +91,14 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           </section>
 
           {/* Comparison table */}
-          <section className="px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
+          <section className="px-4 sm:px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-5xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="Side-by-side comparison" heading="Feature Comparison" centered />
               </AnimatedSection>
 
               <div className="mt-10 overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="w-full min-w-[600px] text-sm">
                   <thead>
                     <tr className="border-b border-cyan-200">
                       <th className="text-left py-3 px-4 font-semibold text-[#0F172A]">Feature</th>
@@ -121,7 +121,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           </section>
 
           {/* Decision rules */}
-          <section className="px-6 py-16 bg-white">
+          <section className="px-4 sm:px-6 py-16 bg-white">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="How to decide" heading="Decision Rules" centered />
@@ -152,7 +152,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           </section>
 
           {/* Limitations */}
-          <section className="px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
+          <section className="px-4 sm:px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-3xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="What to watch for" heading="Limitations" centered />
@@ -170,7 +170,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
           </section>
 
           {/* Sources and related services */}
-          <section className="px-6 py-16 bg-white">
+          <section className="px-4 sm:px-6 py-16 bg-white">
             <div className="max-w-4xl mx-auto grid gap-12 md:grid-cols-2">
               <AnimatedSection>
                 <SectionHeading eyebrow="References" heading="Sources" />
