@@ -100,12 +100,15 @@ export default function Navbar() {
   const contactRef = useRef<HTMLDivElement>(null);
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileContactRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   // Click outside to close contact dropdown
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (contactRef.current && !contactRef.current.contains(e.target as Node)) {
+      const inDesktop = contactRef.current && contactRef.current.contains(e.target as Node);
+      const inMobile = mobileContactRef.current && mobileContactRef.current.contains(e.target as Node);
+      if (!inDesktop && !inMobile) {
         setContactOpen(false);
       }
     };
@@ -171,6 +174,7 @@ export default function Navbar() {
     setMenuOpen(false);
     setMobileServicesOpen(false);
     setServicesOpen(false);
+    setContactOpen(false);
   }, [pathname]);
 
   // Escape key closes services dropdown
@@ -699,7 +703,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Mobile Country Selector */}
-                <div className="w-full">
+                <div className="w-full" ref={mobileContactRef}>
                   <button
                     type="button"
                     onClick={() => setContactOpen((p) => !p)}
