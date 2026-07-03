@@ -201,7 +201,7 @@ export default function Navbar() {
         className={`pointer-events-auto flex items-center justify-between border transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 rounded-full ${
           scrolled
             ? "mt-4 w-[92%] md:w-fit h-[52px] bg-slate-950/75 border-cyan-400/30 shadow-[0_8px_32px_rgba(6,182,212,0.18)] backdrop-blur-md px-4 lg:px-6 gap-4 lg:gap-6"
-            : "w-full max-w-7xl px-4 lg:px-6 h-[68px] gap-5 lg:gap-8 border-transparent shadow-none"
+            : "w-full max-w-7xl px-4 lg:px-6 h-[68px] gap-4 lg:gap-5 border-transparent shadow-none"
         }`}
         aria-label="Main navigation"
       >
@@ -276,7 +276,7 @@ export default function Navbar() {
                       aria-expanded={servicesOpen}
                       aria-controls="services-dropdown"
                       onClick={() => setServicesOpen((p) => !p)}
-                      className={`relative flex items-center gap-1 text-[15px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
+                      className={`relative flex items-center gap-1 text-[14px] font-medium px-3 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
                         scrolled
                           ? active
                             ? "text-cyan-400 font-semibold"
@@ -326,7 +326,7 @@ export default function Navbar() {
                       {/* Upward caret */}
                       <div
                         className="absolute -top-[5px] w-2.5 h-2.5 rotate-45 border-l border-t bg-slate-950 border-cyan-500/20"
-                        style={scrolled ? { left: "50%", transform: "translateX(-50%) rotate(45deg)" } : { left: "20px", transform: "none" }}
+                        style={scrolled ? { left: "50%", transform: "translateX(-50%) rotate(45deg)" } : { left: "20px", transform: "rotate(45deg)" }}
                         aria-hidden="true"
                       />
 
@@ -352,7 +352,7 @@ export default function Navbar() {
                                 <Icon size={15} aria-hidden="true" className="text-cyan-400" />
                               </div>
                               <div className="min-w-0">
-                                <p className={`text-[15px] font-semibold leading-snug transition-colors ${
+                                <p className={`text-[14px] font-semibold leading-snug transition-colors ${
                                     scrolled ? "text-white group-hover:text-cyan-400" : "text-white group-hover:text-cyan-400"
                                 }`}>
                                   {svc.name}
@@ -372,7 +372,7 @@ export default function Navbar() {
                           <Link
                             href="/services"
                             onClick={() => setServicesOpen(false)}
-                            className={`flex items-center justify-center gap-1.5 py-2 text-[15px] font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
+                            className={`flex items-center justify-center gap-1.5 py-2 text-[14px] font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
                               scrolled
                                 ? "text-cyan-400 hover:text-white hover:bg-white/5"
                                 : "text-cyan-400 hover:text-white hover:bg-white/5"
@@ -400,7 +400,7 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative flex flex-col items-center text-[15px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
+                  className={`relative flex flex-col items-center text-[14px] font-medium px-3 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
                     scrolled
                       ? active
                         ? "text-cyan-400 font-semibold"
@@ -444,10 +444,10 @@ export default function Navbar() {
               animate={{ opacity: 1, width: "auto" }}
               exit={{ opacity: 0, width: 0, transition: { duration: 0.2 } }}
               transition={springTransition}
-              className="hidden lg:flex items-center gap-2 lg:gap-3 shrink-0 relative flex-nowrap whitespace-nowrap"
+              className="hidden lg:flex items-center gap-1.5 lg:gap-2 shrink-0 relative flex-nowrap whitespace-nowrap"
               style={{ overflow: scrolled ? "hidden" : "visible" }}
             >
-              <Link href="/contact" className="btn-primary py-[8px] px-5 text-[15px] rounded-full">
+              <Link href="/contact" className="btn-primary py-[8px] px-5 text-[14px] rounded-full">
                 Let&rsquo;s Connect
               </Link>
 
@@ -460,10 +460,10 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setContactOpen((p) => !p)}
-                  className="flex items-center gap-2 px-4 py-[8.5px] text-[15px] font-semibold text-white bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded-full transition-all focus-visible:outline-none select-none cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-[8.5px] text-[14px] font-semibold text-white bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded-full transition-all focus-visible:outline-none select-none cursor-pointer"
                 >
                   <span key={selectedCountry.code} className="flex items-center gap-2 min-w-[90px] xl:min-w-[240px] justify-center animate-fade-in overflow-hidden">
-                    <span className="text-[15px] leading-none select-none">{selectedCountry.flag}</span>
+                    <span className="text-[14px] leading-none select-none">{selectedCountry.flag}</span>
                     <span className="tracking-tight text-white/95">{selectedCountry.code}</span>
                     <span className="text-white/90 font-mono text-[14px] hidden xl:inline">{selectedCountry.phone}</span>
                   </span>
@@ -482,7 +482,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[90vw] max-w-[400px] max-h-[60vh] overflow-y-auto rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl p-4 space-y-3 text-left whitespace-normal overscroll-contain"
+                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[400px] max-h-[60vh] overflow-y-auto rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl p-4 space-y-3 text-left whitespace-normal overscroll-contain"
                       style={{ whiteSpace: "normal" }}
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
@@ -624,7 +624,7 @@ export default function Navbar() {
                                     setMenuOpen(false);
                                     setMobileServicesOpen(false);
                                   }}
-                                  className={`flex items-center gap-2.5 px-3 py-2 text-[15px] rounded-md transition-colors ${
+                                  className={`flex items-center gap-2.5 px-3 py-2 text-[14px] rounded-md transition-colors ${
                                     scrolled
                                       ? "text-stone-400 hover:text-white hover:bg-white/5"
                                       : "text-muted-foreground hover:text-ink hover:bg-tint/60"
@@ -647,7 +647,7 @@ export default function Navbar() {
                                 setMenuOpen(false);
                                 setMobileServicesOpen(false);
                               }}
-                              className={`flex items-center gap-1.5 px-3 py-2 text-[15px] font-semibold rounded-md transition-colors ${
+                              className={`flex items-center gap-1.5 px-3 py-2 text-[14px] font-semibold rounded-md transition-colors ${
                                 scrolled
                                   ? "text-cyan-400 hover:bg-white/5"
                                   : "text-cyan-400 hover:bg-white/5"
@@ -703,10 +703,10 @@ export default function Navbar() {
                   <button
                     type="button"
                     onClick={() => setContactOpen((p) => !p)}
-                    className="w-full flex items-center justify-between px-4 py-2.5 text-[15px] font-semibold text-white bg-slate-900 border border-slate-800 rounded-full transition-all focus-visible:outline-none select-none cursor-pointer"
+                    className="w-full flex items-center justify-between px-4 py-2.5 text-[14px] font-semibold text-white bg-slate-900 border border-slate-800 rounded-full transition-all focus-visible:outline-none select-none cursor-pointer"
                   >
                     <div key={selectedCountry.code} className="flex items-center gap-2 min-w-[130px] justify-center animate-fade-in">
-                      <span className="text-[15px] leading-none">{selectedCountry.flag}</span>
+                      <span className="text-[14px] leading-none">{selectedCountry.flag}</span>
                       <span>{selectedCountry.code}</span>
                       <span className="text-white/90 font-mono text-[14px]">{selectedCountry.phone}</span>
                     </div>
@@ -744,7 +744,7 @@ export default function Navbar() {
                                  <a
                                    href={`tel:${country.phone.replace(/\s+/g, "")}`}
                                    onClick={(e) => e.stopPropagation()}
-                                    className="font-bold text-[15px] text-white hover:text-cyan-400 transition-colors"
+                                    className="font-bold text-[14px] text-white hover:text-cyan-400 transition-colors"
                                  >
                                    {country.phone}
                                  </a>
