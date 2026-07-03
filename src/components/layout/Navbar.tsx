@@ -21,65 +21,65 @@ const serviceItems: {
   desc: string;
   href: string;
 }[] = [
-  {
-    icon: Zap,
-    name: "AI & Automation",
-    desc: "AI agents, workflows & automation",
-    href: "/services/ai-automation",
-  },
-  {
-    icon: TrendingUp,
-    name: "Digital Marketing",
-    desc: "Campaign tracking & search optimization",
-    href: "/services/digital-marketing",
-  },
-  {
-    icon: Code2,
-    name: "Web Development",
-    desc: "Fast, responsive websites & web apps",
-    href: "/services/web-development",
-  },
-  {
-    icon: Cpu,
-    name: "Custom Software Development",
-    desc: "Custom internal & business operations tools",
-    href: "/services/software-development",
-  },
-  {
-    icon: Smartphone,
-    name: "Mobile App Development",
-    desc: "iOS & Android — native or cross-platform",
-    href: "/services/mobile-app-development",
-  },
-  {
-    icon: Server,
-    name: "Hosting & Infrastructure",
-    desc: "Scalable cloud with environment backups",
-    href: "/services/hosting-infrastructure",
-  },
-  {
-    icon: Users,
-    name: "Customer Experience",
-    desc: "CRM setup, ticket routing & support",
-    href: "/services/customer-experience-management",
-  },
-  {
-    icon: Lightbulb,
-    name: "IT Consulting & IT Services",
-    desc: "Strategic tech advisory & managed IT",
-    href: "/services/it-consulting-it-services",
-  },
-];
+    {
+      icon: Zap,
+      name: "AI & Automation",
+      desc: "AI agents, workflows & automation",
+      href: "/services/ai-automation",
+    },
+    {
+      icon: TrendingUp,
+      name: "Digital Marketing",
+      desc: "Campaign tracking & search optimization",
+      href: "/services/digital-marketing",
+    },
+    {
+      icon: Code2,
+      name: "Web Development",
+      desc: "Fast, responsive websites & web apps",
+      href: "/services/web-development",
+    },
+    {
+      icon: Cpu,
+      name: "Custom Software Development",
+      desc: "Custom internal & business operations tools",
+      href: "/services/software-development",
+    },
+    {
+      icon: Smartphone,
+      name: "Mobile App Development",
+      desc: "iOS & Android — native or cross-platform",
+      href: "/services/mobile-app-development",
+    },
+    {
+      icon: Server,
+      name: "Hosting & Infrastructure",
+      desc: "Scalable cloud with environment backups",
+      href: "/services/hosting-infrastructure",
+    },
+    {
+      icon: Users,
+      name: "Customer Experience",
+      desc: "CRM setup, ticket routing & support",
+      href: "/services/customer-experience-management",
+    },
+    {
+      icon: Lightbulb,
+      name: "IT Consulting & IT Services",
+      desc: "Strategic tech advisory & managed IT",
+      href: "/services/it-consulting-it-services",
+    },
+  ];
 
 // ─── Top-level nav links ──────────────────────────────────────────────────────
 
 const navLinks = [
-  { label: "Home",     href: "/" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services", hasDropdown: true },
-  { label: "Blog",     href: "/blog" },
-  { label: "About",    href: "/about" },
-  { label: "Contact",  href: "/contact" },
-  { label: "FAQ",      href: "/faq" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 const springTransition = {
@@ -92,13 +92,13 @@ const springTransition = {
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]                   = useState(false);
-  const [servicesOpen, setServicesOpen]           = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [scrolled, setScrolled]                   = useState(false);
-  const [hoveredIndex, setHoveredIndex]           = useState<number | null>(null);
-  const [contactOpen, setContactOpen]             = useState(false);
-  const [selectedCountry, setSelectedCountry]     = useState(countries[0]);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const contactRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -118,11 +118,11 @@ export default function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
   const contactTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  const openServices   = () => { clearTimeout(closeTimer.current); setServicesOpen(true);  };
-  const scheduleClose  = () => { closeTimer.current = setTimeout(() => setServicesOpen(false), 120); };
+  const openServices = () => { clearTimeout(closeTimer.current); setServicesOpen(true); };
+  const scheduleClose = () => { closeTimer.current = setTimeout(() => setServicesOpen(false), 120); };
 
-  const openContact   = () => { clearTimeout(contactTimer.current); setContactOpen(true);  };
-  const scheduleContactClose  = () => { contactTimer.current = setTimeout(() => setContactOpen(false), 120); };
+  const openContact = () => { clearTimeout(contactTimer.current); setContactOpen(true); };
+  const scheduleContactClose = () => { contactTimer.current = setTimeout(() => setContactOpen(false), 120); };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -164,17 +164,15 @@ export default function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className={`fixed z-50 top-0 left-0 right-0 w-full pointer-events-none flex flex-col items-center transition-colors duration-300 ${
-      scrolled ? "" : "bg-surface border-b border-border"
-    }`}>
+    <header className={`fixed z-50 top-0 left-0 right-0 w-full pointer-events-none flex flex-col items-center transition-colors duration-300 ${scrolled ? "" : "bg-surface border-b border-border"
+      }`}>
       <motion.nav
         layout
         transition={springTransition}
-        className={`pointer-events-auto flex items-center justify-between border transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 rounded-full ${
-          scrolled
+        className={`pointer-events-auto flex items-center justify-between border transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 rounded-full ${scrolled
             ? "mt-4 w-[92%] md:w-fit h-[52px] bg-slate-950/75 border-cyan-400/30 shadow-[0_8px_32px_rgba(6,182,212,0.18)] backdrop-blur-md px-6 gap-6"
             : "w-full max-w-7xl px-6 h-[68px] gap-8 border-transparent shadow-none"
-        }`}
+          }`}
         aria-label="Main navigation"
       >
         {/* ── Logo ─────────────────────────────────────────────────────── */}
@@ -187,9 +185,8 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label="aibizmod — go to home"
-            className={`relative px-4 py-2 rounded-full font-display font-bold text-[19px] tracking-tight select-none ${
-              scrolled ? "text-white" : "text-ink"
-            }`}
+            className={`relative px-4 py-2 rounded-full font-display font-bold text-[19px] tracking-tight select-none ${scrolled ? "text-white" : "text-ink"
+              }`}
           >
             {hoveredIndex === 999 && (
               <motion.span
@@ -218,9 +215,8 @@ export default function Navbar() {
 
         {/* ── Desktop nav ───────────────────────────────────────────────── */}
         <ul
-          className={`hidden md:flex items-center relative ${
-            scrolled ? "gap-1.5" : "gap-7"
-          }`}
+          className={`hidden md:flex items-center relative ${scrolled ? "gap-1.5" : "gap-7"
+            }`}
           role="list"
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -248,15 +244,14 @@ export default function Navbar() {
                       aria-expanded={servicesOpen}
                       aria-controls="services-dropdown"
                       onClick={() => setServicesOpen((p) => !p)}
-                      className={`relative flex items-center gap-1 text-[13px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
-                        scrolled
+                      className={`relative flex items-center gap-1 text-[13px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${scrolled
                           ? active
                             ? "text-cyan-400 font-semibold"
                             : "text-stone-300 hover:text-white"
                           : active
                             ? "text-royal-deep font-semibold"
                             : "text-muted-foreground hover:text-ink"
-                      }`}
+                        }`}
                     >
                       {/* Shared hover background tab */}
                       {hoveredIndex === index && (
@@ -266,15 +261,14 @@ export default function Navbar() {
                           transition={{ type: "spring", stiffness: 350, damping: 30 }}
                         />
                       )}
-                      
+
                       <span className="relative z-10 flex items-center gap-1">
                         Services
                         <ChevronDown
                           size={14}
                           aria-hidden="true"
-                          className={`transition-transform duration-200 mt-px ${
-                            servicesOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform duration-200 mt-px ${servicesOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </span>
                     </button>
@@ -300,9 +294,8 @@ export default function Navbar() {
                     >
                       {/* Upward caret */}
                       <div
-                        className={`absolute -top-[5px] w-2.5 h-2.5 rotate-45 border-l border-t ${
-                          scrolled ? "bg-slate-950 border-cyan-500/20" : "bg-surface border-border"
-                        }`}
+                        className={`absolute -top-[5px] w-2.5 h-2.5 rotate-45 border-l border-t ${scrolled ? "bg-slate-950 border-cyan-500/20" : "bg-surface border-border"
+                          }`}
                         style={scrolled ? { left: "50%", transform: "translateX(-50%) rotate(45deg)" } : { left: "20px", transform: "none" }}
                         aria-hidden="true"
                       />
@@ -316,9 +309,8 @@ export default function Navbar() {
                               key={svc.href}
                               href={svc.href}
                               onClick={() => setServicesOpen(false)}
-                              className={`group flex items-start gap-3 p-3 rounded-[10px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
-                                scrolled ? "hover:bg-white/5" : "hover:bg-tint"
-                              }`}
+                              className={`group flex items-start gap-3 p-3 rounded-[10px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${scrolled ? "hover:bg-white/5" : "hover:bg-tint"
+                                }`}
                             >
                               {/* Small icon box */}
                               <div
@@ -331,9 +323,8 @@ export default function Navbar() {
                                 <Icon size={15} aria-hidden="true" className={scrolled ? "text-cyan-400" : "text-royal"} />
                               </div>
                               <div className="min-w-0">
-                                <p className={`text-[13px] font-semibold leading-snug transition-colors ${
-                                  scrolled ? "text-white group-hover:text-cyan-400" : "text-ink group-hover:text-royal-deep"
-                                }`}>
+                                <p className={`text-[13px] font-semibold leading-snug transition-colors ${scrolled ? "text-white group-hover:text-cyan-400" : "text-ink group-hover:text-royal-deep"
+                                  }`}>
                                   {svc.name}
                                 </p>
                                 <p className={`text-[11px] mt-0.5 leading-snug ${scrolled ? "text-stone-400" : "text-muted-foreground"}`}>
@@ -351,11 +342,10 @@ export default function Navbar() {
                           <Link
                             href="/services"
                             onClick={() => setServicesOpen(false)}
-                            className={`flex items-center justify-center gap-1.5 py-2 text-[13px] font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
-                              scrolled
+                            className={`flex items-center justify-center gap-1.5 py-2 text-[13px] font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${scrolled
                                 ? "text-cyan-400 hover:text-white hover:bg-white/5"
                                 : "text-royal-deep hover:text-royal hover:bg-tint"
-                            }`}
+                              }`}
                           >
                             View all services
                             <ArrowRight size={13} aria-hidden="true" />
@@ -390,9 +380,8 @@ export default function Navbar() {
                         className="focus-visible:outline-none rounded-full"
                       >
                         <div
-                          className={`relative flex flex-col items-center justify-center transition-colors duration-300 rounded-full px-4 py-2 text-[13px] font-medium ${
-                            active ? "text-royal-deep font-semibold" : "text-muted-foreground hover:text-ink"
-                          }`}
+                          className={`relative flex flex-col items-center justify-center transition-colors duration-300 rounded-full px-4 py-2 text-[13px] font-medium ${active ? "text-royal-deep font-semibold" : "text-muted-foreground hover:text-ink"
+                            }`}
                         >
                           {/* Shared hover background tab */}
                           {hoveredIndex === index && (
@@ -432,15 +421,14 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative flex flex-col items-center text-[13px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${
-                    scrolled
+                  className={`relative flex flex-col items-center text-[13px] font-medium px-4 py-2 transition-colors duration-300 rounded-full focus-visible:outline-none ${scrolled
                       ? active
                         ? "text-cyan-400 font-semibold"
                         : "text-stone-300 hover:text-white"
                       : active
                         ? "text-royal-deep font-semibold"
                         : "text-muted-foreground hover:text-ink"
-                  }`}
+                    }`}
                 >
                   {/* Shared hover background tab */}
                   {hoveredIndex === index && (
@@ -484,8 +472,8 @@ export default function Navbar() {
               </Link>
 
               {/* Country Selector Dropdown */}
-              <div 
-                className="relative" 
+              <div
+                className="relative"
                 ref={contactRef}
                 onMouseEnter={openContact}
                 onMouseLeave={scheduleContactClose}
@@ -500,9 +488,8 @@ export default function Navbar() {
                   <span className="text-white/60 font-mono text-[12px]">{selectedCountry.phone}</span>
                   <ChevronDown
                     size={13}
-                    className={`transition-transform duration-200 text-white/60 ${
-                      contactOpen ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform duration-200 text-white/60 ${contactOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
@@ -545,7 +532,7 @@ export default function Navbar() {
                               </a>
                             </div>
 
-                            <p 
+                            <p
                               className="text-[11px] text-slate-400 leading-normal font-sans pt-0.5"
                               style={{ whiteSpace: "normal", wordBreak: "break-word" }}
                             >
@@ -565,9 +552,8 @@ export default function Navbar() {
         {/* ── Mobile hamburger ──────────────────────────────────────────── */}
         <button
           type="button"
-          className={`md:hidden p-1.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
-            scrolled ? "text-white hover:bg-white/10" : "text-ink hover:bg-tint"
-          }`}
+          className={`md:hidden p-1.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${scrolled ? "text-white hover:bg-white/10" : "text-ink hover:bg-tint"
+            }`}
           onClick={() => setMenuOpen((p) => !p)}
           aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={menuOpen}
@@ -588,11 +574,10 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={springTransition}
-            className={`md:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md ${
-              scrolled
+            className={`md:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md ${scrolled
                 ? "bg-slate-950/95 border border-cyan-500/20 text-white"
                 : "bg-surface border border-border text-ink"
-            }`}
+              }`}
             role="navigation"
             aria-label="Mobile navigation"
           >
@@ -627,17 +612,15 @@ export default function Navbar() {
                         <ChevronDown
                           size={14}
                           aria-hidden="true"
-                          className={`transition-transform duration-200 ${
-                            mobileServicesOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
                       {/* Sub-list */}
                       {mobileServicesOpen && (
-                        <ul className={`mt-1 ml-3 pl-3 border-l-2 pb-2 space-y-0.5 ${
-                          scrolled ? "border-white/10" : "border-tint"
-                        }`}>
+                        <ul className={`mt-1 ml-3 pl-3 border-l-2 pb-2 space-y-0.5 ${scrolled ? "border-white/10" : "border-tint"
+                          }`}>
                           {serviceItems.map((svc) => {
                             const Icon = svc.icon;
                             return (
@@ -649,11 +632,10 @@ export default function Navbar() {
                                     setMenuOpen(false);
                                     setMobileServicesOpen(false);
                                   }}
-                                  className={`flex items-center gap-2.5 px-3 py-2 text-[13px] rounded-md transition-colors ${
-                                    scrolled
+                                  className={`flex items-center gap-2.5 px-3 py-2 text-[13px] rounded-md transition-colors ${scrolled
                                       ? "text-stone-400 hover:text-white hover:bg-white/5"
                                       : "text-muted-foreground hover:text-ink hover:bg-tint/60"
-                                  }`}
+                                    }`}
                                 >
                                   <Icon
                                     size={13}
@@ -672,11 +654,10 @@ export default function Navbar() {
                                 setMenuOpen(false);
                                 setMobileServicesOpen(false);
                               }}
-                              className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-semibold rounded-md transition-colors ${
-                                scrolled
+                              className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-semibold rounded-md transition-colors ${scrolled
                                   ? "text-cyan-400 hover:bg-white/5"
                                   : "text-royal-deep hover:bg-tint/60"
-                              }`}
+                                }`}
                             >
                               View all services
                               <ArrowRight size={12} aria-hidden="true" />
@@ -737,9 +718,8 @@ export default function Navbar() {
                     </div>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-200 text-white/60 ${
-                        contactOpen ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-200 text-white/60 ${contactOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
 
@@ -753,44 +733,44 @@ export default function Navbar() {
                         style={{ whiteSpace: "normal" }}
                       >
                         {countries.map((country) => (
-                           <div
-                             key={country.code}
-                             onClick={() => {
-                               setSelectedCountry(country);
-                               setContactOpen(false);
-                             }}
-                             className="flex items-start gap-3 p-2 rounded-lg transition-all cursor-pointer border bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-100"
-                           >
-                             <span className="text-[18px] select-none mt-0.5 leading-none">{country.flag}</span>
-                             <div className="flex-1 min-w-0 space-y-1">
-                               <div className="flex items-center justify-between">
-                                 <a
-                                   href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                   onClick={(e) => e.stopPropagation()}
-                                   className="font-bold text-[13px] text-slate-800 hover:text-cyan-500 transition-colors"
-                                 >
-                                   {country.phone}
-                                 </a>
-                                 <a
-                                   href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                   onClick={(e) => e.stopPropagation()}
-                                   className="text-cyan-500 hover:text-cyan-600 p-1 hover:bg-slate-200/50 rounded-full transition-colors"
-                                   aria-label={`Call ${country.code} office`}
-                                 >
-                                   <Phone size={12} strokeWidth={2.5} />
-                                 </a>
-                               </div>
+                          <div
+                            key={country.code}
+                            onClick={() => {
+                              setSelectedCountry(country);
+                              setContactOpen(false);
+                            }}
+                            className="flex items-start gap-3 p-2 rounded-lg transition-all cursor-pointer border bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-100"
+                          >
+                            <span className="text-[18px] select-none mt-0.5 leading-none">{country.flag}</span>
+                            <div className="flex-1 min-w-0 space-y-1">
+                              <div className="flex items-center justify-between">
+                                <a
+                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="font-bold text-[13px] text-slate-800 hover:text-cyan-500 transition-colors"
+                                >
+                                  {country.phone}
+                                </a>
+                                <a
+                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="text-cyan-500 hover:text-cyan-600 p-1 hover:bg-slate-200/50 rounded-full transition-colors"
+                                  aria-label={`Call ${country.code} office`}
+                                >
+                                  <Phone size={12} strokeWidth={2.5} />
+                                </a>
+                              </div>
 
-                               <p 
-                                 className="text-[10px] text-slate-400 leading-normal font-sans pt-0.5"
-                                 style={{ whiteSpace: "normal", wordBreak: "break-word" }}
-                               >
-                                 {country.address}
-                               </p>
-                             </div>
-                           </div>
-                         ))}
-                       </motion.div>
+                              <p
+                                className="text-[10px] text-slate-400 leading-normal font-sans pt-0.5"
+                                style={{ whiteSpace: "normal", wordBreak: "break-word" }}
+                              >
+                                {country.address}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
