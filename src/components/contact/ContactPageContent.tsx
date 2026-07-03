@@ -9,6 +9,7 @@ import {
 	CheckCircle,
 	Clock,
 	MessageSquare,
+	type LucideIcon,
 } from 'lucide-react';
 import ShaderBackground from '@/components/ui/shader-background';
 import { StarButton } from '@/components/ui/star-button';
@@ -45,20 +46,29 @@ const serviceOptions = [
 	'IT Consulting & IT Services',
 ];
 
-const contactDetails = [
+interface ContactDetailItem {
+	icon?: LucideIcon;
+	flag?: ReactNode;
+	label: string;
+	value?: string;
+	links?: { text: string; href?: string }[];
+}
+
+const contactDetails: ContactDetailItem[] = [
 	...countries.map((c) => ({
 		icon: undefined,
 		flag: c.flag as ReactNode,
 		label: c.code,
-		value: `${c.phone} · ${c.email}`,
-		href: `mailto:${c.email}`,
+		links: [
+			{ text: c.phone, href: `tel:${c.phone.replace(/\s+/g, '')}` },
+			{ text: c.email, href: `mailto:${c.email}` },
+		],
 	})),
 	{
 		icon: Clock,
 		flag: undefined,
 		label: 'Response time',
 		value: 'Within 24 business hours',
-		href: undefined,
 	},
 ];
 
@@ -288,7 +298,7 @@ export default function ContactPageContent() {
 	};
 
 	return (
-		<section className='relative isolate min-h-screen overflow-hidden bg-white px-6 pb-20 pt-32 md:pt-36'>
+		<section className='relative isolate min-h-screen overflow-hidden bg-white px-4 sm:px-6 pb-20 pt-32 md:pt-36'>
 			<style dangerouslySetInnerHTML={{ __html: `
 				.contact-card {
 					position: relative;
@@ -364,7 +374,7 @@ export default function ContactPageContent() {
 
 				<div className='mt-14 grid gap-6 lg:grid-cols-[1fr_0.62fr] lg:items-stretch'>
 					<div 
-						className='relative overflow-hidden rounded-[28px] contact-card p-5 md:p-8 text-white h-full'
+						className='relative overflow-hidden rounded-[28px] contact-card p-4 sm:p-5 md:p-8 text-white h-full'
 						onMouseMove={handleMouseMove}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -639,7 +649,7 @@ export default function ContactPageContent() {
 					</div>
 
 					<aside 
-						className='relative overflow-hidden rounded-[28px] contact-card p-6 text-white h-full'
+						className='relative overflow-hidden rounded-[28px] contact-card p-4 sm:p-6 text-white h-full'
 						onMouseMove={handleMouseMove}
 						onMouseLeave={handleMouseLeave}
 					>
@@ -661,7 +671,7 @@ export default function ContactPageContent() {
 							</p>
 
 							<ul className='mt-7 space-y-4'>
-								{contactDetails.map(({ icon: Icon, flag, label, value, href }) => (
+								{contactDetails.map(({ icon: Icon, flag, label, value, links }) => (
 									<li key={label} className='flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:bg-white/10'>
 										<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-[#22D3EE]'>
 											{flag ? (
@@ -674,13 +684,24 @@ export default function ContactPageContent() {
 											<p className='text-xs font-semibold uppercase tracking-[0.16em] text-[#22D3EE]'>
 												{label}
 											</p>
-											{href ? (
-												<a
-													href={href}
-													className='mt-1 block text-sm font-semibold text-white transition hover:text-[#22D3EE]'
-												>
-													{value}
-												</a>
+											{links ? (
+												<div className='mt-1 space-y-1'>
+													{links.map((link, idx) => (
+														link.href ? (
+															<a
+																key={idx}
+																href={link.href}
+																className='block break-all text-sm font-semibold text-white transition hover:text-[#22D3EE]'
+															>
+																{link.text}
+															</a>
+														) : (
+															<p key={idx} className='break-all text-sm font-semibold text-white'>
+																{link.text}
+															</p>
+														)
+													))}
+												</div>
 											) : (
 												<p className='mt-1 text-sm font-semibold text-white'>
 													{value}

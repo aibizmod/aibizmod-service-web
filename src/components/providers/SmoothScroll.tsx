@@ -22,6 +22,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     });
 
     lenisRef.current = lenis;
+    if (typeof window !== "undefined") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).lenis = lenis;
+    }
 
     // Request Animation Frame loop
     let rafId: number;
@@ -64,6 +68,10 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      if (typeof window !== "undefined") {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        delete (window as any).lenis;
+      }
       document.removeEventListener("click", handleAnchorClick);
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeoutId) clearTimeout(scrollTimeoutId);

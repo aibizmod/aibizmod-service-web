@@ -118,7 +118,10 @@ export function MorphingCardStack({
   }
 
   const containerStyles = {
-    stack: "relative h-[250px] w-full max-w-[340px] md:max-w-[400px]",
+    stack: cn(
+      "relative w-full max-w-[340px] md:max-w-[400px] transition-[height] duration-300",
+      expandedCard !== null ? "h-[360px] sm:h-[310px]" : "h-[250px]"
+    ),
     grid: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl",
     list: "flex flex-col gap-4 w-full max-w-4xl",
   }
@@ -276,7 +279,7 @@ export function MorphingCardStack({
                     isExpanded
                       ? "border-[#0891B2] ring-2 ring-[#0891B2]/30 shadow-[0_20px_50px_rgba(8,145,178,0.15)]"
                       : "border-cyan-100 hover:border-[#0891B2]/50 hover:shadow-[0_16px_45px_rgba(8,145,178,0.1)]",
-                    layout === "stack" && "absolute w-full h-[220px]",
+                    layout === "stack" && (isExpanded ? "absolute w-full h-auto min-h-[220px] pb-10 z-30" : "absolute w-full h-[220px]"),
                     layout === "stack" && isTopCard && "cursor-grab active:cursor-grabbing",
                     layout === "grid" && "w-full min-h-[190px]",
                     layout === "list" && "w-full min-h-[100px]",
@@ -285,13 +288,13 @@ export function MorphingCardStack({
                     backgroundColor: card.color || undefined,
                   }}
                 >
-                  <div className="flex items-start gap-4 h-full relative">
+                  <div className={cn("flex items-start gap-4 relative", !isExpanded && "h-full")}>
                     {card.icon && (
                       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-cyan-50 border border-cyan-100/80 text-[#0E7490] shadow-sm">
                         {card.icon}
                       </div>
                     )}
-                    <div className="min-w-0 flex-1 flex flex-col justify-center h-full">
+                    <div className={cn("min-w-0 flex-1 flex flex-col justify-center", !isExpanded && "h-full")}>
                       <h3 className="font-display font-bold text-lg text-slate-900 leading-snug">
                         {card.title}
                       </h3>

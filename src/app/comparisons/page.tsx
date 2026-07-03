@@ -25,7 +25,7 @@ export default function ComparisonsPage() {
       <Navbar />
       <StickyFooterLayout footer={<Footer />}>
         <main className="bg-white text-ink">
-          <section className="relative isolate overflow-hidden px-6 pb-20 pt-32 md:pb-28 md:pt-36">
+          <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-20 pt-32 md:pb-28 md:pt-36">
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-7xl">
               <AnimatedSection className="text-center">
@@ -35,20 +35,20 @@ export default function ComparisonsPage() {
                 </p>
               </AnimatedSection>
 
-              <div className="mt-16 grid gap-8 md:grid-cols-2">
+              <div className="mt-16 grid gap-6 md:gap-8 md:grid-cols-2">
                 {comparisons.map((c, i) => (
                   <AnimatedSection key={c.slug} delay={i * 0.08}>
                     <Link href={`/comparisons/${c.slug}`} className="group block">
-                      <div className="h-full rounded-[24px] border border-cyan-100/80 bg-white/75 p-6 shadow-[0_18px_55px_rgba(59,130,246,0.09)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_24px_70px_rgba(8,145,178,0.14)]">
+                      <div className="h-full rounded-[24px] border border-cyan-100/80 bg-white/75 p-4 sm:p-6 shadow-[0_18px_55px_rgba(59,130,246,0.09)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_24px_70px_rgba(8,145,178,0.14)]">
                         <div className="flex items-center justify-between mb-4">
-                          <div className="flex gap-2">
-                            <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100">
+                          <div className="flex flex-wrap gap-1.5">
+                            <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100 max-w-[90px] truncate">
                               {c.optionA}
                             </span>
                             <span className="rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600 border border-slate-200">
                               vs
                             </span>
-                            <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100">
+                            <span className="rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100 max-w-[90px] truncate">
                               {c.optionB}
                             </span>
                           </div>

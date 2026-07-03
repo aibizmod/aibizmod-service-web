@@ -32,7 +32,7 @@ export default function AutomationRoiCalculatorPage() {
       <Navbar />
       <StickyFooterLayout footer={<Footer />}>
         <main className="bg-white text-ink">
-          <section className="relative isolate overflow-hidden px-6 pb-20 pt-32 md:pb-28 md:pt-36">
+          <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-20 pt-32 md:pb-28 md:pt-36">
             <ShaderBackground className="absolute inset-0 z-0 h-full w-full opacity-80" />
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-4xl">
@@ -59,7 +59,7 @@ export default function AutomationRoiCalculatorPage() {
           </section>
 
           {/* Calculator */}
-          <section className="px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
+          <section className="px-4 sm:px-6 py-16 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-5xl mx-auto grid gap-12 lg:grid-cols-2">
               {/* Inputs */}
               <AnimatedSection direction="left">
@@ -121,7 +121,7 @@ export default function AutomationRoiCalculatorPage() {
 
               {/* Results */}
               <AnimatedSection direction="right" delay={0.1}>
-                <div className="rounded-[28px] border border-cyan-100 bg-white/70 p-8 shadow-[0_18px_55px_rgba(59,130,246,0.10)] backdrop-blur-md lg:sticky lg:top-24">
+                <div className="rounded-[28px] border border-cyan-100 bg-white/70 p-4 sm:p-8 shadow-[0_18px_55px_rgba(59,130,246,0.10)] backdrop-blur-md lg:sticky lg:top-24">
                   <SectionHeading eyebrow="Estimated result" heading="Your Annual Savings" />
                   <p className="mt-6 text-5xl font-display font-bold text-cyan-700">
                     {formatCurrency(annualSavings)}
@@ -164,7 +164,7 @@ export default function AutomationRoiCalculatorPage() {
           </section>
 
           {/* Methodology */}
-          <section className="px-6 py-16 bg-white">
+          <section className="px-4 sm:px-6 py-16 bg-white">
             <div className="max-w-3xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="How it works" heading="Calculation Methodology" centered />

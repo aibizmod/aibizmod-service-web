@@ -31,7 +31,7 @@ export default function TopicsPage() {
       <Navbar />
       <StickyFooterLayout footer={<Footer />}>
         <main className="bg-white text-ink">
-          <section className="relative isolate overflow-hidden px-6 pb-20 pt-32 md:pb-28 md:pt-36">
+          <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-20 pt-32 md:pb-28 md:pt-36">
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-7xl">
               <AnimatedSection className="text-center">
@@ -41,13 +41,13 @@ export default function TopicsPage() {
                 </p>
               </AnimatedSection>
 
-              <div className="mt-16 grid gap-8 md:grid-cols-3">
+              <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {topicHubs.map((hub, i) => {
                   const Icon = icons[hub.slug] || BookOpen;
                   return (
                     <AnimatedSection key={hub.slug} delay={i * 0.08}>
                       <Link href={`/topics/${hub.slug}`} className="group block h-full">
-                        <div className="flex h-full flex-col rounded-[24px] border border-cyan-100/80 bg-white/75 p-6 shadow-[0_18px_55px_rgba(59,130,246,0.09)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_24px_70px_rgba(8,145,178,0.14)]">
+                        <div className="flex h-full flex-col rounded-[24px] border border-cyan-100/80 bg-white/75 p-4 sm:p-6 shadow-[0_18px_55px_rgba(59,130,246,0.09)] backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-cyan-200 hover:shadow-[0_24px_70px_rgba(8,145,178,0.14)]">
                           <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-cyan-100 bg-cyan-50 text-cyan-700 shadow-[0_12px_28px_rgba(8,145,178,0.10)]">
                             <Icon size={19} aria-hidden="true" />
                           </div>

@@ -69,7 +69,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
         <main className="bg-white text-ink">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
-          <section className="relative isolate overflow-hidden px-6 pb-16 pt-32 md:pb-20 md:pt-36">
+          <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-16 pt-32 md:pb-28 md:pt-36">
             <ShaderBackground className="absolute inset-0 z-0 h-full w-full opacity-80" />
             <div className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl" aria-hidden="true" />
             <div className="relative z-10 mx-auto max-w-4xl">
@@ -98,7 +98,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
           </section>
 
           {/* Core page */}
-          <section className="px-6 py-12 bg-[#F8FEFF] border-y border-cyan-100">
+          <section className="px-4 sm:px-6 py-12 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="Start here" heading="Core Resource" centered />
@@ -110,7 +110,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
               <AnimatedSection delay={0.08} className="mt-8">
                 <Link
                   href={hub.corePage.href}
-                  className="group block rounded-2xl border-2 border-cyan-200 bg-white p-6 shadow-[0_12px_32px_rgba(8,145,178,0.08)] transition hover:border-cyan-400 hover:shadow-[0_16px_48px_rgba(8,145,178,0.14)]"
+                  className="group block rounded-2xl border-2 border-cyan-200 bg-white p-4 sm:p-6 shadow-[0_12px_32px_rgba(8,145,178,0.08)] transition hover:border-cyan-400 hover:shadow-[0_16px_48px_rgba(8,145,178,0.14)]"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
@@ -134,7 +134,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
           </section>
 
           {/* Supporting assets */}
-          <section className="px-6 py-16 bg-white">
+          <section className="px-4 sm:px-6 py-16 bg-white">
             <div className="max-w-4xl mx-auto">
               <AnimatedSection>
                 <SectionHeading eyebrow="Dive deeper" heading={`${hub.supportingAssets.length} Supporting Resources`} centered />
@@ -144,7 +144,7 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
                 {hub.supportingAssets.map((asset, i) => (
                   <AnimatedSection key={i} delay={i * 0.05}>
                     <Link href={asset.href} className="group block h-full">
-                      <div className="h-full rounded-xl border border-cyan-100/80 bg-white/70 p-5 shadow-[0_8px_24px_rgba(59,130,246,0.06)] transition hover:border-cyan-200 hover:shadow-[0_12px_36px_rgba(8,145,178,0.10)]">
+                      <div className="h-full rounded-xl border border-cyan-100/80 bg-white/70 p-4 sm:p-5 shadow-[0_8px_24px_rgba(59,130,246,0.06)] transition hover:border-cyan-200 hover:shadow-[0_12px_36px_rgba(8,145,178,0.10)]">
                         <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold border mb-3 ${typeColors[asset.type]}`}>
                           {asset.type}
                         </span>

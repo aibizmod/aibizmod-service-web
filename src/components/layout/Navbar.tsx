@@ -21,55 +21,55 @@ const serviceItems: {
   desc: string;
   href: string;
 }[] = [
-  {
-    icon: Zap,
-    name: "AI & Automation",
-    desc: "AI agents, workflows & automation",
-    href: "/services/ai-automation",
-  },
-  {
-    icon: TrendingUp,
-    name: "Digital Marketing",
-    desc: "Campaign tracking & search optimization",
-    href: "/services/digital-marketing",
-  },
-  {
-    icon: Code2,
-    name: "Web Development",
-    desc: "Fast, responsive websites & web apps",
-    href: "/services/web-development",
-  },
-  {
-    icon: Cpu,
-    name: "Custom Software Development",
-    desc: "Custom internal & business operations tools",
-    href: "/services/software-development",
-  },
-  {
-    icon: Smartphone,
-    name: "Mobile App Development",
-    desc: "iOS & Android — native or cross-platform",
-    href: "/services/mobile-app-development",
-  },
-  {
-    icon: Server,
-    name: "Hosting & Infrastructure",
-    desc: "Scalable cloud with environment backups",
-    href: "/services/hosting-infrastructure",
-  },
-  {
-    icon: Users,
-    name: "Customer Experience",
-    desc: "CRM setup, ticket routing & support",
-    href: "/services/customer-experience-management",
-  },
-  {
-    icon: Lightbulb,
-    name: "IT Consulting & IT Services",
-    desc: "Strategic tech advisory & managed IT",
-    href: "/services/it-consulting-it-services",
-  },
-];
+    {
+      icon: Zap,
+      name: "AI & Automation",
+      desc: "AI agents, workflows & automation",
+      href: "/services/ai-automation",
+    },
+    {
+      icon: TrendingUp,
+      name: "Digital Marketing",
+      desc: "Campaign tracking & search optimization",
+      href: "/services/digital-marketing",
+    },
+    {
+      icon: Code2,
+      name: "Web Development",
+      desc: "Fast, responsive websites & web apps",
+      href: "/services/web-development",
+    },
+    {
+      icon: Cpu,
+      name: "Custom Software Development",
+      desc: "Custom internal & business operations tools",
+      href: "/services/software-development",
+    },
+    {
+      icon: Smartphone,
+      name: "Mobile App Development",
+      desc: "iOS & Android — native or cross-platform",
+      href: "/services/mobile-app-development",
+    },
+    {
+      icon: Server,
+      name: "Hosting & Infrastructure",
+      desc: "Scalable cloud with environment backups",
+      href: "/services/hosting-infrastructure",
+    },
+    {
+      icon: Users,
+      name: "Customer Experience",
+      desc: "CRM setup, ticket routing & support",
+      href: "/services/customer-experience-management",
+    },
+    {
+      icon: Lightbulb,
+      name: "IT Consulting & IT Services",
+      desc: "Strategic tech advisory & managed IT",
+      href: "/services/it-consulting-it-services",
+    },
+  ];
 
 // ─── Top-level nav links ──────────────────────────────────────────────────────
 
@@ -90,13 +90,13 @@ const springTransition = {
 };
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]                   = useState(false);
-  const [servicesOpen, setServicesOpen]           = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [scrolled, setScrolled]                   = useState(false);
-  const [hoveredIndex, setHoveredIndex]           = useState<number | null>(null);
-  const [contactOpen, setContactOpen]             = useState(false);
-  const [selectedCountry, setSelectedCountry]     = useState(countries[0]);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const contactRef = useRef<HTMLDivElement>(null);
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
@@ -116,22 +116,17 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  // Trap wheel events inside contact dropdown — only the dropdown scrolls, never the page
+  // Lock body scroll when mobile menu or contact dropdown is open
   useEffect(() => {
-    if (!contactOpen) return;
-    const handleWheel = (e: WheelEvent) => {
-      const container = contactRef.current;
-      if (!container || !container.contains(e.target as Node)) return;
-      e.preventDefault();
-      const dropdown = desktopDropdownRef.current || mobileDropdownRef.current;
-      if (dropdown) {
-        const max = dropdown.scrollHeight - dropdown.clientHeight;
-        dropdown.scrollTop = Math.max(0, Math.min(max, dropdown.scrollTop + e.deltaY));
-      }
+    if (menuOpen || contactOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
     };
-    document.addEventListener("wheel", handleWheel, { passive: false });
-    return () => document.removeEventListener("wheel", handleWheel);
-  }, [contactOpen]);
+  }, [menuOpen, contactOpen]);
 
   // Auto-cycle through countries every 4s, pause when dropdown is open
   useEffect(() => {
@@ -150,8 +145,8 @@ export default function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
   const contactTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  const openServices   = () => { clearTimeout(closeTimer.current); setServicesOpen(true);  };
-  const scheduleClose  = () => { closeTimer.current = setTimeout(() => setServicesOpen(false), 120); };
+  const openServices = () => { clearTimeout(closeTimer.current); setServicesOpen(true); };
+  const scheduleClose = () => { closeTimer.current = setTimeout(() => setServicesOpen(false), 120); };
 
   const openContact   = () => { clearTimeout(contactTimer.current); setContactOpen(true);  };
 
@@ -298,15 +293,14 @@ export default function Navbar() {
                           transition={{ type: "spring", stiffness: 350, damping: 30 }}
                         />
                       )}
-                      
+
                       <span className="relative z-10 flex items-center gap-1">
                         Services
                         <ChevronDown
                           size={14}
                           aria-hidden="true"
-                          className={`transition-transform duration-200 mt-px ${
-                            servicesOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform duration-200 mt-px ${servicesOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </span>
                     </button>
@@ -456,8 +450,8 @@ export default function Navbar() {
               </Link>
 
               {/* Country Selector Dropdown */}
-              <div 
-                className="relative" 
+              <div
+                className="relative"
                 ref={contactRef}
                 onMouseEnter={openContact}
               >
@@ -473,9 +467,8 @@ export default function Navbar() {
                   </span>
                   <ChevronDown
                     size={13}
-                    className={`transition-transform duration-200 text-white/60 ${
-                      contactOpen ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform duration-200 text-white/60 ${contactOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
@@ -490,6 +483,7 @@ export default function Navbar() {
                       style={{ whiteSpace: "normal" }}
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
+                      data-lenis-prevent
                     >
                       {countries.map((country) => (
                         <div
@@ -574,6 +568,7 @@ export default function Navbar() {
             }`}
             role="navigation"
             aria-label="Mobile navigation"
+            data-lenis-prevent
           >
             <ul className="px-4 pt-3 pb-5 flex flex-col gap-0.5" role="list">
               {navLinks.map((item) => {
@@ -606,9 +601,8 @@ export default function Navbar() {
                         <ChevronDown
                           size={14}
                           aria-hidden="true"
-                          className={`transition-transform duration-200 ${
-                            mobileServicesOpen ? "rotate-180" : ""
-                          }`}
+                          className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
 
@@ -632,7 +626,7 @@ export default function Navbar() {
                                     scrolled
                                       ? "text-stone-400 hover:text-white hover:bg-white/5"
                                       : "text-muted-foreground hover:text-ink hover:bg-tint/60"
-                                  }`}
+                                    }`}
                                 >
                                   <Icon
                                     size={13}
@@ -716,9 +710,8 @@ export default function Navbar() {
                     </div>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-200 text-white/60 ${
-                        contactOpen ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-200 text-white/60 ${contactOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
 
@@ -732,6 +725,7 @@ export default function Navbar() {
                         style={{ whiteSpace: "normal" }}
                         ref={mobileDropdownRef}
                         onMouseEnter={openContact}
+                        data-lenis-prevent
                       >
                         {countries.map((country) => (
                            <div

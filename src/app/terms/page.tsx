@@ -97,7 +97,7 @@ export default function TermsPage() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(termsSchema) }}
           />
-          <section className="relative overflow-hidden bg-white px-6 py-24 md:py-32">
+          <section className="relative overflow-hidden bg-white px-4 sm:px-6 py-24 md:py-32">
             <div
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,rgba(210,247,255,0.48),transparent_32%)]"
               style={{
@@ -132,7 +132,7 @@ export default function TermsPage() {
                     <h2 className="text-lg font-semibold text-[#0F172A] mb-3">
                       {section.title}
                     </h2>
-                    <p className="text-base leading-7 text-slate-600">
+                    <p className="text-base leading-7 text-slate-600 break-words">
                       {section.content}
                     </p>
                   </div>
