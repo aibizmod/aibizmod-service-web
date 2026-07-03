@@ -208,22 +208,24 @@ export default function Footer() {
             {/* Global Offices */}
             <div className="pt-4 border-t border-white/10 space-y-3">
               <p className="font-sans text-[11px] text-white/40 uppercase tracking-widest">Global Offices</p>
-              {countries.map((c) => (
-                <div key={c.code} className="space-y-0.5 font-sans">
-                  <div className="flex items-center gap-1.5 text-[13px] text-white/80 font-medium">
-                    {c.flag}
-                    <span>{c.code}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {countries.map((c) => (
+                  <div key={c.code} className="space-y-0.5 font-sans">
+                    <div className="flex items-center gap-1.5 text-[13px] text-white/80 font-medium">
+                      {c.flag}
+                      <span>{c.name}</span>
+                    </div>
+                    <div className="pl-6 text-[12.5px] text-white/50 space-y-0.5">
+                      <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="hover:text-white transition-colors block">
+                        {c.phone}
+                      </a>
+                      <a href={`mailto:${c.email}`} className="hover:text-white transition-colors block">
+                        {c.email}
+                      </a>
+                    </div>
                   </div>
-                  <div className="pl-6 text-[12.5px] text-white/50 space-y-0.5">
-                    <a href={`tel:${c.phone.replace(/\s/g, "")}`} className="hover:text-white transition-colors block">
-                      {c.phone}
-                    </a>
-                    <a href={`mailto:${c.email}`} className="hover:text-white transition-colors block">
-                      {c.email}
-                    </a>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Social Links */}

@@ -81,6 +81,7 @@ const config: Config = {
         inter:   ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
         manrope: ["var(--font-manrope)", "sans-serif"],
         fraunces: ["var(--font-fraunces)", "serif"],
+        satoshi: ["var(--font-satoshi)", "sans-serif"],
       },
 
       fontSize: {
