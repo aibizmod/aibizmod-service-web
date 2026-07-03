@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'We provide both. Many clients use us first for strategy and roadmap development, then for implementation of specific initiatives on the roadmap. Delivering both allows us to hold the strategic intent through implementation rather than handing over a document and leaving. Clients also sometimes engage us for implementation oversight when they are using other implementation partners.',
 		},
 	],
-	answerSummary:
-		'UK and India leadership teams making reactive technology investments without a coherent plan get digital transformation consulting and multi-year technology roadmaps that sequence investments by business priority, integration readiness, and implementation capacity.',
 };
 
 export default function StrategyTransformationPage() {

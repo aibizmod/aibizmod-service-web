@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes. Technical SEO work is largely independent of the CMS. We provide the fixes as specifications for your development team or implement them directly, depending on access. For structured data, meta tags, and content, we work within your CMS workflow.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses whose pages are not ranking despite being relevant to high-intent queries get technical SEO audits, commercial-intent keyword strategies, content briefs, local SEO, and generative engine optimisation for AI-powered search visibility.',
 };
 
 export default function SearchMarketingPage() {

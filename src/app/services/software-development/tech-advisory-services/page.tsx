@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We conduct in-flight project reviews when a development project has lost direction, exceeded its budget, or raised concerns about quality. The review covers requirements completeness, architecture quality, development progress against plan, and team capability. We produce findings and recommendations that the client can act on with their existing team or with our involvement.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations about to start development or recover from a failed project get requirements definition, build-versus-buy analysis, solution architecture design, and technology roadmapping that ensures budget is directed at the right solution before code is written.',
 };
 
 export default function ITConsultingServicesPage() {

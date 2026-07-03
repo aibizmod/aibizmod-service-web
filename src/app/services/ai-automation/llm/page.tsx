@@ -208,8 +208,6 @@ const data: SubservicePageData = {
       a: "Yes. General, out-of-the-box AI struggles with industry jargon, which is why we specialize in domain-specific fine-tuning. We align the model's linguistic core with your specific sector's vocabulary, past project archives, and regulatory frameworks to ensure complete technical comprehension.",
     },
   ],
-  answerSummary:
-    'UK and India project managers and operations teams buried under multi-hundred-page technical manuals, contracts, and compliance documents get domain-fine-tuned LLMs with RAG that let them instantly search, summarise, and extract critical clauses from their private document repositories.',
 };
 
 export default function LLMPage() {

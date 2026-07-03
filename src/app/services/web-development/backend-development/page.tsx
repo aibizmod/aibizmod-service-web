@@ -216,8 +216,6 @@ const data: SubservicePageData = {
 			a: 'We set up database migration tooling as part of every backend project so schema changes can be applied and rolled back in a controlled way without manual SQL on the production server.',
 		},
 	],
-	answerSummary:
-		'UK and India product teams whose web applications have error-prone APIs, unscalable database schemas, or authentication that does not support roles get backend development with schema-first design, documented endpoints, and tested integrations that support growth without requiring rewrites.',
 };
 
 export default function BackendDevelopmentPage() {

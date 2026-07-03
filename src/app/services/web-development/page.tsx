@@ -138,8 +138,6 @@ const data: ServicePageData = {
 			a: 'No. We build custom applications without proprietary software lock-in. You own the code and host it on your own cloud accounts (like Vercel, AWS, or Netlify). You only pay direct utility costs to the cloud hosting provider.',
 		},
 	],
-	answerSummary:
-		'Custom web development services for businesses in the UK and India needing websites, SaaS dashboards, e-commerce platforms, and web applications. We build fast, scalable frontends and backends using React, Next.js, and Node.js — owned by you, not rented.',
 };
 
 const serviceCards: ServiceCard[] = [

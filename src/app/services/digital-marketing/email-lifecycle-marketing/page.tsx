@@ -212,8 +212,6 @@ const data: SubservicePageData = {
 			a: 'We track open rate, click rate, and conversion rate per automation step, plus the primary business metric each automation is designed to move — trial-to-paid conversion for an onboarding sequence, repeat purchase rate for a retention flow, recovery rate for a win-back campaign. We include these in monthly reports alongside recommendations for improving underperforming steps.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses collecting subscribers but sending only broadcast campaigns get lifecycle-stage-mapped automation flows including lead nurturing, post-purchase sequences, retention campaigns, and segmented strategies that generate revenue from the list they already have.',
 };
 
 export default function EmailLifecycleMarketingPage() {

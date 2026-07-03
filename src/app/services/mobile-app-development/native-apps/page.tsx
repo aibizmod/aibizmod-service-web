@@ -216,8 +216,6 @@ const data: SubservicePageData = {
 			a: 'The source code is yours. We deliver the full Xcode and Android Studio projects in a Git repository, including build configuration, signing certificates, and deployment instructions. We provide a handover session covering the project structure, how to update and release new versions, and how to manage the CI/CD pipeline if one was set up.',
 		},
 	],
-	answerSummary:
-		'UK and India products requiring deep platform-specific capabilities like ARKit, HealthKit, NFC, or high-performance camera processing get native iOS and Android apps built with Swift and Kotlin that fully leverage device hardware and platform-native user experience.',
 };
 
 export default function NativeAppsPage() {

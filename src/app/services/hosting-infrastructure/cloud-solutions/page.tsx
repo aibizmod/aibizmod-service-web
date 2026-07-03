@@ -217,8 +217,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We host and operate cloud project management software on AWS, Azure, and GCP for SaaS product teams and internal IT departments. The hosting layer covers the application runtime, database, file storage, identity provider, observability, backup, and disaster recovery — designed to keep the application reliably available as users grow. This hosting is delivered alongside our custom software development work for clients who want a single team to build and run the platform.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations on fixed on-premise or legacy hosting that cannot scale with demand get cloud architecture design, migration planning, and infrastructure-as-code on AWS, Azure, or GCP that reduces costs, improves reliability, and removes manual management overhead.',
 };
 
 export default function CloudSolutionsPage() {

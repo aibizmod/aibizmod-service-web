@@ -139,8 +139,6 @@ const data: ServicePageData = {
 			a: 'We set up GTM triggers or helpdesk actions that send an email or chat link after a ticket closes. When the customer submits a score, the API writes the CSAT or NPS value directly to their CRM profile for reporting.',
 		},
 	],
-	answerSummary:
-		'Customer experience management services for UK and India-based businesses. We implement and customise CRM systems, helpdesk platforms, CX automation, and loyalty programmes that reduce churn and improve customer satisfaction scores.',
 };
 
 const serviceCards: ServiceCard[] = [

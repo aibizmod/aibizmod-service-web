@@ -218,8 +218,6 @@ const data: SubservicePageData = {
 			a: 'Yes. Most business applications need an admin layer for configuration management, user administration, audit log review, and data correction. We build these as part of the application rather than requiring direct database access for administration tasks.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses running manual processes around the edges of their software stack get focused workflow automation tools, billing engines, internal dashboards, and project tracking systems built exactly to the specific process that needs automating.',
 };
 
 export default function BusinessApplicationsPage() {

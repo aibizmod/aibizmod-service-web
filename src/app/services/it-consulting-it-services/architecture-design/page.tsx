@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'It needs to be detailed enough that a development team can implement to it without making significant undocumented decisions themselves, but not so detailed that it becomes a maintenance burden as the implementation evolves. We aim for component-level diagrams, data model definitions, API contract specifications, and narrative descriptions of key design decisions — typically a 15 to 30 page document depending on system complexity.',
 		},
 	],
-	answerSummary:
-		'UK and India teams making build decisions without proper architecture and accumulating technical debt get solution architecture design, API contract development, technology evaluation, and architecture reviews that front-load decisions to the point where changes cost least.',
 };
 
 export default function ArchitectureDesignPage() {

@@ -218,8 +218,6 @@ const data: SubservicePageData = {
 			a: 'Yes. As part of managed IT operations we deploy, configure, and administer IT project management software on behalf of your team — handling user provisioning, licence management, access control, and integration with your other business systems. This sits alongside our broader service of recommending, evaluating, and implementing the right IT project management tool for the way your team actually delivers work.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses too large for informal IT management but too small for a full IT department get helpdesk support, asset and licence tracking, infrastructure management, and cost optimisation as an extension of their team without full-time headcount cost.',
 };
 
 export default function ManagedITOperationsPage() {

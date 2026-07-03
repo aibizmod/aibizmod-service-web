@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'We work with both. For existing environments, we conduct an observability audit to identify monitoring gaps and implement monitoring incrementally without disruption to the running system.',
 		},
 	],
-	answerSummary:
-		'UK and India teams discovering production problems only when customers report them get observability infrastructure with metrics, logs, traces, alerting, and runbooks so they have continuous visibility into system health and can resolve incidents faster.',
 };
 
 export default function InfrastructureOperationsPage() {

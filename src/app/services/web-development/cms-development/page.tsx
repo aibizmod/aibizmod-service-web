@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'For WordPress builds we apply a standard hardening checklist: limiting login attempts, disabling file editing from the admin panel, using a security plugin, enforcing strong passwords, and setting up automated backups. We also audit installed plugins and remove any that are unused, outdated, or have known vulnerabilities.',
 		},
 	],
-	answerSummary:
-		'UK and India editorial and marketing teams stuck with slow, plugin-heavy CMS platforms that require developer help for every content change get structured WordPress or headless CMS builds with role-based workflows and clean frontend performance that put publishing control back in their hands.',
 };
 
 export default function CMSDevelopmentPage() {

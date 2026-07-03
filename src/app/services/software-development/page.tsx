@@ -139,8 +139,6 @@ const data: ServicePageData = {
 			a: 'Because you own the complete source code and documentation package, your internal developers can modify and extend the software. Alternatively, we offer post-launch support retainers to build additional features as your processes evolve.',
 		},
 	],
-	answerSummary:
-		'Bespoke software development for businesses in the UK and India that have outgrown spreadsheets and off-the-shelf tools. We build custom ERP, CRM, SaaS platforms, and project management systems tailored to your exact workflows and operational processes.',
 };
 
 const serviceCards: ServiceCard[] = [

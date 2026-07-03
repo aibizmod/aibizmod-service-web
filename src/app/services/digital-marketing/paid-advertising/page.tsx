@@ -211,8 +211,6 @@ const data: SubservicePageData = {
 			a: 'We charge a fixed monthly management fee rather than a percentage of ad spend. This removes the incentive to increase your spend beyond what is justified by performance.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses spending on ads that produce clicks but not conversions get campaign management with properly configured tracking, matched landing pages, audience targeting built on customer data, and a test-and-scale approach that validates the funnel before scaling budget.',
 };
 
 export default function PaidAdvertisingPage() {

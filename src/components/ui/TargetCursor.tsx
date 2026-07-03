@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import "./TargetCursor.css";
 
@@ -67,16 +67,19 @@ const TargetCursor = ({
   const tickerFnRef = useRef<(() => void) | null>(null);
   const activeStrengthRef = useRef({ current: 0 });
 
-  const isMobile = useMemo(() => {
-    if (typeof window === "undefined") return false;
+  // Detect mobile after hydration to avoid server/client mismatch.
+  // Server always renders the cursor; client hides it on touch/mobile devices.
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
     const hasTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     const isSmallScreen = window.innerWidth <= 768;
     const ua = navigator.userAgent || "";
     const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
-    return (hasTouchScreen && isSmallScreen) || isMobileUA;
+    setIsMobile((hasTouchScreen && isSmallScreen) || isMobileUA);
   }, []);
 
-  const constants = useMemo(() => ({ borderWidth: 3, cornerSize: 12 }), []);
+  const constants = useRef({ borderWidth: 3, cornerSize: 12 }).current;
 
   const moveCursor = useCallback((x: number, y: number) => {
     if (!cursorRef.current) return;

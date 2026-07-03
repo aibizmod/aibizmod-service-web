@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'The primary metrics are deflection rate (queries resolved without human intervention), containment rate (percentage of automated sessions that did not escalate), and customer satisfaction scores for automated versus human interactions. We set up dashboards covering these from day one so you can monitor performance and identify which flows need improvement.',
 		},
 	],
-	answerSummary:
-		'UK and India support teams overwhelmed by high volumes of repetitive customer queries get AI chatbots, voice agents, and workflow automations that handle standard interactions at scale with clean escalation to human agents when needed.',
 };
 
 export default function CXAutomationPage() {

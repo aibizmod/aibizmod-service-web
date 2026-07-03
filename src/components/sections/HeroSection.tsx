@@ -81,12 +81,12 @@ export default function HeroSection() {
                 value={domain}
                 onChange={(e) => setDomain(e.target.value)}
                 placeholder="Enter your domain (e.g., aibizmod.com)"
-                className="w-full h-14 pl-12 pr-36 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-0"
+                className="w-full h-14 pl-12 pr-28 sm:pr-36 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-0"
                 aria-label="Domain to audit"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2">
                 {!domain.trim() ? (
-                  <span className="inline-flex h-10 items-center gap-2 rounded-xl bg-stone-900/50 px-5 text-sm font-semibold text-white/50 cursor-not-allowed">
+                  <span className="inline-flex h-10 items-center gap-2 rounded-xl bg-stone-900/50 px-5 text-xs sm:text-sm font-semibold text-white/50 cursor-not-allowed">
                     Check Visibility <ArrowRight size={16} />
                   </span>
                 ) : (
@@ -94,7 +94,7 @@ export default function HeroSection() {
                     as="span"
                     lightColor="#38bdf8"
                     backgroundColor="#0f172a"
-                    className="h-10 px-5 text-sm font-semibold cursor-pointer"
+                    className="h-10 px-5 text-xs sm:text-sm font-semibold cursor-pointer"
                     onClick={() => {
                       const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
                       form?.requestSubmit();

@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes. Identifying gaps without supporting their remediation produces a report that sits on a shelf. We provide implementation support — configuring technical controls, drafting or updating policies, and working with your team to close the identified gaps within the agreed timeframe.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations facing growing security and compliance requirements without a clear picture of their current posture get structured assessments, compliance gap analysis, policy development, and remediation support to close risks before audits find them.',
 };
 
 export default function SecurityCompliancePage() {

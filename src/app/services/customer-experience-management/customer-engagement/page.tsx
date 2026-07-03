@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'We track the metrics that connect engagement activity to revenue outcomes — redemption rate for loyalty rewards, conversion rate on re-engagement campaigns, referral conversion rates, and change in purchase frequency for engaged versus non-engaged segments. These are reported in dashboards built as part of the engagement system setup.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses sending customers fragmented, irrelevant communications across disconnected channels get lifecycle-based loyalty programmes and omnichannel flows with WhatsApp integration that coordinate messages around a single customer record.',
 };
 
 export default function CustomerEngagementPage() {

@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We configure the prompt system and knowledge base with your specific terminology, product names, and internal language. For highly specialized domains, we also use retrieval-augmented generation from your technical documentation so answers reflect your actual processes.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses wanting to automate customer and internal inquiries get AI assistants trained on their documentation and live system data that handle questions across web chat, WhatsApp, and voice with smooth handoff to human agents when needed.',
 };
 
 export default function ConversationalAIPage() {

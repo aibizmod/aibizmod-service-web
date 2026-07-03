@@ -211,8 +211,6 @@ const data: SubservicePageData = {
 			a: 'Newly published content targeting competitive keywords typically begins to rank within two to four months and continues to improve for six to twelve months as search engines assess engagement signals. Content targeting lower-competition queries can rank within four to eight weeks. A consistent publishing programme builds compounding organic visibility over time rather than delivering immediate results.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses publishing content without keyword strategy or conversion objectives get content marketing that targets rankable queries at each buying journey stage, with case studies, website copywriting, and brand voice documentation that serve search and sales.',
 };
 
 export default function BrandContentPage() {

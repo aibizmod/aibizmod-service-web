@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Our security audit service covers infrastructure configuration review and vulnerability scanning, which addresses the most common gaps. Full penetration testing requires a different engagement with a specialist pen testing team and explicit written authorisation. We can recommend suitable providers for this if it is required for compliance purposes.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations with security set up once then forgotten get infrastructure audits, server hardening, tested backup and disaster recovery solutions, and vulnerability scanning that close configuration gaps before they are exploited by attackers.',
 };
 
 export default function SecurityPage() {

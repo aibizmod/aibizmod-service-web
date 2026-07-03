@@ -184,7 +184,7 @@ export function FeatureCarousel({
               const IconComponent = feature.icon;
 
               return (
-                <div key={feature.id} className="relative w-fit lg:w-full flex items-center">
+                <div key={feature.id} className="relative w-full flex items-center">
                   {/* Sliding active timeline segment */}
                   {isActive && (
                     <motion.div
@@ -202,7 +202,7 @@ export function FeatureCarousel({
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     className={cn(
-                      "relative flex items-center gap-3 px-4 md:px-5 lg:px-6 py-2.5 md:py-3 lg:py-3.5 rounded-full text-left group border w-fit lg:w-full transition-transform active:scale-[0.97]",
+                      "relative flex items-center gap-3 px-4 md:px-5 lg:px-6 py-2.5 md:py-3 lg:py-3.5 rounded-full text-left group border w-full transition-transform active:scale-[0.97]",
                       isActive
                         ? "bg-white text-[#0A1628] border-transparent shadow-[0_4px_20px_rgba(34,211,238,0.15)] z-10"
                         : "bg-transparent text-slate-300 border-white/10 hover:bg-white/5 hover:border-white/20 hover:text-white"
@@ -271,11 +271,11 @@ export function FeatureCarousel({
         </div>
 
         {/* Right Column: Cards */}
-        <div className="flex-1 min-h-[420px] lg:h-full relative bg-slate-50/30 flex items-center justify-center py-12 lg:py-8 px-6 md:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-cyan-100/30">
+        <div className="flex-1 min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] lg:h-full relative bg-slate-50/30 flex items-center justify-center py-12 lg:py-8 px-6 md:px-8 overflow-hidden border-t lg:border-t-0 lg:border-l border-cyan-100/30">
           {/* Decorative glow behind cards */}
           <div className="absolute w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-cyan-300/10 to-blue-300/5 blur-3xl pointer-events-none z-0" />
 
-          <div className="relative w-full max-w-[600px] aspect-[4/3] flex items-center justify-center">
+          <div className="relative w-full max-w-[600px] aspect-[3/4] sm:aspect-[4/3] flex items-center justify-center">
             {features.map((feature, index) => {
               const status = getCardStatus(index);
               const isActive = status === "active";
@@ -366,12 +366,12 @@ export function FeatureCarousel({
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute inset-x-0 bottom-0 p-6 lg:p-8 pt-28 bg-gradient-to-t from-black/95 via-black/65 to-transparent flex flex-col justify-end pointer-events-none"
+                        className="absolute inset-x-0 bottom-0 p-4 sm:p-6 lg:p-8 pt-16 sm:pt-24 lg:pt-28 bg-gradient-to-t from-black/95 via-black/65 to-transparent flex flex-col justify-end pointer-events-none"
                       >
                         <div className="bg-white/95 text-slate-800 px-3.5 py-1.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.15em] w-fit shadow-sm mb-3 border border-slate-100/80">
                           {index + 1} • {feature.label}
                         </div>
-                        <p className="text-white font-semibold text-lg md:text-xl leading-snug tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
+                        <p className="text-white font-semibold text-sm sm:text-lg md:text-xl leading-snug tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
                           {feature.description}
                         </p>
                         {feature.deliverables && feature.deliverables.length > 0 && (
@@ -381,7 +381,7 @@ export function FeatureCarousel({
                             variants={{
                               visible: { transition: { staggerChildren: 0.08 } }
                             }}
-                            className="mt-4 space-y-1.5 pointer-events-none"
+                            className="mt-2 sm:mt-4 space-y-1 sm:space-y-1.5 pointer-events-none"
                           >
                             {feature.deliverables.map((item, idx) => (
                               <motion.li
@@ -390,7 +390,7 @@ export function FeatureCarousel({
                                   hidden: { opacity: 0, x: -10 },
                                   visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 25 } }
                                 }}
-                                className="flex items-start gap-2 text-xs font-medium text-slate-100 leading-tight drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+                                className="flex items-start gap-2 text-[11px] sm:text-xs font-medium text-slate-100 leading-tight drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
                               >
                                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 mt-1.5" />
                                 <span>{item}</span>
@@ -400,7 +400,7 @@ export function FeatureCarousel({
                         )}
 
                         {/* Step Flow Progress Dots */}
-                        <div className="flex gap-1.5 mt-5 items-center pointer-events-none">
+                        <div className="flex gap-1.5 mt-3 sm:mt-5 items-center pointer-events-none">
                           {features.map((_, i) => (
                             <div
                               key={i}

@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Both. Cloud architecture consulting typically starts with an advisory phase to design the right architecture before implementation begins. We also handle implementation — building infrastructure-as-code, configuring security controls, executing migrations, and setting up governance tooling. Many clients engage us for both so the architecture intent is carried through to the implemented reality.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations adopting cloud reactively and ending up with fragmented environments and uncontrolled costs get cloud strategy, migration planning, architecture design, governance frameworks, and cost optimisation independent of vendor incentives.',
 };
 
 export default function CloudInfrastructurePage() {

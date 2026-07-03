@@ -212,8 +212,6 @@ const data: SubservicePageData = {
 			a: 'A foundational knowledge base covering the top 20 to 30 customer queries typically takes one to two weeks to structure and write. We work with your support team to identify the most common queries and draft the articles, then hand over for review and approval. Ongoing content is managed by your team after handover.',
 		},
 	],
-	answerSummary:
-		'UK and India support teams managing queries through shared inboxes without ownership or tracking get helpdesk and ticketing platform implementations with triage rules, SLA settings, knowledge bases, and reporting dashboards for measurable performance.',
 };
 
 export default function CustomerSupportSystemsPage() {

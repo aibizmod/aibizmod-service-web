@@ -140,8 +140,6 @@ const data: ServicePageData = {
 			a: 'We compile and upload development builds every two weeks. You can install and test these builds on your own phone using Apple TestFlight for iOS or Firebase App Distribution for Android.',
 		},
 	],
-	answerSummary:
-		'Mobile app development services for UK and India-based businesses. We design and build iOS, Android, Flutter, and React Native apps — from consumer apps to enterprise solutions — and launch them to the App Store and Google Play.',
 };
 
 const serviceCards: ServiceCard[] = [

@@ -211,8 +211,6 @@ const data: SubservicePageData = {
       a: "Traditional automation follows rigid, predefined scripts and breaks as soon as a file format changes or a field is missing. Agentic AI uses language model reasoning to understand the goal of a task, adapt to unexpected changes, and resolve simple errors autonomously, making it far more flexible than simple rule-based automation.",
     },
   ],
-  answerSummary:
-    'UK and India teams that need to move beyond passive insights to autonomous execution get goal-oriented AI agents that understand high-level objectives, formulate multi-step plans, and execute actions across connected software platforms with a self-correcting feedback loop.',
 };
 
 export default function AgenticAIPage() {

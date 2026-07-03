@@ -312,8 +312,6 @@ const data: SubservicePageData = {
       a: "Our audit covers the most widely used conversational assistants and generative search engines, including OpenAI's ChatGPT, Google's Gemini, Anthropic's Claude, and Perplexity AI. We analyze both desktop and mobile search contexts to ensure a comprehensive overview.",
     },
   ],
-  answerSummary:
-    'UK and India businesses wondering why they rarely appear in AI-generated answers like ChatGPT and Gemini get a benchmark of their current visibility, competitor comparison, citation gap analysis, and a 90-day roadmap to improve their AI search presence.',
 };
 
 export default function AIVisibilityAuditPage() {

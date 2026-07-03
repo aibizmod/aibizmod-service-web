@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: "A focused migration of a single application or module takes three to nine months. Comprehensive platform modernisation covering multiple interconnected systems takes one to three years when delivered incrementally. The timeline depends on the scope of the legacy system, the data volume being migrated, the complexity of dependencies between components, and how quickly the business can validate that the new system matches the old one's behaviour.",
 		},
 	],
-	answerSummary:
-		'UK and India organisations running legacy systems that cannot be extended, have no available expertise, or run on unsupported infrastructure get incremental migration, data validation, and parallel running that replaces ageing software without disrupting operations.',
 };
 
 export default function SoftwareModernizationPage() {

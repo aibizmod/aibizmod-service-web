@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'Yes. Standard frameworks like RFM are a useful starting point, but the most actionable segments are ones defined by your actual business model. For a subscription business that means different things than for a transactional retailer. We work with your team to define the segments that map to decisions you actually want to make, not generic categories.',
 		},
 	],
-	answerSummary:
-		'UK and India leadership teams making customer strategy decisions without a clear view of their data get consolidated analytics, churn risk models, RFM segmentation, and dashboards that reveal who is at risk, who is most valuable, and what drives satisfaction.',
 };
 
 export default function CustomerIntelligencePage() {

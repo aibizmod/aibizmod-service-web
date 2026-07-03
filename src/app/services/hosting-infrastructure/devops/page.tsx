@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'Yes. Many of our DevOps engagements start from scratch with teams running on manually provisioned servers. We document the existing infrastructure, implement infrastructure-as-code for all components, and migrate environments into the new setup incrementally to avoid disruption.',
 		},
 	],
-	answerSummary:
-		'UK and India development teams deploying manually with high risk and infrequent releases get CI/CD pipelines, containerisation, infrastructure-as-code, and deployment strategies that automate build-test-deploy cycles and make releases faster, safer, and reproducible.',
 };
 
 export default function DevOpsPage() {

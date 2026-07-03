@@ -218,8 +218,6 @@ const data: SubservicePageData = {
 			a: 'It depends heavily on scope. A focused operational tool for one workflow in one industry takes three to six months. A multi-module system covering the full operational breadth of a business takes eight to eighteen months with phased delivery. Industry-specific projects tend to run slightly longer than equivalent general-purpose software because discovery takes longer when domain requirements need to be properly understood before design begins.',
 		},
 	],
-	answerSummary:
-		'UK and India healthcare, construction, logistics, education, and manufacturing businesses whose generic software cannot handle sector-specific compliance and workflow requirements get custom applications built with domain knowledge and industry-standard system integrations.',
 };
 
 export default function IndustrySpecificSoftwarePage() {

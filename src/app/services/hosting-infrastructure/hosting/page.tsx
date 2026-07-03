@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'For databases containing active business data, daily automated backups with 30-day retention are a standard starting point. For file storage, daily or weekly depending on how frequently content changes. The most important thing is that backups are regularly tested — a backup that has never been successfully restored is not a meaningful safeguard.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses choosing hosting based on cost alone and ending up with slow, unsecured, or unmonitored environments get correctly sized VPS, dedicated, or managed hosting with proper configuration, SSL, backups, and uptime monitoring for reliable application delivery.',
 };
 
 export default function HostingPage() {

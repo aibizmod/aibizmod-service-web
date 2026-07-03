@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'We deliver the source code, documentation, and deployment configuration. You can maintain it with an internal development team or retain us for ongoing maintenance. We offer post-launch support retainers that cover bug fixes, minor enhancements, and security updates. The system is built without proprietary dependencies that would lock you into a specific vendor for maintenance.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations whose off-the-shelf ERP, CRM, or HRMS platforms require costly workarounds to fit their processes get custom enterprise software that models their actual operational workflows with the integrations, reporting, and access controls they need.',
 };
 
 export default function EnterpriseSoftwarePage() {

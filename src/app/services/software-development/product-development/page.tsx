@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: 'We provide product input — challenge scope, suggest interaction patterns, flag technical implications of product decisions — but we do not operate as the product manager. The product decisions about what to build and in what priority order are yours. We work best when the client can give us a clear brief and fast feedback, and we contribute the technical perspective to product decisions rather than making them.',
 		},
 	],
-	answerSummary:
-		'UK and India founders and product teams bringing a software product to market get MVP and SaaS builds that are genuinely production-ready at launch with authentication, billing, monitoring, and architecture designed for the growth path without requiring a rebuild.',
 };
 
 export default function ProductDevelopmentPage() {

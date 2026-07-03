@@ -140,8 +140,6 @@ const data: ServicePageData = {
 			a: 'No. We configure all servers and databases directly within your own billing accounts on AWS, Vercel, or Google Cloud. You retain administrative master credentials, and we access the resources through restricted IAM team permissions that you can revoke at any time.',
 		},
 	],
-	answerSummary:
-		'Cloud hosting and infrastructure services for UK and India-based businesses. We provide AWS, Azure, and GCP architecture, CI/CD pipelines, containerisation, and managed infrastructure that scales with your business and reduces operational overhead.',
 };
 
 const serviceCards: ServiceCard[] = [

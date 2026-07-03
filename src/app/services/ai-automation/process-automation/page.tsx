@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'Yes. For legacy software that has no API, we build browser automation scripts using tools like Playwright or Puppeteer that navigate the UI, fill in fields, and submit forms exactly as a human operator would.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses that need to eliminate manual data entry, spreadsheet copying, and approval-chain delays get workflow automations connecting CRMs, databases, and SaaS tools so their teams focus on higher-value work and operations run without manual intervention.',
 };
 
 export default function ProcessAutomationPage() {

@@ -76,8 +76,8 @@ function RollingTextItem({ item }: { item: ListItem }) {
         layout
         transition={springTransition}
         className={cn(
-          "flex justify-between gap-4 md:gap-6",
-          isActive ? "flex-col md:flex-row items-start pt-2" : "flex-row items-center"
+          "flex justify-between gap-3 md:gap-6",
+          isActive ? "flex-col md:flex-row items-start pt-2" : "flex-col md:flex-row items-start md:items-center"
         )}
       >
         {/* ── Title — left side, original position ─────────────────────── */}
@@ -86,7 +86,7 @@ function RollingTextItem({ item }: { item: ListItem }) {
             "shrink-0 min-w-0",
             isActive
               ? "w-full md:w-auto max-w-full md:max-w-[45%] lg:max-w-[50%]"
-              : "max-w-[52%] md:max-w-[60%]"
+              : "w-full md:max-w-[60%]"
           )}
         >
           <div className="relative overflow-y-clip h-14 md:h-[72px]">
@@ -127,7 +127,7 @@ function RollingTextItem({ item }: { item: ListItem }) {
             "relative shrink-0 rounded-2xl border border-cyan-100/80 bg-white shadow-md overflow-hidden flex flex-col",
             isActive
               ? "w-full md:w-[280px] lg:w-[390px] h-auto gap-4 p-4"
-              : "w-52 md:w-80 h-[38px] md:h-[44px] px-4 py-1 justify-center"
+              : "w-full md:w-80 h-auto md:h-[44px] px-4 py-2 justify-center"
           )}
         >
           {/* Image Container */}
@@ -166,7 +166,7 @@ function RollingTextItem({ item }: { item: ListItem }) {
             <p
               className={cn(
                 "text-sm leading-relaxed transition-colors duration-500",
-                isActive ? "text-neutral-600 font-normal" : "text-neutral-500 line-clamp-1"
+                isActive ? "text-neutral-600 font-normal" : "text-neutral-500 line-clamp-2 md:line-clamp-1"
               )}
             >
               {item.description}

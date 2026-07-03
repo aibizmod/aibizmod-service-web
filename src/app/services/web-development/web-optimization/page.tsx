@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'A performance audit and the top-priority fixes typically take one to two weeks for a standard marketing site. A full WCAG audit with remediation can take two to four weeks depending on the number of pages and the severity of issues found. We give a time estimate after the initial audit, not before, so it is based on actual findings.',
 		},
 	],
-	answerSummary:
-		'UK and India site owners losing visitors to slow load times, losing rankings to poor Core Web Vitals, or exposing their business to security and accessibility risks get systematic audits and prioritised fixes covering performance, security headers, dependency review, and WCAG compliance with before-and-after benchmarks.',
 };
 
 export default function WebOptimizationPage() {

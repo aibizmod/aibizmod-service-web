@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'We instrument AI endpoints with latency metrics, error rates, output quality samples, and usage volumes. Alerts fire when latency degrades or error rates rise above baseline. We also configure drift detection to flag when model outputs are deviating from expected patterns, which typically indicates the data the model was trained on no longer reflects real-world inputs.',
 		},
 	],
-	answerSummary:
-		'UK and India teams building applications where AI is the core function rather than a bolt-on feature get architecture designed around inference, feedback loops, monitoring, and domain-tuned models so the AI component is reliable and improves over time.',
 };
 
 export default function AIPoweredAppsPage() {

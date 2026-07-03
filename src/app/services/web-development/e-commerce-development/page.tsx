@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: 'That depends on your fulfilment process. We build whatever happens next: an email to the warehouse, a record created in an ERP, a webhook to a logistics API, or a status visible in an internal dashboard. The order event from Stripe triggers whatever the business needs.',
 		},
 	],
-	answerSummary:
-		'UK and India retailers whose off-the-shelf store platforms cannot handle their custom pricing, fulfilment workflows, or checkout requirements get custom e-commerce builds with direct Stripe integration and order data connected to their internal systems without platform fees.',
 };
 
 export default function EcommerceDevelopmentPage() {

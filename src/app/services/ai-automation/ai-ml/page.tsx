@@ -212,8 +212,6 @@ const data: SubservicePageData = {
       a: "The most useful input is structured historical data with clear labels or outcomes. You typically need at least 12 months of history and enough positive examples of the outcome you want to predict. We run a data assessment before starting to confirm whether the available data is sufficient.",
     },
   ],
-  answerSummary:
-    'UK and India project teams overwhelmed by fragmented, unstructured operational data get custom ML models and data pipelines that ingest metrics, forecast timeline risks and material demands, and enable proactive rather than reactive decision-making.',
 };
 
 export default function AIMLPage() {

@@ -216,8 +216,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We offer a support period after launch to handle any issues that appear in production, and ongoing retainer arrangements for teams that want regular development support beyond the initial build.',
 		},
 	],
-	answerSummary:
-		'UK and India teams whose web applications suffer from coordination overhead between separate frontend and backend teams with mismatched contracts get full-stack builds from a single team covering React frontend, Node backend, database, and deployment with consistent patterns across every layer.',
 };
 
 export default function FullStackDevelopmentPage() {

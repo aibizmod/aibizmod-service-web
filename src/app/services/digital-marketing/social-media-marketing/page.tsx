@@ -212,8 +212,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We handle influencer identification, outreach, negotiation, briefing, content review, and performance reporting. You approve the influencer shortlist and content brief before anything is confirmed. We recommend influencers based on audience quality metrics, not follower count — engagement rate and audience fit matter more than size.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses with inconsistent social media presence and no link between activity and outcomes get content calendars, creative production, community management, and reporting that connects social activity to traffic, leads, or revenue.',
 };
 
 export default function SocialMediaMarketingPage() {

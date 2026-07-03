@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: 'Enterprise apps are typically distributed through an MDM platform — Microsoft Intune, Jamf, or VMware Workspace ONE — rather than the public app stores. This allows IT to push the app to enrolled devices, manage updates centrally, and revoke access when an employee leaves. We configure the app for MDM-compatible deployment as part of the build.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations deploying mobile apps to field teams with specific workflows, offline requirements, and managed device fleets get enterprise apps designed around how work actually happens with MDM integration and enterprise system connectivity.',
 };
 
 export default function EnterpriseAppsPage() {

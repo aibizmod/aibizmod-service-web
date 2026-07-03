@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'Processing throughput depends on model size, hardware, and whether GPU acceleration is used. A lightweight classification model on a single GPU instance typically handles hundreds of images per minute. We design the infrastructure around your volume requirements during scoping and can scale horizontally if needed.',
 		},
 	],
-	answerSummary:
-		'UK and India organisations with visual inspection, document digitisation, or image-based data capture needs get computer vision pipelines that handle reading, classifying, detecting defects, and verifying documents at scale without manual review bottlenecks.',
 };
 
 export default function AIVisionPage() {

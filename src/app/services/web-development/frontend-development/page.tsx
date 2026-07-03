@@ -214,8 +214,6 @@ const data: SubservicePageData = {
 			a: 'You receive the repository, deployment configuration, and handover documentation. We offer a post-launch support period to catch anything that needs fixing. Ongoing maintenance retainers are available if you want us to handle updates on a regular basis.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses whose websites look right in design mockups but break on real devices, load slowly, or fail accessibility checks get React and Next.js frontends built from the ground up with responsive testing on physical devices, optimised assets, and semantic accessible markup.',
 };
 
 export default function FrontendDevelopmentPage() {

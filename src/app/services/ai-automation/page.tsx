@@ -137,8 +137,6 @@ const data: ServicePageData = {
 			a: 'Yes. In cases where legacy software lacks API access, we construct browser automation scripts (using Puppeteer or Selenium) that log in, navigate pages, and submit forms exactly like a human user would.',
 		},
 	],
-	answerSummary:
-		'AI automation services for UK and India-based businesses that want to eliminate manual work. We build custom automation pipelines, AI agents, generative AI systems, and predictive analytics — delivered by a single team handling strategy, implementation, and support.',
 };
 
 const serviceCards: ServiceCard[] = [

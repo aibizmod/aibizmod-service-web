@@ -68,6 +68,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               src={cover}
               alt={coverAlt || headline}
               fill
+              unoptimized
               className="rounded-2xl object-cover"
             />
           </div>

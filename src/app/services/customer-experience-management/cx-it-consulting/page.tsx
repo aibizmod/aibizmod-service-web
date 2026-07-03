@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: "A roadmap covering a mid-size business's CX technology stack typically takes three to four weeks. This includes stakeholder interviews with CX, IT, and operations leads, an audit of the current technology landscape, requirements gathering, and the written roadmap document with sequenced phases and rationale.",
 		},
 	],
-	answerSummary:
-		'UK and India organisations planning or overhauling their CX technology stack get independent, vendor-neutral advisory on platform selection, integration architecture, implementation roadmaps, and oversight to avoid costly post-purchase surprises.',
 };
 
 export default function CXITConsultingPage() {

@@ -139,8 +139,6 @@ const data: ServicePageData = {
 			a: 'We use Tag Assistant and browser development consoles to run real-time transaction simulations on your staging website. We verify that specific tag headers fire and that the correct transaction values are received in GA4 and ad dashboards.',
 		},
 	],
-	answerSummary:
-		'Digital marketing services for UK and India-based businesses. We deliver SEO, generative engine optimisation, paid advertising, email marketing, and analytics that generate measurable leads and grow your online presence.',
 };
 
 const serviceCards: ServiceCard[] = [

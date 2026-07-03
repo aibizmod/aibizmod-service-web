@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: 'Development and marketing are separate disciplines. We build the app and implement the analytics and notification infrastructure that marketing activity will use. For user acquisition campaigns, ASO, and influencer strategy, we work with specialist app marketing partners or your existing marketing team.',
 		},
 	],
-	answerSummary:
-		'UK and India consumer-facing products competing for app store visibility and user retention get mobile apps designed around the user journey from discovery through habitual use with ASO, onboarding optimisation, push notification strategy, and analytics from day one.',
 };
 
 export default function ConsumerAppsPage() {

@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes, though we start every inherited app with a codebase review to understand the structure, identify existing technical debt, and assess the quality of the test coverage. This gives us a realistic picture of the maintenance effort before committing to specific timelines. We document our findings and agree on a remediation approach for any significant structural issues that would affect ongoing maintenance efficiency.',
 		},
 	],
-	answerSummary:
-		'UK and India app owners whose launched applications gradually become unreliable due to OS updates and performance degradation get structured maintenance programmes covering OS compatibility testing, bug triage, performance profiling, and compliance monitoring to keep apps current.',
 };
 
 export default function MaintenanceOptimizationPage() {

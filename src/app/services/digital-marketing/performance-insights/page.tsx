@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Usually both are possible. For GA4, we prefer to fix the existing property rather than start fresh, so historical data is preserved. Where the existing implementation is too broken to repair efficiently, we set up a parallel clean property and document the transition date so historical and new data are clearly separated.',
 		},
 	],
-	answerSummary:
-		'UK and India marketing teams whose analytics data does not match their other systems get audits that fix tracking gaps, funnel analysis that reveals drop-off points, conversion rate optimisation, and unified dashboards connecting performance across every channel.',
 };
 
 export default function PerformanceInsightsPage() {

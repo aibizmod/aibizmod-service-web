@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'It depends on how quickly the underlying patterns change. Demand forecasting models in stable businesses may only need quarterly retraining. Churn models in rapidly evolving markets may need monthly updates. We build retraining pipelines so the process can run on a schedule with minimal manual intervention.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses with historical data they cannot fully interpret get predictive models, recommendation systems, and anomaly detection that forecast outcomes, surface patterns, and deliver actionable outputs directly into existing workflows.',
 };
 
 export default function AIIntelligencePage() {

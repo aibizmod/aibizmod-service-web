@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'Yes. We build structured output pipelines where the LLM produces JSON or formatted data rather than free text, which then feeds directly into your application logic, CRM, document management system, or workflow automation.',
 		},
 	],
-	answerSummary:
-		'UK and India businesses dealing with content generation, document processing, and decision support at scale get LLM pipelines and RAG systems that handle language tasks reliably with source-grounded answers and human review checkpoints where stakes require it.',
 };
 
 export default function GenerativeAIPage() {

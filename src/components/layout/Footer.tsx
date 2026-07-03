@@ -86,26 +86,26 @@ export default function Footer() {
               We partner with ambitious companies to solve complex challenges, improve operations and deliver real results using tailored digital solutions.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4 shrink-0">
-            <Link href="/contact" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-3xl shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto shrink-0">
+            <Link href="/contact" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-3xl w-full sm:w-auto">
               <StarButton
                 as="span"
                 lightColor="#22D3EE"
                 backgroundColor="#ffffff"
                 textColor="text-black"
-                className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
+                className="w-full flex sm:inline-flex sm:w-auto font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
               >
                 Start a Project
                 <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300 text-black" />
               </StarButton>
             </Link>
-            <Link href="/services" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-3xl shrink-0">
+            <Link href="/services" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-3xl w-full sm:w-auto">
               <StarButton
                 as="span"
                 lightColor="#FAFAFA"
                 backgroundColor="#ffffff"
                 textColor="text-black"
-                className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
+                className="w-full flex sm:inline-flex sm:w-auto font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
               >
                 View Services
               </StarButton>

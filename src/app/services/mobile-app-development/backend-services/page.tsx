@@ -216,8 +216,6 @@ const data: SubservicePageData = {
 			a: 'Mobile apps cannot force users to update immediately the way web apps can. We implement API versioning from the start so older app versions continue to work after API changes. We maintain old API versions until the percentage of users on affected app versions drops below a threshold, then deprecate with advance notice in app update release notes.',
 		},
 	],
-	answerSummary:
-		'UK and India mobile apps whose performance and reliability depend on backend infrastructure get APIs, authentication systems, push notification infrastructure, and payment integrations designed for mobile workload patterns with security and scalability built in.',
 };
 
 export default function BackendServicesPage() {

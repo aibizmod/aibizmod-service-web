@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'We deliver a walkthrough session for each team using the CRM (typically sales, marketing, and support separately) covering the features relevant to their role. We also provide written documentation for common tasks and a recorded session your team can refer back to. Post-launch support is included for the first two weeks to handle questions as the team starts using the system.',
 		},
 	],
-	answerSummary:
-		'UK and India sales, support, and marketing teams working from disconnected customer records get CRM implementation and integration that gives them a single view of every relationship with custom pipelines, automated workflows, and clean data migration.',
 };
 
 export default function CRMServicesPage() {

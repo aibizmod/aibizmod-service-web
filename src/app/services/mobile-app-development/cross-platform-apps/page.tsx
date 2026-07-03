@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: "iOS and Android have different navigation paradigms, typography scales, and interaction conventions. We implement platform-specific adaptations for navigation patterns, icon styles, and interaction conventions where the experience genuinely benefits from following each platform's guidelines. We scope these adaptations explicitly so you understand what differs between the two platforms before development begins.",
 		},
 	],
-	answerSummary:
-		'UK and India teams needing iOS and Android apps within tighter budgets or timelines get Flutter or React Native builds from a single codebase that deliver near-native performance and platform-appropriate experience without maintaining two separate codebases.',
 };
 
 export default function CrossPlatformAppsPage() {

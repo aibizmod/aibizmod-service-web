@@ -142,8 +142,6 @@ const data: ServicePageData = {
 			a: 'Yes. Once the roadmap is delivered, you can choose to have your own developers implement the recommendations, hire third-party contractors, or engage our engineering team under a separate custom development contract.',
 		},
 	],
-	answerSummary:
-		'IT consulting and digital transformation services for UK and India-based businesses. We provide technology roadmaps, cloud advisory, cybersecurity assessments, and managed IT services that connect technology investment to measurable business outcomes.',
 };
 
 const serviceCards: ServiceCard[] = [

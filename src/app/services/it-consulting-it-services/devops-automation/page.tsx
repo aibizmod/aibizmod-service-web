@@ -215,8 +215,6 @@ const data: SubservicePageData = {
 			a: 'We assess your current deployment process, on-call setup, incident response procedures, and observability against a DevOps maturity framework. We produce a findings report identifying the highest-impact improvements and a recommended implementation sequence, prioritised by the problems causing the most friction for your team today.',
 		},
 	],
-	answerSummary:
-		'UK and India development and operations teams spending more time coordinating deployments than building features get CI/CD pipeline design, containerisation, infrastructure automation, and DevOps practice adoption that creates a shared foundation for reliable, frequent releases.',
 };
 
 export default function DevOpsAutomationPage() {

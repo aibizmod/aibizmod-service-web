@@ -207,8 +207,6 @@ const data: SubservicePageData = {
       a: "Our models are trained on diverse environmental datasets to account for rain, fog, dust, and varying shadows. For low-light or subterranean tracking, we calibrate the networks to process infrared or thermal imagery alongside standard visual feeds to maintain strict quality control accuracy.",
     },
   ],
-  answerSummary:
-    'UK and India construction, manufacturing, and logistics teams facing massive volumes of visual data from drone feeds, site cameras, and progress photos get deep neural networks that autonomously detect defects, monitor safety compliance, and track physical progress against plans.',
 };
 
 export default function DeepLearningPage() {

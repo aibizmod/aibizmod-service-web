@@ -213,8 +213,6 @@ const data: SubservicePageData = {
 			a: 'For most schema changes — adding a column, adding an index — zero-downtime migrations are possible with the right approach. Adding a nullable column and backfilling it is safe while the application is running. Dropping a column requires a deployment that stops reading it first. Renaming a column requires an expand-contract migration across two deployments. We assess each migration individually and design the approach before executing it.',
 		},
 	],
-	answerSummary:
-		'UK and India teams whose application performance degrades as data grows get database optimisation covering query analysis, indexing strategy, connection pooling, backup validation, and safe migration processes that keep the data layer reliable and performant.',
 };
 
 export default function DatabaseServicesPage() {

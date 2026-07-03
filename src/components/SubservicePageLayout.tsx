@@ -301,7 +301,6 @@ export interface SubservicePageData {
   technologies: string[];
   benefits: SubserviceBenefit[];
   faqs: SubserviceFAQ[];
-  answerSummary?: string;    // 40–70 word GEO answer block below H1
 }
 
 // ─── Structured data ─────────────────────────────────────────────────────────
@@ -360,7 +359,7 @@ function buildSchema(data: SubservicePageData) {
 function FAQItem({ faq }: { faq: SubserviceFAQ }) {
   return (
     <details className="group rounded-xl border cursor-pointer transition-all duration-300 overflow-hidden border-[#E0F2FE] bg-white hover:border-[#BAE6FD] hover:bg-[#F0FDFF] open:border-[#BAE6FD] open:bg-[#ECFEFF]/80 open:shadow-[0_2px_16px_rgba(8,145,178,0.06)]">
-      <summary className="flex items-center justify-between px-5 py-4 gap-4 select-none list-none [&::-webkit-details-marker]:hidden">
+      <summary className="flex items-center justify-between px-5 py-3.5 min-h-[52px] gap-4 select-none list-none [&::-webkit-details-marker]:hidden">
         <h3 className="text-[15.5px] font-medium leading-snug transition-colors duration-200 flex-1 text-[#0F172A] group-open:text-[#0891B2] group-open:font-semibold">
           {faq.q}
         </h3>
@@ -512,26 +511,19 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
                     {data.name}
                   </h1>
 
-                  {/* Answer summary (GEO block) */}
-                  {data.answerSummary && (
-                    <p className="mt-6 text-base md:text-lg leading-relaxed text-slate-600 max-w-3xl">
-                      {data.answerSummary}
-                    </p>
-                  )}
-
                   <div
-                    className="mt-6 max-w-xl rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-slate-600 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md text-base leading-8 md:text-lg whitespace-pre-line"
+                    className="mt-6 w-full max-w-xl rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-slate-600 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md text-base leading-8 md:text-lg whitespace-pre-line"
                   >
                     {renderTagline(data.tagline)}
                   </div>
 
                   <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <Link href="/contact" aria-label="Get a free consultation">
+                    <Link href="/contact" aria-label="Get a free consultation" className="w-full sm:w-auto">
                       <StarButton
                         as="span"
                         lightColor="#38bdf8"
                         backgroundColor="#0f172a"
-                        className="h-12 font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
+                        className="h-12 w-full flex sm:inline-flex sm:w-auto font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
                       >
                         Get a Free Consultation
                         <ArrowRight size={16} aria-hidden="true" />
@@ -539,7 +531,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
                     </Link>
                     <Link
                       href={`/services/${data.parentSlug}`}
-                      className="inline-flex h-12 items-center justify-center rounded-full border border-cyan-100 bg-white/55 px-6 text-sm font-semibold text-[#0F172A] shadow-[0_12px_32px_rgba(15,23,42,0.08)] backdrop-blur-md transition hover:border-cyan-200 hover:bg-white"
+                      className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-cyan-100 bg-white/55 px-6 text-sm font-semibold text-[#0F172A] shadow-[0_12px_32px_rgba(15,23,42,0.08)] backdrop-blur-md transition hover:border-cyan-200 hover:bg-white"
                     >
                       Back to {data.parentName}
                     </Link>
@@ -554,7 +546,7 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
                 transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
               >
                 <div
-                  className="relative min-h-[400px] overflow-hidden rounded-[32px] border border-cyan-100 bg-cyan-50 shadow-[0_26px_80px_rgba(8,145,178,0.16)]"
+                  className="relative min-h-[220px] sm:min-h-[320px] lg:min-h-[420px] overflow-hidden rounded-[32px] border border-cyan-100 bg-cyan-50 shadow-[0_26px_80px_rgba(8,145,178,0.16)]"
                   style={{
                     backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.08), rgba(15,23,42,0.34)), url(${data.heroImage})`,
                     backgroundPosition: "center",
