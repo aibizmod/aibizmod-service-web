@@ -65,15 +65,19 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
         <div className="absolute right-1.5 top-1/2 -translate-y-1/2">
           <StarButton
             as="span"
-            lightColor="#38bdf8"
+            lightColor="#00f0ff"
             backgroundColor="#0f172a"
-            className="h-9 px-4 text-[13px] font-medium cursor-pointer"
+            borderWidth={2.2}
+            glow={true}
+            sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
+            className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
             onClick={() => {
               const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
               form?.requestSubmit();
             }}
           >
-            Check visibility <ArrowRight size={15} />
+            Check visibility
+            <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
           </StarButton>
         </div>
       </div>

@@ -566,7 +566,7 @@ function AuditReportContent() {
                 </div>
               </div>
 
-              {/* Category Breakdown - Bento Grid */}
+              {/* Category Breakdown - Bar Chart */}
               <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 shadow-sm">
@@ -579,11 +579,12 @@ function AuditReportContent() {
                 </div>
 
                 {result.scoreBreakDown && Object.keys(result.scoreBreakDown).length > 0 ? (
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="space-y-4">
                     {Object.entries(result.scoreBreakDown).map(([key, value]) => {
                       const maxScores: Record<string, number> = {
                         robots: 18, llms: 18, schema: 16, meta: 14,
                         content: 12, brand: 10, signals: 6, ai_discovery: 6,
+                        brand_entity: 20, negative_penalty: 20,
                       };
                       const max = maxScores[key] || 20;
                       const pct = Math.round((value / max) * 100);
@@ -591,38 +592,32 @@ function AuditReportContent() {
                       const accent = CATEGORY_COLORS[key] || "#6366f1";
 
                       const status = pct >= 80 ? "Strong" : pct >= 60 ? "Good" : pct >= 40 ? "Needs Work" : "Critical";
+                      const statusColor = pct >= 80 ? "#16a34a" : pct >= 60 ? "#0891b2" : pct >= 40 ? "#ca8a04" : "#dc2626";
 
                       return (
-                        <div
-                          key={key}
-                          className="group relative rounded-xl border border-slate-100 bg-slate-50/60 p-4 hover:bg-white hover:border-slate-200 hover:shadow-sm transition-all"
-                        >
-                          <div className="absolute top-0 left-0 w-1 h-full rounded-l-xl transition-all group-hover:opacity-100 opacity-60"
-                            style={{ backgroundColor: accent }}
-                          />
-                          <div className="flex items-center justify-between mb-3 pl-2">
-                            <div className="flex items-center gap-2">
+                        <div key={key} className="group">
+                          <div className="flex items-center justify-between mb-1.5">
+                            <div className="flex items-center gap-2.5">
                               <div className="p-1.5 rounded-lg" style={{ backgroundColor: `${accent}15` }}>
-                                <Icon className="h-3.5 w-3.5" style={{ color: accent }} />
+                                <Icon className="h-4 w-4" style={{ color: accent }} />
                               </div>
                               <span className="text-sm font-semibold text-slate-700">
                                 {CATEGORY_LABELS[key] || key.replace(/_/g, " ")}
                               </span>
                             </div>
-                            <div className="text-right">
-                              <span className="text-base font-bold text-slate-900">{value}</span>
-                              <span className="text-xs text-slate-400 font-medium">/{max}</span>
+                            <div className="flex items-center gap-3">
+                              <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ color: statusColor, backgroundColor: `${statusColor}15` }}>
+                                {status}
+                              </span>
+                              <span className="text-sm font-bold text-slate-900">{value}<span className="text-xs text-slate-400 font-medium">/{max}</span></span>
+                              <span className="text-sm font-bold" style={{ color: accent }}>{pct}%</span>
                             </div>
                           </div>
-                          <div className="h-2 rounded-full bg-slate-200 overflow-hidden pl-2">
+                          <div className="h-3 rounded-full bg-slate-200/80 overflow-hidden">
                             <div
-                              className="h-full rounded-full transition-all duration-700"
-                              style={{ width: `${pct}%`, backgroundColor: accent }}
+                              className="h-full rounded-full transition-all duration-700 ease-out"
+                              style={{ width: `${Math.max(pct, 0)}%`, backgroundColor: accent }}
                             />
-                          </div>
-                          <div className="mt-1.5 pl-2 flex justify-between items-center">
-                            <span className="text-[11px] font-medium" style={{ color: accent }}>{status}</span>
-                            <span className="text-[11px] text-slate-400">{pct}%</span>
                           </div>
                         </div>
                       );
