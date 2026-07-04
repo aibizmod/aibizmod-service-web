@@ -62,7 +62,7 @@ const data: SubservicePageData = {
 			title: 'Domain-Specific Fine-Tuning',
 			description:
 				'Adapt powerful foundation models (like GPT-4, Gemini, or open-source variants) to align perfectly with your industry',
-			image: '/services/ai-automation/llm-domainspecific-finetuning.jpg',
+			image: '/services/ai-automation/llm-domainspecific-finetuning.webp',
 			imageAlt: 'AI & Automation Domain-Specific Fine-Tuning capability illustration.',
 		},
 		{
@@ -70,7 +70,7 @@ const data: SubservicePageData = {
 			title: 'Retrieval-Augmented Generation (RAG)',
 			description:
 				'Securely tether generative AI to your private repositories and document servers for factual, context-aware answers without compromising data privacy.',
-			image: '/services/ai-automation/llm-retrievalaugmented-generation-rag.jpg',
+			image: '/services/ai-automation/llm-retrievalaugmented-generation-rag.webp',
 			imageAlt: 'AI & Automation Retrieval-Augmented Generation (RAG) capability illustration.',
 		},
 		{
@@ -78,7 +78,7 @@ const data: SubservicePageData = {
 			title: 'Automated Document Ingestion & Summarization',
 			description:
 				'Instantly scan, categorize, and extract critical parameters or liability clauses from multi-hundred-page technical contracts, specifications, and submittals.',
-			image: '/services/ai-automation/llm-automated-document-ingestion-summarization.jpg',
+			image: '/services/ai-automation/llm-automated-document-ingestion-summarization.webp',
 			imageAlt: 'AI & Automation Automated Document Ingestion & Summarization capability illustration.',
 		},
 		{
@@ -86,7 +86,7 @@ const data: SubservicePageData = {
 			title: 'Generative Administrative Automation',
 			description:
 				'Streamline administrative workloads by automating the drafting of technical responses, daily logs, and context-rich project documentation.',
-			image: '/services/ai-automation/llm-generative-administrative-automation.jpg',
+			image: '/services/ai-automation/llm-generative-administrative-automation.webp',
 			imageAlt: 'AI & Automation Generative Administrative Automation capability illustration.',
 		},
 		{
@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 			title: 'Intelligent Knowledge Retrieval',
 			description:
 				'Natural language search across thousands of past project reports, SOPs, and technical manuals for immediate technical solutions.',
-			image: '/services/ai-automation/llm-intelligent-knowledge-retrieval.jpg',
+			image: '/services/ai-automation/llm-intelligent-knowledge-retrieval.webp',
 			imageAlt: 'AI & Automation Intelligent Knowledge Retrieval capability illustration.',
 		},
 		{
@@ -102,7 +102,7 @@ const data: SubservicePageData = {
 			title: 'Conversational Document Interface',
 			description:
 				'Allow teams to ask questions in plain language and receive answers grounded in your private documentation with source citations.',
-			image: '/services/ai-automation/llm-conversational-document-interface.jpg',
+			image: '/services/ai-automation/llm-conversational-document-interface.webp',
 			imageAlt: 'AI & Automation Conversational Document Interface capability illustration.',
 		}
 	],

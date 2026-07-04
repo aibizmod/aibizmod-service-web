@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'MVP Development',
 			description:
 				'Build the minimum version of your product needed to validate the core hypothesis with real users, scoped to launch quickly without compromising production readiness.',
-			image: '/services/software-development/product-development-mvp-development.jpg',
+			image: '/services/software-development/product-development-mvp-development.webp',
 			imageAlt: 'Software Development MVP Development capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'SaaS Product Development',
 			description:
 				'Build subscription software products with multi-tenant architecture, user management, billing integration, and the operational infrastructure required for a commercial SaaS product.',
-			image: '/services/software-development/product-development-saas-product-development.jpg',
+			image: '/services/software-development/product-development-saas-product-development.webp',
 			imageAlt: 'Software Development SaaS Product Development capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Technical Architecture for Scale',
 			description:
 				'Design product architecture that handles current requirements and the growth trajectory your product is planning for, avoiding the costly rearchitecture that comes from early decisions made without scale in mind.',
-			image: '/services/software-development/product-development-technical-architecture-for-scale.jpg',
+			image: '/services/software-development/product-development-technical-architecture-for-scale.webp',
 			imageAlt: 'Software Development Technical Architecture for Scale capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'User Authentication and Access Management',
 			description:
 				'Implement authentication, authorisation, team/organisation management, and role-based access — the infrastructure every SaaS product needs that is rarely just a week',
-			image: '/services/software-development/product-development-user-authentication-and-access-management.jpg',
+			image: '/services/software-development/product-development-user-authentication-and-access-management.webp',
 			imageAlt: 'Software Development User Authentication and Access Management capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Billing and Subscription Integration',
 			description:
 				'Integrate Stripe for subscription billing, trial management, plan upgrades, and revenue reporting — with webhook handling and the billing management UI your customers need.',
-			image: '/services/software-development/product-development-billing-and-subscription-integration.jpg',
+			image: '/services/software-development/product-development-billing-and-subscription-integration.webp',
 			imageAlt: 'Software Development Billing and Subscription Integration capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Post-Launch Product Iteration',
 			description:
 				'Ongoing development cycles based on user feedback and analytics data — building the features that usage data shows users need, not the ones assumed during initial design.',
-			image: '/services/software-development/product-development-postlaunch-product-iteration.jpg',
+			image: '/services/software-development/product-development-postlaunch-product-iteration.webp',
 			imageAlt: 'Software Development Post-launch Product Iteration capability illustration.',
 		}
 	],

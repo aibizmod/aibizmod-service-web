@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Strategy and Adoption Planning',
 			description:
 				'Define your organisation',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-strategy-and-adoption-planning.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-strategy-and-adoption-planning.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Strategy and Adoption Planning capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Architecture Design',
 			description:
 				'Design cloud architectures on AWS, Azure, or GCP that address your availability, security, performance, and cost requirements with documented design decisions.',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-architecture-design.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-architecture-design.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Architecture Design capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Migration Planning',
 			description:
 				'Assess the workloads in scope for migration, identify dependencies and risks, design the migration approach, and produce a sequenced migration plan with defined success criteria.',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-migration-planning.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-migration-planning.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Migration Planning capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Governance Framework',
 			description:
 				'Design the account structure, tagging policies, access control standards, and cost management practices that enable cloud to be operated at scale with visibility and control.',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-governance-framework.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-governance-framework.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Governance Framework capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Cost Optimisation',
 			description:
 				'Audit current cloud spend, identify waste and over-provisioning, implement cost allocation tagging, and recommend reserved capacity and architectural improvements to reduce costs.',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-cost-optimisation.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-cost-optimisation.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Cost Optimisation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Security Review',
 			description:
 				'Assess cloud environments against security best practices and compliance requirements, producing findings and remediation guidance for identified configuration gaps.',
-			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-security-review.jpg',
+			image: '/services/it-consulting-it-services/cloud-infrastructure-cloud-security-review.webp',
 			imageAlt: 'IT Consulting & IT Services Cloud Security Review capability illustration.',
 		}
 	],

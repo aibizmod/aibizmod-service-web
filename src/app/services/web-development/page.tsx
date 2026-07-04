@@ -144,7 +144,7 @@ const serviceCards: ServiceCard[] = [
 	{
 		title: 'Frontend Development',
 		image:
-			'/services/web-development/frontend-development-hero.png',
+			'/services/web-development/frontend-development-hero.webp',
 		bullets: [
 			'Responsive Websites',
 			'Landing Pages',

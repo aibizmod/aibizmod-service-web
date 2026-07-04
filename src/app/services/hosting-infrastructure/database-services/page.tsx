@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Database Hosting Setup',
 			description:
 				'Configure managed database instances on AWS RDS, Google Cloud SQL, or DigitalOcean Managed Databases, or self-hosted PostgreSQL and MySQL on your own infrastructure.',
-			image: '/services/hosting-infrastructure/database-services-database-hosting-setup.jpg',
+			image: '/services/hosting-infrastructure/database-services-database-hosting-setup.webp',
 			imageAlt: 'Hosting & Infrastructure Database Hosting Setup capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Query Performance Optimisation',
 			description:
 				'Analyse slow query logs, identify missing or inefficient indexes, and rewrite problematic queries to reduce query execution time and database load.',
-			image: '/services/hosting-infrastructure/database-services-query-performance-optimisation.jpg',
+			image: '/services/hosting-infrastructure/database-services-query-performance-optimisation.webp',
 			imageAlt: 'Hosting & Infrastructure Query Performance Optimisation capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Database Administration',
 			description:
 				'Ongoing database administration covering backup management, user and permission management, version upgrades, and routine maintenance tasks.',
-			image: '/services/hosting-infrastructure/database-services-database-administration.jpg',
+			image: '/services/hosting-infrastructure/database-services-database-administration.webp',
 			imageAlt: 'Hosting & Infrastructure Database Administration capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Database Security Configuration',
 			description:
 				'Configure database access controls, network exposure restrictions, encryption at rest and in transit, and audit logging for sensitive data stores.',
-			image: '/services/hosting-infrastructure/database-services-database-security-configuration.jpg',
+			image: '/services/hosting-infrastructure/database-services-database-security-configuration.webp',
 			imageAlt: 'Hosting & Infrastructure Database Security Configuration capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Database Migration',
 			description:
 				'Migrate databases between platforms or versions with minimal downtime, including data validation, cutover planning, and rollback procedures.',
-			image: '/services/hosting-infrastructure/database-services-database-migration.jpg',
+			image: '/services/hosting-infrastructure/database-services-database-migration.webp',
 			imageAlt: 'Hosting & Infrastructure Database Migration capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Replication and High Availability',
 			description:
 				'Configure read replicas, failover instances, or multi-region replication for applications that need higher availability or read scalability beyond a single database instance.',
-			image: '/services/hosting-infrastructure/database-services-replication-and-high-availability.jpg',
+			image: '/services/hosting-infrastructure/database-services-replication-and-high-availability.webp',
 			imageAlt: 'Hosting & Infrastructure Replication and High Availability capability illustration.',
 		}
 	],

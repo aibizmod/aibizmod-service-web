@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Google Search Ads',
 			description:
 				'Keyword strategy, match type management, negative keyword lists, and ad copy testing for search campaigns targeting users with active purchase intent.',
-			image: '/services/digital-marketing/paid-advertising-google-search-ads.jpg',
+			image: '/services/digital-marketing/paid-advertising-google-search-ads.webp',
 			imageAlt: 'Digital Marketing Google Search Ads capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Meta Ads (Facebook and Instagram)',
 			description:
 				'Audience build, creative strategy, campaign structure, and funnel-stage matching across awareness, consideration, and conversion objectives on Meta',
-			image: '/services/digital-marketing/paid-advertising-meta-ads-facebook-and-instagram.jpg',
+			image: '/services/digital-marketing/paid-advertising-meta-ads-facebook-and-instagram.webp',
 			imageAlt: 'Digital Marketing Meta Ads (Facebook and Instagram) capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'LinkedIn Ads',
 			description:
 				'B2B campaign management using LinkedIn',
-			image: '/services/digital-marketing/paid-advertising-linkedin-ads.jpg',
+			image: '/services/digital-marketing/paid-advertising-linkedin-ads.webp',
 			imageAlt: 'Digital Marketing LinkedIn Ads capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'PPC Campaign Management',
 			description:
 				'Ongoing bid management, budget allocation, Quality Score optimisation, and A/B testing to improve cost per click and cost per acquisition across live campaigns.',
-			image: '/services/digital-marketing/paid-advertising-ppc-campaign-management.jpg',
+			image: '/services/digital-marketing/paid-advertising-ppc-campaign-management.webp',
 			imageAlt: 'Digital Marketing PPC Campaign Management capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Conversion Tracking Setup',
 			description:
 				'Google Tag Manager configuration, Google Ads conversion action setup, Meta Pixel and CAPI integration, and event verification to ensure accurate attribution data.',
-			image: '/services/digital-marketing/paid-advertising-conversion-tracking-setup.jpg',
+			image: '/services/digital-marketing/paid-advertising-conversion-tracking-setup.webp',
 			imageAlt: 'Digital Marketing Conversion Tracking Setup capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Retargeting Campaigns',
 			description:
 				'Audience segmentation and retargeting campaign builds that re-engage visitors who did not convert, with messaging matched to their stage in the buying process.',
-			image: '/services/digital-marketing/paid-advertising-retargeting-campaigns.jpg',
+			image: '/services/digital-marketing/paid-advertising-retargeting-campaigns.webp',
 			imageAlt: 'Digital Marketing Retargeting Campaigns capability illustration.',
 		}
 	],

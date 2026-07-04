@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'ERP Development',
 			description:
 				'Build enterprise resource planning systems covering purchasing, inventory, production, finance, and reporting — modelled on your actual operational process.',
-			image: '/services/software-development/enterprise-software-erp-development.jpg',
+			image: '/services/software-development/enterprise-software-erp-development.webp',
 			imageAlt: 'Software Development ERP Development capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'CRM Development',
 			description:
 				'Develop custom CRM systems for organisations whose customer management requirements cannot be served by off-the-shelf platforms without significant workflow compromises.',
-			image: '/services/software-development/enterprise-software-crm-development.jpg',
+			image: '/services/software-development/enterprise-software-crm-development.webp',
 			imageAlt: 'Software Development CRM Development capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'HRMS Development',
 			description:
 				'Build human resources management systems covering employee records, leave management, payroll processing, performance management, and compliance reporting.',
-			image: '/services/software-development/enterprise-software-hrms-development.jpg',
+			image: '/services/software-development/enterprise-software-hrms-development.webp',
 			imageAlt: 'Software Development HRMS Development capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Inventory Management Systems',
 			description:
 				'Develop inventory and warehouse management systems with real-time stock visibility, multi-location tracking, reorder management, and supplier integration.',
-			image: '/services/software-development/enterprise-software-inventory-management-systems.jpg',
+			image: '/services/software-development/enterprise-software-inventory-management-systems.webp',
 			imageAlt: 'Software Development Inventory Management Systems capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Workflow and Approval Engine',
 			description:
 				'Build configurable workflow and approval systems that model multi-stage business processes with conditional routing, escalation, and audit trail.',
-			image: '/services/software-development/enterprise-software-workflow-and-approval-engine.jpg',
+			image: '/services/software-development/enterprise-software-workflow-and-approval-engine.webp',
 			imageAlt: 'Software Development Workflow and Approval Engine capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Enterprise Reporting and Dashboards',
 			description:
 				'Develop operational reporting and executive dashboards pulling from enterprise system data, replacing manual export and reconciliation processes.',
-			image: '/services/software-development/enterprise-software-enterprise-reporting-and-dashboards.jpg',
+			image: '/services/software-development/enterprise-software-enterprise-reporting-and-dashboards.webp',
 			imageAlt: 'Software Development Enterprise Reporting and Dashboards capability illustration.',
 		}
 	],

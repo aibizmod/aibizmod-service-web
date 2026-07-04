@@ -61,7 +61,7 @@ const data: SubservicePageData = {
 			title: 'Computer Vision & Visual Analytics',
 			description:
 				'Deploy advanced convolutional neural networks (CNNs) for real-time object detection, safety compliance monitoring, and automated physical progress tracking.',
-			image: '/services/ai-automation/deep-learning-computer-vision-visual-analytics.jpg',
+			image: '/services/ai-automation/deep-learning-computer-vision-visual-analytics.webp',
 			imageAlt: 'AI & Automation Computer Vision & Visual Analytics capability illustration.',
 		},
 		{
@@ -69,7 +69,7 @@ const data: SubservicePageData = {
 			title: 'Neural Network Design & Custom Architectures',
 			description:
 				'Engineer deep, multi-layered neural frameworks calibrated precisely to process highly complex, non-linear datasets.',
-			image: '/services/ai-automation/deep-learning-neural-network-design-custom-architectures.jpg',
+			image: '/services/ai-automation/deep-learning-neural-network-design-custom-architectures.webp',
 			imageAlt: 'AI & Automation Neural Network Design & Custom Architectures capability illustration.',
 		},
 		{
@@ -77,7 +77,7 @@ const data: SubservicePageData = {
 			title: 'Advanced Spatial Pattern Recognition',
 			description:
 				'Identify microscopic structural anomalies, machinery wear-and-tear, or quality deviations across massive imagery and sensor streams.',
-			image: '/services/ai-automation/deep-learning-advanced-spatial-pattern-recognition.jpg',
+			image: '/services/ai-automation/deep-learning-advanced-spatial-pattern-recognition.webp',
 			imageAlt: 'AI & Automation Advanced Spatial Pattern Recognition capability illustration.',
 		},
 		{
@@ -85,7 +85,7 @@ const data: SubservicePageData = {
 			title: 'Cognitive Feature Extraction',
 			description:
 				'Automatically isolate and extract high-dimensional features from unstructured audio, visual, and environmental feeds without manual data engineering.',
-			image: '/services/ai-automation/deep-learning-cognitive-feature-extraction.jpg',
+			image: '/services/ai-automation/deep-learning-cognitive-feature-extraction.webp',
 			imageAlt: 'AI & Automation Cognitive Feature Extraction capability illustration.',
 		},
 		{
@@ -93,7 +93,7 @@ const data: SubservicePageData = {
 			title: 'Real-Time Video Stream Processing',
 			description:
 				'Process live camera feeds with intelligent frame analysis, motion-triggered processing, and edge-optimized inference for low-latency results.',
-			image: '/services/ai-automation/deep-learning-realtime-video-stream-processing.jpg',
+			image: '/services/ai-automation/deep-learning-realtime-video-stream-processing.webp',
 			imageAlt: 'AI & Automation Real-Time Video Stream Processing capability illustration.',
 		},
 		{
@@ -101,7 +101,7 @@ const data: SubservicePageData = {
 			title: 'Safety Compliance Monitoring',
 			description:
 				'Automated detection of PPE violations, restricted zone incursions, and hazardous conditions with instant supervisor alerts.',
-			image: '/services/ai-automation/deep-learning-safety-compliance-monitoring.jpg',
+			image: '/services/ai-automation/deep-learning-safety-compliance-monitoring.webp',
 			imageAlt: 'AI & Automation Safety Compliance Monitoring capability illustration.',
 		}
 	],

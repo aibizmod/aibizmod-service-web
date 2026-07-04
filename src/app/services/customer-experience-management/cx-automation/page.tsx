@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'AI Chatbot Development',
 			description:
 				'Build and deploy chatbots for your website, app, or messaging platforms that handle FAQ, status queries, and self-service actions with natural language understanding.',
-			image: '/services/customer-experience-management/cx-automation-ai-chatbot-development.jpg',
+			image: '/services/customer-experience-management/cx-automation-ai-chatbot-development.webp',
 			imageAlt: 'Customer Experience Management AI Chatbot Development capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Voice Agent Setup',
 			description:
 				'Configure voice AI agents for inbound call handling, triage, and routing — reducing call queue volume for questions that do not require a human agent.',
-			image: '/services/customer-experience-management/cx-automation-voice-agent-setup.jpg',
+			image: '/services/customer-experience-management/cx-automation-voice-agent-setup.webp',
 			imageAlt: 'Customer Experience Management Voice Agent Setup capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'CX Workflow Automation',
 			description:
 				'Automate the operational steps in customer interactions — ticket creation, status updates, escalation notifications, and CRM record updates — using tools like Zapier or Make.',
-			image: '/services/customer-experience-management/cx-automation-cx-workflow-automation.jpg',
+			image: '/services/customer-experience-management/cx-automation-cx-workflow-automation.webp',
 			imageAlt: 'Customer Experience Management CX Workflow Automation capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Conversational Flow Design',
 			description:
 				'Map and build the conversation flows that guide customers through self-service journeys from initial query to resolved outcome, with fallback handling at each step.',
-			image: '/services/customer-experience-management/cx-automation-conversational-flow-design.jpg',
+			image: '/services/customer-experience-management/cx-automation-conversational-flow-design.webp',
 			imageAlt: 'Customer Experience Management Conversational Flow Design capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Omnichannel Automation',
 			description:
 				'Deploy the same automation logic across web chat, WhatsApp, email, and voice so customers get consistent self-service options regardless of how they contact you.',
-			image: '/services/customer-experience-management/cx-automation-omnichannel-automation.jpg',
+			image: '/services/customer-experience-management/cx-automation-omnichannel-automation.webp',
 			imageAlt: 'Customer Experience Management Omnichannel Automation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Human Handoff Configuration',
 			description:
 				'Design the escalation triggers and context-passing logic that route customers from an automated flow to a human agent with the full conversation history and relevant account data.',
-			image: '/services/customer-experience-management/cx-automation-human-handoff-configuration.jpg',
+			image: '/services/customer-experience-management/cx-automation-human-handoff-configuration.webp',
 			imageAlt: 'Customer Experience Management Human Handoff Configuration capability illustration.',
 		}
 	],

@@ -61,7 +61,7 @@ const data: SubservicePageData = {
 			title: 'Autonomous Digital Agents',
 			description:
 				'Build goal-oriented software entities capable of executing multi-stage administrative and logistical workflows with zero human overhead.',
-			image: '/services/ai-automation/agentic-ai-autonomous-digital-agents.jpg',
+			image: '/services/ai-automation/agentic-ai-autonomous-digital-agents.webp',
 			imageAlt: 'AI & Automation Autonomous Digital Agents capability illustration.',
 		},
 		{
@@ -69,7 +69,7 @@ const data: SubservicePageData = {
 			title: 'Cross-Platform Tool Integration',
 			description:
 				'Connect autonomous agents securely to your existing software stack, databases, and third-party APIs so they can execute actions directly across systems.',
-			image: '/services/ai-automation/agentic-ai-crossplatform-tool-integration.jpg',
+			image: '/services/ai-automation/agentic-ai-crossplatform-tool-integration.webp',
 			imageAlt: 'AI & Automation Cross-Platform Tool Integration capability illustration.',
 		},
 		{
@@ -77,7 +77,7 @@ const data: SubservicePageData = {
 			title: 'Continuous Learning Loops (the Feedback Flow)',
 			description:
 				'Deploy a self-correcting cycle where the agent Executes an action, Evaluates the real-world outcome data against operational targets, and instantly Optimizes its planning logic for subsequent tasks.',
-			image: '/services/ai-automation/agentic-ai-continuous-learning-loops-the-feedback-flow.jpg',
+			image: '/services/ai-automation/agentic-ai-continuous-learning-loops-the-feedback-flow.webp',
 			imageAlt: 'AI & Automation Continuous Learning Loops (The Feedback Flow) capability illustration.',
 		},
 		{
@@ -85,7 +85,7 @@ const data: SubservicePageData = {
 			title: 'Human-in-the-Loop Oversight',
 			description:
 				'Integrate strict programmatic guardrails and human authorization touchpoints for high-priority executive or financial tasks, ensuring complete system safety.',
-			image: '/services/ai-automation/agentic-ai-humanintheloop-oversight.jpg',
+			image: '/services/ai-automation/agentic-ai-humanintheloop-oversight.webp',
 			imageAlt: 'AI & Automation Human-in-the-Loop Oversight capability illustration.',
 		},
 		{
@@ -93,7 +93,7 @@ const data: SubservicePageData = {
 			title: 'Multi-Agent Orchestration',
 			description:
 				'Collaborative agent systems where a manager agent splits complex objectives and routes sub-tasks to specialized worker agents.',
-			image: '/services/ai-automation/agentic-ai-multiagent-orchestration.jpg',
+			image: '/services/ai-automation/agentic-ai-multiagent-orchestration.webp',
 			imageAlt: 'AI & Automation Multi-Agent Orchestration capability illustration.',
 		},
 		{
@@ -101,7 +101,7 @@ const data: SubservicePageData = {
 			title: 'Intelligent Exception Handling',
 			description:
 				'Self-correcting code that logs unexpected API errors, tries alternate routing paths, and alerts a human only when it cannot safely proceed.',
-			image: '/services/ai-automation/agentic-ai-intelligent-exception-handling.jpg',
+			image: '/services/ai-automation/agentic-ai-intelligent-exception-handling.webp',
 			imageAlt: 'AI & Automation Intelligent Exception Handling capability illustration.',
 		}
 	],

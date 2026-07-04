@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Authentication and Identity',
 			description:
 				'Implement secure authentication using JWT tokens, OAuth 2.0, social login providers, or passwordless authentication — with refresh token rotation and session management.',
-			image: '/services/mobile-app-development/backend-services-auth.png',
+			image: '/services/mobile-app-development/backend-services-auth.webp',
 			imageAlt: 'Passwordless authentication flow diagram illustrating PINs, Security Key (Yubikey), and Biometrics leading to access granted.',
 		},
 		{

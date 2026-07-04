@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Infrastructure Monitoring',
 			description:
 				'Deploy monitoring across servers, containers, databases, and network components with dashboards covering utilisation, latency, error rates, and availability.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-infrastructure-monitoring.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-infrastructure-monitoring.webp',
 			imageAlt: 'Hosting & Infrastructure Infrastructure Monitoring capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Alerting Configuration',
 			description:
 				'Configure alert rules with appropriate thresholds and escalation paths so the right people are notified at the right time — not flooded with noise or missing real incidents.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-alerting-configuration.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-alerting-configuration.webp',
 			imageAlt: 'Hosting & Infrastructure Alerting Configuration capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Application Performance Monitoring',
 			description:
 				'Instrument application code with distributed tracing and APM tools to identify slow queries, high-latency endpoints, and performance bottlenecks in the application layer.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-application-performance-monitoring.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-application-performance-monitoring.webp',
 			imageAlt: 'Hosting & Infrastructure Application Performance Monitoring capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Infrastructure Performance Tuning',
 			description:
 				'Audit and tune database query performance, web server configuration, caching layers, and network configuration to improve throughput and reduce response times.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-infrastructure-performance-tuning.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-infrastructure-performance-tuning.webp',
 			imageAlt: 'Hosting & Infrastructure Infrastructure Performance Tuning capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Capacity Planning',
 			description:
 				'Establish performance baselines, model growth scenarios, and define capacity thresholds so scaling decisions are made proactively rather than in response to incidents.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-capacity-planning.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-capacity-planning.webp',
 			imageAlt: 'Hosting & Infrastructure Capacity Planning capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Runbook and Incident Documentation',
 			description:
 				'Document standard operating procedures and incident response runbooks so infrastructure issues can be diagnosed and resolved by any team member, not just the person who built the system.',
-			image: '/services/hosting-infrastructure/infrastructure-operations-runbook-and-incident-documentation.jpg',
+			image: '/services/hosting-infrastructure/infrastructure-operations-runbook-and-incident-documentation.webp',
 			imageAlt: 'Hosting & Infrastructure Runbook and Incident Documentation capability illustration.',
 		}
 	],

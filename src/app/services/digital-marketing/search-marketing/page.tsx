@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Technical SEO Audit',
 			description:
 				'Systematic crawl analysis identifying indexation errors, redirect chains, page speed issues, structured data gaps, and crawl budget problems with a prioritised remediation plan.',
-			image: '/services/digital-marketing/search-marketing-technical-seo-audit.jpg',
+			image: '/services/digital-marketing/search-marketing-technical-seo-audit.webp',
 			imageAlt: 'Digital Marketing Technical SEO Audit capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Content Strategy and SEO Writing',
 			description:
 				'Keyword research mapped to commercial intent, with content briefs and written pages targeting queries your current site is not capturing.',
-			image: '/services/digital-marketing/search-marketing-content-strategy-and-seo-writing.jpg',
+			image: '/services/digital-marketing/search-marketing-content-strategy-and-seo-writing.webp',
 			imageAlt: 'Digital Marketing Content Strategy and SEO Writing capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Local SEO',
 			description:
 				'Google Business Profile optimisation, citation building, review strategy, and localised content for businesses that need visibility in specific geographic markets.',
-			image: '/services/digital-marketing/search-marketing-local-seo.jpg',
+			image: '/services/digital-marketing/search-marketing-local-seo.webp',
 			imageAlt: 'Digital Marketing Local SEO capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Structured Data Implementation',
 			description:
 				'Schema.org markup for products, services, FAQs, reviews, and breadcrumbs to improve rich result eligibility and AI-powered search understanding.',
-			image: '/services/digital-marketing/search-marketing-structured-data-implementation.jpg',
+			image: '/services/digital-marketing/search-marketing-structured-data-implementation.webp',
 			imageAlt: 'Digital Marketing Structured Data Implementation capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Generative Engine Optimisation',
 			description:
 				'Optimise content structure, entity coverage, and authority signals for discovery and citation in AI-generated answer surfaces like ChatGPT, Gemini, and Perplexity.',
-			image: '/services/digital-marketing/search-marketing-generative-engine-optimisation.jpg',
+			image: '/services/digital-marketing/search-marketing-generative-engine-optimisation.webp',
 			imageAlt: 'Digital Marketing Generative Engine Optimisation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Rank Tracking and Reporting',
 			description:
 				'Keyword rank tracking with monthly reporting covering visibility changes, traffic attribution, and progress against the target keyword set.',
-			image: '/services/digital-marketing/search-marketing-rank-tracking-and-reporting.jpg',
+			image: '/services/digital-marketing/search-marketing-rank-tracking-and-reporting.webp',
 			imageAlt: 'Digital Marketing Rank Tracking and Reporting capability illustration.',
 		}
 	],

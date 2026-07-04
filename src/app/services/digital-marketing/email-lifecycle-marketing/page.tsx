@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Email Platform Setup and Migration',
 			description:
 				'Set up or migrate Klaviyo, Mailchimp, HubSpot Email, or ActiveCampaign with list structure, segmentation, and integration with your CRM and e-commerce platform.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-email-platform-setup-and-migration.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-email-platform-setup-and-migration.webp',
 			imageAlt: 'Digital Marketing Email Platform Setup and Migration capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Marketing Automation Build',
 			description:
 				'Build trigger-based automation flows for welcome sequences, lead nurturing, onboarding, re-engagement, and post-purchase communications across your customer lifecycle.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-marketing-automation-build.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-marketing-automation-build.webp',
 			imageAlt: 'Digital Marketing Marketing Automation Build capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Lead Nurturing Sequences',
 			description:
 				'Develop multi-stage email sequences that educate prospects and build purchase confidence from initial enquiry through to conversion, timed to the length of your typical buying process.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-lead-nurturing-sequences.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-lead-nurturing-sequences.webp',
 			imageAlt: 'Digital Marketing Lead Nurturing Sequences capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Retention and Loyalty Campaigns',
 			description:
 				'Plan and execute campaigns targeting existing customers at key lifecycle points — post-purchase, reorder windows, loyalty milestones, and risk-of-lapse triggers.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-retention-and-loyalty-campaigns.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-retention-and-loyalty-campaigns.webp',
 			imageAlt: 'Digital Marketing Retention and Loyalty Campaigns capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Email Campaign Creation',
 			description:
 				'Copywriting, design, and build of individual campaign emails with audience segmentation, subject line testing, and send-time optimisation.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-email-campaign-creation.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-email-campaign-creation.webp',
 			imageAlt: 'Digital Marketing Email Campaign Creation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Email Performance Reporting',
 			description:
 				'Reporting covering open rate, click rate, conversion rate, revenue attribution, list growth, and unsubscribe trends with actionable recommendations from each report.',
-			image: '/services/digital-marketing/email-lifecycle-marketing-email-performance-reporting.jpg',
+			image: '/services/digital-marketing/email-lifecycle-marketing-email-performance-reporting.webp',
 			imageAlt: 'Digital Marketing Email Performance Reporting capability illustration.',
 		}
 	],

@@ -62,7 +62,7 @@ const data: SubservicePageData = {
 			title: 'Predictive Analytics & Forecasting',
 			description:
 				'Move beyond baseline metrics to anticipate market shifts, timeline risks, and demand cycles using models trained on your historical patterns.',
-			image: '/services/ai-automation/ai-ml-predictive-analytics-forecasting.jpg',
+			image: '/services/ai-automation/ai-ml-predictive-analytics-forecasting.webp',
 			imageAlt: 'AI & Automation Predictive Analytics & Forecasting capability illustration.',
 		},
 		{
@@ -70,7 +70,7 @@ const data: SubservicePageData = {
 			title: 'Resource & Asset Optimization',
 			description:
 				'Automate the allocation of labor, machinery, and capital based on high-probability performance forecasting and real-time demand signals.',
-			image: '/services/ai-automation/ai-ml-resource-asset-optimization.jpg',
+			image: '/services/ai-automation/ai-ml-resource-asset-optimization.webp',
 			imageAlt: 'AI & Automation Resource & Asset Optimization capability illustration.',
 		},
 		{
@@ -78,7 +78,7 @@ const data: SubservicePageData = {
 			title: 'Data Pipeline Engineering',
 			description:
 				'Architect scalable cloud infrastructure to collect, govern, and process massive volumes of operational data from fragmented sources.',
-			image: '/services/ai-automation/ai-ml-data-pipeline-engineering.jpg',
+			image: '/services/ai-automation/ai-ml-data-pipeline-engineering.webp',
 			imageAlt: 'AI & Automation Data Pipeline Engineering capability illustration.',
 		},
 		{
@@ -86,7 +86,7 @@ const data: SubservicePageData = {
 			title: 'Algorithmic Decision Support',
 			description:
 				'Build data models that calculate the best path forward, providing instant recommendations to project managers and operations teams.',
-			image: '/services/ai-automation/ai-ml-algorithmic-decision-support.jpg',
+			image: '/services/ai-automation/ai-ml-algorithmic-decision-support.webp',
 			imageAlt: 'AI & Automation Algorithmic Decision Support capability illustration.',
 		},
 		{
@@ -94,7 +94,7 @@ const data: SubservicePageData = {
 			title: 'Continuous Model Retraining',
 			description:
 				'Automated pipelines that retrain models as new data arrives, ensuring predictive accuracy improves over time rather than degrading.',
-			image: '/services/ai-automation/ai-ml-continuous-model-retraining.jpg',
+			image: '/services/ai-automation/ai-ml-continuous-model-retraining.webp',
 			imageAlt: 'AI & Automation Continuous Model Retraining capability illustration.',
 		},
 		{
@@ -102,7 +102,7 @@ const data: SubservicePageData = {
 			title: 'Automated Insight Alerts',
 			description:
 				'Schedule model outputs as digests or alerts delivered automatically to stakeholders on whatever cadence is useful.',
-			image: '/services/ai-automation/ai-ml-automated-insight-alerts.jpg',
+			image: '/services/ai-automation/ai-ml-automated-insight-alerts.webp',
 			imageAlt: 'AI & Automation Automated Insight Alerts capability illustration.',
 		}
 	],

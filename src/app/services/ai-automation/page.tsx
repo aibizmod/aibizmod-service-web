@@ -171,7 +171,7 @@ const serviceCards: ServiceCard[] = [
 	{
 		title: 'Generative AI',
 		image:
-			'/services/ai-automation/generative-ai.png',
+			'/services/ai-automation/generative-ai.webp',
 		bullets: [
 			'Custom GPT Development',
 			'RAG Systems',

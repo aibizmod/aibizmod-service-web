@@ -39,7 +39,7 @@ const data: SubservicePageData = {
 	tagline:
 		'Responsive websites, landing pages, SPAs, and progressive web apps built to a spec — not a template. Every component is written for your data model and tested across devices before it ships.',
 	heroImage:
-		'/services/web-development/frontend-development-hero.png',
+		'/services/web-development/frontend-development-hero.webp',
 
 	solves: {
 		challenge:
@@ -66,7 +66,7 @@ const data: SubservicePageData = {
 			title: 'React & Next.js Development',
 			description:
 				'Component-based frontend built with React and Next.js, with server-side rendering or static generation depending on what the page needs.',
-			image: '/services/web-development/frontend-development-react-nextjs-development.png',
+			image: '/services/web-development/frontend-development-react-nextjs-development.webp',
 			imageAlt: 'Web Development React & Next.js Development capability illustration.',
 		},
 		{
@@ -74,7 +74,7 @@ const data: SubservicePageData = {
 			title: 'Responsive Design Implementation',
 			description:
 				'Layouts that adapt cleanly across screen sizes, tested on physical devices rather than just browser resize.',
-			image: '/services/web-development/frontend-development-responsive-design-implementation.png',
+			image: '/services/web-development/frontend-development-responsive-design-implementation.webp',
 			imageAlt: 'Web Development Responsive Design Implementation capability illustration.',
 		},
 		{
@@ -82,7 +82,7 @@ const data: SubservicePageData = {
 			title: 'Landing Pages',
 			description:
 				'Focused single-page builds for campaigns, product launches, or service areas — fast to load and built to convert.',
-			image: '/services/web-development/frontend-development-landing-pages.jpg',
+			image: '/services/web-development/frontend-development-landing-pages.webp',
 			imageAlt: 'Web Development Landing Pages capability illustration.',
 		},
 		{
@@ -90,7 +90,7 @@ const data: SubservicePageData = {
 			title: 'Progressive Web Apps',
 			description:
 				'Web apps that install on a home screen, work offline, and send push notifications — without a separate native app build.',
-			image: '/services/web-development/frontend-development-progressive-web-apps.jpg',
+			image: '/services/web-development/frontend-development-progressive-web-apps.webp',
 			imageAlt: 'Web Development Progressive Web Apps capability illustration.',
 		},
 		{
@@ -98,7 +98,7 @@ const data: SubservicePageData = {
 			title: 'Accessibility Compliance',
 			description:
 				'Semantic HTML, ARIA attributes, and keyboard navigation built in from the start, not added as an afterthought.',
-			image: '/services/web-development/frontend-development-accessibility-compliance.jpg',
+			image: '/services/web-development/frontend-development-accessibility-compliance.webp',
 			imageAlt: 'Web Development Accessibility Compliance capability illustration.',
 		},
 		{
@@ -106,7 +106,7 @@ const data: SubservicePageData = {
 			title: 'Performance Optimisation',
 			description:
 				'Image compression, lazy loading, code splitting, and Core Web Vitals review to keep pages fast after launch.',
-			image: '/services/web-development/frontend-development-performance-optimisation.jpg',
+			image: '/services/web-development/frontend-development-performance-optimisation.webp',
 			imageAlt: 'Web Development Performance Optimisation capability illustration.',
 		}
 	],

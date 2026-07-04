@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'Content Strategy',
 			description:
 				'Keyword research, content gap analysis, and a documented content calendar mapping topics to buying journey stages and business objectives.',
-			image: '/services/digital-marketing/brand-content-content-strategy.jpg',
+			image: '/services/digital-marketing/brand-content-content-strategy.webp',
 			imageAlt: 'Digital Marketing Content Strategy capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'Blog Writing and Long-Form Content',
 			description:
 				'Research-backed articles, guides, and long-form pieces written for specific search queries and audience knowledge levels, optimised for both rankings and reader engagement.',
-			image: '/services/digital-marketing/brand-content-blog-writing-and-longform-content.jpg',
+			image: '/services/digital-marketing/brand-content-blog-writing-and-longform-content.webp',
 			imageAlt: 'Digital Marketing Blog Writing and Long-form Content capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'Website Copywriting',
 			description:
 				'Service pages, landing pages, and homepage copy written around buyer intent and conversion goals, in your brand voice and formatted for the web.',
-			image: '/services/digital-marketing/brand-content-website-copywriting.jpg',
+			image: '/services/digital-marketing/brand-content-website-copywriting.webp',
 			imageAlt: 'Digital Marketing Website Copywriting capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Case Study Production',
 			description:
 				'Structured client case studies with problem, approach, and result narrative — sourced from client interviews or existing material — formatted for website publication and sales use.',
-			image: '/services/digital-marketing/brand-content-case-study-production.jpg',
+			image: '/services/digital-marketing/brand-content-case-study-production.webp',
 			imageAlt: 'Digital Marketing Case Study Production capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Thought Leadership Content',
 			description:
 				'Whitepapers, reports, and expert articles authored in your voice that position your business as a knowledgeable perspective on the problems your clients face.',
-			image: '/services/digital-marketing/brand-content-thought-leadership-content.jpg',
+			image: '/services/digital-marketing/brand-content-thought-leadership-content.webp',
 			imageAlt: 'Digital Marketing Thought Leadership Content capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'Brand Voice Documentation',
 			description:
 				'Develop and document tone of voice guidelines so all content — from marketing to sales collateral to social — reflects a consistent, recognisable brand personality.',
-			image: '/services/digital-marketing/brand-content-brand-voice-documentation.jpg',
+			image: '/services/digital-marketing/brand-content-brand-voice-documentation.webp',
 			imageAlt: 'Digital Marketing Brand Voice Documentation capability illustration.',
 		}
 	],

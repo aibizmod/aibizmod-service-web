@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'Custom GPT Development',
 			description:
 				'Design and build custom GPT assistants or Claude-based agents configured specifically for your use case, with system prompts, context, and behavioural guardrails.',
-			image: '/services/ai-automation/generative-ai-custom-gpt-development.jpg',
+			image: '/services/ai-automation/generative-ai-custom-gpt-development.webp',
 			imageAlt: 'AI Automation Custom GPT Development capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'RAG System Development',
 			description:
 				'Build Retrieval-Augmented Generation systems that search your indexed documents and return answers grounded in your actual content rather than general training data.',
-			image: '/services/ai-automation/generative-ai-rag-system-development.jpg',
+			image: '/services/ai-automation/generative-ai-rag-system-development.webp',
 			imageAlt: 'AI Automation RAG System Development capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'LLM Application Integration',
 			description:
 				'Embed LLM capabilities into your existing web applications, internal tools, or workflows via API, with proper authentication and rate limit handling.',
-			image: '/services/ai-automation/generative-ai-llm-application-integration.jpg',
+			image: '/services/ai-automation/generative-ai-llm-application-integration.webp',
 			imageAlt: 'AI Automation LLM Application Integration capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Prompt Engineering',
 			description:
 				'Design robust, reliable prompt systems that produce consistent outputs across different input variations, reducing hallucination and improving answer quality.',
-			image: '/services/ai-automation/generative-ai-prompt-engineering.jpg',
+			image: '/services/ai-automation/generative-ai-prompt-engineering.webp',
 			imageAlt: 'AI Automation Prompt Engineering capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Enterprise AI Deployment',
 			description:
 				'Deploy AI solutions within your existing cloud infrastructure with access controls, audit logging, and data handling that meets your compliance requirements.',
-			image: '/services/ai-automation/generative-ai-enterprise-ai-deployment.jpg',
+			image: '/services/ai-automation/generative-ai-enterprise-ai-deployment.webp',
 			imageAlt: 'AI Automation Enterprise AI Deployment capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'AI Output Pipelines',
 			description:
 				'Chain AI-generated outputs into downstream processes automatically, from draft content into review queues to classified documents into correct filing destinations.',
-			image: '/services/ai-automation/generative-ai-ai-output-pipelines.jpg',
+			image: '/services/ai-automation/generative-ai-ai-output-pipelines.webp',
 			imageAlt: 'AI Automation AI Output Pipelines capability illustration.',
 		}
 	],

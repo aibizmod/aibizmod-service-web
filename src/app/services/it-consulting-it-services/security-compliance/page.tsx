@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Cybersecurity Assessments',
 			description:
 				'Structured security assessments covering access controls, network security, endpoint security, data protection, and incident response capability against a defined risk framework.',
-			image: '/services/it-consulting-it-services/security-compliance-cybersecurity-assessments.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-cybersecurity-assessments.webp',
 			imageAlt: 'IT Consulting & IT Services Cybersecurity Assessments capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Compliance Gap Analysis',
 			description:
 				'Assess your current controls against a specific compliance framework — ISO 27001, Cyber Essentials, SOC 2, GDPR, or PCI DSS — and produce a prioritised gap list.',
-			image: '/services/it-consulting-it-services/security-compliance-compliance-gap-analysis.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-compliance-gap-analysis.webp',
 			imageAlt: 'IT Consulting & IT Services Compliance Gap Analysis capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Security Policy Development',
 			description:
 				'Develop information security policies and procedures that reflect actual operational practice and meet the documentation requirements of relevant compliance frameworks.',
-			image: '/services/it-consulting-it-services/security-compliance-security-policy-development.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-security-policy-development.webp',
 			imageAlt: 'IT Consulting & IT Services Security Policy Development capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Security Awareness Training',
 			description:
 				'Deliver security awareness sessions covering phishing, social engineering, password management, and data handling appropriate to your staff',
-			image: '/services/it-consulting-it-services/security-compliance-security-awareness-training.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-security-awareness-training.webp',
 			imageAlt: 'IT Consulting & IT Services Security Awareness Training capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Incident Response Planning',
 			description:
 				'Design and document incident response procedures, define escalation paths, and run tabletop exercises so the team knows how to respond before an incident occurs.',
-			image: '/services/it-consulting-it-services/security-compliance-incident-response-planning.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-incident-response-planning.webp',
 			imageAlt: 'IT Consulting & IT Services Incident Response Planning capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Third-Party Risk Assessment',
 			description:
 				'Assess the security posture of key suppliers and technology partners whose access to your systems or data creates risk that requires management.',
-			image: '/services/it-consulting-it-services/security-compliance-thirdparty-risk-assessment.jpg',
+			image: '/services/it-consulting-it-services/security-compliance-thirdparty-risk-assessment.webp',
 			imageAlt: 'IT Consulting & IT Services Third-party Risk Assessment capability illustration.',
 		}
 	],

@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Field Service App Development',
 			description:
 				'Build apps for field technicians covering job dispatch, navigation, site data capture, photo evidence, and digital signature — with full offline support.',
-			image: '/services/mobile-app-development/enterprise-field-service.png',
+			image: '/services/mobile-app-development/enterprise-field-service.webp',
 			imageAlt: 'Data schema showing blocks and nodes connecting together, representing job flow organization and dispatch structures.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Employee Self-Service Apps',
 			description:
 				'Build internal apps for HR workflows including leave requests, shift management, payslip access, and expense claims — integrated with your HRMS.',
-			image: '/services/mobile-app-development/enterprise-employee-selfservice.png',
+			image: '/services/mobile-app-development/enterprise-employee-selfservice.webp',
 			imageAlt: 'Employee Self-service interface displaying portal options on both a desktop browser and a smartphone screen.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Enterprise System Integration',
 			description:
 				'Integrate mobile applications with SAP, Oracle, Microsoft Dynamics, Salesforce, or custom enterprise systems via REST API or system-specific connectors.',
-			image: '/services/mobile-app-development/enterprise-system-integration.png',
+			image: '/services/mobile-app-development/enterprise-system-integration.webp',
 			imageAlt: 'Infographic displaying enterprise system integration hubs including Ecommerce, CMS, ERP, Cloud, CRM, and Databases.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'MDM and Enterprise Deployment',
 			description:
 				'Configure applications for deployment through Microsoft Intune, Jamf, or VMware Workspace ONE for centralised management of enterprise device fleets.',
-			image: '/services/mobile-app-development/enterprise-mdm.png',
+			image: '/services/mobile-app-development/enterprise-mdm.webp',
 			imageAlt: 'Diagram showing MDM flows connecting various enterprise modules like ERP, CRM, and BI with internal and supplier applications.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Role-Based Access Control',
 			description:
 				'Implement role-based access within the app so different employee roles see only the functions and data relevant to them, with authentication through your existing identity provider.',
-			image: '/services/mobile-app-development/enterprise-rbac.png',
+			image: '/services/mobile-app-development/enterprise-rbac.webp',
 			imageAlt: 'Diagram detailing system admin mapping users to roles (Beneficial owner, Accountant, Book-keeper) and roles to permissions to grant or deny access.',
 		},
 	],

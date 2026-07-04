@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'AI-First App Development',
 			description:
 				'Design and build web or mobile applications where AI inference is a first-class operation in the architecture, not an afterthought added to an existing codebase.',
-			image: '/services/ai-automation/ai-powered-apps-aifirst-app-development.jpg',
+			image: '/services/ai-automation/ai-powered-apps-aifirst-app-development.webp',
 			imageAlt: 'AI Automation AI-First App Development capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'Model Fine-Tuning',
 			description:
 				'Adapt foundation models to your domain, vocabulary, and use case using supervised fine-tuning on your proprietary dataset for specialised, domain-relevant performance.',
-			image: '/services/ai-automation/ai-powered-apps-model-finetuning.jpg',
+			image: '/services/ai-automation/ai-powered-apps-model-finetuning.webp',
 			imageAlt: 'AI Automation Model Fine-tuning capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'AI Integration into Existing Products',
 			description:
 				'Add well-architected AI capabilities to your current application, including API integration, caching, fallback handling, and user-facing output design.',
-			image: '/services/ai-automation/ai-powered-apps-ai-integration-into-existing-products.jpg',
+			image: '/services/ai-automation/ai-powered-apps-ai-integration-into-existing-products.webp',
 			imageAlt: 'AI Automation AI Integration into Existing Products capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Custom Model Deployment',
 			description:
 				'Host and serve models on your own cloud infrastructure with proper autoscaling, version management, health checks, and endpoint monitoring.',
-			image: '/services/ai-automation/ai-powered-apps-custom-model-deployment.jpg',
+			image: '/services/ai-automation/ai-powered-apps-custom-model-deployment.webp',
 			imageAlt: 'AI Automation Custom Model Deployment capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Feedback Loop Architecture',
 			description:
 				'Build the feedback capture, labelling workflows, and retraining pipelines that allow your AI system to improve based on real-world usage data.',
-			image: '/services/ai-automation/ai-powered-apps-feedback-loop-architecture.jpg',
+			image: '/services/ai-automation/ai-powered-apps-feedback-loop-architecture.webp',
 			imageAlt: 'AI Automation Feedback Loop Architecture capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'Production Monitoring',
 			description:
 				'Instrument AI endpoints with latency tracking, output quality metrics, error rate alerts, and drift detection to maintain reliability in production.',
-			image: '/services/ai-automation/ai-powered-apps-production-monitoring.jpg',
+			image: '/services/ai-automation/ai-powered-apps-production-monitoring.webp',
 			imageAlt: 'AI Automation Production Monitoring capability illustration.',
 		}
 	],

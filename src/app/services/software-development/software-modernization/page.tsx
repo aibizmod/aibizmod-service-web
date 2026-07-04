@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Legacy Migration',
 			description:
 				'Migrate applications from legacy technology stacks to modern architecture, preserving business logic while eliminating the constraints of outdated infrastructure.',
-			image: '/services/software-development/software-modernization-legacy-migration.jpg',
+			image: '/services/software-development/software-modernization-legacy-migration.webp',
 			imageAlt: 'Software Development Legacy Migration capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Application Re-Engineering',
 			description:
 				'Rebuild legacy applications from the ground up in modern technology with improved architecture, maintainability, and integration capability — while preserving validated business logic.',
-			image: '/services/software-development/software-modernization-application-reengineering.jpg',
+			image: '/services/software-development/software-modernization-application-reengineering.webp',
 			imageAlt: 'Software Development Application Re-engineering capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'System Upgrades',
 			description:
 				'Upgrade major version dependencies, frameworks, and infrastructure components with testing and staged rollout to manage risk across the upgrade.',
-			image: '/services/software-development/software-modernization-system-upgrades.jpg',
+			image: '/services/software-development/software-modernization-system-upgrades.webp',
 			imageAlt: 'Software Development System Upgrades capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Data Migration',
 			description:
 				'Extract, transform, and load legacy data into a new system with full validation, reconciliation, and documented data quality checks before cut-over.',
-			image: '/services/software-development/software-modernization-data-migration.jpg',
+			image: '/services/software-development/software-modernization-data-migration.webp',
 			imageAlt: 'Software Development Data Migration capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Integration Modernisation',
 			description:
 				'Replace point-to-point integrations between legacy systems with a modern integration layer that is maintainable, monitored, and does not require specific system knowledge to operate.',
-			image: '/services/software-development/software-modernization-integration-modernisation.jpg',
+			image: '/services/software-development/software-modernization-integration-modernisation.webp',
 			imageAlt: 'Software Development Integration Modernisation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Technical Debt Assessment',
 			description:
 				'Audit a legacy codebase to document the extent and nature of technical debt, identify the highest-risk components, and produce a prioritised modernisation plan.',
-			image: '/services/software-development/software-modernization-technical-debt-assessment.jpg',
+			image: '/services/software-development/software-modernization-technical-debt-assessment.webp',
 			imageAlt: 'Software Development Technical Debt Assessment capability illustration.',
 		}
 	],

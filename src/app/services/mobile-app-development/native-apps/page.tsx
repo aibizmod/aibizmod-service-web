@@ -66,7 +66,7 @@ const data: SubservicePageData = {
 			title: 'iOS Development',
 			description:
 				'Build iOS applications using Swift and SwiftUI, with full integration of Apple platform APIs including HealthKit, ARKit, Core Location, Push Notifications, and in-app purchase.',
-			image: '/services/mobile-app-development/native-apps-ios.png',
+			image: '/services/mobile-app-development/native-apps-ios.webp',
 			imageAlt: 'Mobile screen displaying finance and stock trading charts next to a laptop with an Apple logo, representing native iOS app development.',
 		},
 		{
@@ -74,7 +74,7 @@ const data: SubservicePageData = {
 			title: 'Android Development',
 			description:
 				'Build Android applications using Kotlin and Jetpack Compose, with full integration of Android APIs including Google Maps, Biometric Auth, Camera2, NFC, and Google Pay.',
-			image: '/services/mobile-app-development/native-apps-android.png',
+			image: '/services/mobile-app-development/native-apps-android.webp',
 			imageAlt: 'LG smartphone held in a stand showing Android home screen with app icons, representing native Android app development.',
 		},
 		{
@@ -82,7 +82,7 @@ const data: SubservicePageData = {
 			title: 'Biometric and Device Authentication',
 			description:
 				"Implement Face ID, Touch ID on iOS, and Android BiometricPrompt for secure, frictionless authentication that uses the device's built-in security hardware.",
-			image: '/services/mobile-app-development/native-apps-biometrics.png',
+			image: '/services/mobile-app-development/native-apps-biometrics.webp',
 			imageAlt: 'Infographic showing a fingerprint scanner, iris reader, face recognition system, and smart card reader, representing biometric and device authentication solutions.',
 		},
 		{
@@ -90,7 +90,7 @@ const data: SubservicePageData = {
 			title: 'Camera and AR Integration',
 			description:
 				'Build applications that use the device camera for AR overlays, barcode scanning, document capture, or image processing using ARKit, ARCore, and native camera APIs.',
-			image: '/services/mobile-app-development/native-apps-camera-ar.png',
+			image: '/services/mobile-app-development/native-apps-camera-ar.webp',
 			imageAlt: 'Apple Vision Pro mixed reality headset displayed on a stand, representing camera and AR integration capabilities.',
 		},
 		{
@@ -98,7 +98,7 @@ const data: SubservicePageData = {
 			title: 'Health and Sensor Integration',
 			description:
 				'Integrate with Apple Health, Google Fit, and device sensors for fitness, health monitoring, or IoT applications requiring accurate, platform-calibrated sensor data.',
-			image: '/services/mobile-app-development/native-apps-health-sensors.png',
+			image: '/services/mobile-app-development/native-apps-health-sensors.webp',
 			imageAlt: 'Smartwatch showing heart rate monitor with icons representing heart health, temperature, and respiration, representing health and sensor integration.',
 		},
 		{
@@ -106,7 +106,7 @@ const data: SubservicePageData = {
 			title: 'App Store Submission and Release Management',
 			description:
 				'Handle the full App Store Connect and Google Play Console submission process, including screenshots, app descriptions, age ratings, and the review response process.',
-			image: '/services/mobile-app-development/native-apps-appstore.png',
+			image: '/services/mobile-app-development/native-apps-appstore.webp',
 			imageAlt: 'Apple App Store icon overlaying an iTunes Connect dashboard interface, representing App Store submission and release management services.',
 		},
 	],

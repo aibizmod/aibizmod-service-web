@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Architecture Design',
 			description:
 				'Design multi-tier cloud architectures on AWS, Azure, or GCP that balance performance, availability, security, and cost for your specific workload.',
-			image: '/services/hosting-infrastructure/cloud-solutions-cloud-architecture-design.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-cloud-architecture-design.webp',
 			imageAlt: 'Hosting & Infrastructure Cloud Architecture Design capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Migration',
 			description:
 				'Plan and execute the migration of existing applications, databases, and infrastructure from on-premise or legacy hosting to cloud with minimal service disruption.',
-			image: '/services/hosting-infrastructure/cloud-solutions-cloud-migration.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-cloud-migration.webp',
 			imageAlt: 'Hosting & Infrastructure Cloud Migration capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Serverless Architecture',
 			description:
 				'Design and deploy serverless applications using AWS Lambda, Azure Functions, or GCP Cloud Run for workloads that benefit from event-driven, auto-scaling compute.',
-			image: '/services/hosting-infrastructure/cloud-solutions-serverless-architecture.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-serverless-architecture.webp',
 			imageAlt: 'Hosting & Infrastructure Serverless Architecture capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Infrastructure as Code',
 			description:
 				'Implement Terraform or AWS CloudFormation to define and manage cloud infrastructure in version-controlled code, enabling reproducible environments and automated provisioning.',
-			image: '/services/hosting-infrastructure/cloud-solutions-infrastructure-as-code.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-infrastructure-as-code.webp',
 			imageAlt: 'Hosting & Infrastructure Infrastructure as Code capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Cloud Security Configuration',
 			description:
 				'Configure IAM policies, security groups, VPC architecture, encryption, and audit logging to ensure cloud environments meet your security and compliance requirements.',
-			image: '/services/hosting-infrastructure/cloud-solutions-cloud-security-configuration.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-cloud-security-configuration.webp',
 			imageAlt: 'Hosting & Infrastructure Cloud Security Configuration capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Cost Optimisation',
 			description:
 				'Audit existing cloud spend, identify over-provisioned resources and unused services, and implement right-sizing and reserved instance strategies to reduce monthly costs.',
-			image: '/services/hosting-infrastructure/cloud-solutions-cost-optimisation.jpg',
+			image: '/services/hosting-infrastructure/cloud-solutions-cost-optimisation.webp',
 			imageAlt: 'Hosting & Infrastructure Cost Optimisation capability illustration.',
 		}
 	],

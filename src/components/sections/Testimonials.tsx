@@ -10,14 +10,14 @@ const testimonials = [
       "The team at aibizmod understood our vision from day one. They built a platform that streamlined our entire project management workflow, saving us countless hours and improving team collaboration across the board.",
     title: "CEO",
     company: "PMSpace",
-    logo: "/clients/pmspace.png",
+    logo: "/clients/pmspace.webp",
   },
   {
     quote:
       "aibizmod delivered beyond our expectations. Their lean approach to development meant we got a high-quality product in record time, and the ongoing support has been exceptional.",
     title: "CEO",
     company: "SpaceLean",
-    logo: "/clients/spacelean.png",
+    logo: "/clients/spacelean.webp",
   },
   {
     quote:

@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'Computer Vision Pipelines',
 			description:
 				'Build object detection, image classification, and scene analysis pipelines trained on your specific use case and deployed as scalable inference APIs.',
-			image: '/services/ai-automation/ai-vision-computer-vision-pipelines.jpg',
+			image: '/services/ai-automation/ai-vision-computer-vision-pipelines.webp',
 			imageAlt: 'AI Automation Computer Vision Pipelines capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'OCR and Document Extraction',
 			description:
 				'Extract text, tables, form fields, and structured data from PDFs, scanned documents, and photographed forms with accuracy verification.',
-			image: '/services/ai-automation/ai-vision-ocr-and-document-extraction.jpg',
+			image: '/services/ai-automation/ai-vision-ocr-and-document-extraction.webp',
 			imageAlt: 'AI Automation OCR and Document Extraction capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'Quality Control Inspection',
 			description:
 				'Train defect detection models on your specific product types and deploy them for automated visual quality checks in manufacturing or logistics workflows.',
-			image: '/services/ai-automation/ai-vision-quality-control-inspection.jpg',
+			image: '/services/ai-automation/ai-vision-quality-control-inspection.webp',
 			imageAlt: 'AI Automation Quality Control Inspection capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Document and ID Verification',
 			description:
 				'Automated KYC workflows that read identity documents, extract fields, check for tampering indicators, and flag anomalies for review.',
-			image: '/services/ai-automation/ai-vision-document-and-id-verification.jpg',
+			image: '/services/ai-automation/ai-vision-document-and-id-verification.webp',
 			imageAlt: 'AI Automation Document and ID Verification capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Video Stream Analysis',
 			description:
 				'Frame-level analysis pipelines for security, retail foot traffic, or operational event detection using real-time or batch video processing.',
-			image: '/services/ai-automation/ai-vision-video-stream-analysis.jpg',
+			image: '/services/ai-automation/ai-vision-video-stream-analysis.webp',
 			imageAlt: 'AI Automation Video Stream Analysis capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'Real-Time Vision APIs',
 			description:
 				'Deploy vision inference endpoints your existing applications can call at request time, with response times suited to interactive or near-real-time workflows.',
-			image: '/services/ai-automation/ai-vision-realtime-vision-apis.jpg',
+			image: '/services/ai-automation/ai-vision-realtime-vision-apis.webp',
 			imageAlt: 'AI Automation Real-time Vision APIs capability illustration.',
 		}
 	],

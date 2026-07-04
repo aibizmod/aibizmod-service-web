@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'OS Compatibility Updates',
 			description:
 				'Test the application against new iOS and Android releases before they ship, identify breaking changes, and implement updates to maintain compatibility.',
-			image: '/services/mobile-app-development/maintenance-os-compatibility.png',
+			image: '/services/mobile-app-development/maintenance-os-compatibility.webp',
 			imageAlt: 'Desk setup with three monitors displaying macOS, Windows, and Linux interfaces, representing cross-operating system compatibility testing and updates.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Performance Optimisation',
 			description:
 				'Profile application performance covering startup time, frame rate, memory usage, and battery consumption, with targeted optimisations based on measured baselines.',
-			image: '/services/mobile-app-development/maintenance-performance-optimization.png',
+			image: '/services/mobile-app-development/maintenance-performance-optimization.webp',
 			imageAlt: 'Performance optimization diagram displaying dashboard charts, speedometer gauge indicator, settings gear, and upward growth arrows.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Dependency and SDK Updates',
 			description:
 				'Keep third-party libraries, SDKs, and backend integrations updated to current stable versions to avoid deprecated API issues and security vulnerabilities.',
-			image: '/services/mobile-app-development/maintenance-dependency-sdk-updates.png',
+			image: '/services/mobile-app-development/maintenance-dependency-sdk-updates.webp',
 			imageAlt: 'Diagram showing dependency and SDK updates including automated updates, library version updates, platform SDK updates (iOS, Android, Flutter, Unity, Google Cloud), and key benefits (security, compatibility, performance, reliability).',
 		},
 		{

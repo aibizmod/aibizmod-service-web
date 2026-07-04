@@ -3,7 +3,7 @@ import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
 
 const logos = [
   {
-    src: "/clients/spacelean.png",
+    src: "/clients/spacelean.webp",
     alt: "SpaceLean",
     website: "https://spacelean.ai/",
     gradient: { from: "#0E7490", via: "#22D3EE", to: "#ECFEFF" },

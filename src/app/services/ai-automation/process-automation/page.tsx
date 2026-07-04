@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'Workflow Automation',
 			description:
 				'Design and build multi-step automated pipelines triggered by events across your tools, from form submissions and database writes to scheduled time intervals.',
-			image: '/services/ai-automation/process-automation-workflow-automation.jpg',
+			image: '/services/ai-automation/process-automation-workflow-automation.webp',
 			imageAlt: 'AI Automation Workflow Automation capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'API and Webhook Integration',
 			description:
 				'Connect SaaS tools, internal databases, and external services using REST APIs and webhooks, removing the need for manual exports and imports between systems.',
-			image: '/services/ai-automation/process-automation-api-and-webhook-integration.jpg',
+			image: '/services/ai-automation/process-automation-api-and-webhook-integration.webp',
 			imageAlt: 'AI Automation API and Webhook Integration capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'Document and Invoice Processing',
 			description:
 				'Parse incoming emails and attachments to extract fields, route documents, and write records into your accounting or ERP system without manual handling.',
-			image: '/services/ai-automation/process-automation-document-and-invoice-processing.jpg',
+			image: '/services/ai-automation/process-automation-document-and-invoice-processing.webp',
 			imageAlt: 'AI Automation Document and Invoice Processing capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Scheduled Reporting',
 			description:
 				'Query databases on a schedule, format results, and deliver reports by email or Slack to the right people automatically on whatever cadence the business needs.',
-			image: '/services/ai-automation/process-automation-scheduled-reporting.jpg',
+			image: '/services/ai-automation/process-automation-scheduled-reporting.webp',
 			imageAlt: 'AI Automation Scheduled Reporting capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Approval Workflow Routing',
 			description:
 				'Route approval requests to the right person based on configurable rules, with Slack button or email form responses that update records directly without manual data entry.',
-			image: '/services/ai-automation/process-automation-approval-workflow-routing.jpg',
+			image: '/services/ai-automation/process-automation-approval-workflow-routing.webp',
 			imageAlt: 'AI Automation Approval Workflow Routing capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'Error Handling and Retry Logic',
 			description:
 				'Every automation includes fallback handling, retry attempts, and notification alerts so your team knows immediately when something needs attention.',
-			image: '/services/ai-automation/process-automation-error-handling-and-retry-logic.jpg',
+			image: '/services/ai-automation/process-automation-error-handling-and-retry-logic.webp',
 			imageAlt: 'AI Automation Error Handling and Retry Logic capability illustration.',
 		}
 	],

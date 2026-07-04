@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Social Media Strategy',
 			description:
 				'Define the platform mix, posting frequency, content pillars, and tone of voice that fits your audience and business goals, with a documented strategy document as the foundation.',
-			image: '/services/digital-marketing/social-media-marketing-social-media-strategy.jpg',
+			image: '/services/digital-marketing/social-media-marketing-social-media-strategy.webp',
 			imageAlt: 'Digital Marketing Social Media Strategy capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Content Creation',
 			description:
 				'Copywriting, graphic design, and short-form video production for your social channels, maintained at a consistent quality and brand voice across every post.',
-			image: '/services/digital-marketing/social-media-marketing-content-creation.jpg',
+			image: '/services/digital-marketing/social-media-marketing-content-creation.webp',
 			imageAlt: 'Digital Marketing Content Creation capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Content Calendar Management',
 			description:
 				'Plan and schedule content across platforms with a rolling monthly calendar aligned to your marketing campaigns, product releases, and promotional periods.',
-			image: '/services/digital-marketing/social-media-marketing-content-calendar-management.jpg',
+			image: '/services/digital-marketing/social-media-marketing-content-calendar-management.webp',
 			imageAlt: 'Digital Marketing Content Calendar Management capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Community Management',
 			description:
 				'Monitor and respond to comments, messages, and mentions across platforms to maintain an active, responsive presence that builds audience trust.',
-			image: '/services/digital-marketing/social-media-marketing-community-management.jpg',
+			image: '/services/digital-marketing/social-media-marketing-community-management.webp',
 			imageAlt: 'Digital Marketing Community Management capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Influencer Marketing',
 			description:
 				'Identify, brief, and manage influencer partnerships matched to your audience, with deliverable agreements, content review, and performance tracking.',
-			image: '/services/digital-marketing/social-media-marketing-influencer-marketing.jpg',
+			image: '/services/digital-marketing/social-media-marketing-influencer-marketing.webp',
 			imageAlt: 'Digital Marketing Influencer Marketing capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Social Analytics and Reporting',
 			description:
 				'Monthly performance reports covering organic reach, engagement rate, referral traffic from social, and lead attribution where trackable — linked to business outcomes.',
-			image: '/services/digital-marketing/social-media-marketing-social-analytics-and-reporting.jpg',
+			image: '/services/digital-marketing/social-media-marketing-social-analytics-and-reporting.webp',
 			imageAlt: 'Digital Marketing Social Analytics and Reporting capability illustration.',
 		}
 	],

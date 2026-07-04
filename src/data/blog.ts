@@ -429,7 +429,7 @@ export const blogPosts: BlogPost[] = [
       "A simple site structure — homepage, services, blog, contact — outperforms a complex one when the business is still establishing proof.",
     ],
     category: "Company Notes",
-    image: "/blog/aibizmod-domain-launch.png",
+    image: "/blog/aibizmod-domain-launch.webp",
     imageAlt:
       "Workspace with laptop and notebook displaying initial business website mapping and brand domain strategy.",
     date: "June 19, 2026",
@@ -507,7 +507,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     category: "SEO",
-    image: "/blog/seo-marketing-service-journey.png",
+    image: "/blog/seo-marketing-service-journey.webp",
     imageAlt:
       "Desk view containing search engine optimization notes and laptop screen displaying analytics data.",
     date: "June 18, 2026",
@@ -601,7 +601,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     category: "GEO",
-    image: "/blog/generative-engine-optimisation.png",
+    image: "/blog/generative-engine-optimisation.webp",
     imageAlt:
       "Workspace layout showing content optimization plans and search analytics for service business generative engine visibility.",
     date: "June 17, 2026",
@@ -674,7 +674,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     category: "Website Strategy",
-    image: "/blog/website-trust-before-marketing.png",
+    image: "/blog/website-trust-before-marketing.webp",
     imageAlt:
       "Workplace desk with laptop and checklist notes for conducting a website trust and conversion audit.",
     date: "June 16, 2026",

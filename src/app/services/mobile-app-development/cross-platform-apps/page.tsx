@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'React Native Development',
 			description:
 				'Build iOS and Android apps using React Native with JavaScript or TypeScript, sharing business logic and UI components while rendering through platform-native components.',
-			image: '/services/mobile-app-development/cross-platform-react-native.png',
+			image: '/services/mobile-app-development/cross-platform-react-native.webp',
 			imageAlt: 'Illustration displaying a smartphone with the React Native logo, showing connections to iOS, Android, and Windows platform options.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Platform-Specific Adaptations',
 			description:
 				'Implement platform-specific navigation patterns, styling, and interaction behaviour where the experience should differ between iOS and Android.',
-			image: '/services/mobile-app-development/cross-platform-adaptation.png',
+			image: '/services/mobile-app-development/cross-platform-adaptation.webp',
 			imageAlt: '3D illustration showing a laptop display with various code windows, file folders, and a desk lamp, representing platform-specific coding and adaptations.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Performance Optimisation',
 			description:
 				'Profile and optimise app performance covering render performance, memory usage, startup time, and network efficiency for a smooth user experience on both platforms.',
-			image: '/services/mobile-app-development/cross-platform-performance.png',
+			image: '/services/mobile-app-development/cross-platform-performance.webp',
 			imageAlt: 'Laptop screen displaying a line graph showing performance metrics over time, representing performance optimization.',
 		},
 		{

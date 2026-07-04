@@ -64,7 +64,7 @@ const data: SubservicePageData = {
 			title: 'Predictive Analytics',
 			description:
 				'Build models that forecast demand, revenue, customer churn, or operational metrics using patterns in your historical records.',
-			image: '/services/ai-automation/ai-intelligence-predictive-analytics.jpg',
+			image: '/services/ai-automation/ai-intelligence-predictive-analytics.webp',
 			imageAlt: 'AI Automation Predictive Analytics capability illustration.',
 		},
 		{
@@ -72,7 +72,7 @@ const data: SubservicePageData = {
 			title: 'Recommendation Systems',
 			description:
 				'Serve personalised product recommendations, content suggestions, or next-best actions based on individual user behaviour and history.',
-			image: '/services/ai-automation/ai-intelligence-recommendation-systems.jpg',
+			image: '/services/ai-automation/ai-intelligence-recommendation-systems.webp',
 			imageAlt: 'AI Automation Recommendation Systems capability illustration.',
 		},
 		{
@@ -80,7 +80,7 @@ const data: SubservicePageData = {
 			title: 'Anomaly Detection',
 			description:
 				'Flag unusual patterns in financial transactions, system performance, or operational data before they escalate into larger problems.',
-			image: '/services/ai-automation/ai-intelligence-anomaly-detection.jpg',
+			image: '/services/ai-automation/ai-intelligence-anomaly-detection.webp',
 			imageAlt: 'AI Automation Anomaly Detection capability illustration.',
 		},
 		{
@@ -88,7 +88,7 @@ const data: SubservicePageData = {
 			title: 'Customer Segmentation',
 			description:
 				'Cluster customers by purchasing behaviour, engagement level, or lifetime value to inform targeted retention and acquisition strategies.',
-			image: '/services/ai-automation/ai-intelligence-customer-segmentation.jpg',
+			image: '/services/ai-automation/ai-intelligence-customer-segmentation.webp',
 			imageAlt: 'AI Automation Customer Segmentation capability illustration.',
 		},
 		{
@@ -96,7 +96,7 @@ const data: SubservicePageData = {
 			title: 'Demand Forecasting',
 			description:
 				'Model future demand for inventory, staffing, or capacity planning using seasonal patterns, trend lines, and external signals.',
-			image: '/services/ai-automation/ai-intelligence-demand-forecasting.jpg',
+			image: '/services/ai-automation/ai-intelligence-demand-forecasting.webp',
 			imageAlt: 'AI Automation Demand Forecasting capability illustration.',
 		},
 		{
@@ -104,7 +104,7 @@ const data: SubservicePageData = {
 			title: 'Automated Insight Delivery',
 			description:
 				'Schedule model outputs as digests or alerts, delivered automatically to the right stakeholders on whatever cadence is useful.',
-			image: '/services/ai-automation/ai-intelligence-automated-insight-delivery.jpg',
+			image: '/services/ai-automation/ai-intelligence-automated-insight-delivery.webp',
 			imageAlt: 'AI Automation Automated Insight Delivery capability illustration.',
 		}
 	],

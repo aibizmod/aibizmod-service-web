@@ -43,7 +43,7 @@ const data: SubservicePageData = {
   tagline:
     "• The way people discover businesses is changing. Instead of browsing search results, customers now ask AI assistants like ChatGPT, Gemini, Claude, and Perplexity for recommendations.\n• If your business isn't recognized or referenced by these AI systems, you're missing valuable opportunities.\n• Our AI Visibility Audit measures your current visibility, identifies gaps, benchmarks you against competitors, and delivers a practical roadmap to improve your presence across AI-powered search experiences.",
   heroImage:
-    "/services/automation/ai-visibility-audit-hero.png",
+    "/services/automation/ai-visibility-audit-hero.webp",
 
   solves: {
     challenge:
@@ -68,7 +68,7 @@ const data: SubservicePageData = {
 			title: 'AI Visibility Benchmark',
 			description:
 				'Measure your visibility across AI search platforms and understand where your brand stands today.',
-			image: '/services/ai-automation/ai-visibility-audit-ai-visibility-benchmark.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-ai-visibility-benchmark.webp',
 			imageAlt: 'AI & Automation AI Visibility Benchmark capability illustration.',
 		},
 		{
@@ -76,7 +76,7 @@ const data: SubservicePageData = {
 			title: 'Competitor Analysis',
 			description:
 				'Compare your AI presence with industry competitors and identify opportunities to outperform them.',
-			image: '/services/ai-automation/ai-visibility-audit-competitor-analysis.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-competitor-analysis.webp',
 			imageAlt: 'AI & Automation Competitor Analysis capability illustration.',
 		},
 		{
@@ -84,7 +84,7 @@ const data: SubservicePageData = {
 			title: 'Citation Gap Analysis',
 			description:
 				'Discover where AI models obtain information and identify missing citations affecting your credibility.',
-			image: '/services/ai-automation/ai-visibility-audit-citation-gap-analysis.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-citation-gap-analysis.webp',
 			imageAlt: 'AI & Automation Citation Gap Analysis capability illustration.',
 		},
 		{
@@ -92,7 +92,7 @@ const data: SubservicePageData = {
 			title: 'Prompt Mapping',
 			description:
 				'Understand which prompts trigger your brand and discover where you are missing from AI-generated responses.',
-			image: '/services/ai-automation/ai-visibility-audit-prompt-mapping.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-prompt-mapping.webp',
 			imageAlt: 'AI & Automation Prompt Mapping capability illustration.',
 		},
 		{
@@ -100,7 +100,7 @@ const data: SubservicePageData = {
 			title: 'Site Readiness Review',
 			description:
 				'Evaluate your website',
-			image: '/services/ai-automation/ai-visibility-audit-site-readiness-review.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-site-readiness-review.webp',
 			imageAlt: 'AI & Automation Site Readiness Review capability illustration.',
 		},
 		{
@@ -108,7 +108,7 @@ const data: SubservicePageData = {
 			title: 'Structured Data Assessment',
 			description:
 				'Review Schema.org implementation and entity markup to improve AI comprehension.',
-			image: '/services/ai-automation/ai-visibility-audit-structured-data-assessment.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-structured-data-assessment.webp',
 			imageAlt: 'AI & Automation Structured Data Assessment capability illustration.',
 		},
 		{
@@ -116,7 +116,7 @@ const data: SubservicePageData = {
 			title: 'Content Intelligence Review',
 			description:
 				'Analyze whether your content answers user intent in a way AI assistants can understand and recommend.',
-			image: '/services/ai-automation/ai-visibility-audit-content-intelligence-review.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-content-intelligence-review.webp',
 			imageAlt: 'AI & Automation Content Intelligence Review capability illustration.',
 		},
 		{
@@ -124,7 +124,7 @@ const data: SubservicePageData = {
 			title: 'Authority Signal Analysis',
 			description:
 				'Evaluate backlinks, brand mentions, trust indicators, and domain authority influencing AI recommendations.',
-			image: '/services/ai-automation/ai-visibility-audit-authority-signal-analysis.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-authority-signal-analysis.webp',
 			imageAlt: 'AI & Automation Authority Signal Analysis capability illustration.',
 		},
 		{
@@ -132,7 +132,7 @@ const data: SubservicePageData = {
 			title: 'Opportunity Identification',
 			description:
 				'Prioritize high-impact improvements that can quickly increase your AI visibility.',
-			image: '/services/ai-automation/ai-visibility-audit-opportunity-identification.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-opportunity-identification.webp',
 			imageAlt: 'AI & Automation Opportunity Identification capability illustration.',
 		},
 		{
@@ -140,7 +140,7 @@ const data: SubservicePageData = {
 			title: '90-Day Implementation Roadmap',
 			description:
 				'Receive a step-by-step action plan with priorities, timelines, and measurable goals.',
-			image: '/services/ai-automation/ai-visibility-audit-90day-implementation-roadmap.jpg',
+			image: '/services/ai-automation/ai-visibility-audit-90day-implementation-roadmap.webp',
 			imageAlt: 'AI & Automation 90-Day Implementation Roadmap capability illustration.',
 		}
 	],

@@ -66,7 +66,7 @@ const data: SubservicePageData = {
 			title: 'API Development',
 			description:
 				'REST and GraphQL APIs with consistent endpoint design, proper error codes, rate limiting, and versioning so breaking changes don',
-			image: '/services/web-development/backend-development-api-development.jpg',
+			image: '/services/web-development/backend-development-api-development.webp',
 			imageAlt: 'Web Development API Development capability illustration.',
 		},
 		{
@@ -74,7 +74,7 @@ const data: SubservicePageData = {
 			title: 'Database Development',
 			description:
 				'Schema design for relational databases like PostgreSQL or MySQL, including indexes, foreign keys, and migration paths for schema changes.',
-			image: '/services/web-development/backend-development-database-development.png',
+			image: '/services/web-development/backend-development-database-development.webp',
 			imageAlt: 'Web Development Database Development capability illustration.',
 		},
 		{
@@ -82,7 +82,7 @@ const data: SubservicePageData = {
 			title: 'Authentication Systems',
 			description:
 				'User registration, login, session management, JWT tokens, OAuth integrations, and role-based access control built to scale across user types.',
-			image: '/services/web-development/backend-development-authentication-systems.jpg',
+			image: '/services/web-development/backend-development-authentication-systems.webp',
 			imageAlt: 'Web Development Authentication Systems capability illustration.',
 		},
 		{
@@ -90,7 +90,7 @@ const data: SubservicePageData = {
 			title: 'Payment Gateway Integration',
 			description:
 				'Stripe, PayPal, or Braintree integration for one-time payments, subscriptions, invoicing, and webhook handling for payment events.',
-			image: '/services/web-development/backend-development-payment-gateway-integration.jpg',
+			image: '/services/web-development/backend-development-payment-gateway-integration.webp',
 			imageAlt: 'Web Development Payment Gateway Integration capability illustration.',
 		},
 		{
@@ -98,7 +98,7 @@ const data: SubservicePageData = {
 			title: 'Third-Party Integrations',
 			description:
 				'Connections to CRMs, ERPs, logistics platforms, email providers, and communication tools via REST APIs and webhook handlers.',
-			image: '/services/web-development/backend-development-thirdparty-integrations.jpg',
+			image: '/services/web-development/backend-development-thirdparty-integrations.webp',
 			imageAlt: 'Web Development Third-Party Integrations capability illustration.',
 		},
 		{
@@ -106,7 +106,7 @@ const data: SubservicePageData = {
 			title: 'Server-Side Rendering',
 			description:
 				'Next.js server-side logic, API routes, and middleware for applications that need data fetched at request time rather than in the browser.',
-			image: '/services/web-development/backend-development-serverside-rendering.jpg',
+			image: '/services/web-development/backend-development-serverside-rendering.webp',
 			imageAlt: 'Web Development Server-Side Rendering capability illustration.',
 		}
 	],

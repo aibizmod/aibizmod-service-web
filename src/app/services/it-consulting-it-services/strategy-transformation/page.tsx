@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Digital Transformation Consulting',
 			description:
 				'Independent assessment of the business case, readiness, and approach for digital transformation initiatives, with structured recommendations for leadership decision-making.',
-			image: '/services/it-consulting-it-services/strategy-transformation-digital-transformation-consulting.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-digital-transformation-consulting.webp',
 			imageAlt: 'IT Consulting & IT Services Digital Transformation Consulting capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Technology Roadmapping',
 			description:
 				'Produce a multi-year technology investment roadmap sequenced by business priority, integration dependencies, and implementation capacity.',
-			image: '/services/it-consulting-it-services/strategy-transformation-technology-roadmapping.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-technology-roadmapping.webp',
 			imageAlt: 'IT Consulting & IT Services Technology Roadmapping capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'IT Strategy Development',
 			description:
 				'Define the technology strategy that supports your business objectives across the planning horizon, covering infrastructure, applications, data, and operating model.',
-			image: '/services/it-consulting-it-services/strategy-transformation-it-strategy-development.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-it-strategy-development.webp',
 			imageAlt: 'IT Consulting & IT Services IT Strategy Development capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Stakeholder Alignment',
 			description:
 				'Facilitate structured workshops that bring leadership, IT, and operations perspectives together to agree on priorities and build shared ownership of the transformation plan.',
-			image: '/services/it-consulting-it-services/strategy-transformation-stakeholder-alignment.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-stakeholder-alignment.webp',
 			imageAlt: 'IT Consulting & IT Services Stakeholder Alignment capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Investment Prioritisation',
 			description:
 				'Apply structured frameworks to rank technology investments by business impact, implementation risk, cost, and strategic alignment, producing a defensible prioritisation rationale.',
-			image: '/services/it-consulting-it-services/strategy-transformation-investment-prioritisation.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-investment-prioritisation.webp',
 			imageAlt: 'IT Consulting & IT Services Investment Prioritisation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Transformation Programme Governance',
 			description:
 				'Design the governance structures, reporting cadences, and decision-making processes that keep a transformation programme on track over a multi-year horizon.',
-			image: '/services/it-consulting-it-services/strategy-transformation-transformation-programme-governance.jpg',
+			image: '/services/it-consulting-it-services/strategy-transformation-transformation-programme-governance.webp',
 			imageAlt: 'IT Consulting & IT Services Transformation Programme Governance capability illustration.',
 		}
 	],

@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'CI/CD Pipeline Design',
 			description:
 				'Design and implement automated build, test, and deployment pipelines using GitHub Actions, GitLab CI, or other CI tools appropriate to your stack.',
-			image: '/services/it-consulting-it-services/devops-automation-cicd-pipeline-design.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-cicd-pipeline-design.webp',
 			imageAlt: 'IT Consulting & IT Services CI/CD Pipeline Design capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Containerisation Strategy',
 			description:
 				'Define the containerisation approach for your application, including Docker configuration, registry management, and deployment targets from simple VPS to Kubernetes.',
-			image: '/services/it-consulting-it-services/devops-automation-containerisation-strategy.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-containerisation-strategy.webp',
 			imageAlt: 'IT Consulting & IT Services Containerisation Strategy capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Infrastructure Automation',
 			description:
 				'Implement Terraform or equivalent infrastructure-as-code for all environment configuration, enabling reproducible provisioning and peer-reviewed infrastructure changes.',
-			image: '/services/it-consulting-it-services/devops-automation-infrastructure-automation.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-infrastructure-automation.webp',
 			imageAlt: 'IT Consulting & IT Services Infrastructure Automation capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Kubernetes Implementation',
 			description:
 				'Design and implement Kubernetes clusters with deployment manifests, autoscaling configuration, health checks, and operational runbooks for the team managing them.',
-			image: '/services/it-consulting-it-services/devops-automation-kubernetes-implementation.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-kubernetes-implementation.webp',
 			imageAlt: 'IT Consulting & IT Services Kubernetes Implementation capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Observability Implementation',
 			description:
 				'Implement logging, metrics, tracing, and alerting infrastructure so development and operations teams have shared visibility into production system behaviour.',
-			image: '/services/it-consulting-it-services/devops-automation-observability-implementation.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-observability-implementation.webp',
 			imageAlt: 'IT Consulting & IT Services Observability Implementation capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'DevOps Practice Consulting',
 			description:
 				'Guide adoption of DevOps practices including on-call process design, incident management, post-mortem frameworks, and SLO definition for key services.',
-			image: '/services/it-consulting-it-services/devops-automation-devops-practice-consulting.jpg',
+			image: '/services/it-consulting-it-services/devops-automation-devops-practice-consulting.webp',
 			imageAlt: 'IT Consulting & IT Services DevOps Practice Consulting capability illustration.',
 		}
 	],

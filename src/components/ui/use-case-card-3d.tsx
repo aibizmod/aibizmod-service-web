@@ -18,7 +18,7 @@ interface IndustryConfig {
 // Map normalised industry key → config
 const INDUSTRY_MAP: Record<string, IndustryConfig> = {
   retail: {
-    src: '/use-case-3d/industries/retail.png',
+    src: '/use-case-3d/industries/retail.webp',
     accentColor: 'hsl(38 92% 50%)',
     glowColor: 'rgba(245,158,11,0.25)',
     badgeBg: 'rgba(255,251,235,0.9)',
@@ -26,7 +26,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(252,211,77,0.6)',
   },
   finance: {
-    src: '/use-case-3d/industries/finance.png',
+    src: '/use-case-3d/industries/finance.webp',
     accentColor: 'hsl(191 94% 46%)',
     glowColor: 'rgba(6,182,212,0.22)',
     badgeBg: 'rgba(236,254,255,0.9)',
@@ -34,7 +34,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(103,232,249,0.6)',
   },
   'financial services': {
-    src: '/use-case-3d/industries/finance.png',
+    src: '/use-case-3d/industries/finance.webp',
     accentColor: 'hsl(191 94% 46%)',
     glowColor: 'rgba(6,182,212,0.22)',
     badgeBg: 'rgba(236,254,255,0.9)',
@@ -42,7 +42,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(103,232,249,0.6)',
   },
   healthcare: {
-    src: '/use-case-3d/industries/healthcare.png',
+    src: '/use-case-3d/industries/healthcare.webp',
     accentColor: 'hsl(174 72% 42%)',
     glowColor: 'rgba(20,184,166,0.24)',
     badgeBg: 'rgba(240,253,250,0.9)',
@@ -50,7 +50,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(94,234,212,0.6)',
   },
   'healthcare tech': {
-    src: '/use-case-3d/industries/healthcare.png',
+    src: '/use-case-3d/industries/healthcare.webp',
     accentColor: 'hsl(174 72% 42%)',
     glowColor: 'rgba(20,184,166,0.24)',
     badgeBg: 'rgba(240,253,250,0.9)',
@@ -58,7 +58,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(94,234,212,0.6)',
   },
   'e-commerce': {
-    src: '/use-case-3d/industries/ecommerce.png',
+    src: '/use-case-3d/industries/ecommerce.webp',
     accentColor: 'hsl(270 76% 60%)',
     glowColor: 'rgba(139,92,246,0.24)',
     badgeBg: 'rgba(245,243,255,0.9)',
@@ -66,7 +66,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(167,139,250,0.6)',
   },
   manufacturing: {
-    src: '/use-case-3d/industries/manufacturing.png',
+    src: '/use-case-3d/industries/manufacturing.webp',
     accentColor: 'hsl(217 91% 60%)',
     glowColor: 'rgba(59,130,246,0.24)',
     badgeBg: 'rgba(239,246,255,0.9)',
@@ -74,7 +74,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(147,197,253,0.6)',
   },
   logistics: {
-    src: '/use-case-3d/industries/logistics.png',
+    src: '/use-case-3d/industries/logistics.webp',
     accentColor: 'hsl(160 84% 39%)',
     glowColor: 'rgba(16,185,129,0.24)',
     badgeBg: 'rgba(236,253,245,0.9)',
@@ -82,7 +82,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(110,231,183,0.6)',
   },
   saas: {
-    src: '/use-case-3d/industries/saas.png',
+    src: '/use-case-3d/industries/saas.webp',
     accentColor: 'hsl(248 84% 64%)',
     glowColor: 'rgba(99,102,241,0.26)',
     badgeBg: 'rgba(238,242,255,0.9)',
@@ -90,7 +90,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(165,180,252,0.6)',
   },
   legal: {
-    src: '/use-case-3d/industries/legal.png',
+    src: '/use-case-3d/industries/legal.webp',
     accentColor: 'hsl(43 96% 56%)',
     glowColor: 'rgba(234,179,8,0.24)',
     badgeBg: 'rgba(254,252,232,0.9)',
@@ -98,7 +98,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(253,224,71,0.6)',
   },
   'legal tech': {
-    src: '/use-case-3d/industries/legal.png',
+    src: '/use-case-3d/industries/legal.webp',
     accentColor: 'hsl(43 96% 56%)',
     glowColor: 'rgba(234,179,8,0.24)',
     badgeBg: 'rgba(254,252,232,0.9)',
@@ -106,7 +106,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(253,224,71,0.6)',
   },
   hr: {
-    src: '/use-case-3d/industries/hr.png',
+    src: '/use-case-3d/industries/hr.webp',
     accentColor: 'hsl(340 82% 58%)',
     glowColor: 'rgba(236,72,153,0.22)',
     badgeBg: 'rgba(253,242,248,0.9)',
@@ -114,7 +114,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(249,168,212,0.6)',
   },
   hospitality: {
-    src: '/use-case-3d/industries/hospitality.png',
+    src: '/use-case-3d/industries/hospitality.webp',
     accentColor: 'hsl(26 90% 54%)',
     glowColor: 'rgba(249,115,22,0.24)',
     badgeBg: 'rgba(255,247,237,0.9)',
@@ -122,7 +122,7 @@ const INDUSTRY_MAP: Record<string, IndustryConfig> = {
     badgeBorder: 'rgba(253,186,116,0.6)',
   },
   edtech: {
-    src: '/use-case-3d/industries/edtech.png',
+    src: '/use-case-3d/industries/edtech.webp',
     accentColor: 'hsl(200 94% 48%)',
     glowColor: 'rgba(14,165,233,0.24)',
     badgeBg: 'rgba(240,249,255,0.9)',
@@ -152,7 +152,7 @@ const INDUSTRY_ALIASES: Record<string, string> = {
 // Accent palette for index-based fallback (when industry not in map)
 const FALLBACK_ACCENTS: IndustryConfig[] = [
   {
-    src: '/use-case-3d/industries/saas.png',
+    src: '/use-case-3d/industries/saas.webp',
     accentColor: 'hsl(248 84% 64%)',
     glowColor: 'rgba(99,102,241,0.26)',
     badgeBg: 'rgba(238,242,255,0.9)',
@@ -160,7 +160,7 @@ const FALLBACK_ACCENTS: IndustryConfig[] = [
     badgeBorder: 'rgba(165,180,252,0.6)',
   },
   {
-    src: '/use-case-3d/industries/finance.png',
+    src: '/use-case-3d/industries/finance.webp',
     accentColor: 'hsl(191 94% 46%)',
     glowColor: 'rgba(6,182,212,0.22)',
     badgeBg: 'rgba(236,254,255,0.9)',
@@ -168,7 +168,7 @@ const FALLBACK_ACCENTS: IndustryConfig[] = [
     badgeBorder: 'rgba(103,232,249,0.6)',
   },
   {
-    src: '/use-case-3d/industries/retail.png',
+    src: '/use-case-3d/industries/retail.webp',
     accentColor: 'hsl(38 92% 50%)',
     glowColor: 'rgba(245,158,11,0.25)',
     badgeBg: 'rgba(255,251,235,0.9)',

@@ -20,17 +20,17 @@ import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
 interface Value { image: string; name: string; alt: string; desc: string; }
 
 const values: Value[] = [
-  { image: "/about/values/client-first.jpg",      name: "Client First",      alt: "Team collaborating in a client-first web development planning session to align business goals.",      desc: "We ask what the client actually needs before we ask what we can build. The outcome matters more than the solution we already knew." },
-  { image: "/about/values/say-it-straight.jpg",   name: "Say It Straight",   alt: "Professional group in an honest project review discussing digital strategy timelines and estimates.",   desc: "We tell you what we actually think. Honest estimates, honest timelines, and honest feedback when something is not going to plan." },
-  { image: "/about/values/build-to-last.jpg",     name: "Build to Last",     alt: "Close-up of keyboard and monitor with code showing built-to-last software engineering practices.",     desc: "We would rather spend an extra day getting it right than a month fixing it later. Good work holds up. Rushed work does not." },
-  { image: "/about/values/stay-curious.jpg",      name: "Stay Curious",      alt: "Software developer researching new technologies at a clean desk workspace to stay innovative.",      desc: "We have changed our minds about things and we will again. Staying curious is the only way to stay useful to the people we work with." },
-  { image: "/about/values/work-together.jpg",     name: "Work Together",     alt: "Collaborative brainstorm session where engineers and designers discuss software solution architectures.",     desc: "We are not here to nod and execute. We push back when something does not add up and bring our own thinking to every conversation." },
-  { image: "/about/values/results-not-hours.jpg", name: "Results Not Hours", alt: "Analytics dashboard on screen displaying key performance indicators and successful project outcome metrics.", desc: "We care whether it worked, not whether it kept us busy. Every project starts with a clear picture of what success looks like." },
+  { image: "/about/values/client-first.webp",      name: "Client First",      alt: "Team collaborating in a client-first web development planning session to align business goals.",      desc: "We ask what the client actually needs before we ask what we can build. The outcome matters more than the solution we already knew." },
+  { image: "/about/values/say-it-straight.webp",   name: "Say It Straight",   alt: "Professional group in an honest project review discussing digital strategy timelines and estimates.",   desc: "We tell you what we actually think. Honest estimates, honest timelines, and honest feedback when something is not going to plan." },
+  { image: "/about/values/build-to-last.webp",     name: "Build to Last",     alt: "Close-up of keyboard and monitor with code showing built-to-last software engineering practices.",     desc: "We would rather spend an extra day getting it right than a month fixing it later. Good work holds up. Rushed work does not." },
+  { image: "/about/values/stay-curious.webp",      name: "Stay Curious",      alt: "Software developer researching new technologies at a clean desk workspace to stay innovative.",      desc: "We have changed our minds about things and we will again. Staying curious is the only way to stay useful to the people we work with." },
+  { image: "/about/values/work-together.webp",     name: "Work Together",     alt: "Collaborative brainstorm session where engineers and designers discuss software solution architectures.",     desc: "We are not here to nod and execute. We push back when something does not add up and bring our own thinking to every conversation." },
+  { image: "/about/values/results-not-hours.webp", name: "Results Not Hours", alt: "Analytics dashboard on screen displaying key performance indicators and successful project outcome metrics.", desc: "We care whether it worked, not whether it kept us busy. Every project starts with a clear picture of what success looks like." },
 ];
 
 const logos = [
   {
-    src: "/clients/spacelean.png",
+    src: "/clients/spacelean.webp",
     alt: "SpaceLean",
     website: "https://spacelean.ai/",
     gradient: { from: "#0E7490", via: "#22D3EE", to: "#ECFEFF" },

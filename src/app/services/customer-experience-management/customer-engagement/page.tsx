@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Loyalty Programme Design',
 			description:
 				'Design earn-and-redeem loyalty systems with point structures, tier levels, and redemption mechanics configured to your customer purchase patterns and margins.',
-			image: '/services/customer-experience-management/customer-engagement-loyalty-programme-design.jpg',
+			image: '/services/customer-experience-management/customer-engagement-loyalty-programme-design.webp',
 			imageAlt: 'Customer Experience Management Loyalty Programme Design capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'WhatsApp Business API Integration',
 			description:
 				'Connect WhatsApp Business API for transactional notifications, order updates, and opt-in marketing campaigns with delivery tracking and opt-out management.',
-			image: '/services/customer-experience-management/customer-engagement-whatsapp-business-api-integration.jpg',
+			image: '/services/customer-experience-management/customer-engagement-whatsapp-business-api-integration.webp',
 			imageAlt: 'Customer Experience Management WhatsApp Business API Integration capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Omnichannel Communication Setup',
 			description:
 				'Unify email, SMS, push notifications, and messaging apps into coordinated lifecycle flows where each channel reinforces rather than duplicates the others.',
-			image: '/services/customer-experience-management/customer-engagement-omnichannel-communication-setup.jpg',
+			image: '/services/customer-experience-management/customer-engagement-omnichannel-communication-setup.webp',
 			imageAlt: 'Customer Experience Management Omnichannel Communication Setup capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Re-Engagement Campaigns',
 			description:
 				'Build automated campaigns that identify lapsing customers from engagement signals and trigger personalised win-back sequences through the most effective channel.',
-			image: '/services/customer-experience-management/customer-engagement-reengagement-campaigns.jpg',
+			image: '/services/customer-experience-management/customer-engagement-reengagement-campaigns.webp',
 			imageAlt: 'Customer Experience Management Re-engagement Campaigns capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Referral Programme Setup',
 			description:
 				'Design and implement referral mechanics with unique tracking links, reward triggers, and attribution reporting to turn existing customers into an acquisition channel.',
-			image: '/services/customer-experience-management/customer-engagement-referral-programme-setup.jpg',
+			image: '/services/customer-experience-management/customer-engagement-referral-programme-setup.webp',
 			imageAlt: 'Customer Experience Management Referral Programme Setup capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Engagement Analytics',
 			description:
 				'Set up dashboards tracking open rates, click rates, redemption rates, and customer lifetime value by segment so engagement strategy decisions are evidence-based.',
-			image: '/services/customer-experience-management/customer-engagement-engagement-analytics.jpg',
+			image: '/services/customer-experience-management/customer-engagement-engagement-analytics.webp',
 			imageAlt: 'Customer Experience Management Engagement Analytics capability illustration.',
 		}
 	],

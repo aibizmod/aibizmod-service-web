@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'CRM Implementation',
 			description:
 				'Set up Salesforce, HubSpot, Zoho, or Microsoft Dynamics from scratch, configured for your team size, sales process, and data model rather than out-of-the-box defaults.',
-			image: '/services/customer-experience-management/crm-services-crm-implementation.jpg',
+			image: '/services/customer-experience-management/crm-services-crm-implementation.webp',
 			imageAlt: 'Customer Experience Management CRM Implementation capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'CRM Customisation',
 			description:
 				'Add custom objects, fields, pipelines, and views that reflect how your business actually tracks customers, deals, and accounts.',
-			image: '/services/customer-experience-management/crm-services-crm-customisation.jpg',
+			image: '/services/customer-experience-management/crm-services-crm-customisation.webp',
 			imageAlt: 'Customer Experience Management CRM Customisation capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Workflow Automation',
 			description:
 				'Build automation rules that assign leads, send follow-up reminders, update deal stages, and notify the right person at each step of the pipeline.',
-			image: '/services/customer-experience-management/crm-services-workflow-automation.jpg',
+			image: '/services/customer-experience-management/crm-services-workflow-automation.webp',
 			imageAlt: 'Customer Experience Management Workflow Automation capability illustration.',
 		},
 		{
@@ -89,7 +89,7 @@ const data: SubservicePageData = {
 			title: 'Integration with External Tools',
 			description:
 				'Connect your CRM to email platforms, helpdesk systems, accounting software, and marketing tools so customer records are complete without duplicate entry.',
-			image: '/services/customer-experience-management/crm-services-integration-with-external-tools.jpg',
+			image: '/services/customer-experience-management/crm-services-integration-with-external-tools.webp',
 			imageAlt: 'Customer Experience Management Integration with External Tools capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Data Migration and Cleanup',
 			description:
 				'Move existing contact and deal data from spreadsheets or legacy CRM systems, with deduplication, field mapping, and validation before import.',
-			image: '/services/customer-experience-management/crm-services-data-migration-and-cleanup.jpg',
+			image: '/services/customer-experience-management/crm-services-data-migration-and-cleanup.webp',
 			imageAlt: 'Customer Experience Management Data Migration and Cleanup capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Reporting and Dashboards',
 			description:
 				'Configure sales pipeline dashboards, activity reports, and revenue forecasts so leadership has accurate visibility without manual data exports.',
-			image: '/services/customer-experience-management/crm-services-reporting-and-dashboards.jpg',
+			image: '/services/customer-experience-management/crm-services-reporting-and-dashboards.webp',
 			imageAlt: 'Customer Experience Management Reporting and Dashboards capability illustration.',
 		}
 	],

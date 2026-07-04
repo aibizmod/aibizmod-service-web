@@ -65,7 +65,7 @@ const data: SubservicePageData = {
 			title: 'Helpdesk Implementation',
 			description:
 				'Set up Zendesk, Freshdesk, or HubSpot Service Hub with the ticket structure, queues, and routing rules that match how your support team operates.',
-			image: '/services/customer-experience-management/customer-support-systems-helpdesk-implementation.jpg',
+			image: '/services/customer-experience-management/customer-support-systems-helpdesk-implementation.webp',
 			imageAlt: 'Customer Experience Management Helpdesk Implementation capability illustration.',
 		},
 		{
@@ -73,7 +73,7 @@ const data: SubservicePageData = {
 			title: 'Live Chat Configuration',
 			description:
 				'Deploy and configure live chat on your website or app, with routing logic, business hours, fallback handling, and integration with your ticketing system.',
-			image: '/services/customer-experience-management/customer-support-systems-live-chat-configuration.jpg',
+			image: '/services/customer-experience-management/customer-support-systems-live-chat-configuration.webp',
 			imageAlt: 'Customer Experience Management Live Chat Configuration capability illustration.',
 		},
 		{
@@ -81,7 +81,7 @@ const data: SubservicePageData = {
 			title: 'Knowledge Base Setup',
 			description:
 				'Build a structured knowledge base with articles covering your most common support queries, formatted for both customer self-service and agent reference.',
-			image: '/services/customer-experience-management/customer-support-systems-knowledge-base-setup.jpg',
+			image: '/services/customer-experience-management/customer-support-systems-knowledge-base-setup.webp',
 			imageAlt: 'Customer Experience Management Knowledge Base Setup capability illustration.',
 		},
 		{
@@ -97,7 +97,7 @@ const data: SubservicePageData = {
 			title: 'Multi-Channel Support Configuration',
 			description:
 				'Unify email, live chat, social, and phone contact into a single ticketing queue so agents have a complete picture regardless of how the customer contacted you.',
-			image: '/services/customer-experience-management/customer-support-systems-multichannel-support-configuration.jpg',
+			image: '/services/customer-experience-management/customer-support-systems-multichannel-support-configuration.webp',
 			imageAlt: 'Customer Experience Management Multi-channel Support Configuration capability illustration.',
 		},
 		{
@@ -105,7 +105,7 @@ const data: SubservicePageData = {
 			title: 'Support Reporting Setup',
 			description:
 				'Build dashboards covering ticket volume, first response time, resolution time, agent workload, and customer satisfaction scores for management visibility.',
-			image: '/services/customer-experience-management/customer-support-systems-support-reporting-setup.jpg',
+			image: '/services/customer-experience-management/customer-support-systems-support-reporting-setup.webp',
 			imageAlt: 'Customer Experience Management Support Reporting Setup capability illustration.',
 		}
 	],
