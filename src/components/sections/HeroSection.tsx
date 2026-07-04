@@ -101,7 +101,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                 <AnimatedText
                   key={services[serviceIndex]}
                   text={services[serviceIndex]}
-                  className="text-cyan-600"
+                  className="gradient-text"
                   animationType="letters"
                   duration={0.4}
                   staggerDelay={0.03}
