@@ -22,7 +22,7 @@ export default function GlobalPresence() {
   return (
     <section id="global-presence" className="py-24 px-6 bg-surface">
       <div className="max-w-7xl mx-auto">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <AnimatedSection>
             <span className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground">
               Where We Work

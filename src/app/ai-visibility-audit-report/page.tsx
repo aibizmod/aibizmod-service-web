@@ -23,6 +23,7 @@ import {
   Sparkles,
   Printer,
 } from "lucide-react";
+import Navbar from "@/components/layout/Navbar";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
 
@@ -235,7 +236,8 @@ function AuditReportContent() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl">
+      <Navbar />
+      <header className="sticky top-16 z-40 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 transition">
             <ArrowLeft className="h-4 w-4" />
@@ -275,14 +277,14 @@ function AuditReportContent() {
         </div>
       </header>
 
-      <ShaderBackground className="fixed left-0 top-0 -z-10 h-screen w-screen opacity-30" />
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
-        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
+      <ShaderBackground className="absolute inset-0 -z-10 h-full w-full" />
+      <main className="min-h-screen bg-white">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-24 pb-10">
 
           {isLoading && (
             <div className="space-y-8 py-4">
               {/* Domain header skeleton */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm">
+              <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-5 shadow-sm">
                 <div className="flex items-center gap-4">
                   <div className="w-11 h-11 rounded-xl bg-slate-200 animate-pulse" />
                   <div className="flex-1">
@@ -294,7 +296,7 @@ function AuditReportContent() {
 
               {/* Score row skeleton */}
               <div className="grid gap-6 lg:grid-cols-3">
-                <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+                <div className="lg:col-span-2 bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                   <div className="flex flex-col sm:flex-row items-center gap-8">
                     <div className="w-44 h-44 rounded-full bg-slate-100 animate-pulse shrink-0" />
                     <div className="flex-1 w-full space-y-3">
@@ -308,7 +310,7 @@ function AuditReportContent() {
                     </div>
                   </div>
                 </div>
-                <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+                <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 shadow-sm">
                   <div className="space-y-5">
                     <div className="h-3 w-28 bg-slate-200 rounded animate-pulse" />
                     <div className="flex items-center gap-3">
@@ -330,7 +332,7 @@ function AuditReportContent() {
               </div>
 
               {/* Category breakdown skeleton */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+              <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl bg-slate-100 animate-pulse" />
                   <div className="space-y-1.5">
@@ -355,7 +357,7 @@ function AuditReportContent() {
               </div>
 
               {/* Recommendations skeleton */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+              <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl bg-slate-100 animate-pulse" />
                   <div className="space-y-1.5">
@@ -451,7 +453,7 @@ function AuditReportContent() {
           {result && !isLoading && band && (
             <div className="space-y-8" ref={reportRef}>
               {/* Domain Header */}
-              <div className="group relative bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all">
+              <div className="group relative bg-stone-100 rounded-2xl border border-stone-200/80 p-5 shadow-sm hover:shadow-md transition-all">
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative flex flex-col sm:flex-row items-center gap-4">
                   <div className="flex items-center gap-4">
@@ -499,7 +501,7 @@ function AuditReportContent() {
               {/* Score + Stats Grid */}
               <div className="grid gap-6 lg:grid-cols-3">
                 {/* Score Card */}
-                <div className="lg:col-span-2 relative overflow-hidden bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+                <div className="lg:col-span-2 relative overflow-hidden bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cyan-500/5 via-transparent to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
                   <div className="relative flex flex-col sm:flex-row items-center gap-8">
                     <ScoreRing score={result.score} />
@@ -535,7 +537,7 @@ function AuditReportContent() {
                 </div>
 
                 {/* Stats Panel */}
-                <div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+                <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 shadow-sm">
                   <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Overview</h3>
                   <div className="space-y-5">
                     {[
@@ -565,7 +567,7 @@ function AuditReportContent() {
               </div>
 
               {/* Category Breakdown - Bento Grid */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+              <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 shadow-sm">
                     <BarChart3 className="h-5 w-5 text-white" />
@@ -632,7 +634,7 @@ function AuditReportContent() {
               </div>
 
               {/* Recommendations */}
-              <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+              <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 shadow-sm">
                     <Sparkles className="h-5 w-5 text-white" />

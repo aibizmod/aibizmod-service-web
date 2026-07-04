@@ -112,6 +112,7 @@ const config: Config = {
         "marquee-reverse": "marquee-reverse var(--duration, 40s) linear infinite",
         "scroll-left": "scroll-left 30s linear infinite",
         "scroll-right": "scroll-right 30s linear infinite",
+        "word-fade-in": "word-fade-in 0.4s ease-out",
       },
       keyframes: {
         "accordion-down": {
@@ -137,6 +138,10 @@ const config: Config = {
         "scroll-right": {
           from: { transform: "translateX(-50%)" },
           to: { transform: "translateX(0)" },
+        },
+        "word-fade-in": {
+          from: { opacity: "0", transform: "translateY(6px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
     },

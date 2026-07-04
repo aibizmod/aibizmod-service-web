@@ -116,9 +116,9 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  // Lock body scroll when mobile menu or contact dropdown is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    if (menuOpen || contactOpen) {
+    if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -126,7 +126,7 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen, contactOpen]);
+  }, [menuOpen]);
 
   // Auto-cycle through countries every 4s, pause when dropdown is open
   useEffect(() => {
@@ -479,54 +479,57 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[400px] max-h-[60vh] overflow-y-auto rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl p-4 space-y-3 text-left whitespace-normal overscroll-contain"
-                      style={{ whiteSpace: "normal" }}
+                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[640px] rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl text-left whitespace-normal overscroll-contain"
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
-                      data-lenis-prevent
                     >
-                      {countries.map((country) => (
-                        <div
-                          key={country.code}
-                          onClick={() => {
-                            setSelectedCountry(country);
-                            setContactOpen(false);
-                          }}
-                          className="flex items-start gap-3.5 p-3 rounded-xl transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
-                        >
-                          <span className="text-[20px] select-none mt-0.5 leading-none">{country.flag}</span>
-                          <div className="flex-1 min-w-0 space-y-1">
-                            <div className="flex items-center justify-between">
-                              <a
-                                href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                onClick={(e) => e.stopPropagation()}
-                                className="font-bold text-[13.5px] text-white hover:text-cyan-400 transition-colors tracking-tight"
-                              >
-                                {country.phone}
-                              </a>
-                              <a
-                                href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                onClick={(e) => e.stopPropagation()}
-                                className="text-cyan-400 hover:text-white p-1.5 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center border border-white/10"
-                                aria-label={`Call ${country.name} office`}
-                              >
-                                <Phone size={13} strokeWidth={2.5} />
-                              </a>
+                      {/* Upward caret */}
+                      <div
+                        className="absolute -top-[5px] w-2.5 h-2.5 rotate-45 border-l border-t bg-slate-950 border-cyan-500/20"
+                        style={{ left: "50%", transform: "translateX(-50%) rotate(45deg)" }}
+                        aria-hidden="true"
+                      />
+
+                      {/* Country items grid */}
+                      <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-1">
+                        {countries.map((country) => (
+                          <div
+                            key={country.code}
+                            onClick={() => {
+                              setSelectedCountry(country);
+                              setContactOpen(false);
+                            }}
+                            className="flex items-start gap-3 p-3 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
+                          >
+                            <span className="text-[20px] select-none mt-0.5 leading-none">{country.flag}</span>
+                            <div className="flex-1 min-w-0 space-y-1">
+                              <div className="flex items-center justify-between">
+                                <a
+                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="font-bold text-[13px] text-white hover:text-cyan-400 transition-colors tracking-tight"
+                                >
+                                  {country.phone}
+                                </a>
+                                <a
+                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="text-cyan-400 hover:text-white p-1 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center border border-white/10"
+                                  aria-label={`Call ${country.name} office`}
+                                >
+                                  <Phone size={12} strokeWidth={2.5} />
+                                </a>
+                              </div>
+                              <p className="text-[11.5px] text-stone-200 font-medium leading-normal font-sans">
+                                {country.name}
+                              </p>
+                              <p className="text-[10.5px] text-stone-400 leading-normal font-sans pt-0.5 break-words">
+                                {country.address}
+                              </p>
                             </div>
-
-                            <p className="text-[12px] text-stone-200 font-medium leading-normal font-sans">
-                              {country.name}
-                            </p>
-
-                            <p 
-                              className="text-[11px] text-stone-400 leading-normal font-sans pt-0.5"
-                              style={{ whiteSpace: "normal", wordBreak: "break-word" }}
-                            >
-                              {country.address}
-                            </p>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -721,55 +724,49 @@ export default function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="mt-2 w-full rounded-xl bg-slate-950/95 border border-cyan-500/20 p-3 space-y-3 max-h-[50vh] overflow-y-auto overscroll-contain text-left whitespace-normal"
-                        style={{ whiteSpace: "normal" }}
+                        className="mt-2 w-full rounded-xl bg-slate-950/95 border border-cyan-500/20 text-left whitespace-normal overscroll-contain"
                         ref={mobileDropdownRef}
-                        onMouseEnter={openContact}
-                        data-lenis-prevent
                       >
-                        {countries.map((country) => (
-                           <div
-                             key={country.code}
-                             onClick={() => {
-                               setSelectedCountry(country);
-                               setContactOpen(false);
-                             }}
-                              className="flex items-start gap-3 p-2 rounded-lg transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
-                           >
-                             <span className="text-[18px] select-none mt-0.5 leading-none">{country.flag}</span>
-                             <div className="flex-1 min-w-0 space-y-1">
-                               <div className="flex items-center justify-between">
-                                 <a
-                                   href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                   onClick={(e) => e.stopPropagation()}
-                                    className="font-bold text-[14px] text-white hover:text-cyan-400 transition-colors"
-                                 >
-                                   {country.phone}
-                                 </a>
-                                 <a
-                                   href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                   onClick={(e) => e.stopPropagation()}
+                        <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-1">
+                          {countries.map((country) => (
+                            <div
+                              key={country.code}
+                              onClick={() => {
+                                setSelectedCountry(country);
+                                setContactOpen(false);
+                              }}
+                              className="flex items-start gap-3 p-2.5 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
+                            >
+                              <span className="text-[18px] select-none mt-0.5 leading-none">{country.flag}</span>
+                              <div className="flex-1 min-w-0 space-y-1">
+                                <div className="flex items-center justify-between">
+                                  <a
+                                    href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="font-bold text-[13px] text-white hover:text-cyan-400 transition-colors"
+                                  >
+                                    {country.phone}
+                                  </a>
+                                  <a
+                                    href={`tel:${country.phone.replace(/\s+/g, "")}`}
+                                    onClick={(e) => e.stopPropagation()}
                                     className="text-cyan-400 hover:text-white p-1 hover:bg-white/10 rounded-full transition-colors"
                                     aria-label={`Call ${country.name} office`}
-                                 >
-                                   <Phone size={12} strokeWidth={2.5} />
-                                 </a>
+                                  >
+                                    <Phone size={12} strokeWidth={2.5} />
+                                  </a>
                                 </div>
-
                                 <p className="text-[11px] text-stone-200 font-medium leading-normal font-sans">
                                   {country.name}
                                 </p>
-
-                                <p 
-                                   className="text-[10px] text-stone-400 leading-normal font-sans pt-0.5"
-                                  style={{ whiteSpace: "normal", wordBreak: "break-word" }}
-                                >
+                                <p className="text-[10px] text-stone-400 leading-normal font-sans pt-0.5 break-words">
                                   {country.address}
                                 </p>
-                             </div>
-                           </div>
-                         ))}
-                       </motion.div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </div>

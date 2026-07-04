@@ -1,30 +1,40 @@
 "use client";
 
-import { useState, FormEvent } from "react";
-import { ArrowRight, Search } from "lucide-react";
-import {
-  SiGoogleanalytics,
-  SiGooglemaps,
-  SiJavascript,
-  SiMongodb,
-  SiPostgresql,
-  SiTypescript,
-} from "react-icons/si";
+import { useState, FormEvent, useEffect } from "react";
+import { ArrowRight, Search, CheckCircle, Activity, Sparkles } from "lucide-react";
+import { SiOpenai, SiClaude, SiGooglegemini, SiPerplexity, SiJavascript, SiMongodb, SiTypescript, SiReact, SiNodedotjs } from "react-icons/si";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
-import { TextReveal } from "@/components/ui/cascade-text";
+import AnimatedText from "@/components/ui/animated-text";
 
-const techStack = [
-  { label: "TypeScript", icon: SiTypescript, color: "#3178C6", className: "left-[10%] top-[18%]", delay: "0s" },
-  { label: "MongoDB", icon: SiMongodb, color: "#47A248", className: "right-[9%] top-[22%]", delay: "0.7s" },
-  { label: "SQL", icon: SiPostgresql, color: "#4169E1", className: "left-[16%] bottom-[22%]", delay: "1.4s" },
-  { label: "Geo", icon: SiGooglemaps, color: "#4285F4", className: "right-[15%] bottom-[24%]", delay: "2.1s" },
-  { label: "SEO", icon: SiGoogleanalytics, color: "#E37400", className: "left-[6%] top-[52%]", delay: "2.8s" },
-  { label: "JavaScript", icon: SiJavascript, color: "#F7DF1E", className: "right-[7%] top-[56%]", delay: "3.5s" },
+const services = [
+  "AI & Automation",
+  "Digital Marketing",
+  "Web Development",
+  "Custom Software",
+  "Mobile Apps",
+  "Hosting & Infrastructure",
+  "Customer Experience",
+  "IT Consulting",
 ];
 
-export default function HeroSection() {
+type HeroVariant = 1 | 2 | 3 | 4;
+
+interface HeroSectionProps {
+  variant?: HeroVariant;
+}
+
+export default function HeroSection({ variant = 4 }: HeroSectionProps) {
   const [domain, setDomain] = useState("");
+  const [serviceIndex, setServiceIndex] = useState(0);
+
+  useEffect(() => {
+    if (variant !== 4) return;
+    const interval = setInterval(() => {
+      setServiceIndex((i) => (i + 1) % services.length);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, [variant]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,83 +42,145 @@ export default function HeroSection() {
     window.open(`/ai-visibility-audit-report?domain=${encodeURIComponent(domain.trim())}`, "_blank");
   };
 
-  return (
-    <section className="relative isolate min-h-screen overflow-hidden bg-white">
-      <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
-
-      <div className="pointer-events-none absolute inset-0 z-10 hidden md:block" aria-hidden="true">
-        {techStack.map((tech) => (
-          <div
-            key={tech.label}
-            className={`absolute ${tech.className} flex h-12 w-12 animate-[float-tech_6s_ease-in-out_infinite] items-center justify-center rounded-full border border-white/75 bg-white/85 text-stone-700 shadow-[0_20px_38px_rgba(28,25,23,0.16),inset_0_1px_0_rgba(255,255,255,0.9)]`}
-            style={{ animationDelay: tech.delay }}
-          >
-            <tech.icon color={tech.color} size={22} aria-hidden="true" />
-          </div>
-        ))}
-      </div>
-
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-20 text-center">
-        <h1
-          className="max-w-3xl font-display font-thin text-[#0F172A] text-balance"
-          style={{ fontSize: "clamp(34px, 5vw, 58px)", lineHeight: 1.04 }}
-        >
-          Technology That Keeps
-          <br />
-          <TextReveal
-            text="Business Connected"
+  const inputField = (
+    <form id="hero-audit-form" onSubmit={handleSubmit} className="w-full">
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
+          <Search className="h-4 w-4" />
+        </div>
+        <input
+          type="text"
+          value={domain}
+          onChange={(e) => setDomain(e.target.value)}
+          placeholder="Enter your website URL"
+          className="w-full h-12 pl-10 pr-36 text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
+          aria-label="Domain to audit"
+        />
+        <div className="absolute right-1.5 top-1/2 -translate-y-1/2">
+          <StarButton
             as="span"
-            fontSize="inherit"
-            color="#0F172A"
-            hoverColor="#0891B2"
-            className="font-thin normal-case tracking-tight"
-            style={{ padding: 0 }}
-          />
-        </h1>
+            lightColor="#38bdf8"
+            backgroundColor="#0f172a"
+            className="h-9 px-4 text-[13px] font-medium cursor-pointer"
+            onClick={() => {
+              const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
+              form?.requestSubmit();
+            }}
+          >
+            Check visibility <ArrowRight size={15} />
+          </StarButton>
+        </div>
+      </div>
+    </form>
+  );
 
-        <p className="mt-6 max-w-2xl text-sm leading-6 text-stone-600 md:text-base md:leading-7">
-          We build technology that brings teams together, makes daily work easier, and gives customers a smoother digital experience.
-        </p>
-
-        <div className="mt-10 w-full max-w-xl">
-          <div className="relative rounded-2xl border border-stone-200 bg-white shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md overflow-hidden">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none text-stone-400">
-              <Search className="h-5 w-5" />
-            </div>
-            <form id="hero-audit-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                value={domain}
-                onChange={(e) => setDomain(e.target.value)}
-                placeholder="Enter your domain (e.g., aibizmod.com)"
-                className="w-full h-14 pl-12 pr-28 sm:pr-36 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-0"
-                aria-label="Domain to audit"
-              />
-              <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                {!domain.trim() ? (
-                  <span className="inline-flex h-10 items-center gap-2 rounded-xl bg-stone-900/50 px-5 text-xs sm:text-sm font-semibold text-white/50 cursor-not-allowed">
-                    Check Visibility <ArrowRight size={16} />
-                  </span>
-                ) : (
-                  <StarButton
-                    as="span"
-                    lightColor="#38bdf8"
-                    backgroundColor="#0f172a"
-                    className="h-10 px-5 text-xs sm:text-sm font-semibold cursor-pointer"
-                    onClick={() => {
-                      const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
-                      form?.requestSubmit();
-                    }}
-                  >
-                    Check Visibility <ArrowRight size={16} />
-                  </StarButton>
-                )}
+  if (variant === 4) {
+    return (
+      <section className="relative isolate min-h-screen bg-white">
+        <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
+        <div className="relative z-10 mx-auto max-w-6xl min-h-screen flex items-center">
+          <div className="w-full">
+            <p className="text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
+              A Team Behind Visibility, Product, and Growth.
+            </p>
+            <h1
+              className="mt-4 font-display font-medium text-stone-900"
+              style={{ fontSize: "clamp(36px, 4.8vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+            >
+              <span className="relative inline-block min-w-[220px] min-h-[0.9em]">
+                <AnimatedText
+                  key={services[serviceIndex]}
+                  text={services[serviceIndex]}
+                  className="text-cyan-600"
+                  animationType="letters"
+                  duration={0.4}
+                  staggerDelay={0.03}
+                />
+              </span>
+            </h1>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <p className="text-[15px] md:text-[17px] font-normal text-stone-500 leading-relaxed">
+                  Track, audit, and improve how ChatGPT, Perplexity, Gemini, and Claude represent your brand.
+                  Catch hallucinations before they cost you pipeline. Get recommended, not ignored.
+                </p>
               </div>
-            </form>
+              <div>
+                {inputField}
+                <div className="mt-4 flex flex-wrap gap-3 text-[12px] text-stone-500">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
+                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
+                    No signup required
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
+                    <Activity className="h-3.5 w-3.5 text-cyan-500" />
+                    Takes ~30 seconds
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
+                    <Sparkles className="h-3.5 w-3.5 text-cyan-500" />
+                    Free
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 overflow-hidden border-t border-stone-200/60 pt-6">
+              <div className="flex animate-marquee whitespace-nowrap" style={{"--duration": "30s"} as React.CSSProperties}>
+                {[...Array(3)].map((_, i) => (
+                  <span key={i} className="inline-flex items-center gap-10 mx-5">
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiOpenai size={20} color="#10A37F" /> ChatGPT</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiClaude size={20} color="#CC785C" /> Claude</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiGooglegemini size={20} color="#4285F4" /> Gemini</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiPerplexity size={20} color="#20B8CD" /> Perplexity</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiTypescript size={20} color="#3178C6" /> TypeScript</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiJavascript size={20} color="#F7DF1E" /> JavaScript</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiMongodb size={20} color="#47A248" /> MongoDB</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiReact size={20} color="#61DAFB" /> React</span>
+                    <span className="flex items-center gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiNodedotjs size={20} color="#339933" /> Node.js</span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <p className="mt-3 text-xs text-stone-400 text-center">
-            Free AI visibility report · No account needed · Runs in ~15 seconds
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="relative isolate min-h-screen bg-white">
+      <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
+      <div className="relative z-10 mx-auto max-w-6xl min-h-screen flex items-center">
+        <div className="w-full max-w-2xl">
+          <p className="text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
+            A Team Behind Visibility, Product, and Growth.
           </p>
+          <h1
+            className="mt-4 font-display font-medium text-stone-900"
+            style={{ fontSize: "clamp(36px, 4.8vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+          >
+            <span className="text-cyan-600">Technology</span>{" "}
+            <span className="text-stone-400 font-thin">&amp;</span>{" "}
+            <span className="text-cyan-600">AI Visibility</span>
+            <span className="block text-stone-900 font-extralight mt-2">
+              Business Connected.
+            </span>
+          </h1>
+          <p className="mt-5 text-[15px] leading-7 text-stone-500">
+            We build your digital stack and optimize how AI platforms see your brand. One partner. Full visibility.
+          </p>
+          <div className="mt-8 w-full max-w-md">
+            {inputField}
+            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-stone-400">
+              <span className="inline-flex items-center gap-1">
+                <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
+                No signup required
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Activity className="h-3.5 w-3.5 text-cyan-500" />
+                Takes ~30 seconds
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

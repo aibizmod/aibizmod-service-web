@@ -32,8 +32,8 @@ export default function Home() {
 			<Navbar />
 			<StickyFooterLayout footer={<Footer />}>
 				<main>
-					<HeroSection />
-					<ServicesGrid />
+				<HeroSection />
+				<ServicesGrid />
 					<AIAutomationHero />
 					<WhyChooseUs />
 					<GlobalPresence />
