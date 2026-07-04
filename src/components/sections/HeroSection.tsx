@@ -97,11 +97,11 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
               className="mt-4 font-display font-medium text-stone-900"
               style={{ fontSize: "clamp(36px, 4.8vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
             >
-              <span className="relative inline-block min-w-[220px] min-h-[0.9em]">
+              <span className="relative inline-block min-w-[220px] min-h-[0.9em] gradient-text">
                 <AnimatedText
                   key={services[serviceIndex]}
                   text={services[serviceIndex]}
-                  className="gradient-text"
+                  className=""
                   animationType="letters"
                   duration={0.4}
                   staggerDelay={0.03}
