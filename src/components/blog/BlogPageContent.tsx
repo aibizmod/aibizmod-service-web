@@ -155,12 +155,12 @@ export default function BlogPageContent() {
 						</div>
 
 						{/* Category Filters */}
-						<div className='flex items-center gap-2 overflow-x-auto pb-1 md:pb-0'>
+						<div className='flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden'>
 							{categories.map((category) => (
 								<button
 									key={category}
 									onClick={() => setActiveCategory(category)}
-									className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+									className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold leading-none h-9 inline-flex items-center transition ${
 										activeCategory === category
 											? 'bg-[#0F172A] text-white shadow-[0_10px_24px_rgba(15,23,42,0.16)]'
 											: 'border border-stone-200 bg-white text-stone-700 hover:border-stone-300'

@@ -158,7 +158,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
               </div>
             </AnimatedSection>
 
-            <article className="mx-auto mt-14 max-w-3xl">
+            <article className="mx-auto mt-14 max-w-3xl overflow-x-auto">
 
               {/* Key Takeaways */}
               <AnimatedSection className="mb-14 rounded-2xl border border-cyan-200 bg-cyan-50/60 px-6 py-8 shadow-[0_14px_36px_rgba(15,23,42,0.05)] md:px-9">

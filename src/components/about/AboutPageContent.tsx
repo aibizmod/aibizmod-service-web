@@ -234,7 +234,7 @@ export default function AboutPageContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Mission — dark card */}
             <AnimatedSection delay={0.05}>
-              <div className="h-full bg-ink rounded-card p-8 md:p-10">
+              <div className="h-full bg-ink rounded-card p-5 sm:p-8 md:p-10">
                 <div
                   className="w-12 h-12 rounded-btn flex items-center justify-center mb-6"
                   style={{ background: "rgba(6,182,212,0.20)", border: "1px solid rgba(6,182,212,0.30)" }}
@@ -257,7 +257,7 @@ export default function AboutPageContent() {
 
             {/* Vision — gold-hairline card */}
             <AnimatedSection delay={0.12}>
-              <div className="h-full card-royal p-8 md:p-10">
+              <div className="h-full card-royal p-5 sm:p-8 md:p-10">
                 <div className="icon-box mb-6">
                   <Lightbulb size={22} aria-hidden="true" />
                 </div>

@@ -11,7 +11,7 @@ export default function ServicesGrid() {
   return (
     <section
       id="services"
-      className="relative bg-white px-6 py-24"
+      className="relative bg-white px-6 py-16 md:py-24"
       style={{
         backgroundImage:
           "linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px)",

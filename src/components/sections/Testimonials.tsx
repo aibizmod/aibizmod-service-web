@@ -71,8 +71,8 @@ export default function Testimonials() {
               intervalMs={4500}
               pauseOnHover={true}
               showDots={true}
-              cardWidth={560}
-              cardHeight={380}
+              cardWidth={520}
+              cardHeight={340}
               renderCard={(item, { active }) => (
                 <div
                   className={`card-royal h-full w-full p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${
