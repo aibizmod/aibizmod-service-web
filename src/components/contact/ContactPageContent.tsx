@@ -64,12 +64,6 @@ const contactDetails: ContactDetailItem[] = [
 			{ text: c.email, href: `mailto:${c.email}` },
 		],
 	})),
-	{
-		icon: Clock,
-		flag: undefined,
-		label: 'Response time',
-		value: 'Within 24 business hours',
-	},
 ];
 
 interface FormData {
@@ -696,6 +690,20 @@ export default function ContactPageContent() {
 											placeholder="Select a service"
 										/>
 									</div>
+
+									<div className='flex gap-3 items-center rounded-2xl border border-white/10 bg-white/5 p-3.5 mt-2'>
+										<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-[#22D3EE]'>
+											<Clock size={17} aria-hidden='true' />
+										</div>
+										<div>
+											<p className='text-xs font-semibold uppercase tracking-[0.16em] text-[#22D3EE]'>
+												Response time
+											</p>
+											<p className='mt-1 text-sm font-semibold text-white'>
+												Within 24 business hours
+											</p>
+										</div>
+									</div>
 									</div>
 
 									{submitError && (
@@ -711,14 +719,14 @@ export default function ContactPageContent() {
 										<button
 											type='submit'
 											disabled={isSubmitting}
-											className='disabled:cursor-not-allowed disabled:opacity-70'
+											className='w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-70'
 										>
 											<StarButton
 												as='span'
 												lightColor='#38bdf8'
 												backgroundColor='#ffffff'
 												textColor='text-black font-semibold'
-												className='h-12 transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]'
+												className='h-12 w-full sm:w-auto sm:max-w-[450px] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]'
 											>
 												{isSubmitting ? 'Sending...' : 'Send Message'}
 												<ArrowRight size={16} aria-hidden='true' />
@@ -756,14 +764,10 @@ export default function ContactPageContent() {
 							</p>
 
 							<ul className='mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4'>
-								{contactDetails.map(({ icon: Icon, flag, label, value, links }) => {
-									const isResponseTime = label === 'Response time';
-									return (
+								{contactDetails.map(({ icon: Icon, flag, label, value, links }) => (
 										<li
 											key={label}
-											className={`flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-3.5 transition duration-300 hover:bg-white/10 ${
-												isResponseTime ? 'sm:col-span-2' : ''
-											}`}
+											className='flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-3.5 transition duration-300 hover:bg-white/10'
 										>
 											<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-[#22D3EE]'>
 												{flag ? (
@@ -801,8 +805,7 @@ export default function ContactPageContent() {
 												)}
 											</div>
 										</li>
-									);
-								})}
+								))}
 							</ul>
 						</div>
 					</aside>
