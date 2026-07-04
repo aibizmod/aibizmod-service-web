@@ -31,21 +31,17 @@ const Card: React.FC<CardProps> = ({
     const container = containerRef.current;
     if (!card || !container) return;
 
-    const targetScale = 1 - (totalCards - index) * 0.05;
+    const targetScale = 1 - (totalCards - 1 - index) * 0.04;
 
-    gsap.set(card, {
-      scale: 1,
-      transformOrigin: "center top",
-    });
+    gsap.set(card, { scale: 1, transformOrigin: "center top" });
 
     const trigger = ScrollTrigger.create({
       trigger: container,
-      start: "top center",
-      end: "bottom center",
-      scrub: 1,
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.5,
       onUpdate: (self) => {
-        const progress = self.progress;
-        const scale = gsap.utils.interpolate(1, targetScale, progress);
+        const scale = gsap.utils.interpolate(1, targetScale, self.progress);
         gsap.set(card, {
           scale: Math.max(scale, targetScale),
           transformOrigin: "center top",
@@ -60,12 +56,12 @@ const Card: React.FC<CardProps> = ({
     <div
       ref={containerRef}
       style={{
-        height: "50vh",
+        position: "sticky",
+        top: 0,
+        height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        position: "sticky",
-        top: 0,
       }}
     >
       <div
@@ -73,12 +69,10 @@ const Card: React.FC<CardProps> = ({
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "640px",
-          height: "400px",
+          maxWidth: "560px",
+          height: "380px",
           borderRadius: "24px",
           isolation: "isolate",
-          top: `calc(-5vh + ${index * 25}px)`,
-          transformOrigin: "top",
         }}
         className="card-content"
       >
@@ -112,25 +106,17 @@ const Card: React.FC<CardProps> = ({
             flexDirection: "column",
             justifyContent: "center",
             borderRadius: "24px",
-            background: `
-              linear-gradient(145deg, 
-                rgba(255, 255, 255, 0.1), 
-                rgba(255, 255, 255, 0.05)
-              )
-            `,
+            background:
+              "linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
             backdropFilter: "blur(25px) saturate(180%)",
             border: "1px solid rgba(255, 255, 255, 0.2)",
-            boxShadow: `
-              0 8px 32px rgba(0, 0, 0, 0.3),
-              0 2px 8px rgba(0, 0, 0, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.3),
-              inset 0 -1px 0 rgba(255, 255, 255, 0.1)
-            `,
+            boxShadow:
+              "0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.1)",
             overflow: "hidden",
             padding: "2.5rem",
           }}
         >
-          {/* Enhanced Glass reflection overlay */}
+          {/* Glass reflection overlay */}
           <div
             style={{
               position: "absolute",
@@ -145,7 +131,7 @@ const Card: React.FC<CardProps> = ({
             }}
           />
 
-          {/* Glass shine effect */}
+          {/* Glass shine */}
           <div
             style={{
               position: "absolute",
@@ -160,29 +146,11 @@ const Card: React.FC<CardProps> = ({
             }}
           />
 
-          {/* Side glass reflection */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "2px",
-              height: "100%",
-              background:
-                "linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%)",
-              borderRadius: "24px 0 0 24px",
-              pointerEvents: "none",
-            }}
-          />
-
           {/* Frosted glass texture */}
           <div
             style={{
               position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              inset: 0,
               backgroundImage: `
                 radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 1px, transparent 2px),
                 radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 1px, transparent 2px),
@@ -225,23 +193,7 @@ const Card: React.FC<CardProps> = ({
 };
 
 export function StackedCards() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const desktopRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    gsap.fromTo(
-      container,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1.2,
-        ease: "power2.out",
-      }
-    );
-  }, []);
 
   useEffect(() => {
     const desktop = desktopRef.current;
@@ -281,28 +233,24 @@ export function StackedCards() {
       {/* Desktop GSAP sticky stack */}
       <div
         ref={desktopRef}
-        className="relative hidden pb-12 lg:block"
+        className="relative hidden lg:block"
         style={{
           background:
             "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%)",
           borderRadius: "24px",
-          overflow: "hidden",
-          minHeight: "500px",
         }}
       >
-        <div ref={containerRef} className="relative">
-          {cardData.map((card, index) => (
-            <Card
-              key={card.id}
-              id={card.id}
-              title={card.title}
-              description={card.description}
-              index={index}
-              totalCards={cardData.length}
-              color={card.color}
-            />
-          ))}
-        </div>
+        {cardData.map((card, index) => (
+          <Card
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            description={card.description}
+            index={index}
+            totalCards={cardData.length}
+            color={card.color}
+          />
+        ))}
       </div>
     </>
   );
