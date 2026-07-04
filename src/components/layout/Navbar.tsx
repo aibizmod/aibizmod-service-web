@@ -479,14 +479,17 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[640px] rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl text-left whitespace-normal overscroll-contain"
+                      className="absolute z-10 w-[90vw] max-w-[540px] rounded-card shadow-float border
+                        transition-all duration-200 origin-top
+                        top-[calc(100%+8px)] right-0 shadow-2xl
+                        bg-slate-950/95 border-cyan-500/20 text-white"
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
                     >
                       {/* Upward caret */}
                       <div
                         className="absolute -top-[5px] w-2.5 h-2.5 rotate-45 border-l border-t bg-slate-950 border-cyan-500/20"
-                        style={{ left: "50%", transform: "translateX(-50%) rotate(45deg)" }}
+                        style={{ right: "20px", transform: "rotate(45deg)" }}
                         aria-hidden="true"
                       />
 
@@ -499,36 +502,41 @@ export default function Navbar() {
                               setSelectedCountry(country);
                               setContactOpen(false);
                             }}
-                            className="w-full flex items-start justify-between gap-3 p-3 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
+                            className="group flex items-start gap-3 p-3 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 hover:bg-white/5"
                           >
-                            <span className="text-[20px] select-none mt-0.5 leading-none">{country.flag}</span>
-                            <div className="flex-1 min-w-0 space-y-1">
-                              <div className="flex items-center gap-2">
-                                <a
-                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="font-bold text-[13px] text-white hover:text-cyan-400 transition-colors tracking-tight"
-                                >
-                                  {country.phone}
-                                </a>
-                                <a
-                                  href={`tel:${country.phone.replace(/\s+/g, "")}`}
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="text-cyan-400 hover:text-white p-1 hover:bg-white/10 rounded-full transition-colors flex items-center justify-center border border-white/10"
-                                  aria-label={`Call ${country.name} office`}
-                                >
-                                  <Phone size={12} strokeWidth={2.5} />
-                                </a>
-                              </div>
-                              <p className="text-[11.5px] text-stone-200 font-medium leading-normal font-sans">
-                                {country.name}
+                            {/* Flag icon box */}
+                            <div
+                              className="w-8 h-8 rounded-[8px] flex items-center justify-center shrink-0 mt-0.5"
+                              style={{
+                                background: "rgba(255,255,255,0.06)",
+                                border: "1px solid rgba(255,255,255,0.1)",
+                              }}
+                            >
+                              <span className="text-[16px] select-none leading-none">{country.flag}</span>
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-[14px] font-semibold leading-snug text-white group-hover:text-cyan-400 transition-colors tracking-tight">
+                                {country.phone}
                               </p>
-                              <p className="text-[10.5px] text-stone-400 leading-normal font-sans pt-0.5 break-words">
-                                {country.address}
+                              <p className="text-[11px] mt-0.5 leading-snug text-stone-400">
+                                {country.name}
                               </p>
                             </div>
                           </div>
                         ))}
+                      </div>
+
+                      {/* Footer */}
+                      <div className="px-3 pb-3">
+                        <div className="border-t pt-3 border-white/10">
+                          <a
+                            href="tel:+16464215740"
+                            className="flex items-center justify-center gap-1.5 py-2 text-[14px] font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 text-cyan-400 hover:text-white hover:bg-white/5"
+                          >
+                            Call main office
+                            <Phone size={13} aria-hidden="true" />
+                          </a>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -541,7 +549,7 @@ export default function Navbar() {
         {/* ── Mobile hamburger ──────────────────────────────────────────── */}
         <button
           type="button"
-          className={`lg:hidden p-1.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
+          className={`lg:hidden p-2.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
             scrolled ? "text-white hover:bg-white/10" : "text-white hover:bg-white/10"
           }`}
           onClick={() => setMenuOpen((p) => !p)}
@@ -564,7 +572,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={springTransition}
-            className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md ${
+            className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md overflow-x-hidden ${
               scrolled
                 ? "bg-slate-950/95 border border-cyan-500/20 text-white"
                 : "bg-slate-950/95 border border-cyan-500/20 text-white"

@@ -1,179 +1,48 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import {
-  ArrowRight,
-  Code2,
-  Lightbulb,
-  Server,
-  Smartphone,
-  TrendingUp,
-  Users,
-  Zap,
-  Cpu,
-  type LucideIcon,
-} from "lucide-react";
-import { StarButton } from "@/components/ui/star-button";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { cardData } from "../../lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
-type WhatWeDoCard = {
+interface CardProps {
   id: number;
   title: string;
   description: string;
-  href: string;
-  icon: LucideIcon;
-};
-
-const whatWeDoCards: WhatWeDoCard[] = [
-  {
-    id: 1,
-    title: "AI & Automation",
-    description:
-      "We build AI agents, automated workflows, and smart integrations that save your team time and reduce manual work.",
-    href: "/services/ai-automation",
-    icon: Zap,
-  },
-  {
-    id: 2,
-    title: "Digital Marketing",
-    description:
-      "We improve search, content, campaign tracking, and conversion paths so the right people find you and take action.",
-    href: "/services/digital-marketing",
-    icon: TrendingUp,
-  },
-  {
-    id: 3,
-    title: "Web Development",
-    description:
-      "We build fast, responsive websites and web apps that are easy to use and ready for real customers.",
-    href: "/services/web-development",
-    icon: Code2,
-  },
-  {
-    id: 4,
-    title: "Custom Software Development",
-    description:
-      "We create software around the way your team works — from internal tools to customer portals and dashboards.",
-    href: "/services/software-development",
-    icon: Cpu,
-  },
-  {
-    id: 5,
-    title: "Mobile App Development",
-    description:
-      "We design and build iOS and Android apps — native or cross-platform — that help customers get things done anywhere.",
-    href: "/services/mobile-app-development",
-    icon: Smartphone,
-  },
-  {
-    id: 6,
-    title: "Hosting & Infrastructure",
-    description:
-      "We set up scalable cloud hosting, deployments, monitoring, and backups that stay secure and dependable.",
-    href: "/services/hosting-infrastructure",
-    icon: Server,
-  },
-  {
-    id: 7,
-    title: "Customer Experience",
-    description:
-      "We improve CRM setup, ticket routing, and support systems so every customer interaction is easier to manage.",
-    href: "/services/customer-experience-management",
-    icon: Users,
-  },
-  {
-    id: 8,
-    title: "IT Consulting & IT Services",
-    description:
-      "We help you make clearer decisions about architecture, vendors, delivery plans, and long-term technology strategy.",
-    href: "/services/it-consulting-it-services",
-    icon: Lightbulb,
-  },
-];
-
-// ─── Shared card face (used in both layouts) ──────────────────────────────────
-
-function CardFace({ card }: { card: WhatWeDoCard }) {
-  const Icon = card.icon;
-  return (
-    <>
-      {/* Glass gradient overlay */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(210,247,255,0.18) 52%, rgba(255,255,255,0.75))",
-        }}
-        aria-hidden="true"
-      />
-      {/* Top sheen line */}
-      <div
-        className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
-        aria-hidden="true"
-      />
-      {/* Background number */}
-      <span className="pointer-events-none absolute right-8 top-6 font-display text-6xl font-bold leading-none text-[#0F172A]/15 md:text-7xl">
-        {String(card.id).padStart(2, "0")}
-      </span>
-
-      <div className="relative z-10">
-        {/* Icon box */}
-        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-[#D2F7FF] bg-[#D2F7FF]/45 text-[#487F89] shadow-[0_12px_36px_rgba(72,127,137,0.16)]">
-          <Icon size={24} aria-hidden="true" />
-        </div>
-        <h3 className="font-display text-2xl font-thin leading-tight text-[#0F172A] md:text-3xl">
-          {card.title}
-        </h3>
-        <p className="mt-4 text-base leading-7 text-stone-600 md:text-lg">
-          {card.description}
-        </p>
-        <StarButton
-          as="span"
-          lightColor="#38bdf8"
-          backgroundColor="#0f172a"
-          className="mt-4 h-11 font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)] transition hover:-translate-y-0.5 duration-300 cursor-pointer"
-          onClick={() => { window.location.href = card.href; }}
-        >
-          Explore <ArrowRight size={14} aria-hidden="true" />
-        </StarButton>
-      </div>
-    </>
-  );
-}
-
-// ─── Desktop sticky card (GSAP scroll-jacking) ───────────────────────────────
-
-function StickyCard({ card, index, totalCards }: {
-  card: WhatWeDoCard;
   index: number;
   totalCards: number;
-}) {
+  color: string;
+}
+
+const Card: React.FC<CardProps> = ({
+  title,
+  description,
+  index,
+  totalCards,
+  color,
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const cardElement = cardRef.current;
+    const card = cardRef.current;
     const container = containerRef.current;
-    if (!cardElement || !container) return;
+    if (!card || !container) return;
 
-    const targetScale = 1 - (totalCards - index) * 0.05;
+    const targetScale = 1 - (totalCards - 1 - index) * 0.04;
 
-    gsap.set(cardElement, {
-      scale: 1,
-      transformOrigin: "center top",
-    });
+    gsap.set(card, { scale: 1, transformOrigin: "center top" });
 
     const trigger = ScrollTrigger.create({
       trigger: container,
-      start: "top center",
-      end: "bottom center",
-      scrub: 1,
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.5,
       onUpdate: (self) => {
         const scale = gsap.utils.interpolate(1, targetScale, self.progress);
-        gsap.set(cardElement, {
+        gsap.set(card, {
           scale: Math.max(scale, targetScale),
           transformOrigin: "center top",
         });
@@ -186,90 +55,202 @@ function StickyCard({ card, index, totalCards }: {
   return (
     <div
       ref={containerRef}
-      className="sticky top-0 flex h-screen items-center justify-center"
+      style={{
+        position: "sticky",
+        top: 0,
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <div
         ref={cardRef}
-        className="relative h-[320px] w-full overflow-hidden rounded-3xl border border-stone-200/80 bg-white/80 p-6 shadow-[0_26px_90px_rgba(15,23,42,0.14)] backdrop-blur-xl md:p-8"
         style={{
-          top: `calc(-5vh + ${index * 25}px)`,
+          position: "relative",
+          width: "100%",
+          maxWidth: "560px",
+          height: "380px",
+          borderRadius: "24px",
           isolation: "isolate",
-          transformOrigin: "top",
         }}
+        className="card-content"
       >
-        <CardFace card={card} />
+        {/* Electric Border Effect */}
+        <div
+          style={{
+            position: "absolute",
+            inset: "-3px",
+            borderRadius: "27px",
+            padding: "3px",
+            background: `conic-gradient(
+              from 0deg,
+              transparent 0deg,
+              ${color} 60deg,
+              ${color.replace("0.8", "0.6")} 120deg,
+              transparent 180deg,
+              ${color.replace("0.8", "0.4")} 240deg,
+              transparent 360deg
+            )`,
+            zIndex: -1,
+          }}
+        />
+
+        {/* Main Card Content */}
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            borderRadius: "24px",
+            background:
+              "linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05))",
+            backdropFilter: "blur(25px) saturate(180%)",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
+            boxShadow:
+              "0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(255, 255, 255, 0.1)",
+            overflow: "hidden",
+            padding: "2.5rem",
+          }}
+        >
+          {/* Glass reflection overlay */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "60%",
+              background:
+                "linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%)",
+              pointerEvents: "none",
+              borderRadius: "24px 24px 0 0",
+            }}
+          />
+
+          {/* Glass shine */}
+          <div
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: "10px",
+              right: "10px",
+              height: "2px",
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%)",
+              borderRadius: "1px",
+              pointerEvents: "none",
+            }}
+          />
+
+          {/* Frosted glass texture */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage: `
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 1px, transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 1px, transparent 2px),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.06) 1px, transparent 2px)
+              `,
+              backgroundSize: "30px 30px, 25px 25px, 35px 35px",
+              pointerEvents: "none",
+              borderRadius: "24px",
+              opacity: 0.7,
+            }}
+          />
+
+          {/* Card Text Content */}
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <h3
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: 600,
+                color: "#ffffff",
+                marginBottom: "0.75rem",
+                lineHeight: 1.2,
+              }}
+            >
+              {title}
+            </h3>
+            <p
+              style={{
+                fontSize: "1rem",
+                color: "rgba(255, 255, 255, 0.7)",
+                lineHeight: 1.6,
+              }}
+            >
+              {description}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
-
-// ─── Mobile / tablet flat grid card ──────────────────────────────────────────
-
-function GridCard({ card }: { card: WhatWeDoCard }) {
-  return (
-    <div
-      className="relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white/80 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.09)] backdrop-blur-xl"
-      style={{ isolation: "isolate" }}
-    >
-      <CardFace card={card} />
-    </div>
-  );
-}
-
-// ─── Main export ──────────────────────────────────────────────────────────────
+};
 
 export function StackedCards() {
   const desktopRef = useRef<HTMLDivElement>(null);
 
-  // Track whether we're on a large screen to conditionally init GSAP fade-in
-  const [isLg, setIsLg] = useState(false);
-
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    setIsLg(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsLg(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  useEffect(() => {
-    if (!isLg) return;
-    const container = desktopRef.current;
-    if (!container) return;
+    const desktop = desktopRef.current;
+    if (!desktop) return;
 
     gsap.fromTo(
-      container,
+      desktop,
       { opacity: 0 },
       { opacity: 1, duration: 0.8, ease: "power2.out" }
     );
 
     ScrollTrigger.refresh();
-  }, [isLg]);
+  }, []);
 
   return (
     <>
-      {/* ── Mobile / tablet grid (< 1024px) ─────────────────────────────── */}
+      {/* Mobile / tablet grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:hidden">
-        {whatWeDoCards.map((card) => (
-          <GridCard key={card.id} card={card} />
+        {cardData.map((card) => (
+          <div
+            key={card.id}
+            className="relative overflow-hidden rounded-3xl border border-stone-200/80 bg-white/80 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.09)] backdrop-blur-xl"
+            style={{ isolation: "isolate" }}
+          >
+            <div className="relative z-10">
+              <h3 className="font-display text-2xl font-thin leading-tight text-[#0F172A]">
+                {card.title}
+              </h3>
+              <p className="mt-4 text-base leading-7 text-stone-600">
+                {card.description}
+              </p>
+            </div>
+          </div>
         ))}
       </div>
 
-      {/* ── Desktop GSAP sticky stack (≥ 1024px) ────────────────────────── */}
+      {/* Desktop GSAP sticky stack */}
       <div
         ref={desktopRef}
-        className="relative hidden min-h-[520vh] pb-24 lg:block"
+        className="relative hidden lg:block"
+        style={{
+          background:
+            "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%)",
+          borderRadius: "24px",
+        }}
       >
-        <div className="relative">
-          {whatWeDoCards.map((card, index) => (
-            <StickyCard
-              key={card.id}
-              card={card}
-              index={index}
-              totalCards={whatWeDoCards.length}
-            />
-          ))}
-        </div>
+        {cardData.map((card, index) => (
+          <Card
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            description={card.description}
+            index={index}
+            totalCards={cardData.length}
+            color={card.color}
+          />
+        ))}
       </div>
     </>
   );
