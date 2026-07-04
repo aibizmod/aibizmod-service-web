@@ -41,7 +41,7 @@ const MarqueeLogoScroller = React.forwardRef<
 
     // Map speed prop to animation duration
     const durationMap = {
-      normal: "40s",
+      normal: "10s",
       slow: "80s",
       fast: "5s",
     };
@@ -67,7 +67,7 @@ const MarqueeLogoScroller = React.forwardRef<
           {...props}
         >
           {/* Header Section */}
-          <div className="p-6 md:p-8 lg:p-10">
+          <div className="p-4 sm:p-6 md:p-8 lg:p-10">
             <div className="flex flex-col items-center text-center gap-3 pb-6 md:pb-8 border-b">
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tighter text-cyan-800">
                 {title}

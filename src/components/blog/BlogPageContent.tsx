@@ -155,7 +155,7 @@ export default function BlogPageContent() {
 						</div>
 
 						{/* Category Filters */}
-						<div className='flex items-center gap-2 overflow-x-auto pb-1 md:pb-0'>
+						<div className='flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 -mx-6 px-6'>
 							{categories.map((category) => (
 								<button
 									key={category}
