@@ -499,11 +499,11 @@ export default function Navbar() {
                               setSelectedCountry(country);
                               setContactOpen(false);
                             }}
-                            className="flex items-start gap-3 p-3 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
+                            className="w-full flex items-start justify-between gap-3 p-3 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
                           >
                             <span className="text-[20px] select-none mt-0.5 leading-none">{country.flag}</span>
                             <div className="flex-1 min-w-0 space-y-1">
-                              <div className="flex items-center justify-between">
+                              <div className="flex items-center gap-2">
                                 <a
                                   href={`tel:${country.phone.replace(/\s+/g, "")}`}
                                   onClick={(e) => e.stopPropagation()}
@@ -735,7 +735,7 @@ export default function Navbar() {
                                 setSelectedCountry(country);
                                 setContactOpen(false);
                               }}
-                              className="flex items-start gap-3 p-2.5 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
+                              className="w-full flex items-start justify-between gap-3 p-2.5 rounded-[10px] transition-all cursor-pointer border border-transparent hover:bg-white/5 hover:border-white/10"
                             >
                               <span className="text-[18px] select-none mt-0.5 leading-none">{country.flag}</span>
                               <div className="flex-1 min-w-0 space-y-1">
