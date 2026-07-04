@@ -107,7 +107,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
               </div>
               <div>
                 {inputField}
-                <div className="mt-4 flex flex-wrap gap-3 text-[12px] text-stone-500">
+                <div className="mt-4 flex flex-wrap justify-between gap-3 text-[12px] text-stone-500">
                   <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
                     <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                     No signup required
@@ -170,7 +170,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
           </p>
           <div className="mt-8 w-full max-w-md">
             {inputField}
-            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-stone-400">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[12px] text-stone-400">
               <span className="inline-flex items-center gap-1">
                 <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                 No signup required
