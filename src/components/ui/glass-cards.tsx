@@ -60,7 +60,7 @@ const Card: React.FC<CardProps> = ({
     <div
       ref={containerRef}
       style={{
-        height: "100vh",
+        height: "50vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -72,7 +72,7 @@ const Card: React.FC<CardProps> = ({
         ref={cardRef}
         style={{
           position: "relative",
-          width: "70%",
+          width: "100%",
           maxWidth: "640px",
           height: "400px",
           borderRadius: "24px",
@@ -281,12 +281,13 @@ export function StackedCards() {
       {/* Desktop GSAP sticky stack */}
       <div
         ref={desktopRef}
-        className="relative hidden pb-24 lg:block"
+        className="relative hidden pb-12 lg:block"
         style={{
           background:
             "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%)",
           borderRadius: "24px",
           overflow: "hidden",
+          minHeight: "500px",
         }}
       >
         <div ref={containerRef} className="relative">
