@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   ArrowRight,
   Search,
@@ -13,11 +14,6 @@ import {
   ArrowLeft,
   ExternalLink,
   Zap,
-  FileText,
-  Tag,
-  Globe,
-  Swords,
-  Brain,
   BarChart3,
   TrendingUp,
   Sparkles,
@@ -80,17 +76,139 @@ const CATEGORY_LABELS: Record<string, string> = {
   negative_penalty: "Penalties",
 };
 
-const CATEGORY_ICONS: Record<string, typeof FileText> = {
-  robots: FileText, llms: FileText, schema: Tag, meta: Tag,
-  content: FileText, brand: Globe, signals: Zap, ai_discovery: Brain,
-  brand_entity: Globe, negative_penalty: Swords,
-};
-
 const CATEGORY_COLORS: Record<string, string> = {
   robots: "#6366f1", llms: "#8b5cf6", schema: "#06b6d4", meta: "#0ea5e9",
   content: "#22c55e", brand: "#f59e0b", signals: "#ef4444", ai_discovery: "#ec4899",
   brand_entity: "#f97316", negative_penalty: "#dc2626",
 };
+
+function CategoryBreakdownChart({ breakdown }: { breakdown: Record<string, number> }) {
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const maxScores: Record<string, number> = {
+    robots: 18, llms: 18, schema: 16, meta: 14,
+    content: 12, brand: 10, signals: 6, ai_discovery: 6,
+    brand_entity: 20, negative_penalty: 20,
+  };
+
+  const entries = Object.entries(breakdown);
+  const maxPct = Math.max(...entries.map(([key, value]) => {
+    const max = maxScores[key] || 20;
+    return Math.round((value / max) * 100);
+  }));
+
+  const hoveredValue = hoveredKey ? breakdown[hoveredKey] : null;
+  const hoveredMax = hoveredKey ? (maxScores[hoveredKey] || 20) : null;
+  const hoveredPct = hoveredKey && hoveredMax ? Math.round((hoveredValue! / hoveredMax) * 100) : null;
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => { setIsHovering(false); setHoveredKey(null); }}
+      className="group relative rounded-2xl bg-white/50 border border-stone-200/60 p-6 backdrop-blur-sm transition-all duration-500 hover:bg-white/80 hover:border-stone-200 hover:shadow-sm"
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-medium text-slate-400 tracking-wide uppercase">Score</span>
+        </div>
+        <div className="relative h-7 flex items-center">
+          <span
+            className={cn(
+              "text-lg font-semibold tabular-nums transition-all duration-300 ease-out",
+              isHovering && hoveredPct !== null ? "opacity-100 text-slate-900" : "opacity-50 text-slate-400",
+            )}
+          >
+            {hoveredPct !== null ? hoveredPct : ""}
+            <span
+              className={cn(
+                "text-xs font-normal text-slate-400 ml-0.5 transition-opacity duration-300",
+                hoveredPct !== null ? "opacity-100" : "opacity-0",
+              )}
+            >
+              %
+            </span>
+          </span>
+        </div>
+      </div>
+
+      {/* Chart bars */}
+      <div className="flex items-end gap-2 h-32">
+        {entries.map(([key, value]) => {
+          const max = maxScores[key] || 20;
+          const pct = Math.round((value / max) * 100);
+          const heightPx = (pct / Math.max(maxPct, 1)) * 128;
+          const isHovered = hoveredKey === key;
+          const isAnyHovered = hoveredKey !== null;
+          const isNeighbor = hoveredKey !== null && (
+            entries.findIndex(([k]) => k === hoveredKey) === entries.findIndex(([k]) => k === key) - 1 ||
+            entries.findIndex(([k]) => k === hoveredKey) === entries.findIndex(([k]) => k === key) + 1
+          );
+          const accent = CATEGORY_COLORS[key] || "#6366f1";
+
+          return (
+            <div
+              key={key}
+              className="relative flex-1 flex flex-col items-center justify-end h-full cursor-pointer"
+              onMouseEnter={() => setHoveredKey(key)}
+            >
+              {/* Bar */}
+              <div
+                className={cn(
+                  "w-full rounded-full transition-all duration-300 ease-out origin-bottom",
+                  isHovered
+                    ? "shadow-lg"
+                    : isNeighbor
+                      ? "opacity-60"
+                      : isAnyHovered
+                        ? "opacity-30"
+                        : "opacity-80 group-hover:opacity-90",
+                )}
+                style={{
+                  height: `${heightPx}px`,
+                  backgroundColor: accent,
+                  transform: isHovered ? "scaleX(1.15) scaleY(1.02)" : isNeighbor ? "scaleX(1.05)" : "scaleX(1)",
+                }}
+              />
+
+              {/* Label */}
+              <span
+                className={cn(
+                  "text-[9px] font-medium mt-2 transition-all duration-300 leading-none text-center",
+                  isHovered ? "text-slate-900" : "text-slate-400/60",
+                )}
+              >
+                {CATEGORY_LABELS[key]?.split(" ")[0] || key.slice(0, 4)}
+              </span>
+
+              {/* Tooltip */}
+              <div
+                className={cn(
+                  "absolute -top-10 left-1/2 -translate-x-1/2 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap shadow-lg z-10",
+                  isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1 pointer-events-none",
+                )}
+                style={{ backgroundColor: accent, color: "#fff" }}
+              >
+                {value}/{max}
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 -mt-px w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent"
+                  style={{ borderTopColor: accent }}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Subtle glow effect on hover */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    </div>
+  );
+}
 
 function ScoreRing({ score, size = 176 }: { score: number; size?: number }) {
   const stroke = 10;
@@ -566,7 +684,7 @@ function AuditReportContent() {
                 </div>
               </div>
 
-              {/* Category Breakdown - Bar Chart */}
+              {/* Category Breakdown - Mini Chart Style */}
               <div className="bg-stone-100 rounded-2xl border border-stone-200/80 p-6 sm:p-8 shadow-sm">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 shadow-sm">
@@ -579,50 +697,7 @@ function AuditReportContent() {
                 </div>
 
                 {result.scoreBreakDown && Object.keys(result.scoreBreakDown).length > 0 ? (
-                  <div className="space-y-4">
-                    {Object.entries(result.scoreBreakDown).map(([key, value]) => {
-                      const maxScores: Record<string, number> = {
-                        robots: 18, llms: 18, schema: 16, meta: 14,
-                        content: 12, brand: 10, signals: 6, ai_discovery: 6,
-                        brand_entity: 20, negative_penalty: 20,
-                      };
-                      const max = maxScores[key] || 20;
-                      const pct = Math.round((value / max) * 100);
-                      const Icon = CATEGORY_ICONS[key] || FileText;
-                      const accent = CATEGORY_COLORS[key] || "#6366f1";
-
-                      const status = pct >= 80 ? "Strong" : pct >= 60 ? "Good" : pct >= 40 ? "Needs Work" : "Critical";
-                      const statusColor = pct >= 80 ? "#16a34a" : pct >= 60 ? "#0891b2" : pct >= 40 ? "#ca8a04" : "#dc2626";
-
-                      return (
-                        <div key={key} className="group">
-                          <div className="flex items-center justify-between mb-1.5">
-                            <div className="flex items-center gap-2.5">
-                              <div className="p-1.5 rounded-lg" style={{ backgroundColor: `${accent}15` }}>
-                                <Icon className="h-4 w-4" style={{ color: accent }} />
-                              </div>
-                              <span className="text-sm font-semibold text-slate-700">
-                                {CATEGORY_LABELS[key] || key.replace(/_/g, " ")}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                              <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ color: statusColor, backgroundColor: `${statusColor}15` }}>
-                                {status}
-                              </span>
-                              <span className="text-sm font-bold text-slate-900">{value}<span className="text-xs text-slate-400 font-medium">/{max}</span></span>
-                              <span className="text-sm font-bold" style={{ color: accent }}>{pct}%</span>
-                            </div>
-                          </div>
-                          <div className="h-3 rounded-full bg-slate-200/80 overflow-hidden">
-                            <div
-                              className="h-full rounded-full transition-all duration-700 ease-out"
-                              style={{ width: `${Math.max(pct, 0)}%`, backgroundColor: accent }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  <CategoryBreakdownChart breakdown={result.scoreBreakDown} />
                 ) : (
                   <div className="py-16 text-center text-slate-400 text-sm">No breakdown data available</div>
                 )}
