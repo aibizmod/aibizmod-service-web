@@ -479,7 +479,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[640px] rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl text-left whitespace-normal overscroll-contain"
+                      className="absolute right-0 top-[calc(100%+8px)] z-50 w-[92vw] sm:w-[90vw] max-w-[calc(100vw-2rem)] rounded-2xl bg-slate-950/95 border border-cyan-500/20 shadow-2xl text-left whitespace-normal overscroll-contain"
                       ref={desktopDropdownRef}
                       onMouseEnter={openContact}
                     >
@@ -541,7 +541,7 @@ export default function Navbar() {
         {/* ── Mobile hamburger ──────────────────────────────────────────── */}
         <button
           type="button"
-          className={`lg:hidden p-1.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
+          className={`lg:hidden p-2.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
             scrolled ? "text-white hover:bg-white/10" : "text-white hover:bg-white/10"
           }`}
           onClick={() => setMenuOpen((p) => !p)}
@@ -564,7 +564,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={springTransition}
-            className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md ${
+            className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md overflow-x-hidden ${
               scrolled
                 ? "bg-slate-950/95 border border-cyan-500/20 text-white"
                 : "bg-slate-950/95 border border-cyan-500/20 text-white"

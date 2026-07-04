@@ -362,7 +362,7 @@ export default function WhyChooseUs() {
           </div>
  
           {/* Right Column: Value Props Cards */}
-          <div className="lg:col-span-7 relative space-y-8 md:pl-24">
+          <div className="lg:col-span-7 relative space-y-8 lg:pl-24">
             {/* Scroll-animated vertical line — contained within this section */}
             <motion.div
               style={{ scaleY: scaleY1, originY: 0 }}

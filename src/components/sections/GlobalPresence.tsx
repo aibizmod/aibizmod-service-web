@@ -52,11 +52,11 @@ export default function GlobalPresence() {
           </AnimatedSection>
 
           <AnimatedSection direction="right">
-            <div className="mx-auto max-w-[640px] w-full rounded-[32px] border border-border bg-white shadow-card p-6">
+            <div className="mx-auto max-w-[640px] w-full rounded-[32px] border border-border bg-white shadow-card p-4 sm:p-6">
               <Globe
                 markers={markers}
                 arcs={arcs}
-                className="h-[520px]"
+                className="h-[320px] sm:h-[420px] lg:h-[520px]"
                 markerColor={[0.27, 0.49, 0.92]}
                 arcColor={[0.27, 0.49, 0.92]}
                 baseColor={[1, 1, 1]}

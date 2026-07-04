@@ -145,7 +145,7 @@ export default function Footer() {
           {/* Links Grid Column (6 out of 12) */}
           <div className="md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {/* Services */}
-            <div>
+            <div className="min-w-0">
               <h5 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4">Services</h5>
               <ul className="space-y-2.5">
                 {services.map((item) => (
@@ -162,7 +162,7 @@ export default function Footer() {
             </div>
 
             {/* Company */}
-            <div>
+            <div className="min-w-0">
               <h5 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4">Company</h5>
               <ul className="space-y-2.5">
                 {company.map((item) => (
@@ -179,7 +179,7 @@ export default function Footer() {
             </div>
 
             {/* Legal */}
-            <div>
+            <div className="min-w-0">
               <h5 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4">Legal</h5>
               <ul className="space-y-2.5">
                 {legal.map((item) => (
