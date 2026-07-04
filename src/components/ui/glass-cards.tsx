@@ -159,23 +159,24 @@ function StickyCard({ card, index, totalCards }: {
     const container = containerRef.current;
     if (!cardElement || !container) return;
 
-    const targetScale = 1 - (totalCards - index) * 0.05;
+    const targetScale = 1 - (totalCards - 1 - index) * 0.04;
 
     gsap.set(cardElement, {
       scale: 1,
-      transformOrigin: "center top",
+      transformOrigin: "top center",
     });
 
     const trigger = ScrollTrigger.create({
       trigger: container,
-      start: "top center",
-      end: "bottom center",
-      scrub: 1,
+      start: "top top",
+      end: "bottom top",
+      scrub: 0.5,
       onUpdate: (self) => {
-        const scale = gsap.utils.interpolate(1, targetScale, self.progress);
+        const progress = self.progress;
+        const scale = gsap.utils.interpolate(1, targetScale, progress);
         gsap.set(cardElement, {
           scale: Math.max(scale, targetScale),
-          transformOrigin: "center top",
+          transformOrigin: "top center",
         });
       },
     });
@@ -190,11 +191,11 @@ function StickyCard({ card, index, totalCards }: {
     >
       <div
         ref={cardRef}
-        className="relative h-[320px] w-full overflow-hidden rounded-3xl border border-stone-200/80 bg-white/80 p-6 shadow-[0_26px_90px_rgba(15,23,42,0.14)] backdrop-blur-xl md:p-8"
+        className="relative h-[320px] w-full max-w-2xl mx-auto overflow-hidden rounded-3xl border border-stone-200/80 bg-white/80 p-6 shadow-[0_26px_90px_rgba(15,23,42,0.14)] backdrop-blur-xl md:p-8"
         style={{
-          top: `calc(-5vh + ${index * 25}px)`,
+          top: `calc(50% - 160px + ${index * 20}px)`,
           isolation: "isolate",
-          transformOrigin: "top",
+          transformOrigin: "top center",
         }}
       >
         <CardFace card={card} />
@@ -258,7 +259,8 @@ export function StackedCards() {
       {/* ── Desktop GSAP sticky stack (≥ 1024px) ────────────────────────── */}
       <div
         ref={desktopRef}
-        className="relative hidden min-h-[520vh] pb-24 lg:block"
+        className="relative hidden pb-24 lg:block"
+        style={{ minHeight: `${whatWeDoCards.length * 100}vh` }}
       >
         <div className="relative">
           {whatWeDoCards.map((card, index) => (
