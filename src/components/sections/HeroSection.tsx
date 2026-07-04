@@ -51,7 +51,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
   const inputField = (
     <form id="hero-audit-form" onSubmit={handleSubmit} className="w-full">
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-white/40">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
           <Search className="h-4 w-4" />
         </div>
         <input
@@ -59,7 +59,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
           value={domain}
           onChange={(e) => setDomain(e.target.value)}
           placeholder="Enter your website URL"
-          className="w-full h-11 md:h-12 pl-10 pr-28 md:pr-36 text-[14px] md:text-[15px] text-white placeholder-white/40 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-400/40 focus:border-cyan-400/60"
+          className="w-full h-11 md:h-12 pl-10 pr-28 md:pr-36 text-[14px] md:text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
           aria-label="Domain to audit"
         />
         <div className="absolute right-1.5 top-1/2 -translate-y-1/2">
@@ -90,18 +90,18 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
         <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
         <div className="relative z-10 mx-auto max-w-6xl min-h-screen flex items-center px-5 md:px-8">
           <div className="w-full">
-            <p className="text-[22px] sm:text-[28px] md:text-[40px] font-semibold text-white leading-snug">
+            <p className="text-[22px] sm:text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
               A Team Behind Visibility, Product, and Growth.
             </p>
             <h1
-              className="mt-3 md:mt-4 font-display font-medium text-white"
+              className="mt-3 md:mt-4 font-display font-medium text-stone-900"
               style={{ fontSize: "clamp(28px, 4.8vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
             >
-              <span className="relative inline-block min-h-[0.9em]">
+              <span className="relative inline-block min-h-[0.9em] gradient-text">
                 <AnimatedText
                   key={services[serviceIndex]}
                   text={services[serviceIndex]}
-                  className="gradient-text"
+                  className=""
                   animationType="letters"
                   duration={0.4}
                   staggerDelay={0.03}
@@ -110,42 +110,42 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
             </h1>
             <div className="mt-6 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
               <div>
-                <p className="text-[14px] md:text-[17px] font-normal text-white/70 leading-relaxed">
+                <p className="text-[14px] md:text-[17px] font-normal text-stone-500 leading-relaxed">
                   Track, audit, and improve how ChatGPT, Perplexity, Gemini, and Claude represent your brand.
                   Catch hallucinations before they cost you pipeline. Get recommended, not ignored.
                 </p>
               </div>
               <div>
                 {inputField}
-                <div className="mt-3 md:mt-4 flex flex-wrap justify-center md:justify-between gap-2 md:gap-3 text-[11px] md:text-[12px] text-white/60">
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-sm px-2.5 py-1.5 md:px-3 md:py-2">
-                    <CheckCircle className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-400" />
+                <div className="mt-3 md:mt-4 flex flex-wrap justify-center md:justify-between gap-2 md:gap-3 text-[11px] md:text-[12px] text-stone-500">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
+                    <CheckCircle className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-500" />
                     No signup required
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-sm px-2.5 py-1.5 md:px-3 md:py-2">
-                    <Activity className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-400" />
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
+                    <Activity className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-500" />
                     Takes ~30 seconds
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-sm px-2.5 py-1.5 md:px-3 md:py-2">
-                    <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-400" />
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
+                    <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-500" />
                     Free
                   </span>
                 </div>
               </div>
             </div>
-            <div className="mt-8 md:mt-12 overflow-hidden border-t border-white/10 pt-4 md:pt-6">
+            <div className="mt-8 md:mt-12 overflow-hidden border-t border-stone-200/60 pt-4 md:pt-6">
               <div className="flex animate-marquee whitespace-nowrap" style={{"--duration": "30s"} as React.CSSProperties}>
                 {[...Array(3)].map((_, i) => (
                   <span key={i} className="inline-flex items-center gap-6 md:gap-10 mx-3 md:mx-5">
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><OpenAIIcon size={16} color="#10A37F" /> <span className="text-xs md:text-sm">ChatGPT</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiClaude size={16} color="#CC785C" /> <span className="text-xs md:text-sm">Claude</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiGooglegemini size={16} color="#4285F4" /> <span className="text-xs md:text-sm">Gemini</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiPerplexity size={16} color="#20B8CD" /> <span className="text-xs md:text-sm">Perplexity</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiTypescript size={16} color="#3178C6" /> <span className="text-xs md:text-sm">TypeScript</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiJavascript size={16} color="#F7DF1E" /> <span className="text-xs md:text-sm">JavaScript</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiMongodb size={16} color="#47A248" /> <span className="text-xs md:text-sm">MongoDB</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiReact size={16} color="#61DAFB" /> <span className="text-xs md:text-sm">React</span></span>
-                    <span className="flex items-center gap-1.5 md:gap-2 text-white/50 hover:text-white/80 transition-colors"><SiNodedotjs size={16} color="#339933" /> <span className="text-xs md:text-sm">Node.js</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><OpenAIIcon size={16} color="#10A37F" /> <span className="text-xs md:text-sm">ChatGPT</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiClaude size={16} color="#CC785C" /> <span className="text-xs md:text-sm">Claude</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiGooglegemini size={16} color="#4285F4" /> <span className="text-xs md:text-sm">Gemini</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiPerplexity size={16} color="#20B8CD" /> <span className="text-xs md:text-sm">Perplexity</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiTypescript size={16} color="#3178C6" /> <span className="text-xs md:text-sm">TypeScript</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiJavascript size={16} color="#F7DF1E" /> <span className="text-xs md:text-sm">JavaScript</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiMongodb size={16} color="#47A248" /> <span className="text-xs md:text-sm">MongoDB</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiReact size={16} color="#61DAFB" /> <span className="text-xs md:text-sm">React</span></span>
+                    <span className="flex items-center gap-1.5 md:gap-2 text-stone-400 hover:text-stone-600 transition-colors"><SiNodedotjs size={16} color="#339933" /> <span className="text-xs md:text-sm">Node.js</span></span>
                   </span>
                 ))}
               </div>
