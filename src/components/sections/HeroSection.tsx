@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent, useEffect } from "react";
-import { ArrowRight, Search, CheckCircle, Activity } from "lucide-react";
+import { ArrowRight, Search, CheckCircle, Activity, Sparkles } from "lucide-react";
 import { SiOpenai, SiClaude, SiGooglegemini, SiPerplexity, SiJavascript, SiMongodb, SiTypescript, SiReact, SiNodedotjs } from "react-icons/si";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
@@ -115,6 +115,10 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                   <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
                     <Activity className="h-3.5 w-3.5 text-cyan-500" />
                     Takes ~30 seconds
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-3 py-2">
+                    <Sparkles className="h-3.5 w-3.5 text-cyan-500" />
+                    Free
                   </span>
                 </div>
               </div>
