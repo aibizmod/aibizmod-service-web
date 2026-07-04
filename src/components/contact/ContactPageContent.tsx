@@ -58,7 +58,7 @@ const contactDetails: ContactDetailItem[] = [
 	...countries.map((c) => ({
 		icon: undefined,
 		flag: c.flag as ReactNode,
-		label: c.code,
+		label: c.name,
 		links: [
 			{ text: c.phone, href: `tel:${c.phone.replace(/\s+/g, '')}` },
 			{ text: c.email, href: `mailto:${c.email}` },
@@ -187,6 +187,78 @@ function NextStepCard() {
 	);
 }
 
+interface CustomSelectProps {
+	id: string;
+	value: string;
+	onChange: (value: string) => void;
+	options: string[];
+	placeholder: string;
+	suffix?: string;
+}
+
+function CustomSelect({ id, value, onChange, options, placeholder, suffix = '' }: CustomSelectProps) {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleSelect = (optionValue: string) => {
+		onChange(optionValue);
+		setIsOpen(false);
+	};
+
+	return (
+		<div className="relative w-full">
+			<button
+				id={id}
+				type="button"
+				onClick={() => setIsOpen(!isOpen)}
+				className="w-full rounded-2xl border bg-slate-950/50 border-slate-700 px-4 py-3 text-sm text-white placeholder:text-slate-400 shadow-[0_10px_28px_rgba(0,0,0,0.15)] outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 flex items-center justify-between text-left"
+			>
+				<span className={value ? 'text-white font-semibold' : 'text-slate-400'}>
+					{value ? `${value}${suffix}` : placeholder}
+				</span>
+				<svg
+					className={`ml-2 h-4 w-4 shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`}
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke="currentColor"
+				>
+					<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+				</svg>
+			</button>
+
+			{isOpen && (
+				<>
+					{/* Click outside backdrop */}
+					<div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+					
+					{/* Dropdown list */}
+					<ul
+						data-lenis-prevent
+						className="absolute left-0 right-0 z-50 mt-2 max-h-60 overflow-y-auto rounded-2xl border border-slate-700 bg-slate-950 p-1.5 shadow-[0_15px_35px_rgba(0,0,0,0.4)] backdrop-blur-md outline-none custom-scrollbar"
+					>
+						<li
+							onClick={() => handleSelect('')}
+							className="relative flex cursor-pointer select-none items-center rounded-xl px-3.5 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
+						>
+							{placeholder}
+						</li>
+						{options.map((option) => (
+							<li
+								key={option}
+								onClick={() => handleSelect(option)}
+								className={`relative flex cursor-pointer select-none items-center rounded-xl px-3.5 py-2.5 text-sm transition hover:bg-slate-800 hover:text-white ${
+									value === option ? 'bg-cyan-950/50 text-cyan-400 font-semibold border-l-2 border-cyan-400 pl-2.5' : 'text-white'
+								}`}
+							>
+								{option}{suffix}
+							</li>
+						))}
+					</ul>
+				</>
+			)}
+		</div>
+	);
+}
+
 export default function ContactPageContent() {
 	const uid = useId();
 	const [formData, setFormData] = useState<FormData>({
@@ -210,6 +282,14 @@ export default function ContactPageContent() {
 		>,
 	) => {
 		const { name, value } = event.target;
+		setFormData((prev) => ({ ...prev, [name]: value }));
+		if (errors[name as keyof FormErrors]) {
+			setErrors((prev) => ({ ...prev, [name]: undefined }));
+		}
+		if (submitError) setSubmitError('');
+	};
+
+	const handleSelectChange = (name: string, value: string) => {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 		if (errors[name as keyof FormErrors]) {
 			setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -271,7 +351,7 @@ export default function ContactPageContent() {
 	const firstName = formData.firstName.trim();
 	const labelClass = 'mb-1.5 block text-sm font-semibold text-slate-100';
 	const optionalClass = 'font-normal text-slate-400';
-	const optionClass = 'bg-[#0F172A] text-white';
+
 	
 	const successIconClass = 'mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-cyan-400';
 
@@ -337,6 +417,22 @@ export default function ContactPageContent() {
 				.contact-card:hover::after {
 					opacity: 1;
 				}
+				
+				/* Premium custom scrollbar for dropdowns */
+				.custom-scrollbar::-webkit-scrollbar {
+					width: 10px;
+				}
+				.custom-scrollbar::-webkit-scrollbar-track {
+					background: transparent;
+				}
+				.custom-scrollbar::-webkit-scrollbar-thumb {
+					background-color: #22D3EE;
+					border: 3px solid #020617;
+					border-radius: 999px;
+				}
+				.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+					background-color: #06B6D4;
+				}
 			` }} />
 			<ShaderBackground className='absolute inset-0 z-0 h-full w-full opacity-80' />
 
@@ -372,7 +468,7 @@ export default function ContactPageContent() {
 					</p>
 				</div>
 
-				<div className='mt-14 grid gap-6 lg:grid-cols-[1fr_0.62fr] lg:items-stretch'>
+				<div className='mt-14 grid gap-6 lg:grid-cols-2 lg:items-stretch'>
 					<div 
 						className='relative overflow-hidden rounded-[28px] contact-card p-4 sm:p-5 md:p-8 text-white h-full'
 						onMouseMove={handleMouseMove}
@@ -386,7 +482,7 @@ export default function ContactPageContent() {
 								backgroundSize: "20px 20px",
 							}}
 						/>
-						<div className="relative z-10">
+						<div className="relative z-10 h-full flex flex-col">
 							{submitted ? (
 								<div className='flex min-h-[420px] flex-col items-center justify-center text-center'>
 									<div className={successIconClass}>
@@ -412,8 +508,9 @@ export default function ContactPageContent() {
 									onSubmit={handleSubmit}
 									noValidate
 									aria-label='Contact form'
-									className='space-y-5'
+									className='h-full flex flex-col'
 								>
+									<div className='space-y-5'>
 									<div className='grid gap-5 sm:grid-cols-2'>
 										<div>
 											<label
@@ -572,20 +669,14 @@ export default function ContactPageContent() {
 												Company size{' '}
 												<span className={optionalClass}>(optional)</span>
 											</label>
-											<select
+											<CustomSelect
 												id={`${uid}-companySize`}
-												name='companySize'
 												value={formData.companySize}
-												onChange={handleChange}
-												className={inputNormal}
-											>
-												<option value='' className={optionClass}>Select company size</option>
-												{companySizeOptions.map((size) => (
-													<option key={size} value={size} className={optionClass}>
-														{size} employees
-													</option>
-												))}
-											</select>
+												onChange={(val) => handleSelectChange('companySize', val)}
+												options={companySizeOptions}
+												placeholder="Select company size"
+												suffix=" employees"
+											/>
 										</div>
 									</div>
 
@@ -597,32 +688,26 @@ export default function ContactPageContent() {
 											Which service are you looking for?{' '}
 											<span className={optionalClass}>(optional)</span>
 										</label>
-										<select
+										<CustomSelect
 											id={`${uid}-projectDetails`}
-											name='projectDetails'
 											value={formData.projectDetails}
-											onChange={handleChange}
-											className={inputNormal}
-										>
-											<option value='' className={optionClass}>Select a service</option>
-											{serviceOptions.map((service) => (
-												<option key={service} value={service} className={optionClass}>
-													{service}
-												</option>
-											))}
-										</select>
+											onChange={(val) => handleSelectChange('projectDetails', val)}
+											options={serviceOptions}
+											placeholder="Select a service"
+										/>
+									</div>
 									</div>
 
 									{submitError && (
 										<p
 											role='alert'
-											className='rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700'
+											className='rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 mt-6'
 										>
 											{submitError}
 										</p>
 									)}
 
-									<div className='flex flex-col gap-3 pt-2 sm:flex-row sm:items-center'>
+									<div className='flex flex-col gap-3 pt-6 sm:flex-row sm:items-center mt-auto'>
 										<button
 											type='submit'
 											disabled={isSubmitting}
@@ -670,46 +755,54 @@ export default function ContactPageContent() {
 								will route you to the right person.
 							</p>
 
-							<ul className='mt-7 space-y-4'>
-								{contactDetails.map(({ icon: Icon, flag, label, value, links }) => (
-									<li key={label} className='flex gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:bg-white/10'>
-										<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-[#22D3EE]'>
-											{flag ? (
-												flag
-											) : Icon ? (
-												<Icon size={17} aria-hidden='true' />
-											) : null}
-										</div>
-										<div>
-											<p className='text-xs font-semibold uppercase tracking-[0.16em] text-[#22D3EE]'>
-												{label}
-											</p>
-											{links ? (
-												<div className='mt-1 space-y-1'>
-													{links.map((link, idx) => (
-														link.href ? (
-															<a
-																key={idx}
-																href={link.href}
-																className='block break-all text-sm font-semibold text-white transition hover:text-[#22D3EE]'
-															>
-																{link.text}
-															</a>
-														) : (
-															<p key={idx} className='break-all text-sm font-semibold text-white'>
-																{link.text}
-															</p>
-														)
-													))}
-												</div>
-											) : (
-												<p className='mt-1 text-sm font-semibold text-white'>
-													{value}
+							<ul className='mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4'>
+								{contactDetails.map(({ icon: Icon, flag, label, value, links }) => {
+									const isResponseTime = label === 'Response time';
+									return (
+										<li
+											key={label}
+											className={`flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-3.5 transition duration-300 hover:bg-white/10 ${
+												isResponseTime ? 'sm:col-span-2' : ''
+											}`}
+										>
+											<div className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cyan-800 bg-cyan-950/50 text-[#22D3EE]'>
+												{flag ? (
+													flag
+												) : Icon ? (
+													<Icon size={17} aria-hidden='true' />
+												) : null}
+											</div>
+											<div>
+												<p className='text-xs font-semibold uppercase tracking-[0.16em] text-[#22D3EE]'>
+													{label}
 												</p>
-											)}
-										</div>
-									</li>
-								))}
+												{links ? (
+													<div className='mt-1 space-y-1'>
+														{links.map((link, idx) => (
+															link.href ? (
+																<a
+																	key={idx}
+																	href={link.href}
+																	className='block whitespace-nowrap text-sm font-semibold text-white transition hover:text-[#22D3EE]'
+																>
+																	{link.text}
+																</a>
+															) : (
+																<p key={idx} className='whitespace-nowrap text-sm font-semibold text-white'>
+																	{link.text}
+																</p>
+															)
+														))}
+													</div>
+												) : (
+													<p className='mt-1 text-sm font-semibold text-white'>
+														{value}
+													</p>
+												)}
+											</div>
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 					</aside>
