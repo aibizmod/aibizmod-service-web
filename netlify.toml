@@ -5,13 +5,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[functions]
-  node_bundler = "esbuild"
-  included_files = ["requirements.txt"]
-
-[functions."geo-audit"]
-  runtime = "python"
-
 [[headers]]
   for = "/api/*"
   [headers.values]

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
@@ -17,20 +16,33 @@ export async function POST(request: NextRequest) {
       targetUrl = "https://" + targetUrl;
     }
 
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const host = request.headers.get("host");
-    const baseUrl = `${protocol}://${host}`;
+    const res = await fetch(
+      `https://geoready.dev/api/audit?url=${encodeURIComponent(targetUrl)}`,
+      {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(120000),
+      }
+    );
 
-    const proxyRes = await fetch(`${baseUrl}/.netlify/functions/geo-audit`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: targetUrl }),
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Audit service returned ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    if (!data || data.score == null) {
+      throw new Error(data?.error || "Audit returned no score");
+    }
+
+    return NextResponse.json({
+      score: data.score,
+      band: data.band,
+      citability: data.citability?.total_score ?? null,
+      scoreBreakDown: data.score_breakdown ?? {},
+      recommendations: data.recommendations ?? [],
+      checkedAt: data.timestamp || new Date().toISOString(),
     });
-
-    const data = await proxyRes.json();
-    if (!proxyRes.ok) throw new Error(data.error || "Audit failed");
-
-    return NextResponse.json(data);
   } catch (error) {
     console.error("GEO audit error:", error);
     return NextResponse.json(
