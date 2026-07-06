@@ -1,6 +1,6 @@
 "use client";
 
-import { Share2, ArrowRight, Award, Camera, BookOpen, Tv } from "lucide-react";
+import { Share2, ArrowRight, Award, Camera, BookOpen, Tv, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 import { StarButton } from "@/components/ui/star-button";
 import {
@@ -8,13 +8,14 @@ import {
   FaFacebookF, FaWhatsapp, FaYoutube,
   FaGithub, FaReddit, FaDiscord,
   FaHackerNews, FaGitlab, FaStackOverflow,
-  FaProductHunt,
+  FaProductHunt, FaTumblr,
 } from "react-icons/fa";
 import { FaXTwitter, FaTelegram } from "react-icons/fa6";
 import {
   SiBluesky, SiSubstack, SiMastodon,
   SiThreads, SiMedium, SiQuora,
   SiHashnode, SiLinktree, SiDribbble, SiBehance,
+  SiGravatar,
 } from "react-icons/si";
 
 import { motion } from "framer-motion";
@@ -77,9 +78,9 @@ const officialPlatforms = [
   },
   {
     name: "WhatsApp",
-    handle: "+44 20 7946 0958",
+    handle: "+65 8611 1900",
     desc: "The fastest way to reach us directly with a quick question.",
-    href: "https://wa.me/4420000000",
+    href: "https://wa.me/6586111900",
     gradient: "from-green-600 via-emerald-500 to-teal-400",
     icon: <FaWhatsapp />,
   },
@@ -285,6 +286,38 @@ const registeredPlatforms = [
     href: "https://gloria.tv/user/qweDJZPhrgKR2VojJGiJooc4R",
     gradient: "from-blue-600 via-slate-600 to-zinc-700",
     icon: <Tv size={16} />,
+  },
+  {
+    name: "500px",
+    handle: "aibizmod",
+    desc: "Photography portfolio and public image gallery.",
+    href: "https://500px.com/p/aibizmod",
+    gradient: "from-slate-800 via-gray-700 to-zinc-600",
+    icon: <ImageIcon size={16} />,
+  },
+  {
+    name: "Gravatar",
+    handle: "aibizmod",
+    desc: "Global avatar profile tied to our brand email identity.",
+    href: "https://gravatar.com/sensationallybeliever11a02f741e",
+    gradient: "from-blue-700 via-cyan-600 to-teal-500",
+    icon: <SiGravatar />,
+  },
+  {
+    name: "Tumblr",
+    handle: "aibizmod",
+    desc: "A claimed microblogging handle for brand consistency.",
+    href: "https://www.tumblr.com/blog/aibizmod",
+    gradient: "from-indigo-900 via-blue-800 to-slate-700",
+    icon: <FaTumblr />,
+  },
+  {
+    name: "F6S",
+    handle: "ai-bizmod",
+    desc: "Startup and company profile listing on F6S.",
+    href: "https://www.f6s.com/ai-bizmod",
+    gradient: "from-orange-600 via-red-500 to-amber-500",
+    icon: <Share2 size={16} />,
   },
 ];
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const team = [
-  { name: "James Carter",    role: "CEO & Co-Founder",              initials: "JC", specialty: "Product Strategy · Business Growth",      grad: "linear-gradient(135deg,#06B6D4,#3B82F6)" },
+  { name: "aibizmod editorial team",    role: "Editorial team",              initials: "", specialty: "Product Strategy · Business Growth",      grad: "linear-gradient(135deg,#06B6D4,#3B82F6)" },
   { name: "Sarah Chen",      role: "CTO & Co-Founder",              initials: "SC", specialty: "Software Architecture · Engineering",       grad: "linear-gradient(135deg,#8B5CF6,#06B6D4)" },
   { name: "Priya Patel",     role: "Head of Digital Marketing",     initials: "PP", specialty: "SEO · Paid Media · Growth",                 grad: "linear-gradient(135deg,#F59E0B,#EF4444)" },
   { name: "Marcus Williams", role: "Lead Engineer",                  initials: "MW", specialty: "Full-Stack · Automation",                   grad: "linear-gradient(135deg,#10B981,#3B82F6)" },

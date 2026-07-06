@@ -590,7 +590,7 @@ export default function CapabilityShowcase() {
   };
 
   return (
-    <div id="ai-showcases" className="w-full relative pt-8 md:pt-4 pb-16 md:pb-24 overflow-hidden mt-0 md:-mt-8 lg:-mt-12 xl:-mt-16">
+    <div id="ai-showcases" className="w-full relative pt-8 md:pt-4 pb-16 md:pb-24 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
         .stage-card {
           --mx: 50%;

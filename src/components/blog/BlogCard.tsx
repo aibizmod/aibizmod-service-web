@@ -15,12 +15,14 @@ function CategoryBadge({ category }: { category: string }) {
 function AuthorLine({ post }: { post: BlogPost }) {
   return (
     <div className="flex min-w-0 items-center gap-3">
-      <div
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0F172A] text-[11px] font-bold text-white"
-        aria-hidden="true"
-      >
-        {post.author.initials}
-      </div>
+      {post.author.initials && (
+        <div
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#0F172A] text-[11px] font-bold text-white"
+          aria-hidden="true"
+        >
+          {post.author.initials}
+        </div>
+      )}
       <div className="min-w-0">
         <p className="truncate text-sm font-semibold text-stone-950">{post.author.name}</p>
         <p className="text-xs text-stone-500">{post.date}</p>
