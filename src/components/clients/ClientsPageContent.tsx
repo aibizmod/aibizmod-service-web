@@ -563,7 +563,7 @@ function GEOImpactView({ data }: GEOImpactProps) {
       <div className="space-y-2">
         <div className="flex flex-wrap gap-2">
           {engines.map((eng) => {
-            const isCited = data.citedIn.includes(eng.id as any);
+            const isCited = (data.citedIn as string[]).includes(eng.id);
             return (
               <div
                 key={eng.id}

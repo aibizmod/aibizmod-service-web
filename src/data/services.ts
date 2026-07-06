@@ -17,7 +17,7 @@ export const services: ServiceData[] = [
     id: "ai-automation",
     name: "AI & Automation",
     description:
-      "We build AI agents, predictive ML models, generative AI pipelines, computer vision systems, and workflow automations that eliminate manual work and unlock intelligent operations.",
+      "Build smart AI agents, predictive ML models, and automated workflows that eliminate manual tasks and streamline operations.",
     capabilities: [
       "AI agents & agentic workflows",
       "Predictive analytics & ML models",
@@ -35,7 +35,7 @@ export const services: ServiceData[] = [
     id: "digital-marketing",
     name: "Digital Marketing",
     description:
-      "We set up conversion tracking, audit search visibility, map keywords, and manage campaigns to help you reach customers using Search Console and GA4.",
+      "Set up search visibility, map key search terms, and build Looker Studio dashboards that track conversions and direct marketing spend.",
     capabilities: [
       "SEO audits and keyword mapping",
       "Paid search campaign structures",
@@ -53,7 +53,7 @@ export const services: ServiceData[] = [
     id: "web-development",
     name: "Web Development",
     description:
-      "We design and build websites, SaaS dashboards, customer portals, booking platforms, and CRM-connected web applications.",
+      "Design and build fast, responsive Next.js websites, SaaS portals, and custom web apps tailored to help your business scale online.",
     capabilities: [
       "Custom React & Next.js applications",
       "Corporate & business websites",
@@ -71,7 +71,7 @@ export const services: ServiceData[] = [
     id: "software-development",
     name: "Custom Software Development",
     description:
-      "We write custom software to streamline operations, run business workflows, integrate databases, and build core business operations tools.",
+      "Write clean, custom software—from database architecture to ERPs—to run your back-office systems and automate internal workflows.",
     capabilities: [
       "Custom ERP & CRM systems",
       "SaaS platform design & development",
@@ -89,7 +89,7 @@ export const services: ServiceData[] = [
     id: "mobile-app-development",
     name: "Mobile App Development",
     description:
-      "We build customer self-service apps, booking applications, technician field apps, staff applications, and inventory tracking tools.",
+      "Build native and cross-platform mobile apps for iOS and Android, complete with offline capabilities and smooth push notifications.",
     capabilities: [
       "iOS and Android native app development",
       "Cross-platform apps with React Native or Flutter",
@@ -107,7 +107,7 @@ export const services: ServiceData[] = [
     id: "hosting-infrastructure",
     name: "Hosting & Infrastructure",
     description:
-      "We set up cloud hosting, establish development and production environments, configure automated backups, and build deployment pipelines.",
+      "Configure robust cloud environments on AWS/GCP, containerize applications, and build automated deployment pipelines for zero downtime.",
     capabilities: [
       "Cloud architecture on AWS, GCP, and Azure",
       "Containerisation with Docker and Kubernetes",
@@ -125,7 +125,7 @@ export const services: ServiceData[] = [
     id: "customer-experience-management",
     name: "Customer Experience Management",
     description:
-      "We configure CRM systems like HubSpot, Zoho, and Salesforce, optimize ticket routing, and set up communication channels like WhatsApp Business.",
+      "Integrate CRM platforms like HubSpot and Salesforce, clean up databases, and set up ticket routing to keep customer support running fast.",
     capabilities: [
       "CRM cleanup and database optimization",
       "HubSpot, Zoho, and Salesforce setup",
@@ -143,7 +143,7 @@ export const services: ServiceData[] = [
     id: "it-consulting-it-services",
     name: "IT Consulting & IT Services",
     description:
-      "We conduct technical architecture reviews, audit cloud hosting costs, perform security assessments, and deliver technology roadmaps.",
+      "Deliver clear technology roadmaps, cloud cost audits, security reviews, and ongoing advisory to protect and guide your tech stack.",
     capabilities: [
       "Technology roadmaps & planning",
       "Architecture and cloud cost reviews",

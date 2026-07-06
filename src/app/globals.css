@@ -32,12 +32,12 @@
 
   body {
     @apply bg-canvas text-ink font-sans antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   html.lenis-smooth {
