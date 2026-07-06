@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -266,7 +267,7 @@ function getFaviconUrl(domain: string) {
   }
 }
 
-function AuditReportContent() {
+function RealAuditReportContent() {
   const searchParams = useSearchParams();
   const domainParam = searchParams.get("domain");
 
@@ -821,6 +822,8 @@ function AuditReportContent() {
     </>
   );
 }
+
+const AuditReportContent = dynamic(() => Promise.resolve(RealAuditReportContent), { ssr: false });
 
 export default function AuditReportPage() {
   return (

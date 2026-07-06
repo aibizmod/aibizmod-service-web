@@ -12,7 +12,7 @@ import {
   Compass, Bot, Cpu, MessageSquare, Headphones,
   Package, Settings, Wrench, Zap, Users, Lightbulb,
   Globe, Award, Clock, Rocket, Pencil, BarChart, GitBranch,
-  Sparkles, type LucideIcon,
+  Sparkles, HardDrive, type LucideIcon,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -33,7 +33,7 @@ export type IconKey =
   | "workflow" | "container" | "shield" | "activity" | "refreshCw"
   | "compass" | "bot" | "cpu" | "messageSquare" | "headphones"
   | "package" | "settings" | "wrench" | "zap" | "users" | "lightbulb"
-  | "globe" | "award" | "clock" | "rocket" | "pencil" | "barChart" | "gitBranch";
+  | "globe" | "award" | "clock" | "rocket" | "pencil" | "barChart" | "gitBranch" | "hardDrive";
 
 export const iconMap: Record<IconKey, LucideIcon> = {
   code2: Code2, database: Database, server: Server, network: Network,
@@ -45,7 +45,7 @@ export const iconMap: Record<IconKey, LucideIcon> = {
   messageSquare: MessageSquare, headphones: Headphones, package: Package,
   settings: Settings, wrench: Wrench, zap: Zap, users: Users,
   lightbulb: Lightbulb, globe: Globe, award: Award, clock: Clock,
-  rocket: Rocket, pencil: Pencil, barChart: BarChart, gitBranch: GitBranch,
+  rocket: Rocket, pencil: Pencil, barChart: BarChart, gitBranch: GitBranch, hardDrive: HardDrive,
 };
 
 const serviceImages: Record<string, string> = {
