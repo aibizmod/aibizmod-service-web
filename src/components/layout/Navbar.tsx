@@ -732,7 +732,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="mt-2 w-full rounded-xl bg-slate-950/95 border border-cyan-500/20 text-left whitespace-normal overscroll-contain"
+                        className="mt-2 w-full max-h-[60vh] overflow-y-auto rounded-xl bg-slate-950/95 border border-cyan-500/20 text-left whitespace-normal overscroll-contain scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
                         ref={mobileDropdownRef}
                       >
                         <div className="p-3 grid grid-cols-1 sm:grid-cols-2 gap-1">

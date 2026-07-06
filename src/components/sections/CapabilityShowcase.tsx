@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { HeroButton } from "@/components/blocks/animated-video-on-scroll";
 
 interface ServiceItem {
   id: string;
@@ -581,6 +582,13 @@ export default function CapabilityShowcase() {
 
   const currentService = services[active];
 
+  const handleScrollToShowcase = () => {
+    const el = document.getElementById("ai-showcases");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div id="ai-showcases" className="w-full relative pt-8 md:pt-4 pb-16 md:pb-24 overflow-hidden mt-0 md:-mt-8 lg:-mt-12 xl:-mt-16">
       <style dangerouslySetInnerHTML={{ __html: `
@@ -656,6 +664,12 @@ export default function CapabilityShowcase() {
           <p className="text-stone-600 text-base sm:text-[17px] leading-relaxed max-w-[560px] mx-auto">
             From visibility audits to custom LLM integrations and machine learning pipelines, we build systems designed for real business outcomes.
           </p>
+          <HeroButton
+            onClick={handleScrollToShowcase}
+            className="mt-5 px-5 py-2.5 text-xs sm:text-sm font-semibold"
+          >
+            See our AI services
+          </HeroButton>
         </div>
 
         {/* 3. Capsules Tab Bar */}
