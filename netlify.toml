@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  # trigger redeploy
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
