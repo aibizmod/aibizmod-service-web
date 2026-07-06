@@ -50,36 +50,36 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
 
   const inputField = (
     <form id="hero-audit-form" onSubmit={handleSubmit} className="w-full">
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
-          <Search className="h-4 w-4" />
+      <div className="flex flex-col sm:flex-row gap-2.5">
+        <div className="relative flex-1">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
+            <Search className="h-4 w-4" />
+          </div>
+          <input
+            type="text"
+            value={domain}
+            onChange={(e) => setDomain(e.target.value)}
+            placeholder="Enter your website URL"
+            className="w-full h-12 pl-10 pr-4 text-[14px] md:text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
+            aria-label="Domain to audit"
+          />
         </div>
-        <input
-          type="text"
-          value={domain}
-          onChange={(e) => setDomain(e.target.value)}
-          placeholder="Enter your website URL"
-          className="w-full h-11 md:h-12 pl-10 pr-28 md:pr-36 text-[14px] md:text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
-          aria-label="Domain to audit"
-        />
-        <div className="absolute right-1.5 top-1/2 -translate-y-1/2">
-          <StarButton
-            as="span"
-            lightColor="#00f0ff"
-            backgroundColor="#0f172a"
-            borderWidth={2.2}
-            glow={true}
-            sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
-            className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em]"
-            onClick={() => {
-              const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
-              form?.requestSubmit();
-            }}
-          >
-            Check visibility
-            <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
-          </StarButton>
-        </div>
+        <StarButton
+          as="span"
+          lightColor="#00f0ff"
+          backgroundColor="#0f172a"
+          borderWidth={2.2}
+          glow={true}
+          sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
+          className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em] h-12 w-full sm:w-auto"
+          onClick={() => {
+            const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
+            form?.requestSubmit();
+          }}
+        >
+          Check visibility
+          <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
+        </StarButton>
       </div>
     </form>
   );
@@ -117,17 +117,17 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
               </div>
               <div>
                 {inputField}
-                <div className="mt-3 md:mt-4 flex flex-wrap justify-center md:justify-between gap-2 md:gap-3 text-[11px] md:text-[12px] text-stone-500">
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
+                <div className="mt-3 md:mt-4 flex flex-wrap justify-center md:justify-between gap-2 md:gap-3 text-[11px] md:text-[12px] text-stone-600">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2" style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(6,182,212,0.12) 100%)", border: "1px solid rgba(16,185,129,0.2)" }}>
                     <CheckCircle className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-500" />
                     No signup required
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2" style={{ background: "linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(99,102,241,0.12) 100%)", border: "1px solid rgba(6,182,212,0.2)" }}>
                     <Activity className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-500" />
                     Takes ~30 seconds
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg bg-stone-100 px-2.5 py-1.5 md:px-3 md:py-2">
-                    <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5 text-cyan-500" />
+                  <span className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2" style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(168,85,247,0.12) 100%)", border: "1px solid rgba(99,102,241,0.2)" }}>
+                    <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5 text-indigo-500" />
                     Free
                   </span>
                 </div>
@@ -180,12 +180,12 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
           </p>
           <div className="mt-8 w-full max-w-md">
             {inputField}
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[12px] text-stone-400">
-              <span className="inline-flex items-center gap-1">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[12px] text-stone-600">
+              <span className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5" style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(6,182,212,0.12) 100%)", border: "1px solid rgba(16,185,129,0.2)" }}>
                 <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                 No signup required
               </span>
-              <span className="inline-flex items-center gap-1">
+              <span className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5" style={{ background: "linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(99,102,241,0.12) 100%)", border: "1px solid rgba(6,182,212,0.2)" }}>
                 <Activity className="h-3.5 w-3.5 text-cyan-500" />
                 Takes ~30 seconds
               </span>

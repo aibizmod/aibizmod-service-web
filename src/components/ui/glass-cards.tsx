@@ -24,37 +24,24 @@ const Card: React.FC<CardProps> = ({
   color,
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const card = cardRef.current;
-    const container = containerRef.current;
-    if (!card || !container) return;
+    if (!card) return;
 
-    const targetScale = 1 - (totalCards - 1 - index) * 0.04;
+    const scale = 1 - (totalCards - 1 - index) * 0.04;
 
-    gsap.set(card, { scale: 1, transformOrigin: "center top" });
-
-    const trigger = ScrollTrigger.create({
-      trigger: container,
-      start: "top top",
-      end: "bottom top",
-      scrub: 0.5,
-      onUpdate: (self) => {
-        const scale = gsap.utils.interpolate(1, targetScale, self.progress);
-        gsap.set(card, {
-          scale: Math.max(scale, targetScale),
-          transformOrigin: "center top",
-        });
-      },
+    gsap.set(card, {
+      scale: scale,
+      y: index * 10,
+      transformOrigin: "center top",
     });
 
-    return () => trigger.kill();
+    return () => {};
   }, [index, totalCards]);
 
   return (
     <div
-      ref={containerRef}
       style={{
         position: "sticky",
         top: 0,
@@ -62,6 +49,7 @@ const Card: React.FC<CardProps> = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        paddingTop: "80px",
       }}
     >
       <div
@@ -193,19 +181,50 @@ const Card: React.FC<CardProps> = ({
 };
 
 export function StackedCards() {
-  const desktopRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const desktop = desktopRef.current;
-    if (!desktop) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    gsap.fromTo(
-      desktop,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.8, ease: "power2.out" }
-    );
+    const cards = container.querySelectorAll<HTMLElement>(".card-content");
+    if (cards.length === 0) return;
+
+    const totalCards = cards.length;
+
+    // Create individual ScrollTrigger for each card
+    cards.forEach((card, i) => {
+      const targetScale = 1 - (totalCards - 1 - i) * 0.04;
+      const targetY = i * 10;
+
+      gsap.set(card, {
+        scale: 1,
+        y: 0,
+        transformOrigin: "center top",
+      });
+
+      ScrollTrigger.create({
+        trigger: card.closest("[style*='sticky']") as HTMLElement,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const currentScale = gsap.utils.interpolate(1, targetScale, progress);
+          const currentY = gsap.utils.interpolate(0, targetY, progress);
+          gsap.set(card, {
+            scale: Math.max(currentScale, targetScale),
+            y: currentY,
+          });
+        },
+      });
+    });
 
     ScrollTrigger.refresh();
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   return (
@@ -232,7 +251,7 @@ export function StackedCards() {
 
       {/* Desktop GSAP sticky stack */}
       <div
-        ref={desktopRef}
+        ref={containerRef}
         className="relative hidden lg:block"
         style={{
           background:

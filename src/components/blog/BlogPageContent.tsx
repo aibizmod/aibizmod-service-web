@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BookOpen, Search } from 'lucide-react';
+import { BookOpen, Search, Send } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import { blogPosts, categories } from '@/data/blog';
 import NeuralBackground from '@/components/ui/flow-field-background';
@@ -48,6 +48,15 @@ export default function BlogPageContent() {
 	const [searchQuery, setSearchQuery] = useState<string>('');
 	const [isSearching, setIsSearching] = useState<boolean>(false);
 	const [hoveredCardRect, setHoveredCardRect] = useState<{ x: number; y: number; width: number; height: number } | null>(null);
+	const [email, setEmail] = useState('');
+	const [subscribed, setSubscribed] = useState(false);
+
+	const handleSubscribe = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (email.trim()) {
+			setSubscribed(true);
+		}
+	};
 
 	useEffect(() => {
 		setIsSearching(true);
@@ -203,6 +212,90 @@ export default function BlogPageContent() {
 						</AnimatedSection>
 					)}
 				</div>
+			</section>
+
+			{/* Newsletter */}
+			<section className="relative overflow-hidden bg-ink py-24 px-6">
+				<div
+					className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+					aria-hidden="true"
+					style={{
+						background: "radial-gradient(circle, rgba(6,182,212,0.7) 0%, transparent 70%)",
+						animation: "glow-pulse 6s ease-in-out infinite",
+					}}
+				/>
+				<div
+					className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+					aria-hidden="true"
+					style={{
+						background: "radial-gradient(circle, rgba(14,165,233,0.6) 0%, transparent 70%)",
+						animation: "glow-pulse 6s ease-in-out infinite",
+						animationDelay: "3s",
+					}}
+				/>
+
+				<AnimatedSection className="relative z-10 max-w-xl mx-auto text-center">
+					<span
+						className="inline-flex items-center gap-1.5 text-label font-semibold uppercase tracking-widest mb-6"
+						style={{ color: "#B8860B" }}
+					>
+						<span aria-hidden="true">&#10022;</span>
+						Newsletter
+					</span>
+
+					<h2
+						className="font-display font-bold text-white text-balance"
+						style={{
+							fontSize: "clamp(26px, 3.5vw, 42px)",
+							lineHeight: 1.1,
+							letterSpacing: "-0.02em",
+						}}
+					>
+						Stay{" "}
+						<span className="gradient-text">in the loop</span>
+					</h2>
+
+					<p
+						className="mt-4"
+						style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}
+					>
+						Get the latest tech insights, tutorials, and company updates
+						delivered to your inbox. No spam, unsubscribe any time.
+					</p>
+
+					{subscribed ? (
+						<div className="mt-8 inline-flex items-center gap-2 px-6 py-3.5 rounded-card border text-white font-semibold"
+							style={{ background: "rgba(255,255,255,0.08)", borderColor: "rgba(255,255,255,0.15)" }}>
+							&#10003; You&apos;re subscribed — thank you!
+						</div>
+					) : (
+						<form
+							onSubmit={handleSubscribe}
+							className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+						>
+							<input
+								type="email"
+								placeholder="your@email.com"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								required
+								className="flex-1 px-4 py-3 rounded-btn text-white placeholder:text-white/40 text-sm transition-colors focus:outline-none"
+								style={{
+									background: "rgba(255,255,255,0.08)",
+									border: "1px solid rgba(255,255,255,0.2)",
+								}}
+								onFocus={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.55)"; }}
+								onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+							/>
+							<button
+								type="submit"
+								className="btn-primary shrink-0 justify-center"
+							>
+								Subscribe <Send size={14} aria-hidden="true" />
+							</button>
+						</form>
+					)}
+				</AnimatedSection>
 			</section>
 		</>
 	);

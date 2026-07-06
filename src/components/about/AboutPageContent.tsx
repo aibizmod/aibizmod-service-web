@@ -173,51 +173,6 @@ export default function AboutPageContent() {
         </div>
       </section>
 
-      {/* ── Our Story ────────────────────────────────────────────────────── */}
-      <section
-        className="py-20 px-6 border-t border-border relative"
-        style={{
-          backgroundColor: "#f0f9ff",
-          backgroundImage: "radial-gradient(circle, #94a3b8 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="mx-auto max-w-3xl">
-
-            {/* Narrative */}
-            <AnimatedSection delay={0.1}>
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "black", border: "none" }}>Our Story</span>
-              <h2
-                className="mt-6 font-display font-bold text-ink"
-                style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15, letterSpacing: "-0.02em", color: "#0E7490" }}
-              >
-                How we got here
-              </h2>
-              <div className="mt-8 space-y-6 text-muted-foreground leading-[1.8]" style={{ fontSize: 15 }}>
-                <p>
-                  aibizmod was started in 2019 by James and Sarah, two engineers who spent years
-                  in enterprise and wanted to build something different. They wanted a firm where
-                  good technical work and real business goals actually go together. We focus on being clear about
-                  what to build, when to build it, and how to scale it without adding unnecessary complexity.
-                </p>
-                <p>
-                  As the team grew, we added people who know digital marketing, cloud infrastructure,
-                  and automation well. We don&apos;t do bloated retainers or unnecessary complexity.
-                  We work with a limited number of clients at a time, with senior people doing the
-                  actual work.
-                </p>
-                <p>
-                  Today we work with companies at every stage, from early startups to established
-                  businesses. The commitment has stayed the same: honest work, built to last,
-                  in your interest.
-                </p>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
       {/* ── Mission & Vision ─────────────────────────────────────────────── */}
       <section className="py-20 px-6 border-t border-border">
         <div className="max-w-7xl mx-auto">
