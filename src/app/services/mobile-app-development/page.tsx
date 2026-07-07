@@ -9,7 +9,7 @@ import TechStackCarousel, {
 } from '@/components/ui/tech-stack-carousel';
 
 export const metadata: Metadata = {
-	title: 'Mobile App Development Services | UK & India | aibizmod',
+	title: 'Mobile App Development Services | aibizmod',
 	description:
 		'iOS, Android, Flutter, and React Native app development — consumer apps, enterprise apps, and mobile-first products built and launched to the App Store and Google Play.',
 	keywords: [

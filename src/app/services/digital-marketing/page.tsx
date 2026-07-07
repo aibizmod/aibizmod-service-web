@@ -11,7 +11,7 @@ import TechStackCarousel, {
 export const metadata: Metadata = {
 	title: 'Digital Marketing Services | SEO, GEO & Paid Ads | aibizmod',
 	description:
-		'SEO, GEO, paid advertising, social media, email marketing, and analytics services that generate measurable leads and grow your online presence in UK and India.',
+		'SEO, GEO, paid advertising, social media, email marketing, and analytics services that generate measurable leads and grow your online presence worldwide.',
 	keywords: [
 		'digital marketing services',
 		'seo services uk',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: 'Digital Marketing Services | aibizmod',
 		description:
-			'SEO, GEO, paid advertising, social media, email marketing, and analytics services that generate measurable leads and grow your online presence in UK and India.',
+			'SEO, GEO, paid advertising, social media, email marketing, and analytics services that generate measurable leads and grow your online presence worldwide.',
 		url: '/services/digital-marketing',
 	},
 };

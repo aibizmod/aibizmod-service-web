@@ -14,14 +14,14 @@ import ClientsSection from '@/components/sections/ClientsSection';
 import LatestBlogsSection from '@/components/sections/LatestBlogsSection';
 
 export const metadata: Metadata = {
-	title: { absolute: 'aibizmod | AI Automation, Software & Digital Services | UK & India' },
+	title: { absolute: 'aibizmod | AI Automation, Software & Digital Services' },
 	description:
-		'aibizmod delivers AI automation, custom software development, web development, mobile apps, cloud hosting, IT consulting, and digital marketing for businesses in the UK and India.',
+		'aibizmod delivers AI automation, custom software development, web development, mobile apps, cloud hosting, IT consulting, and digital marketing for businesses worldwide.',
 	alternates: { canonical: 'https://aibizmod.com' },
 	openGraph: {
-		title: 'aibizmod | AI Automation, Software & Digital Services | UK & India',
+		title: 'aibizmod | AI Automation, Software & Digital Services',
 		description:
-			'aibizmod delivers AI automation, custom software development, web development, mobile apps, cloud hosting, IT consulting, and digital marketing for businesses in the UK and India.',
+			'aibizmod delivers AI automation, custom software development, web development, mobile apps, cloud hosting, IT consulting, and digital marketing for businesses worldwide.',
 		url: '/',
 	},
 };

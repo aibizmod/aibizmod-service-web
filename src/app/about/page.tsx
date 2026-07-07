@@ -8,7 +8,7 @@ import StickyFooterLayout from '@/components/layout/StickyFooterLayout';
 export const metadata: Metadata = {
 	title: 'About aibizmod | Technology Consulting Company',
 	description:
-		'About aibizmod — a team of builders and technologists delivering custom software, web development, mobile apps, and technology consulting for businesses in the UK and India.',
+		'About aibizmod — a team of builders and technologists delivering custom software, web development, mobile apps, and technology consulting for businesses worldwide.',
 	alternates: { canonical: 'https://aibizmod.com/about' },
 	openGraph: {
 		title: 'About aibizmod | Technology Company',

@@ -9,7 +9,7 @@ import TechStackCarousel, {
 } from '@/components/ui/tech-stack-carousel';
 
 export const metadata: Metadata = {
-	title: 'Custom Software Development Services | UK & India | aibizmod',
+	title: 'Custom Software Development Services | aibizmod',
 	description:
 		'Bespoke software development for businesses that have outgrown spreadsheets — ERP, CRM, SaaS dashboards, project management systems, and internal tools.',
 	keywords: [

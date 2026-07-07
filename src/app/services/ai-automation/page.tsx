@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 	title:
 		'Business Process Automation Services | Workflow Automation | aibizmod',
 	description:
-		'Business process automation services that eliminate manual work. Custom automation pipelines for invoice routing, CRM sync, reporting, and approval workflows. UK and India based.',
+		'Business process automation services that eliminate manual work. Custom automation pipelines for invoice routing, CRM sync, reporting, and approval workflows.',
 	keywords: [
 		'business process automation',
 		'workflow automation',
