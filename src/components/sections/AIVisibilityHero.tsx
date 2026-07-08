@@ -132,7 +132,7 @@ export default function AIVisibilityHero() {
                     Auditing...
                   </span>
                 ) : (
-                  "Check Visibility"
+                  "Check AI Visibility"
                 )}
               </button>
             </div>
