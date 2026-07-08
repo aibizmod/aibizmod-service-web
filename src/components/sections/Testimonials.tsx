@@ -8,21 +8,21 @@ const testimonials = [
   {
     quote:
       "The team at aibizmod understood our vision from day one. They built a platform that streamlined our entire project management workflow, saving us countless hours and improving team collaboration across the board.",
-    title: "Director",
+    title: "Chief Technology Officer",
     company: "PMSpace",
     logo: "/clients/pmspace.webp",
   },
   {
     quote:
       "aibizmod delivered beyond our expectations. Their lean approach to development meant we got a high-quality product in record time, and the ongoing support has been exceptional.",
-    title: "CEO",
+    title: "VP of Engineering",
     company: "SpaceLean",
     logo: "/clients/spacelean.webp",
   },
   {
     quote:
       "aibizmod brought a level of professionalism and technical depth we had not seen before. Their team integrated seamlessly with ours and delivered a solution that actually scales.",
-    title: "Professional",
+    title: "Head of Digital Transformation",
     company: "Texas Tech Services",
     logo: "/clients/texastech.svg",
   },
