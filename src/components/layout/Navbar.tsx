@@ -157,7 +157,7 @@ export default function Navbar() {
         const idx = countries.findIndex((c) => c.code === prev.code);
         return countries[(idx + 1) % countries.length];
       });
-    }, 4000);
+    }, 2500);
     return () => clearInterval(timer);
   }, [contactOpen]);
 
