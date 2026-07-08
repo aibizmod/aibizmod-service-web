@@ -172,7 +172,7 @@ export const countries: Country[] = [
 		address: 'Middle East Regional Office, Dubai, UAE',
 	},
 	{
-		code: 'SAU',
+		code: 'KSA',
 		name: 'Saudi Arabia',
 		flag: <SAUFlag />,
 		phone: '+966 56 208 1999',
