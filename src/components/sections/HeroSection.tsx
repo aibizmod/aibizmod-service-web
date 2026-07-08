@@ -77,7 +77,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
             form?.requestSubmit();
           }}
         >
-          Check visibility
+          Check AI Visibility
           <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
         </StarButton>
       </div>
