@@ -88,6 +88,28 @@ const springTransition = {
   mass: 1.1,
 };
 
+function BrandI({
+  className = "",
+  dotClassName,
+}: {
+  className?: string;
+  dotClassName: string;
+}) {
+  return (
+    <span
+      className={`relative inline-block h-[0.78em] w-[0.22em] align-[-0.02em] ${className}`}
+      aria-hidden="true"
+    >
+      <span
+        className="absolute bottom-0 left-1/2 h-[0.52em] w-[0.14em] -translate-x-1/2 rounded-full bg-current"
+      />
+      <span
+        className={`absolute left-1/2 top-[0.14em] h-[0.16em] w-[0.16em] -translate-x-1/2 rounded-full ${dotClassName}`}
+      />
+    </span>
+  );
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -226,15 +248,9 @@ export default function Navbar() {
             )}
 
             <span>a</span>
-            <span className="relative">
-              i
-              <span className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-cyan-400" />
-            </span>
+            <BrandI dotClassName="bg-cyan-400" />
             <span className="text-cyan-400">b</span>
-            <span className="relative text-cyan-400">
-              i
-              <span className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-white" />
-            </span>
+            <BrandI className="text-cyan-400" dotClassName="bg-white" />
             <span className="text-cyan-400">z</span>
             <span>mod</span>
 
