@@ -225,8 +225,17 @@ export default function Navbar() {
               />
             )}
 
-            <span>ai</span>
-            <span className="text-cyan-400">biz</span>
+            <span>a</span>
+            <span className="relative">
+              i
+              <span className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-cyan-400" />
+            </span>
+            <span className="text-cyan-400">b</span>
+            <span className="relative text-cyan-400">
+              i
+              <span className="absolute -top-[5px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] rounded-full bg-white" />
+            </span>
+            <span className="text-cyan-400">z</span>
             <span>mod</span>
 
             {/* Active dot under logo when scrolled home */}
