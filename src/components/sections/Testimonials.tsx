@@ -8,7 +8,7 @@ const testimonials = [
   {
     quote:
       "The team at aibizmod understood our vision from day one. They built a platform that streamlined our entire project management workflow, saving us countless hours and improving team collaboration across the board.",
-    title: "CEO",
+    title: "Director",
     company: "PMSpace",
     logo: "/clients/pmspace.webp",
   },
@@ -22,7 +22,7 @@ const testimonials = [
   {
     quote:
       "aibizmod brought a level of professionalism and technical depth we had not seen before. Their team integrated seamlessly with ours and delivered a solution that actually scales.",
-    title: "CEO",
+    title: "Professional",
     company: "Texas Tech Services",
     logo: "/clients/texastech.svg",
   },
