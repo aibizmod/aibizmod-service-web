@@ -345,10 +345,10 @@ export default function ServicesGrid() {
                 fontSize: "clamp(30px, 4vw, 44px)",
               }}
             >
-              Practical support <span className="font-normal text-[var(--ink)]">for your roadmap.</span>
+              Practical Support <span className="font-normal text-[var(--ink)]">For Your Roadmap</span>
             </h2>
             <p className="mt-6 max-w-2xl text-pretty text-[17px] leading-relaxed text-[var(--ink-soft)]">
-              Eight ways our team plugs into your business, from focused web & mobile builds to custom software and automation setups. Scroll to watch each layer settle.
+              Eight ways our team plugs into your business, from focused web & mobile builds to custom software and automation setups. 
             </p>
           </AnimatedSection>
         </div>
