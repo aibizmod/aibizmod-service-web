@@ -157,10 +157,22 @@ export default function CapabilityShowcase() {
   const dragVelXRef = useRef(0);
   const dragVelYRef = useRef(0);
 
+  // Helper to generate a random unit vector for fixed scattering directions
+  const randomUnitVector = () => {
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    return new THREE.Vector3(
+      Math.sin(phi) * Math.cos(theta),
+      Math.sin(phi) * Math.sin(theta),
+      Math.cos(phi)
+    );
+  };
+
   // Per-service 3D builders ported from the prototype
   const buildVisibility = (color: string) => {
     const group = new THREE.Group();
     const c = new THREE.Color(color);
+    group.userData.expandAmount = 0.65; // Much higher expand amount for the globe scene
 
     const sphere = new THREE.Mesh(
       new THREE.SphereGeometry(1.1, 24, 18),
@@ -187,16 +199,44 @@ export default function CapabilityShowcase() {
         r * Math.cos(phi)
       );
     }
+
+    const basePositions = new Float32Array(positions);
+    const offsets = new Float32Array(pingCount * 3);
+    for (let i = 0; i < pingCount; i++) {
+      const dir = randomUnitVector().multiplyScalar(1.2);
+      offsets[i * 3] = dir.x;
+      offsets[i * 3 + 1] = dir.y;
+      offsets[i * 3 + 2] = dir.z;
+    }
+
     const dotsGeo = new THREE.BufferGeometry();
     dotsGeo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
     const dotsMat = new THREE.PointsMaterial({ color: c, size: 0.07, transparent: true, opacity: 1 });
     const dots = new THREE.Points(dotsGeo, dotsMat);
     group.add(dots);
 
-    group.userData.animate = (t: number) => {
+    group.userData.animate = (t: number, intensity: number) => {
       ring.rotation.z = t * 0.6;
       sphere.rotation.y = t * 0.15;
-      dotsMat.opacity = 0.5 + Math.sin(t * 2) * 0.4;
+      dotsMat.opacity = (0.5 + Math.sin(t * 2) * 0.4) * (1 - intensity * 0.3);
+
+      // Fade out wireframe globe and torus ring during scatter
+      const sphereMat = sphere.material as THREE.MeshBasicMaterial;
+      sphereMat.opacity = 0.3 * (1 - intensity);
+      const ringMat = ring.material as THREE.MeshBasicMaterial;
+      ringMat.opacity = 0.85 * (1 - intensity);
+
+      // Apply vertex scatter offset to the points
+      const posAttr = dotsGeo.getAttribute("position") as THREE.BufferAttribute;
+      for (let i = 0; i < pingCount; i++) {
+        posAttr.setXYZ(
+          i,
+          basePositions[i * 3] + offsets[i * 3] * intensity,
+          basePositions[i * 3 + 1] + offsets[i * 3 + 1] * intensity,
+          basePositions[i * 3 + 2] + offsets[i * 3 + 2] * intensity
+        );
+      }
+      posAttr.needsUpdate = true;
     };
     return group;
   };
@@ -204,6 +244,7 @@ export default function CapabilityShowcase() {
   const buildML = (color: string) => {
     const group = new THREE.Group();
     const c = new THREE.Color(color);
+    group.userData.expandAmount = 0.12;
 
     const icoGeo = new THREE.IcosahedronGeometry(1.15, 0);
     const edges = new THREE.EdgesGeometry(icoGeo);
@@ -225,11 +266,44 @@ export default function CapabilityShowcase() {
     );
     group.add(core);
 
-    group.userData.animate = (t: number) => {
+    // Save initial positions and generate fixed scatter offsets
+    const basePositions = posAttr.array.slice() as Float32Array;
+    const count = posAttr.count;
+    const offsets = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const dir = randomUnitVector().multiplyScalar(1.2);
+      offsets[i * 3] = dir.x;
+      offsets[i * 3 + 1] = dir.y;
+      offsets[i * 3 + 2] = dir.z;
+    }
+
+    const coreRestPos = core.position.clone();
+    const coreOffset = randomUnitVector().multiplyScalar(1.0);
+
+    group.userData.animate = (t: number, intensity: number) => {
       group.rotation.y = t * 0.25;
       group.rotation.x = Math.sin(t * 0.3) * 0.15;
       const s = 1 + Math.sin(t * 2.4) * 0.15;
       core.scale.set(s, s, s);
+
+      // Fade out static connecting lines
+      const wireframeMat = wireframe.material as THREE.LineBasicMaterial;
+      wireframeMat.opacity = 0.55 * (1 - intensity);
+
+      // Apply vertex scatter offset to nodes
+      const nodePosAttr = nodeGeo.getAttribute("position") as THREE.BufferAttribute;
+      for (let i = 0; i < count; i++) {
+        nodePosAttr.setXYZ(
+          i,
+          basePositions[i * 3] + offsets[i * 3] * intensity,
+          basePositions[i * 3 + 1] + offsets[i * 3 + 1] * intensity,
+          basePositions[i * 3 + 2] + offsets[i * 3 + 2] * intensity
+        );
+      }
+      nodePosAttr.needsUpdate = true;
+
+      // Apply mesh scatter offset to core
+      core.position.copy(coreRestPos).addScaledVector(coreOffset, intensity);
     };
     return group;
   };
@@ -237,6 +311,8 @@ export default function CapabilityShowcase() {
   const buildDeepLearning = (color: string) => {
     const group = new THREE.Group();
     const c = new THREE.Color(color);
+    group.userData.expandAmount = 0.12;
+
     const layerSizes = [3, 5, 5, 2];
     const layerSpacing = 0.9;
     const layers: THREE.Mesh[][] = [];
@@ -251,6 +327,8 @@ export default function CapabilityShowcase() {
           new THREE.MeshStandardMaterial({ color: c, emissive: c, emissiveIntensity: 0.4 })
         );
         node.position.set(0, y, z);
+        node.userData.restPos = node.position.clone();
+        node.userData.scatterOffset = randomUnitVector().multiplyScalar(1.2);
         group.add(node);
         layerNodes.push(node);
       }
@@ -269,8 +347,12 @@ export default function CapabilityShowcase() {
     }
 
     group.rotation.y = -0.4;
-    group.userData.animate = (t: number) => {
+    group.userData.animate = (t: number, intensity: number) => {
       group.rotation.y = -0.4 + Math.sin(t * 0.2) * 0.25;
+
+      // Fade out neural network edges during scatter
+      lineMat.opacity = 0.22 * (1 - intensity);
+
       layers.forEach((layerNodes, li) => {
         const wave = Math.sin(t * 1.6 - li * 0.8) * 0.5 + 0.5;
         layerNodes.forEach(n => {
@@ -278,6 +360,9 @@ export default function CapabilityShowcase() {
           n.scale.set(s, s, s);
           const mat = n.material as THREE.MeshStandardMaterial;
           mat.emissiveIntensity = 0.2 + wave * 0.8;
+
+          // Apply mesh scatter offset relative to stored restPosition
+          n.position.copy(n.userData.restPos).addScaledVector(n.userData.scatterOffset, intensity);
         });
       });
     };
@@ -287,16 +372,21 @@ export default function CapabilityShowcase() {
   const buildLLM = (color: string) => {
     const group = new THREE.Group();
     const c = new THREE.Color(color);
+    group.userData.expandAmount = 0.12;
 
+    const rings: THREE.Mesh[] = [];
     const ringCount = 6;
     for (let i = 0; i < ringCount; i++) {
+      const baseOpacity = 0.25 + (i / ringCount) * 0.5;
       const ring = new THREE.Mesh(
         new THREE.TorusGeometry(0.95, 0.015, 8, 48),
-        new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.25 + (i / ringCount) * 0.5 })
+        new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: baseOpacity })
       );
       ring.rotation.x = Math.PI / 2;
       ring.position.y = (i - ringCount / 2) * 0.22;
+      ring.userData.baseOpacity = baseOpacity;
       group.add(ring);
+      rings.push(ring);
     }
 
     const cubeCount = 14;
@@ -312,17 +402,35 @@ export default function CapabilityShowcase() {
         angle,
         radius,
         y: (Math.random() - 0.5) * 1.4,
-        speed: 0.15 + Math.random() * 0.15
+        speed: 0.15 + Math.random() * 0.15,
+        scatterOffset: randomUnitVector().multiplyScalar(1.2)
       };
       group.add(cube);
       cubes.push(cube);
     }
 
-    group.userData.animate = (t: number) => {
+    group.userData.animate = (t: number, intensity: number) => {
       group.rotation.y = t * 0.15;
+
+      // Fade out LLM orbiting rings during scatter
+      rings.forEach(ring => {
+        const ringMat = ring.material as THREE.MeshBasicMaterial;
+        ringMat.opacity = ring.userData.baseOpacity * (1 - intensity);
+      });
+
       cubes.forEach(cube => {
+        // Orbit motion (calculates dynamic "rest" position every frame)
         const a = cube.userData.angle + t * cube.userData.speed;
-        cube.position.set(Math.cos(a) * cube.userData.radius, cube.userData.y, Math.sin(a) * cube.userData.radius);
+        const rx = Math.cos(a) * cube.userData.radius;
+        const ry = cube.userData.y;
+        const rz = Math.sin(a) * cube.userData.radius;
+
+        // Apply scatter offset relative to freshly-computed rest position
+        cube.position.set(
+          rx + cube.userData.scatterOffset.x * intensity,
+          ry + cube.userData.scatterOffset.y * intensity,
+          rz + cube.userData.scatterOffset.z * intensity
+        );
         cube.rotation.x = t;
         cube.rotation.y = t;
       });
@@ -333,17 +441,35 @@ export default function CapabilityShowcase() {
   const buildGenAI = (color: string) => {
     const group = new THREE.Group();
     const c = new THREE.Color(color);
+    group.userData.expandAmount = 0.12;
 
     const count = 700;
     const positions = new Float32Array(count * 3);
+    const basePositions = new Float32Array(count * 3);
+    const offsets = new Float32Array(count * 3);
+
     for (let i = 0; i < count; i++) {
       const theta = i * 0.35;
       const r = 0.05 * theta;
       const spread = (Math.random() - 0.5) * 0.35;
-      positions[i * 3] = Math.cos(theta) * r + spread;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 1.8;
-      positions[i * 3 + 2] = Math.sin(theta) * r + spread;
+      const x = Math.cos(theta) * r + spread;
+      const y = (Math.random() - 0.5) * 1.8;
+      const z = Math.sin(theta) * r + spread;
+
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+
+      basePositions[i * 3] = x;
+      basePositions[i * 3 + 1] = y;
+      basePositions[i * 3 + 2] = z;
+
+      const dir = randomUnitVector().multiplyScalar(1.2);
+      offsets[i * 3] = dir.x;
+      offsets[i * 3 + 1] = dir.y;
+      offsets[i * 3 + 2] = dir.z;
     }
+
     const geo = new THREE.BufferGeometry();
     geo.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
     const mat = new THREE.PointsMaterial({
@@ -363,11 +489,29 @@ export default function CapabilityShowcase() {
     );
     group.add(core);
 
-    group.userData.animate = (t: number) => {
+    const coreRestPos = core.position.clone();
+    const coreOffset = randomUnitVector().multiplyScalar(1.0);
+
+    group.userData.animate = (t: number, intensity: number) => {
       group.rotation.y = t * 0.35;
       group.rotation.z = Math.sin(t * 0.15) * 0.2;
       const s = 1 + Math.sin(t * 3) * 0.2;
       core.scale.set(s, s, s);
+
+      // Apply vertex scatter offset to points Points
+      const posAttr = geo.getAttribute("position") as THREE.BufferAttribute;
+      for (let i = 0; i < count; i++) {
+        posAttr.setXYZ(
+          i,
+          basePositions[i * 3] + offsets[i * 3] * intensity,
+          basePositions[i * 3 + 1] + offsets[i * 3 + 1] * intensity,
+          basePositions[i * 3 + 2] + offsets[i * 3 + 2] * intensity
+        );
+      }
+      posAttr.needsUpdate = true;
+
+      // Apply mesh scatter offset to core
+      core.position.copy(coreRestPos).addScaledVector(coreOffset, intensity);
     };
     return group;
   };
@@ -435,16 +579,29 @@ export default function CapabilityShowcase() {
     currentGroupRef.current = initialGroup;
     orbitGroup.add(initialGroup);
 
-    // 5. Drag mechanics variables
+    // 5. Drag & Click mechanics variables
+    let isPointerDown = false;
+    let startPointerX = 0;
+    let startPointerY = 0;
+    let hasMovedPassedThreshold = false;
+    const dragThreshold = 4; // px
+
     let isDragging = false;
     let prevPointerX = 0;
     let prevPointerY = 0;
 
+    // Click reaction animation variables
+    let animationProgress = 1.0; // 1 means finished/inactive
+    let lastTime = performance.now();
+
     const handlePointerDown = (e: PointerEvent) => {
-      isDragging = true;
+      isPointerDown = true;
       isDraggingRef.current = true;
+      startPointerX = e.clientX;
+      startPointerY = e.clientY;
       prevPointerX = e.clientX;
       prevPointerY = e.clientY;
+      hasMovedPassedThreshold = false;
       dragVelXRef.current = 0;
       dragVelYRef.current = 0;
       canvas.setPointerCapture(e.pointerId);
@@ -452,28 +609,50 @@ export default function CapabilityShowcase() {
     };
 
     const handlePointerMove = (e: PointerEvent) => {
-      if (!isDragging) return;
-      const dx = e.clientX - prevPointerX;
-      const dy = e.clientY - prevPointerY;
+      if (!isPointerDown) return;
+
+      const dxTotal = e.clientX - startPointerX;
+      const dyTotal = e.clientY - startPointerY;
+      const distance = Math.sqrt(dxTotal * dxTotal + dyTotal * dyTotal);
+
+      if (!hasMovedPassedThreshold && distance > dragThreshold) {
+        hasMovedPassedThreshold = true;
+        isDragging = true;
+      }
+
+      if (hasMovedPassedThreshold) {
+        const dx = e.clientX - prevPointerX;
+        const dy = e.clientY - prevPointerY;
+
+        dragVelYRef.current = dx * 0.006;
+        dragVelXRef.current = dy * 0.006;
+
+        orbitGroup.rotation.y += dragVelYRef.current;
+        orbitGroup.rotation.x = THREE.MathUtils.clamp(
+          orbitGroup.rotation.x + dragVelXRef.current,
+          -1.1,
+          1.1
+        );
+      }
+
       prevPointerX = e.clientX;
       prevPointerY = e.clientY;
-
-      dragVelYRef.current = dx * 0.006;
-      dragVelXRef.current = dy * 0.006;
-
-      orbitGroup.rotation.y += dragVelYRef.current;
-      orbitGroup.rotation.x = THREE.MathUtils.clamp(
-        orbitGroup.rotation.x + dragVelXRef.current,
-        -1.1,
-        1.1
-      );
     };
 
     const handlePointerUp = () => {
-      isDragging = false;
-      isDraggingRef.current = false;
-      if (!container.matches(":hover")) {
-        pausedRef.current = false;
+      if (isPointerDown) {
+        isPointerDown = false;
+        isDragging = false;
+        isDraggingRef.current = false;
+
+        if (!hasMovedPassedThreshold) {
+          // Plain click -> trigger the "break apart and reassemble" animation from start
+          animationProgress = 0.0;
+        }
+
+        if (!container.matches(":hover")) {
+          pausedRef.current = false;
+        }
       }
     };
 
@@ -507,8 +686,28 @@ export default function CapabilityShowcase() {
       animationFrameId = requestAnimationFrame(render);
       const t = clock.getElapsedTime();
 
+      // Update click animation progress using delta time
+      const now = performance.now();
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+
+      if (animationProgress < 1.0) {
+        animationProgress += dt / 1.5; // full break-and-heal cycle is 1.5s
+        if (animationProgress > 1.0) {
+          animationProgress = 1.0;
+        }
+      }
+
+      const intensity = animationProgress < 1.0 ? Math.sin(animationProgress * Math.PI) : 0;
+
+      // Adjust point light intensity based on animation progress
+      pointLight.intensity = 0.8 + intensity * 0.7;
+
+      // Energize group idle spin speed during click animation
+      const currentIdleSpin = IDLE_SPIN * (1.0 + intensity * 2.5);
+
       if (!isDragging) {
-        orbitGroup.rotation.y += dragVelYRef.current + IDLE_SPIN;
+        orbitGroup.rotation.y += dragVelYRef.current + currentIdleSpin;
         orbitGroup.rotation.x = THREE.MathUtils.clamp(
           orbitGroup.rotation.x + dragVelXRef.current,
           -1.1,
@@ -518,8 +717,15 @@ export default function CapabilityShowcase() {
         dragVelYRef.current *= 0.94;
       }
 
-      if (currentGroupRef.current && currentGroupRef.current.userData.animate) {
-        currentGroupRef.current.userData.animate(t);
+      if (currentGroupRef.current) {
+        // Apply per-scene expandAmount group scaling
+        const expandAmount = currentGroupRef.current.userData.expandAmount ?? 0.12;
+        const scale = 1.0 + intensity * expandAmount;
+        currentGroupRef.current.scale.set(scale, scale, scale);
+
+        if (currentGroupRef.current.userData.animate) {
+          currentGroupRef.current.userData.animate(t, intensity);
+        }
       }
       renderer.render(scene, camera);
     };
