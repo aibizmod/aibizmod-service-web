@@ -20,15 +20,21 @@ export default function HolographicCard({
   ...props
 }: HolographicCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const [isTilting, setIsTilting] = useState(false);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsTilting(true);
+    const card = containerRef.current;
+    if (card) {
+      rectRef.current = card.getBoundingClientRect();
+    }
     if (props.onMouseEnter) props.onMouseEnter(e);
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsTilting(false);
+    rectRef.current = null;
     const card = containerRef.current;
     if (card) {
       card.style.transform = "rotateX(0deg) rotateY(0deg)";
@@ -41,7 +47,13 @@ export default function HolographicCard({
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = containerRef.current;
     if (!card) return;
-    const rect = card.getBoundingClientRect();
+    
+    let rect = rectRef.current;
+    if (!rect) {
+      rect = card.getBoundingClientRect();
+      rectRef.current = rect;
+    }
+
     const px = e.clientX - rect.left;
     const py = e.clientY - rect.top;
     const percentX = Math.min(100, Math.max(0, (px / rect.width) * 100));

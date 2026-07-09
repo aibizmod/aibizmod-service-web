@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 type ShaderBackgroundProps = {
   className?: string;
+  paused?: boolean;
 };
 
 const vsSource = `
@@ -150,8 +151,13 @@ function initShaderProgram(
   return shaderProgram;
 }
 
-export default function ShaderBackground({ className }: ShaderBackgroundProps) {
+export default function ShaderBackground({ className, paused = false }: ShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const pausedRef = useRef(paused);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -204,6 +210,10 @@ export default function ShaderBackground({ className }: ShaderBackgroundProps) {
     let isVisible = false;
 
     const render = () => {
+      if (pausedRef.current) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
       const currentTime = (performance.now() - startTime) / 1000;
 
       gl.clearColor(0.0, 0.0, 0.0, 1.0);

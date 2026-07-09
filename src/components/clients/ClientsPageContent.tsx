@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Sparkles, Plus, Minus, CheckCircle, Search, X } from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle, Search, X } from "lucide-react";
 import { ResponsiveContainer, AreaChart, Area } from "recharts";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -13,7 +13,7 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 import ShaderBackground from "@/components/ui/shader-background";
 import HolographicCard from "@/components/ui/holographic-card";
 import { StarButton } from "@/components/ui/star-button";
-import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
+import HoverBrandLogo from "@/components/ui/hover-brand-logo";
 
 // ─── Data structures ─────────────────────────────────────────────────────────
 
@@ -313,14 +313,7 @@ const clientsData: Client[] = [
   }
 ];
 
-const clientLogos = [
-  { src: "/clients/spacelean.png", alt: "SpaceLean", website: "https://spacelean.ai/", gradient: { from: "#0E7490", via: "#22D3EE", to: "#ECFEFF" } },
-  { src: "/clients/pmspace.png", alt: "PMSpaceAi", website: "https://pmspace.ai/", gradient: { from: "#0284C7", via: "#38BDF8", to: "#F0F9FF" } },
-  { src: "/clients/spacecapture.png", alt: "SpaceCapture", website: "https://spacelean.ai/", gradient: { from: "#0F172A", via: "#475569", to: "#F8FAFC" } },
-  { src: "/clients/spacesign.png", alt: "SpaceSign", website: "https://space-sign.ai/", gradient: { from: "#0891B2", via: "#22D3EE", to: "#ECFEFF" } },
-  { src: "/clients/spacehr.png", alt: "SpaceHR", website: "https://spacehr.net/", gradient: { from: "#06B6D4", via: "#67E8F9", to: "#CFFAFE" } },
-  { src: "/clients/texastech.svg", alt: "TexasTech", website: "https://texastechserv.com/", gradient: { from: "#2563EB", via: "#3B82F6", to: "#DBEAFE" } }
-];
+
 
 // ─── Sub-component: MediaSlot ──────────────────────────────────────────────
 
@@ -640,6 +633,46 @@ export default function ClientsPageContent() {
   // Track full-screen lightbox active image URL
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
+  // Lock body scroll and stop Lenis when modal or lightbox is active
+  useEffect(() => {
+    const isLocked = !!(expandedClientId || lightboxImage);
+    if (isLocked) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (typeof window !== "undefined") {
+        (window as unknown as { lenis?: { stop: () => void; start: () => void } }).lenis?.stop();
+      }
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (typeof window !== "undefined") {
+        (window as unknown as { lenis?: { stop: () => void; start: () => void } }).lenis?.start();
+      }
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      if (typeof window !== "undefined") {
+        (window as unknown as { lenis?: { stop: () => void; start: () => void } }).lenis?.start();
+      }
+    };
+  }, [expandedClientId, lightboxImage]);
+
+  // Handle Escape key to close modal/lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (lightboxImage) {
+          setLightboxImage(null);
+        } else if (expandedClientId) {
+          setExpandedClientId(null);
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [expandedClientId, lightboxImage]);
+
   const filteredClients = clientsData.filter((client) => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
@@ -668,7 +701,10 @@ export default function ClientsPageContent() {
         <main className="bg-white text-ink overflow-hidden">
           {/* ── 1. Hero ─────────────────────────────────────────────────────── */}
           <section className="relative isolate overflow-hidden px-6 pb-20 pt-32 md:pb-24 md:pt-36">
-            <ShaderBackground className="absolute inset-0 z-0 h-full w-full opacity-80" />
+            <ShaderBackground 
+              className="absolute inset-0 z-0 h-full w-full opacity-80" 
+              paused={expandedClientId !== null}
+            />
             <div
               className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl"
               aria-hidden="true"
@@ -717,16 +753,11 @@ export default function ClientsPageContent() {
             </div>
           </section>
 
-          {/* ── 2. Logos Marquee Slider (Reused from /about) ───────────────── */}
+          {/* ── 2. Hover Brand Logo Showcase ─────────────────────────────── */}
           <section className="py-20 px-6 bg-canvas border-t border-border">
-            <div className="mx-auto max-w-5xl">
+            <div className="mx-auto max-w-7xl">
               <AnimatedSection>
-                <MarqueeLogoScroller
-                  title="Trusted by Businesses Worldwide"
-                  description="Founders, developers, and business leaders across the globe choose us for their digital asset operations."
-                  logos={clientLogos}
-                  speed="normal"
-                />
+                <HoverBrandLogo />
               </AnimatedSection>
             </div>
           </section>
@@ -765,7 +796,6 @@ export default function ClientsPageContent() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                   {filteredClients.map((client, index) => {
                   const isHovered = hoveredCardId === client.id;
-                  const isExpanded = expandedClientId === client.id;
                   const isAboveFold = index < 3; // Eager load first row on desktop
                   
                   return (
@@ -802,9 +832,9 @@ export default function ClientsPageContent() {
 
                           {/* CTA Trigger */}
                           <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0891B2]">
-                            <span>{isExpanded ? "Collapse case study" : "Expand case study"}</span>
+                            <span>View case study</span>
                             <div className="w-6 h-6 rounded-full bg-[#ECFEFF] border border-cyan-100 flex items-center justify-center shrink-0">
-                              {isExpanded ? <Minus size={12} /> : <Plus size={12} />}
+                              <ArrowRight size={12} />
                             </div>
                           </div>
                         </div>
@@ -825,50 +855,61 @@ export default function ClientsPageContent() {
                 </AnimatedSection>
               )}
 
-              {/* Inline detail expansion rendering below the grid */}
-              <AnimatePresence>
-                {expandedClientId && (() => {
-                  const client = clientsData.find((c) => c.id === expandedClientId);
-                  if (!client) return null;
-                  
-                  return (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                      className="w-full mt-12 border border-slate-200/80 bg-slate-50/50 rounded-[32px] overflow-hidden shadow-[0_20px_40px_-10px_rgba(15,23,42,0.06)] relative z-20"
-                    >
+            </div>
+          </section>
+
+          {/* Detail Expansion Modal / Popup mini window */}
+          <AnimatePresence>
+            {expandedClientId && (() => {
+              const client = clientsData.find((c) => c.id === expandedClientId);
+              if (!client) return null;
+              
+              return (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-6 bg-slate-950/65 backdrop-blur-[4px]"
+                  onClick={() => setExpandedClientId(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.96, y: 12 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative w-full max-w-5xl max-h-[85vh] md:max-h-[90vh] bg-white rounded-[32px] shadow-2xl border border-slate-200 overflow-hidden flex flex-col z-20"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Header Row: Title & Close Button */}
+                    <div className="pt-7 px-6 md:pt-8 md:px-12 flex items-center justify-between border-b border-slate-100 pb-4 shrink-0 bg-white relative z-10">
+                      <h2 className="font-display font-semibold text-lg md:text-xl text-slate-900">
+                        {client.name} — Case Study
+                      </h2>
+                      <button
+                        onClick={() => setExpandedClientId(null)}
+                        className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-[#0891B2] hover:border-cyan-200 hover:bg-cyan-50/20 transition-all cursor-pointer shadow-sm"
+                      >
+                        <X size={14} />
+                        Close
+                      </button>
+                    </div>
+
+                    {/* Scrollable Content Body */}
+                    <div className="flex-1 overflow-y-auto px-6 py-6 md:px-12 md:py-8 relative" data-lenis-prevent>
                       {/* Dotted Pattern overlay */}
                       <div 
-                        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+                        className="absolute inset-0 pointer-events-none opacity-[0.02] z-0"
                         style={{
                           backgroundImage: "radial-gradient(#0891b2 1.5px, transparent 1.5px)",
                           backgroundSize: "24px 24px"
                         }}
                       />
-
-                      {/* Header Row: Title & Close Button */}
-                      <div className="pt-8 px-8 md:pt-10 md:px-14 flex items-center justify-between border-b border-slate-200/50 pb-4 relative z-10">
-                        <h2 className="font-display font-semibold text-xl md:text-2xl text-slate-900">
-                          {client.name}
-                        </h2>
-                        <button
-                          onClick={() => setExpandedClientId(null)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-[#0891B2] hover:border-cyan-200 hover:bg-cyan-50/20 transition-all cursor-pointer"
-                        >
-                          <Minus size={12} />
-                          Close
-                        </button>
-                      </div>
-
-                      {/* Detail block - Column.com inspired layout */}
-                      <div className="pt-6 pb-8 px-8 md:pt-8 md:pb-14 md:px-14 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
-                        
+                      
+                      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
                         {/* Image Gallery Panel (Left Column) */}
-                        <div>
+                        <div className="w-full">
                           <div 
-                            className="relative w-full aspect-[16/10] rounded-[22px] overflow-hidden border border-slate-200/80 shadow-[0_12px_32px_rgba(15,23,42,0.08)] bg-slate-900 cursor-zoom-in group"
+                            className="relative w-full aspect-[16/10] rounded-[22px] overflow-hidden border border-slate-200/80 shadow-[0_8px_24px_rgba(15,23,42,0.06)] bg-slate-900 cursor-zoom-in group"
                             onClick={() => {
                               const activeIdx = activeImageMap[client.id] || 0;
                               setLightboxImage(client.screenshots[activeIdx].src);
@@ -931,7 +972,7 @@ export default function ClientsPageContent() {
                             <span className="text-xs font-extrabold text-[#0891B2] uppercase tracking-widest">{client.name}</span>
                           </div>
 
-                          <h3 className="font-display font-light text-2xl md:text-3xl text-slate-900 leading-tight">
+                          <h3 className="font-display font-light text-xl md:text-2xl text-slate-900 leading-tight">
                             Solving: {client.tagline}
                           </h3>
 
@@ -1016,15 +1057,15 @@ export default function ClientsPageContent() {
                             </div>
                           )}
                         </div>
-
                       </div>
-                    </motion.div>
-                  );
-                })()}
-              </AnimatePresence>
+                    </div>
 
-            </div>
-          </section>
+                  </motion.div>
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
+
 
           {/* Lightbox Modal */}
           <AnimatePresence>
