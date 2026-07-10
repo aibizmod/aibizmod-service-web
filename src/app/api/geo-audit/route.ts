@@ -25,7 +25,8 @@ export async function POST(request: NextRequest) {
     );
 
     if (!res.ok) {
-      throw new Error(`Audit service returned ${res.status}`);
+      const errorBody = await res.text().catch(() => "");
+      throw new Error(`Audit service returned ${res.status}${errorBody ? `: ${errorBody}` : ""}`);
     }
 
     const data = await res.json();
