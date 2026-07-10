@@ -45,17 +45,32 @@ import {
 import Navbar from "@/components/layout/Navbar";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
-import type {
-  AuditResult,
-  CategoryDetail,
-  Issue,
-  QuickWin,
-  PlatformScore,
-  EntityCheck,
-  ContentMetric,
-  RoadmapPhase,
-  PageScore,
-} from "@/app/api/geo-audit/route";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type SubCheck = Record<string, any>;
+type CategoryDetail = Record<string, any>;
+type Issue = Record<string, any>;
+type QuickWin = Record<string, any>;
+type PlatformScore = Record<string, any>;
+type EntityCheck = Record<string, any>;
+type ContentMetric = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AuditResult = Record<string, any>;
+
+type RoadmapPhase = {
+  month: string;
+  title: string;
+  priority: string;
+  expectedScoreImprovement: number;
+  tasks: string[];
+};
+
+type PageScore = {
+  url: string;
+  visibilityScore: number;
+  criticalIssues: number;
+  priority: string;
+  status: string;
+};
 
 // ---------------------------------------------------------------------------
 // Constants & helpers
@@ -430,7 +445,7 @@ function CategoryCard({ detail, index }: { detail: CategoryDetail; index: number
 
       {expanded && (
         <div className="border-t border-slate-100 bg-slate-50/50 p-4 space-y-1.5">
-          {detail.subChecks.map(sc => (
+          {detail.subChecks.map((sc: any) => (
             <SubCheckRow key={sc.key} check={sc} />
           ))}
         </div>
@@ -850,8 +865,8 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
   };
 
   // Citability checks from API result
-  const citabilityCategory = result.categoryDetails.find(c => c.key === "citability");
-  const criticalCount = result.criticalIssues.filter(i => i.severity === "critical").length;
+  const citabilityCategory = result.categoryDetails.find((c: any) => c.key === "citability");
+  const criticalCount = result.criticalIssues.filter((i: any) => i.severity === "critical").length;
   const estimatedVisibility = result.score >= 70 ? "High" : result.score >= 45 ? "Moderate" : result.score >= 25 ? "Low" : "Minimal";
   const visColor = result.score >= 70 ? "text-emerald-600" : result.score >= 45 ? "text-amber-600" : "text-red-600";
 
@@ -1007,7 +1022,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {result.categoryDetails.map((detail, i) => (
+          {result.categoryDetails.map((detail: any, i: number) => (
             <CategoryCard key={detail.key} detail={detail} index={i} />
           ))}
         </div>
@@ -1022,7 +1037,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-violet-500 to-purple-600"
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {result.aiPlatforms.map(p => <PlatformCard key={p.id} platform={p} />)}
+          {result.aiPlatforms.map((p: any) => <PlatformCard key={p.id} platform={p} />)}
         </div>
       </div>
 
@@ -1036,7 +1051,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-teal-500 to-cyan-600"
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {citabilityCategory.subChecks.map(sc => (
+            {citabilityCategory.subChecks.map((sc: any) => (
               <CitabilityCheckCard key={sc.key} check={sc} />
             ))}
           </div>
@@ -1052,7 +1067,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-rose-500 to-pink-600"
         />
         <div className="grid gap-3 sm:grid-cols-2">
-          {result.entities.map(e => <EntityRow key={e.entity} entity={e} />)}
+          {result.entities.map((e: any) => <EntityRow key={e.entity} entity={e} />)}
         </div>
         <div className="mt-5 p-4 rounded-xl bg-blue-50 border border-blue-200">
           <div className="flex items-start gap-2.5">
@@ -1075,7 +1090,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-amber-500 to-orange-500"
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {result.contentMetrics.map(m => <ContentMetricTile key={m.key} metric={m} />)}
+          {result.contentMetrics.map((m: any) => <ContentMetricTile key={m.key} metric={m} />)}
         </div>
       </div>
 
@@ -1089,7 +1104,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-red-500 to-rose-600"
           />
           <div className="space-y-3">
-            {result.criticalIssues.map(issue => (
+            {result.criticalIssues.map((issue: any) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
           </div>
@@ -1106,7 +1121,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-yellow-500 to-amber-500"
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {result.quickWins.map((win, i) => (
+            {result.quickWins.map((win: any, i: number) => (
               <QuickWinCard key={win.id} win={win} index={i} />
             ))}
           </div>
@@ -1122,7 +1137,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-slate-700 to-slate-900"
         />
         <div className="space-y-3">
-          {result.roadmap.map((phase, i) => (
+          {result.roadmap.map((phase: any, i: number) => (
             <RoadmapPhaseCard key={phase.month} phase={phase} index={i} />
           ))}
         </div>
@@ -1134,7 +1149,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           <p className="text-xs text-white/60 leading-relaxed">
             Implementing all 6 phases could increase your AI Visibility Score by{" "}
             <span className="text-white font-bold">
-              +{result.roadmap.reduce((acc, p) => acc + p.expectedScoreImprovement, 0)} points
+              +{result.roadmap.reduce((acc: number, p: any) => acc + p.expectedScoreImprovement, 0)} points
             </span>{" "}
             — moving {result.band === "critical" || result.band === "poor" ? "from critical/poor toward fair-to-good" : "further into the good-to-excellent range"} within 6 months.
           </p>
