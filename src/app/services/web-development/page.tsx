@@ -144,7 +144,7 @@ const serviceCards: ServiceCard[] = [
 	{
 		title: 'Frontend Development',
 		image:
-			'/services/web-development/frontend-development-hero.webp',
+			'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&q=80&auto=format&fit=crop',
 		bullets: [
 			'Responsive Websites',
 			'Landing Pages',
@@ -153,6 +153,8 @@ const serviceCards: ServiceCard[] = [
 			'SPAs',
 		],
 		href: '/services/web-development/frontend-development',
+		color: '#0284c7',
+		iconKey: 'code2',
 	},
 	{
 		title: 'Backend Development',
@@ -166,6 +168,8 @@ const serviceCards: ServiceCard[] = [
 			'Server-side Development',
 		],
 		href: '/services/web-development/backend-development',
+		color: '#4f46e5',
+		iconKey: 'database',
 	},
 	{
 		title: 'Full Stack Development',
@@ -177,6 +181,8 @@ const serviceCards: ServiceCard[] = [
 			'Enterprise Applications',
 		],
 		href: '/services/web-development/full-stack-development',
+		color: '#7c3aed',
+		iconKey: 'layers',
 	},
 	{
 		title: 'E-Commerce Development',
@@ -190,6 +196,8 @@ const serviceCards: ServiceCard[] = [
 			'Payment Integration',
 		],
 		href: '/services/web-development/e-commerce-development',
+		color: '#db2777',
+		iconKey: 'package',
 	},
 	{
 		title: 'CMS Development',
@@ -197,6 +205,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80&auto=format&fit=crop',
 		bullets: ['WordPress', 'Headless CMS', 'Custom CMS', 'Website Maintenance'],
 		href: '/services/web-development/cms-development',
+		color: '#d97706',
+		iconKey: 'fileText',
 	},
 	{
 		title: 'Web Optimization',
@@ -209,6 +219,8 @@ const serviceCards: ServiceCard[] = [
 			'Accessibility Compliance',
 		],
 		href: '/services/web-development/web-optimization',
+		color: '#16a34a',
+		iconKey: 'zap',
 	},
 ];
 

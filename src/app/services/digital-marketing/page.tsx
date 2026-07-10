@@ -148,6 +148,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&q=80&auto=format&fit=crop',
 		bullets: ['SEO', 'GEO', 'Local SEO', 'Technical SEO'],
 		href: '/services/digital-marketing/search-marketing',
+		color: '#0891b2',
+		iconKey: 'search',
 	},
 	{
 		title: 'Paid Advertising',
@@ -155,6 +157,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Google Ads', 'Meta Ads', 'LinkedIn Ads', 'PPC Management'],
 		href: '/services/digital-marketing/paid-advertising',
+		color: '#e11d48',
+		iconKey: 'megaphone',
 	},
 	{
 		title: 'Social Media Marketing',
@@ -166,6 +170,8 @@ const serviceCards: ServiceCard[] = [
 			'Influencer Marketing',
 		],
 		href: '/services/digital-marketing/social-media-marketing',
+		color: '#7c3aed',
+		iconKey: 'messageSquare',
 	},
 	{
 		title: 'Brand Content',
@@ -178,6 +184,8 @@ const serviceCards: ServiceCard[] = [
 			'Case Studies',
 		],
 		href: '/services/digital-marketing/brand-content',
+		color: '#d97706',
+		iconKey: 'pencil',
 	},
 	{
 		title: 'Email & Lifecycle Marketing',
@@ -190,6 +198,8 @@ const serviceCards: ServiceCard[] = [
 			'Customer Retention',
 		],
 		href: '/services/digital-marketing/email-lifecycle-marketing',
+		color: '#ea580c',
+		iconKey: 'mail',
 	},
 	{
 		title: 'Performance Insights',
@@ -197,6 +207,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Analytics', 'Conversion Optimization', 'Funnel Analysis'],
 		href: '/services/digital-marketing/performance-insights',
+		color: '#16a34a',
+		iconKey: 'barChart',
 	},
 ];
 
