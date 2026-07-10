@@ -1,8 +1,8 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState, useRef, Suspense, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -22,36 +22,33 @@ import {
   Info,
   ChevronDown,
   ChevronUp,
-  Building2,
-  Users,
   FileText,
   Globe,
-  Star,
-  Award,
   Target,
   Clock,
   AlertTriangle,
   XCircle,
-  ChevronRight,
   Brain,
   Layers,
   MessageSquare,
   BookOpen,
   Network,
   ArrowUpRight,
-  Lock,
-  CheckSquare,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SubCheck = Record<string, any>;
 type CategoryDetail = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Issue = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type QuickWin = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PlatformScore = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type EntityCheck = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ContentMetric = Record<string, any>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AuditResult = Record<string, any>;
@@ -400,8 +397,6 @@ function SubCheckRow({ check }: { check: { key: string; label: string; status: "
 // Category card with expandable sub-checks
 function CategoryCard({ detail, index }: { detail: CategoryDetail; index: number }) {
   const [expanded, setExpanded] = useState(false);
-  const pct = detail.rawScore;
-  const cfg = STATUS_CONFIG[detail.status] || STATUS_CONFIG.missing;
 
   return (
     <div className="rounded-2xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md transition-all overflow-hidden">
@@ -632,7 +627,6 @@ function EntityRow({ entity }: { entity: EntityCheck }) {
 
 // Content metric tile
 function ContentMetricTile({ metric }: { metric: ContentMetric }) {
-  const cfg = STATUS_CONFIG[metric.status] || STATUS_CONFIG.missing;
   return (
     <div className="rounded-xl border border-slate-100 bg-white p-4 hover:border-slate-200 hover:shadow-sm transition-all">
       <div className="flex items-center justify-between mb-2">
@@ -838,9 +832,9 @@ function LoadingSkeleton({ domain }: { domain: string }) {
 // Main report
 // ---------------------------------------------------------------------------
 function AuditReport({ result, domain }: { result: AuditResult; domain: string }) {
-  if (!result) return null;
   const reportRef = useRef<HTMLDivElement>(null);
   const [exporting, setExporting] = useState(false);
+  if (!result) return null;
   const band = BAND_META[result.band] || BAND_META.poor;
   const displayDomain = formatDomain(domain);
   const favicon = getFaviconUrl(domain);
