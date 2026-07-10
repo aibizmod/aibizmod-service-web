@@ -4,7 +4,6 @@ import { useState, FormEvent, useEffect, useRef } from "react";
 import { ArrowRight, Search, CheckCircle, Activity, Sparkles } from "lucide-react";
 import { SiClaude, SiGooglegemini, SiPerplexity, SiJavascript, SiMongodb, SiTypescript, SiReact, SiNodedotjs } from "react-icons/si";
 import { useScroll, useTransform } from "framer-motion";
-import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
 import AnimatedText from "@/components/ui/animated-text";
 import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
@@ -29,10 +28,10 @@ const services = [
 export default function HeroSection() {
   const [domain, setDomain] = useState("");
   const [serviceIndex, setServiceIndex] = useState(0);
-  const geminiRef = useRef(null);
+  const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
-    target: geminiRef,
+    target: sectionRef,
     offset: ["start start", "end start"],
   });
 
@@ -56,11 +55,23 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative isolate bg-white">
-      {/* ── Hero Content ─────────────────────────────────────────────── */}
-      <div className="relative min-h-screen flex items-center">
-        <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
-        <div className="relative z-10 mx-auto max-w-6xl w-full flex items-center px-5 md:px-8 py-32">
+    <section ref={sectionRef} className="relative isolate bg-white h-[250vh]">
+      {/* ── Gemini Lines Background ──────────────────────────────────── */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center opacity-40">
+          <GoogleGeminiEffect
+            pathLengths={[
+              pathLengthFirst,
+              pathLengthSecond,
+              pathLengthThird,
+              pathLengthFourth,
+              pathLengthFifth,
+            ]}
+          />
+        </div>
+
+        {/* ── Hero Content (overlaid) ──────────────────────────────── */}
+        <div className="relative z-10 mx-auto max-w-6xl w-full flex items-center h-full px-5 md:px-8">
           <div className="w-full">
             <p className="text-[22px] sm:text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
               A Team Behind Visibility, Product, and Growth.
@@ -157,22 +168,6 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ── Google Gemini Scroll Effect ───────────────────────────────── */}
-      <div ref={geminiRef} className="relative h-[300vh]">
-        <GoogleGeminiEffect
-          pathLengths={[
-            pathLengthFirst,
-            pathLengthSecond,
-            pathLengthThird,
-            pathLengthFourth,
-            pathLengthFifth,
-          ]}
-          title="Visibility Meets Intelligence"
-          description="AI platforms are the new search engines. We make sure your brand shows up — recommended, not ignored."
-          className="pt-20"
-        />
       </div>
     </section>
   );
