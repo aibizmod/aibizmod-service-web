@@ -155,6 +155,8 @@ const serviceCards: ServiceCard[] = [
 			'IT Planning',
 		],
 		href: '/services/it-consulting-it-services/strategy-transformation',
+		color: '#4f46e5',
+		iconKey: 'compass',
 	},
 	{
 		title: 'Architecture & Design',
@@ -166,6 +168,8 @@ const serviceCards: ServiceCard[] = [
 			'Technology Evaluation',
 		],
 		href: '/services/it-consulting-it-services/architecture-design',
+		color: '#0891b2',
+		iconKey: 'layers',
 	},
 	{
 		title: 'Security & Compliance',
@@ -177,6 +181,8 @@ const serviceCards: ServiceCard[] = [
 			'Compliance Support',
 		],
 		href: '/services/it-consulting-it-services/security-compliance',
+		color: '#e11d48',
+		iconKey: 'shield',
 	},
 	{
 		title: 'Managed IT Operations',
@@ -189,6 +195,8 @@ const serviceCards: ServiceCard[] = [
 			'Ongoing IT Management',
 		],
 		href: '/services/it-consulting-it-services/managed-it-operations',
+		color: '#d97706',
+		iconKey: 'settings',
 	},
 	{
 		title: 'DevOps & Automation',
@@ -196,6 +204,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80&auto=format&fit=crop',
 		bullets: ['CI/CD', 'Infrastructure Automation', 'Containerization'],
 		href: '/services/it-consulting-it-services/devops-automation',
+		color: '#7c3aed',
+		iconKey: 'workflow',
 	},
 	{
 		title: 'Cloud & Infrastructure',
@@ -203,6 +213,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Cloud Services', 'Cloud Migration', 'Cloud Architecture'],
 		href: '/services/it-consulting-it-services/cloud-infrastructure',
+		color: '#0284c7',
+		iconKey: 'cloud',
 	},
 ];
 

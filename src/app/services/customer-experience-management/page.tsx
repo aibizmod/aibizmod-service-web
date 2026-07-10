@@ -148,6 +148,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop',
 		bullets: ['CRM Implementation', 'Customization', 'Integration'],
 		href: '/services/customer-experience-management/crm-services',
+		color: '#4f46e5',
+		iconKey: 'users',
 	},
 	{
 		title: 'Customer Support Systems',
@@ -160,6 +162,8 @@ const serviceCards: ServiceCard[] = [
 			'Knowledge Bases',
 		],
 		href: '/services/customer-experience-management/customer-support-systems',
+		color: '#0284c7',
+		iconKey: 'headphones',
 	},
 	{
 		title: 'Customer Engagement',
@@ -171,6 +175,8 @@ const serviceCards: ServiceCard[] = [
 			'WhatsApp Integration',
 		],
 		href: '/services/customer-experience-management/customer-engagement',
+		color: '#7c3aed',
+		iconKey: 'messageSquare',
 	},
 	{
 		title: 'Customer Intelligence',
@@ -178,6 +184,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Customer Analytics', 'Retention Tracking'],
 		href: '/services/customer-experience-management/customer-intelligence',
+		color: '#0891b2',
+		iconKey: 'eye',
 	},
 	{
 		title: 'Automation',
@@ -185,6 +193,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Workflow Automation', 'AI Chatbots', 'Voice Agents'],
 		href: '/services/customer-experience-management/cx-automation',
+		color: '#16a34a',
+		iconKey: 'workflow',
 	},
 	{
 		title: 'IT Consulting',
@@ -192,6 +202,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Digital Transformation', 'Technology Roadmaps', 'IT Planning'],
 		href: '/services/customer-experience-management/cx-it-consulting',
+		color: '#d97706',
+		iconKey: 'lightbulb',
 	},
 ];
 

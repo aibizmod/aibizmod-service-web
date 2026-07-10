@@ -148,6 +148,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
 		bullets: ['ERP', 'CRM', 'HRMS', 'Inventory Management'],
 		href: '/services/software-development/enterprise-software',
+		color: '#4f46e5',
+		iconKey: 'workflow',
 	},
 	{
 		title: 'Business Applications',
@@ -160,6 +162,8 @@ const serviceCards: ServiceCard[] = [
 			'Project Management Systems',
 		],
 		href: '/services/software-development/business-applications',
+		color: '#0891b2',
+		iconKey: 'monitor',
 	},
 	{
 		title: 'Industry-Specific Software',
@@ -173,6 +177,8 @@ const serviceCards: ServiceCard[] = [
 			'Manufacturing Solutions',
 		],
 		href: '/services/software-development/industry-specific-software',
+		color: '#7c3aed',
+		iconKey: 'settings',
 	},
 	{
 		title: 'Software Modernization',
@@ -180,6 +186,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Legacy Migration', 'Re-engineering', 'System Upgrades'],
 		href: '/services/software-development/software-modernization',
+		color: '#ea580c',
+		iconKey: 'refreshCw',
 	},
 	{
 		title: 'Product Development',
@@ -187,6 +195,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&q=80&auto=format&fit=crop',
 		bullets: ['MVPs', 'SaaS Products', 'Maintenance & Support'],
 		href: '/services/software-development/product-development',
+		color: '#e11d48',
+		iconKey: 'rocket',
 	},
 	{
 		title: 'IT Consulting & Services',
@@ -199,6 +209,8 @@ const serviceCards: ServiceCard[] = [
 			'Solution Architecture',
 		],
 		href: '/services/software-development/tech-advisory-services',
+		color: '#059669',
+		iconKey: 'users',
 	},
 ];
 

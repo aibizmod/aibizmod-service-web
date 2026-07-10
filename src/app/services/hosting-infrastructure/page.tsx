@@ -149,6 +149,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Cloud Services', 'Cloud Migration', 'Cloud Architecture'],
 		href: '/services/hosting-infrastructure/cloud-solutions',
+		color: '#0284c7',
+		iconKey: 'cloud',
 	},
 	{
 		title: 'DevOps',
@@ -161,6 +163,8 @@ const serviceCards: ServiceCard[] = [
 			'Kubernetes',
 		],
 		href: '/services/hosting-infrastructure/devops',
+		color: '#7c3aed',
+		iconKey: 'gitBranch',
 	},
 	{
 		title: 'Infrastructure Operations',
@@ -168,6 +172,8 @@ const serviceCards: ServiceCard[] = [
 			'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop',
 		bullets: ['Infrastructure Management', 'Monitoring', 'Performance Tuning'],
 		href: '/services/hosting-infrastructure/infrastructure-operations',
+		color: '#4f46e5',
+		iconKey: 'activity',
 	},
 	{
 		title: 'Hosting',
@@ -180,6 +186,8 @@ const serviceCards: ServiceCard[] = [
 			'Managed Hosting',
 		],
 		href: '/services/hosting-infrastructure/hosting',
+		color: '#0891b2',
+		iconKey: 'server',
 	},
 	{
 		title: 'Security',
@@ -192,6 +200,8 @@ const serviceCards: ServiceCard[] = [
 			'Security Audits',
 		],
 		href: '/services/hosting-infrastructure/security',
+		color: '#e11d48',
+		iconKey: 'shield',
 	},
 	{
 		title: 'Database Services',
@@ -203,6 +213,8 @@ const serviceCards: ServiceCard[] = [
 			'Database Administration',
 		],
 		href: '/services/hosting-infrastructure/database-services',
+		color: '#059669',
+		iconKey: 'database',
 	},
 ];
 
