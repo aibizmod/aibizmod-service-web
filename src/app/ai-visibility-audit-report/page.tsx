@@ -1235,7 +1235,13 @@ function AuditReportContent() {
         body: JSON.stringify({ url }),
       });
       const data = (await res.json()) as AuditResult & { error?: string };
-      if (!res.ok) throw new Error(data.error || "Audit failed");
+      if (!res.ok) {
+        const msg = data.error || "Audit failed";
+        if (msg.includes("DNS resolution failed") || msg.includes("hostname not resolvable")) {
+          throw new Error(`"${url}" could not be found. Please check the spelling and try again.`);
+        }
+        throw new Error(msg);
+      }
       setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
