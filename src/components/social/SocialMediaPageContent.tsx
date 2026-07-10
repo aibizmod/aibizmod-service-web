@@ -15,7 +15,7 @@ import {
   SiBluesky, SiSubstack, SiMastodon,
   SiThreads, SiMedium, SiQuora,
   SiHashnode, SiLinktree, SiDribbble, SiBehance,
-  SiGravatar,
+  SiGravatar, SiKaggle,
 } from "react-icons/si";
 
 import { motion } from "framer-motion";
@@ -318,6 +318,30 @@ const registeredPlatforms = [
     href: "https://www.f6s.com/ai-bizmod",
     gradient: "from-orange-600 via-red-500 to-amber-500",
     icon: <Share2 size={16} />,
+  },
+  {
+    name: "Kaggle",
+    handle: "aibizmod",
+    desc: "Where we participate in data science competitions, and share notebooks and datasets.",
+    href: "http://kaggle.com/aibizmod",
+    gradient: "from-sky-400 via-cyan-500 to-blue-500",
+    icon: <SiKaggle />,
+  },
+  {
+    name: "Web of Science",
+    handle: "QOA-4053-2026",
+    desc: "Our researcher profile and publication record on the citation indexing platform.",
+    href: "https://www.webofscience.com/wos/author/record/QOA-4053-2026",
+    gradient: "from-emerald-700 via-teal-600 to-cyan-700",
+    icon: <Award size={16} />,
+  },
+  {
+    name: "Scribd",
+    handle: "998083706/aibizmod",
+    desc: "A library of our shared documents, reports, and presentations.",
+    href: "https://www.scribd.com/user/998083706/aibizmod",
+    gradient: "from-teal-600 via-cyan-600 to-emerald-500",
+    icon: <BookOpen size={16} />,
   },
 ];
 
