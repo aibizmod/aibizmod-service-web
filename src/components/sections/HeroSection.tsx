@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect, useRef } from "react";
 import { ArrowRight, Search, CheckCircle, Activity, Sparkles } from "lucide-react";
 import { SiClaude, SiGooglegemini, SiPerplexity, SiJavascript, SiMongodb, SiTypescript, SiReact, SiNodedotjs } from "react-icons/si";
+import { useScroll, useTransform } from "framer-motion";
 import ShaderBackground from "@/components/ui/shader-background";
 import { StarButton } from "@/components/ui/star-button";
 import AnimatedText from "@/components/ui/animated-text";
+import { GoogleGeminiEffect } from "@/components/ui/google-gemini-effect";
 
 const OpenAIIcon = ({ size = 20, color = "#10A37F" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
@@ -33,6 +35,18 @@ interface HeroSectionProps {
 export default function HeroSection({ variant = 4 }: HeroSectionProps) {
   const [domain, setDomain] = useState("");
   const [serviceIndex, setServiceIndex] = useState(0);
+  const geminiRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: geminiRef,
+    offset: ["start start", "end start"],
+  });
+
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
   useEffect(() => {
     if (variant !== 4) return;
@@ -149,6 +163,22 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Google Gemini Effect - scroll-animated lines */}
+            <div ref={geminiRef} className="relative h-[300vh]">
+              <GoogleGeminiEffect
+                pathLengths={[
+                  pathLengthFirst,
+                  pathLengthSecond,
+                  pathLengthThird,
+                  pathLengthFourth,
+                  pathLengthFifth,
+                ]}
+                title="Visibility Meets Intelligence"
+                description="AI platforms are the new search engines. We make sure your brand shows up — recommended, not ignored."
+                className="pt-20"
+              />
             </div>
           </div>
         </div>
