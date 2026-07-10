@@ -26,13 +26,7 @@ const services = [
   "IT Consulting",
 ];
 
-type HeroVariant = 1 | 2 | 3 | 4;
-
-interface HeroSectionProps {
-  variant?: HeroVariant;
-}
-
-export default function HeroSection({ variant = 4 }: HeroSectionProps) {
+export default function HeroSection() {
   const [domain, setDomain] = useState("");
   const [serviceIndex, setServiceIndex] = useState(0);
   const geminiRef = useRef(null);
@@ -49,12 +43,11 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
   const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
 
   useEffect(() => {
-    if (variant !== 4) return;
     const interval = setInterval(() => {
       setServiceIndex((i) => (i + 1) % services.length);
     }, 2200);
     return () => clearInterval(interval);
-  }, [variant]);
+  }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,47 +55,12 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
     window.open(`/ai-visibility-audit-report?domain=${encodeURIComponent(domain.trim())}`, "_blank");
   };
 
-  const inputField = (
-    <form id="hero-audit-form" onSubmit={handleSubmit} className="w-full">
-      <div className="flex flex-col sm:flex-row gap-2.5">
-        <div className="relative flex-1">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
-            <Search className="h-4 w-4" />
-          </div>
-          <input
-            type="text"
-            value={domain}
-            onChange={(e) => setDomain(e.target.value)}
-            placeholder="Enter your website URL"
-            className="w-full h-12 pl-10 pr-4 text-[14px] md:text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
-            aria-label="Domain to audit"
-          />
-        </div>
-        <StarButton
-          as="span"
-          lightColor="#00f0ff"
-          backgroundColor="#0f172a"
-          borderWidth={2.2}
-          glow={true}
-          sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
-          className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em] h-12 w-full sm:w-auto"
-          onClick={() => {
-            const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
-            form?.requestSubmit();
-          }}
-        >
-          Check AI Visibility
-          <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
-        </StarButton>
-      </div>
-    </form>
-  );
-
-  if (variant === 4) {
-    return (
-      <section className="relative isolate min-h-screen bg-white">
+  return (
+    <section className="relative isolate bg-white">
+      {/* ── Hero Content ─────────────────────────────────────────────── */}
+      <div className="relative min-h-screen flex items-center">
         <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
-        <div className="relative z-10 mx-auto max-w-6xl min-h-screen flex items-center px-5 md:px-8">
+        <div className="relative z-10 mx-auto max-w-6xl w-full flex items-center px-5 md:px-8 py-32">
           <div className="w-full">
             <p className="text-[22px] sm:text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
               A Team Behind Visibility, Product, and Growth.
@@ -130,7 +88,39 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                 </p>
               </div>
               <div>
-                {inputField}
+                <form id="hero-audit-form" onSubmit={handleSubmit} className="w-full">
+                  <div className="flex flex-col sm:flex-row gap-2.5">
+                    <div className="relative flex-1">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stone-400">
+                        <Search className="h-4 w-4" />
+                      </div>
+                      <input
+                        type="text"
+                        value={domain}
+                        onChange={(e) => setDomain(e.target.value)}
+                        placeholder="Enter your website URL"
+                        className="w-full h-12 pl-10 pr-4 text-[14px] md:text-[15px] text-stone-900 placeholder-stone-400 bg-white border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:border-cyan-300"
+                        aria-label="Domain to audit"
+                      />
+                    </div>
+                    <StarButton
+                      as="span"
+                      lightColor="#00f0ff"
+                      backgroundColor="#0f172a"
+                      borderWidth={2.2}
+                      glow={true}
+                      sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
+                      className="font-sans font-semibold text-[11px] uppercase tracking-[0.2em] h-12 w-full sm:w-auto"
+                      onClick={() => {
+                        const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
+                        form?.requestSubmit();
+                      }}
+                    >
+                      Check AI Visibility
+                      <ArrowRight className="h-4 w-4 group-hover/star-button:translate-x-1 transition-transform duration-300" />
+                    </StarButton>
+                  </div>
+                </form>
                 <div className="mt-3 md:mt-4 flex flex-wrap justify-center md:justify-between gap-2 md:gap-3 text-[11px] md:text-[12px] text-stone-600">
                   <span className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 md:px-3 md:py-2" style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(6,182,212,0.12) 100%)", border: "1px solid rgba(16,185,129,0.2)" }}>
                     <CheckCircle className="h-3 w-3 md:h-3.5 md:w-3.5 text-emerald-500" />
@@ -147,6 +137,7 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                 </div>
               </div>
             </div>
+            {/* Tech stack marquee */}
             <div className="mt-8 md:mt-12 overflow-hidden border-t border-stone-200/60 pt-4 md:pt-6">
               <div className="flex animate-marquee whitespace-nowrap" style={{"--duration": "30s"} as React.CSSProperties}>
                 {[...Array(3)].map((_, i) => (
@@ -164,64 +155,24 @@ export default function HeroSection({ variant = 4 }: HeroSectionProps) {
                 ))}
               </div>
             </div>
-
-            {/* Google Gemini Effect - scroll-animated lines */}
-            <div ref={geminiRef} className="relative h-[300vh]">
-              <GoogleGeminiEffect
-                pathLengths={[
-                  pathLengthFirst,
-                  pathLengthSecond,
-                  pathLengthThird,
-                  pathLengthFourth,
-                  pathLengthFifth,
-                ]}
-                title="Visibility Meets Intelligence"
-                description="AI platforms are the new search engines. We make sure your brand shows up — recommended, not ignored."
-                className="pt-20"
-              />
-            </div>
           </div>
         </div>
-      </section>
-    );
-  }
+      </div>
 
-  return (
-    <section className="relative isolate min-h-screen bg-white">
-      <ShaderBackground className="absolute inset-0 z-0 h-full w-full" />
-      <div className="relative z-10 mx-auto max-w-6xl min-h-screen flex items-center px-5 md:px-8">
-        <div className="w-full max-w-2xl">
-          <p className="text-[28px] md:text-[40px] font-semibold text-stone-900 leading-snug">
-            A Team Behind Visibility, Product, and Growth.
-          </p>
-          <h1
-            className="mt-4 font-display font-medium text-stone-900"
-            style={{ fontSize: "clamp(36px, 4.8vw, 56px)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
-          >
-            <span className="text-cyan-600">Technology</span>{" "}
-            <span className="text-stone-400 font-thin">&amp;</span>{" "}
-            <span className="text-cyan-600">AI Visibility</span>
-            <span className="block text-stone-900 font-extralight mt-2">
-              Business Connected.
-            </span>
-          </h1>
-          <p className="mt-5 text-[15px] leading-7 text-stone-500">
-            We build your digital stack and optimize how AI platforms see your brand. One partner. Full visibility.
-          </p>
-          <div className="mt-8 w-full max-w-md">
-            {inputField}
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-[12px] text-stone-600">
-              <span className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5" style={{ background: "linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(6,182,212,0.12) 100%)", border: "1px solid rgba(16,185,129,0.2)" }}>
-                <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
-                No signup required
-              </span>
-              <span className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5" style={{ background: "linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(99,102,241,0.12) 100%)", border: "1px solid rgba(6,182,212,0.2)" }}>
-                <Activity className="h-3.5 w-3.5 text-cyan-500" />
-                Takes ~30 seconds
-              </span>
-            </div>
-          </div>
-        </div>
+      {/* ── Google Gemini Scroll Effect ───────────────────────────────── */}
+      <div ref={geminiRef} className="relative h-[300vh]">
+        <GoogleGeminiEffect
+          pathLengths={[
+            pathLengthFirst,
+            pathLengthSecond,
+            pathLengthThird,
+            pathLengthFourth,
+            pathLengthFifth,
+          ]}
+          title="Visibility Meets Intelligence"
+          description="AI platforms are the new search engines. We make sure your brand shows up — recommended, not ignored."
+          className="pt-20"
+        />
       </div>
     </section>
   );
