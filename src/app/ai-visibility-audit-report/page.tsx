@@ -838,6 +838,7 @@ function LoadingSkeleton({ domain }: { domain: string }) {
 // Main report
 // ---------------------------------------------------------------------------
 function AuditReport({ result, domain }: { result: AuditResult; domain: string }) {
+  if (!result) return null;
   const reportRef = useRef<HTMLDivElement>(null);
   const [exporting, setExporting] = useState(false);
   const band = BAND_META[result.band] || BAND_META.poor;
