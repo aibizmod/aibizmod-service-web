@@ -865,8 +865,8 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
   };
 
   // Citability checks from API result
-  const citabilityCategory = result.categoryDetails.find((c: any) => c.key === "citability");
-  const criticalCount = result.criticalIssues.filter((i: any) => i.severity === "critical").length;
+  const citabilityCategory = result.categoryDetails?.find((c: any) => c.key === "citability");
+  const criticalCount = result.criticalIssues?.filter((i: any) => i.severity === "critical").length ?? 0;
   const estimatedVisibility = result.score >= 70 ? "High" : result.score >= 45 ? "Moderate" : result.score >= 25 ? "Low" : "Minimal";
   const visColor = result.score >= 70 ? "text-emerald-600" : result.score >= 45 ? "text-amber-600" : "text-red-600";
 
@@ -970,7 +970,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             <StatTile
               icon={<Layers className="h-4 w-4 text-cyan-600" />}
               label="Categories Analyzed"
-              value={result.categoryDetails.length}
+              value={result.categoryDetails?.length ?? 0}
               color="text-slate-900"
             />
             <StatTile
@@ -982,7 +982,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             <StatTile
               icon={<Sparkles className="h-4 w-4 text-amber-500" />}
               label="Recommendations"
-              value={result.criticalIssues.length + result.quickWins.length}
+              value={(result.criticalIssues?.length ?? 0) + (result.quickWins?.length ?? 0)}
               color="text-slate-900"
             />
             <StatTile
@@ -1095,7 +1095,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 7: Critical Issues ─────────────────────────────────────── */}
-      {result.criticalIssues.length > 0 && (
+      {result.criticalIssues?.length > 0 && (
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
           <SectionHeader
             icon={<AlertTriangle className="h-5 w-5" />}
@@ -1112,7 +1112,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       )}
 
       {/* ── SECTION 8: Quick Wins ─────────────────────────────────────────── */}
-      {result.quickWins.length > 0 && (
+      {result.quickWins?.length > 0 && (
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
           <SectionHeader
             icon={<Zap className="h-5 w-5" />}
@@ -1149,7 +1149,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           <p className="text-xs text-white/60 leading-relaxed">
             Implementing all 6 phases could increase your AI Visibility Score by{" "}
             <span className="text-white font-bold">
-              +{result.roadmap.reduce((acc: number, p: any) => acc + p.expectedScoreImprovement, 0)} points
+              +{result.roadmap?.reduce((acc: number, p: any) => acc + p.expectedScoreImprovement, 0) ?? 0} points
             </span>{" "}
             — moving {result.band === "critical" || result.band === "poor" ? "from critical/poor toward fair-to-good" : "further into the good-to-excellent range"} within 6 months.
           </p>
@@ -1164,7 +1164,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           subtitle="Visibility score and issue summary by analyzed page — click column headers to sort"
           iconGradient="from-emerald-500 to-teal-600"
         />
-        <PagesTable pages={result.pagesAnalyzed} />
+        <PagesTable pages={result.pagesAnalyzed ?? []} />
         <p className="text-[11px] text-slate-400 mt-3 text-center">
           Full multi-page analysis covers your homepage only. 
           <a href="/contact" className="text-cyan-600 hover:text-cyan-700 font-medium ml-1">
