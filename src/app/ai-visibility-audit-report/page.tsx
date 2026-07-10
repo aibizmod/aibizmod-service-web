@@ -445,7 +445,7 @@ function CategoryCard({ detail, index }: { detail: CategoryDetail; index: number
 
       {expanded && (
         <div className="border-t border-slate-100 bg-slate-50/50 p-4 space-y-1.5">
-          {detail.subChecks.map((sc: any) => (
+          {(detail.subChecks ?? []).map((sc: any) => (
             <SubCheckRow key={sc.key} check={sc} />
           ))}
         </div>
@@ -1022,7 +1022,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {result.categoryDetails.map((detail: any, i: number) => (
+          {(result.categoryDetails ?? []).map((detail: any, i: number) => (
             <CategoryCard key={detail.key} detail={detail} index={i} />
           ))}
         </div>
@@ -1037,7 +1037,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-violet-500 to-purple-600"
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {result.aiPlatforms.map((p: any) => <PlatformCard key={p.id} platform={p} />)}
+          {(result.aiPlatforms ?? []).map((p: any) => <PlatformCard key={p.id} platform={p} />)}
         </div>
       </div>
 
@@ -1051,7 +1051,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-teal-500 to-cyan-600"
           />
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {citabilityCategory.subChecks.map((sc: any) => (
+            {(citabilityCategory.subChecks ?? []).map((sc: any) => (
               <CitabilityCheckCard key={sc.key} check={sc} />
             ))}
           </div>
@@ -1067,7 +1067,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-rose-500 to-pink-600"
         />
         <div className="grid gap-3 sm:grid-cols-2">
-          {result.entities.map((e: any) => <EntityRow key={e.entity} entity={e} />)}
+          {(result.entities ?? []).map((e: any) => <EntityRow key={e.entity} entity={e} />)}
         </div>
         <div className="mt-5 p-4 rounded-xl bg-blue-50 border border-blue-200">
           <div className="flex items-start gap-2.5">
@@ -1090,7 +1090,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-amber-500 to-orange-500"
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {result.contentMetrics.map((m: any) => <ContentMetricTile key={m.key} metric={m} />)}
+          {(result.contentMetrics ?? []).map((m: any) => <ContentMetricTile key={m.key} metric={m} />)}
         </div>
       </div>
 
@@ -1104,7 +1104,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-red-500 to-rose-600"
           />
           <div className="space-y-3">
-            {result.criticalIssues.map((issue: any) => (
+            {(result.criticalIssues ?? []).map((issue: any) => (
               <IssueCard key={issue.id} issue={issue} />
             ))}
           </div>
@@ -1121,7 +1121,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
             iconGradient="from-yellow-500 to-amber-500"
           />
           <div className="grid gap-4 sm:grid-cols-2">
-            {result.quickWins.map((win: any, i: number) => (
+            {(result.quickWins ?? []).map((win: any, i: number) => (
               <QuickWinCard key={win.id} win={win} index={i} />
             ))}
           </div>
@@ -1137,7 +1137,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           iconGradient="from-slate-700 to-slate-900"
         />
         <div className="space-y-3">
-          {result.roadmap.map((phase: any, i: number) => (
+          {(result.roadmap ?? []).map((phase: any, i: number) => (
             <RoadmapPhaseCard key={phase.month} phase={phase} index={i} />
           ))}
         </div>
