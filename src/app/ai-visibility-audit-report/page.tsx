@@ -1,18 +1,14 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useEffect, useState, useRef, Suspense, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+import { useEffect, useState, Suspense, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
-  Search,
   Loader2,
   Shield,
   AlertCircle,
   CheckCircle,
-  ArrowLeft,
   ExternalLink,
   Zap,
   BarChart3,
@@ -36,8 +32,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import ShaderBackground from "@/components/ui/shader-background";
-import { StarButton } from "@/components/ui/star-button";
+import HeroSection from "@/components/sections/HeroSection";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type CategoryDetail = Record<string, any>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1210,9 +1205,6 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 // Main page component
 // ---------------------------------------------------------------------------
 function AuditReportContent() {
-  const searchParams = useSearchParams();
-  const domainParam = searchParams.get("domain");
-
   const [domain, setDomain] = useState("");
   const [result, setResult] = useState<AuditResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -1245,102 +1237,78 @@ function AuditReportContent() {
   }, []);
 
   useEffect(() => {
-    if (domainParam) {
-      setDomain(domainParam);
-      runAudit(domainParam);
-    }
-  }, [domainParam, runAudit]);
+    const storedDomain = window.sessionStorage.getItem("pending-audit-domain");
+    const initialDomain = storedDomain?.trim();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!domain.trim() || isLoading) return;
-    window.history.replaceState(null, "", `/ai-visibility-audit-report?domain=${encodeURIComponent(domain.trim())}`);
-    await runAudit(domain.trim());
+    if (initialDomain) {
+      setDomain(initialDomain);
+      window.sessionStorage.removeItem("pending-audit-domain");
+      void runAudit(initialDomain);
+    }
+  }, [runAudit]);
+
+  const handleSubmit = async (nextDomain: string) => {
+    const cleanedDomain = nextDomain.trim();
+    if (!cleanedDomain || isLoading) return;
+
+    setDomain(cleanedDomain);
+    await runAudit(cleanedDomain);
   };
 
   const displayDomain = domain ? formatDomain(domain) : "";
+  const compactLayout = isLoading;
+  const showPrompt = !compactLayout && !result;
 
   return (
     <>
       <Navbar />
 
-      {/* Sticky audit bar */}
-      <header className="sticky top-16 z-40 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-800 transition">
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </Link>
-          <form id="audit-form" onSubmit={handleSubmit} className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-              <input
-                type="text"
-                value={domain}
-                onChange={e => setDomain(e.target.value)}
-                placeholder="Enter your domain (e.g., aibizmod.com)"
-                disabled={isLoading}
-                className="w-72 sm:w-80 h-9 pl-9 pr-3 text-sm rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-400 disabled:opacity-60"
-              />
-            </div>
-            {isLoading || !domain.trim() ? (
-              <span className="inline-flex h-9 items-center justify-center gap-2 rounded-3xl bg-slate-900/50 px-4 text-xs font-semibold text-white/50 cursor-not-allowed">
-                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Audit"}
-              </span>
-            ) : (
-              <StarButton
-                as="span"
-                lightColor="#38bdf8"
-                backgroundColor="#0f172a"
-                className="h-9 px-4 text-xs font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] cursor-pointer"
-                onClick={() => {
-                  const form = document.querySelector("#audit-form") as HTMLFormElement;
-                  form?.requestSubmit();
-                }}
-              >
-                Audit
-              </StarButton>
-            )}
-          </form>
-        </div>
-      </header>
-
-      <ShaderBackground className="absolute inset-0 -z-10 h-full w-full" />
-
       <main className="min-h-screen bg-white">
-        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+        <HeroSection
+          className={cn("w-full", compactLayout ? "min-h-[24vh]" : "min-h-[76vh]")}
+          compact={compactLayout}
+          initialDomain={domain}
+          onSubmit={handleSubmit}
+          showIntro={false}
+          showPrompt={showPrompt}
+          contentClassName={cn("pt-4 sm:pt-5", compactLayout ? "justify-start" : "justify-center")}
+          cardClassName={cn("mx-auto px-0", compactLayout ? "w-full max-w-4xl" : "max-w-3xl")}
+          placeholder="Enter your website URL"
+          submitLabel="Run Audit"
+        />
 
-          {isLoading && <LoadingSkeleton domain={displayDomain || domain} />}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-4 pb-16 pt-2 sm:px-6 lg:px-8">
+          {isLoading && <div className="mt-4"><LoadingSkeleton domain={displayDomain || domain} /></div>}
 
           {error && (
             <>
               {(/^(Unable to reach|Could not connect|Timeout|Connection refused|ENOTFOUND|ECONNREFUSED|ETIMEDOUT)/i).test(error) ? (
-                <div className="max-w-lg mx-auto mt-16">
+                <div className="mx-auto mt-8 max-w-lg">
                   <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50/50 p-8 text-center shadow-lg">
-                    <div className="mx-auto w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mb-5">
+                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
                       <span className="text-3xl">🔌</span>
                     </div>
-                    <h3 className="text-xl font-bold text-amber-900 mb-2">Domain Unreachable</h3>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-200/60 text-amber-800 text-xs font-medium mb-4">
+                    <h3 className="mb-2 text-xl font-bold text-amber-900">Domain Unreachable</h3>
+                    <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-200/60 px-3 py-1 text-xs font-medium text-amber-800">
                       <AlertCircle className="h-3 w-3" />Connection timeout
                     </div>
-                    <p className="text-sm text-amber-700 mb-6 leading-relaxed">
+                    <p className="mb-6 text-sm leading-relaxed text-amber-700">
                       We couldn&apos;t reach <span className="font-semibold">{displayDomain || domain}</span>. The server may be down, blocking our request, or the domain doesn&apos;t exist.
                     </p>
                     <button
-                      onClick={() => { setError(null); setDomain(domain); }}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 hover:text-amber-800 transition bg-amber-50 px-4 py-2 rounded-lg border border-amber-200 hover:bg-amber-100"
+                      onClick={() => { setError(null); void handleSubmit(domain); }}
+                      className="inline-flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-700 transition hover:bg-amber-100 hover:text-amber-800"
                     >
                       <Loader2 className="h-3.5 w-3.5" />Retry Audit
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="max-w-lg mx-auto mt-16 rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100/50 p-8 text-center shadow-lg">
-                  <div className="mx-auto w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <div className="mx-auto mt-8 max-w-lg rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100/50 p-8 text-center shadow-lg">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100">
                     <AlertCircle className="h-7 w-7 text-red-500" />
                   </div>
-                  <h3 className="text-lg font-bold text-red-800 mb-2">Audit Failed</h3>
+                  <h3 className="mb-2 text-lg font-bold text-red-800">Audit Failed</h3>
                   <p className="text-sm text-red-600">{error}</p>
                 </div>
               )}
@@ -1348,39 +1316,25 @@ function AuditReportContent() {
           )}
 
           {result && !isLoading && (
-            <AuditReport result={result} domain={domain} />
-          )}
-
-          {!domainParam && !result && !isLoading && !error && (
-            <div className="flex flex-col items-center justify-center py-32 text-center">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-500 shadow-lg mb-6">
-                <Search className="h-8 w-8 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-slate-900 mb-2" style={{ fontFamily: "Satoshi, sans-serif" }}>
-                AI Visibility Audit
-              </h2>
-              <p className="text-slate-500 text-sm max-w-md mb-8">
-                Enter a domain above to generate a comprehensive AI Visibility Report — analyzing 60+ signals across structured data, E-E-A-T, citability, and more.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-xl text-left">
-                {[
-                  { icon: <BarChart3 className="h-4 w-4 text-cyan-600" />, text: "Weighted scoring across 6 categories" },
-                  { icon: <Globe className="h-4 w-4 text-violet-600" />, text: "AI platform compatibility scores" },
-                  { icon: <Network className="h-4 w-4 text-rose-600" />, text: "Entity recognition analysis" },
-                  { icon: <Zap className="h-4 w-4 text-amber-600" />, text: "Quick wins & priority roadmap" },
-                  { icon: <FileText className="h-4 w-4 text-teal-600" />, text: "Content quality deep dive" },
-                  { icon: <Shield className="h-4 w-4 text-slate-600" />, text: "Critical issue detection" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-slate-100 shadow-sm">
-                    {item.icon}
-                    <span className="text-xs text-slate-700 font-medium">{item.text}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-2 rounded-[32px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_30px_90px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8" style={{ animation: "fadeUp 650ms ease-out both" }}>
+              <AuditReport result={result} domain={domain} />
             </div>
           )}
         </div>
       </main>
+
+      <style jsx global>{`
+        @keyframes fadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </>
   );
 }
