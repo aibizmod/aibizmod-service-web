@@ -1,14 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StarButton } from "@/components/ui/star-button";
 import AnimatedSection from "@/components/common/AnimatedSection";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const accordionRef = useRef<HTMLDivElement>(null);
 
   const faqs = [
     {
@@ -33,6 +36,34 @@ export default function FAQSection() {
     },
   ];
 
+  // Stagger-reveal each FAQ item as the accordion scrolls into view
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const container = accordionRef.current;
+    if (!container) return;
+
+    const items = container.querySelectorAll<HTMLElement>(".faq-item");
+    gsap.set(items, { opacity: 0, y: 30 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    tl.to(items, {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: "power2.out",
+      stagger: 0.1,
+    });
+
+    return () => { tl.kill(); };
+  }, []);
+
   return (
     <section id="faq" className="py-24 px-6 bg-canvas border-t border-[#E0F2FE]">
       <div className="max-w-6xl mx-auto">
@@ -55,14 +86,14 @@ export default function FAQSection() {
           </div>
 
           {/* Right Column: FAQ Accordion */}
-          <div className="flex-1 space-y-4">
+          <div ref={accordionRef} className="flex-1 space-y-4">
 
             <div className="mt-8 space-y-3">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "rounded-xl border cursor-pointer transition-all duration-300 overflow-hidden",
+                    "faq-item rounded-xl border cursor-pointer transition-all duration-300 overflow-hidden",
                     openIndex === index
                       ? "border-[#BAE6FD] bg-[#ECFEFF]/80 shadow-[0_2px_16px_rgba(8,145,178,0.10)]"
                       : "border-[#E0F2FE] bg-white hover:border-[#BAE6FD] hover:bg-[#F0FDFF]"

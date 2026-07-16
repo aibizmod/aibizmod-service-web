@@ -1,7 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { Globe } from "@/components/ui/Globe";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const markers = [
   { id: "nyc", label: "New York", location: [40.7128, -74.006] as [number, number] },
@@ -19,8 +22,29 @@ const arcs = [
 ];
 
 export default function GlobalPresence() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const scrollPhiRef = useRef(0);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: (self) => {
+        // Map scroll progress [0→1] to a phi rotation of 1.8 radians
+        scrollPhiRef.current = self.progress * 1.8;
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
   return (
-    <section id="global-presence" className="py-24 px-6 bg-surface">
+    <section ref={sectionRef} id="global-presence" className="py-24 px-6 bg-surface">
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <AnimatedSection>
@@ -67,6 +91,7 @@ export default function GlobalPresence() {
                 speed={0.0025}
                 theta={0.15}
                 diffuse={1.8}
+                scrollPhiRef={scrollPhiRef}
               />
             </div>
           </AnimatedSection>

@@ -868,6 +868,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         <div className="relative flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             {favicon && <img src={favicon} alt="" className="w-11 h-11 rounded-xl border border-slate-200 shadow-sm" />}
             <div>
               <h1 className="text-xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>{displayDomain}</h1>

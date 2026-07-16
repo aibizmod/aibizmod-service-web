@@ -1,11 +1,49 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import { blogPosts } from "@/data/blog";
 import BlogCard from "@/components/blog/BlogCard";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function LatestBlogsSection() {
   const latestPosts = blogPosts.slice(0, 3);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll<HTMLElement>(".blog-card-item");
+
+    // Initial state — cards invisible, tilted and raised
+    gsap.set(cards, { opacity: 0, y: 60, rotateY: 12, transformOrigin: "left center" });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: grid,
+        start: "top 82%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    tl.to(cards, {
+      opacity: 1,
+      y: 0,
+      rotateY: 0,
+      duration: 0.75,
+      ease: "power3.out",
+      stagger: 0.14,
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <section className="py-24 px-6 bg-white border-t border-border">
@@ -25,9 +63,15 @@ export default function LatestBlogsSection() {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center">
-          {latestPosts.map((post, index) => (
-            <BlogCard key={post.slug} post={post} delay={index * 0.06} />
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 justify-items-center"
+          style={{ perspective: "1000px" }}
+        >
+          {latestPosts.map((post) => (
+            <div key={post.slug} className="blog-card-item w-full flex justify-center">
+              <BlogCard post={post} delay={0} />
+            </div>
           ))}
         </div>
 

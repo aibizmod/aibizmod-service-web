@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 
 const brands = [
   { id: 'spacelean',     name: 'Space Lean',    src: '/clients/spacelean.png',    website: 'https://spacelean.ai/' },
@@ -80,10 +81,11 @@ export default function HoverBrandLogo() {
                 onMouseEnter={() => setHoveredId(id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <img
+                <Image
                   src={src}
                   alt={name}
-                  className="h-full w-full object-contain max-h-[60px] transition-all duration-300"
+                  fill
+                  className="!relative !h-full !w-full object-contain max-h-[60px] transition-all duration-300"
                 />
               </a>
             );

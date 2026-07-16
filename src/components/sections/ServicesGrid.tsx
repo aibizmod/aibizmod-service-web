@@ -1,10 +1,17 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import { services } from '@/data/services';
 import { StarButton } from '@/components/ui/star-button';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register once at module level — safe in client components
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const serviceImages: Record<string, string> = {
   "ai-automation": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
@@ -18,143 +25,148 @@ const serviceImages: Record<string, string> = {
 };
 
 export default function ServicesGrid() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [naturalTops, setNaturalTops] = useState<number[]>([]);
-  const [triggerTops, setTriggerTops] = useState<number[]>([]);
-  const [maxScrollY, setMaxScrollY] = useState(99999);
-  const cardRefs = useRef<(HTMLElement | null)[]>([]);
-  const stripRef = useRef<HTMLDivElement>(null);
+  // ─── UI-only React state (tab strip highlight) ───────────────────────────
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
 
-  // Click & Drag states for horizontal tab menu
+  // ─── Click & Drag React state for the horizontal tab menu ───────────────
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
-  // Momentum scroll refs
+  // ─── All scroll-critical data lives in refs — zero re-renders on scroll ──
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const activeIndexRef = useRef(0);          // current active card index (no re-render)
+  const triggerTopsRef = useRef<number[]>([]); // scroll positions that activate each card
+  const maxScrollYRef = useRef(99999);        // cached page scroll limit
+
+  // GSAP quickSetters per card — created once after mount, write directly to DOM
+  type CardSetters = { rotateX: (v: number) => void; scale: (v: number) => void; opacity: (v: number) => void };
+  const cardSettersRef = useRef<CardSetters[]>([]);
+
+  // Momentum scroll refs for the tab drag strip
   const velocityRef = useRef(0);
   const lastXRef = useRef(0);
   const lastTimeRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
 
-  // Cache natural tops of the cards once to avoid forced layouts (layout thrashing) during scroll
-  const measureTops = () => {
+  // ─── Measure card positions (runs once + on resize, never on scroll) ────
+  const measureTops = useCallback(() => {
     const cards = cardRefs.current;
-    const tops = cards.map((card) => {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    const triggers = cards.map((card, idx) => {
       if (!card) return 0;
+      // Temporarily un-stick to get the natural document position
       const prevPos = card.style.position;
       card.style.position = 'static';
-      const rect = card.getBoundingClientRect();
-      const top = rect.top + window.scrollY;
+      const top = card.getBoundingClientRect().top + window.scrollY;
       card.style.position = prevPos;
-      return top;
+
+      const stickTop = isDesktop ? 140 + idx * 32 : 130 + idx * 20;
+      return top - stickTop;
     });
-    setNaturalTops(tops);
 
-    // Cache the max scroll Y limit (to avoid layout reads on scroll)
+    triggerTopsRef.current = triggers;
+
     const scroller = document.scrollingElement || document.documentElement;
-    if (scroller) {
-      const limit = scroller.scrollHeight - scroller.clientHeight - 20;
-      setMaxScrollY(limit);
-    }
-  };
-
-  useEffect(() => {
-    measureTops();
-    const timer = setTimeout(measureTops, 200);
-    window.addEventListener('resize', measureTops);
-    return () => {
-      window.removeEventListener('resize', measureTops);
-      clearTimeout(timer);
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
+    maxScrollYRef.current = scroller ? scroller.scrollHeight - scroller.clientHeight - 20 : 99999;
   }, []);
 
-  // Recalculate trigger tops whenever natural tops or viewport width change
+  // ─── Init: measure, build quickSetters, mount scroll spy ────────────────
   useEffect(() => {
-    if (naturalTops.length === 0) return;
+    // Small delay so images/fonts have settled
+    const t1 = setTimeout(measureTops, 50);
+    const t2 = setTimeout(measureTops, 300);
+    window.addEventListener('resize', measureTops, { passive: true });
 
-    const computeTriggers = () => {
-      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    // Build one quickSetter triple per card — these bypass GSAP's tween engine
+    cardSettersRef.current = cardRefs.current.map((card) => ({
+      rotateX: card ? gsap.quickSetter(card, 'rotateX', 'deg') as (v: number) => void : () => {},
+      scale:   card ? gsap.quickSetter(card, 'scale')    as (v: number) => void : () => {},
+      opacity: card ? gsap.quickSetter(card, 'opacity')  as (v: number) => void : () => {},
+    }));
 
-      const triggers = naturalTops.map((naturalTop, idx) => {
-        let stickTop = 140;
-        if (isDesktop) {
-          stickTop = 140 + idx * 32;
-        } else {
-          stickTop = 130 + idx * 20;
-        }
-        return naturalTop - stickTop;
-      });
-      setTriggerTops(triggers);
-    };
-
-    computeTriggers();
-    window.addEventListener('resize', computeTriggers);
-    return () => window.removeEventListener('resize', computeTriggers);
-  }, [naturalTops]);
-
-  // Optimized Scroll Spy (completely layout-thrash free, throttled to animation frames!)
-  useEffect(() => {
-    if (triggerTops.length === 0) return;
-
+    // ── Scroll spy — runs in rAF, touches zero React state ──
     let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollY = window.scrollY;
-          let next = 0;
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        ticking = false;
+        const scrollY = window.scrollY;
+        const tops = triggerTopsRef.current;
+        if (tops.length === 0) return;
 
-          for (let i = 0; i < triggerTops.length; i++) {
-            if (scrollY >= triggerTops[i] - 15) {
-              next = i;
-            } else {
-              break;
-            }
+        // Determine which card is active
+        let next = 0;
+        for (let i = 0; i < tops.length; i++) {
+          if (scrollY >= tops[i] - 15) next = i;
+          else break;
+        }
+        if (scrollY >= maxScrollYRef.current) next = tops.length - 1;
+
+        const prev = activeIndexRef.current;
+        activeIndexRef.current = next;
+
+        // Apply 3D tilt directly via quickSetters — no React, no tween overhead
+        const setters = cardSettersRef.current;
+        setters.forEach((s, i) => {
+          if (i < next) {
+            // Buried card: tilt back with smooth lerp
+            s.rotateX(-5);
+            s.scale(0.965);
+            s.opacity(0.72);
+          } else {
+            s.rotateX(0);
+            s.scale(1);
+            s.opacity(1);
           }
-
-          // Check if user has scrolled to the bottom of the page using cached boundary
-          if (scrollY >= maxScrollY) {
-            next = triggerTops.length - 1;
-          }
-
-          setActiveIndex((prev) => (prev !== next ? next : prev));
-          ticking = false;
         });
-        ticking = true;
-      }
+
+        // Update tab strip only when the index actually changes (infrequent)
+        if (prev !== next) {
+          setActiveTabIndex(next);
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [triggerTops, maxScrollY]);
 
-  // Sync horizontal scrolling of the tab strip
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener('resize', measureTops);
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [measureTops]);
+
+  // ─── Sync tab strip scroll when active tab changes ───────────────────────
   useEffect(() => {
     const strip = stripRef.current;
     if (!strip) return;
-    const activeTab = strip.children[activeIndex] as HTMLElement;
+    const activeTab = strip.children[activeTabIndex] as HTMLElement;
     if (!activeTab) return;
 
     const cRect = strip.getBoundingClientRect();
     const tRect = activeTab.getBoundingClientRect();
     const delta = tRect.left - cRect.left - (strip.clientWidth - activeTab.clientWidth) / 2;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
     strip.scrollBy({ left: delta, behavior: reduced ? 'auto' : 'smooth' });
-  }, [activeIndex]);
+  }, [activeTabIndex]);
 
   const handleTabClick = (e: React.MouseEvent, index: number) => {
     e.preventDefault();
-    if (isDragging) return; // Prevent trigger scroll if user is dragging horizontal bar
-    if (triggerTops[index] === undefined) return;
+    if (isDragging) return;
+    const tops = triggerTopsRef.current;
+    if (tops[index] === undefined) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     window.scrollTo({
-      top: Math.max(0, triggerTops[index]),
+      top: Math.max(0, tops[index]),
       behavior: reduced ? 'auto' : 'smooth'
     });
   };
@@ -370,7 +382,7 @@ export default function ServicesGrid() {
                 className="hww-tab-strip flex items-center gap-2 overflow-x-auto select-none cursor-grab active:cursor-grabbing"
               >
                 {tabs.map((tab, idx) => {
-                  const isActive = activeIndex === idx;
+                  const isActive = activeTabIndex === idx;
                   return (
                     <button
                       key={idx}
@@ -396,7 +408,7 @@ export default function ServicesGrid() {
 
           {/* Stack of Cards */}
           <div className="mx-auto max-w-6xl px-5 sm:px-8 relative z-10">
-            <div className="relative pt-10 space-y-6">
+            <div className="relative pt-10 space-y-6" style={{ perspective: '1200px' }}>
               
               {services.map((service, index) => {
                 const image = serviceImages[service.id] || "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80";
@@ -473,6 +485,7 @@ export default function ServicesGrid() {
                         
                         {/* Right Image visualization */}
                         <div className="hww-img-wrap relative min-h-[140px] sm:min-h-[180px] md:min-h-0 md:col-span-5 bg-slate-900 overflow-hidden">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img 
                             src={image} 
                             alt={service.name} 

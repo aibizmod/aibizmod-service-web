@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import createGlobe from "cobe";
 
 interface Marker {
@@ -34,6 +34,8 @@ interface GlobeProps {
   theta?: number;
   diffuse?: number;
   mapSamples?: number;
+  /** Optional ref whose .current value is added to phi each frame for scroll-linked rotation */
+  scrollPhiRef?: React.RefObject<number>;
 }
 
 export function Globe({
@@ -54,6 +56,7 @@ export function Globe({
   theta = 0.2,
   diffuse = 1.5,
   mapSamples = 12000,
+  scrollPhiRef,
 }: GlobeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<{ x: number; y: number } | null>(null);
@@ -181,7 +184,7 @@ export function Globe({
         }
 
         globe!.update({
-          phi: phi + phiOffsetRef.current + dragOffset.current.phi,
+          phi: phi + phiOffsetRef.current + dragOffset.current.phi + (scrollPhiRef?.current ?? 0),
           theta: theta + thetaOffsetRef.current + dragOffset.current.theta,
           dark,
           mapBrightness,

@@ -138,6 +138,7 @@ export default function CapabilityShowcase() {
   };
 
   // Keyboard navigation
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") {
