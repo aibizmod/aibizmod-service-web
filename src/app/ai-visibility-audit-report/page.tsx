@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState, Suspense, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
@@ -30,9 +31,12 @@ import {
   BookOpen,
   Network,
   ArrowUpRight,
+  Search,
+  Activity,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import HeroSection from "@/components/sections/HeroSection";
+import NeuralBackground from "@/components/ui/flow-field-background";
+import { StarButton } from "@/components/ui/star-button";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type CategoryDetail = Record<string, any>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -444,7 +448,7 @@ function CategoryCard({ detail, index }: { detail: CategoryDetail; index: number
   );
 }
 
-// Platform card
+// Platform card (row layout)
 function PlatformCard({ platform }: { platform: PlatformScore }) {
   const gradClass = PLATFORM_COLORS[platform.id] || "from-slate-500 to-slate-600";
   const compat = platform.status;
@@ -455,26 +459,33 @@ function PlatformCard({ platform }: { platform: PlatformScore }) {
           "text-red-600 bg-red-50 border-red-200";
 
   return (
-    <div className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
-      <div className="flex items-center gap-3 mb-4">
-        <div className={cn("p-2 rounded-xl bg-gradient-to-br text-white flex-shrink-0", gradClass)}>
+    <div className="group flex flex-col lg:flex-row lg:items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm hover:shadow-md transition-all">
+      <div className="flex items-center gap-3 lg:w-64 shrink-0">
+        <div className={cn("p-2.5 rounded-xl bg-gradient-to-br text-white shadow-sm shrink-0", gradClass)}>
           {PLATFORM_ICONS[platform.id]}
         </div>
-        <div className="flex-1 min-w-0">
+        <div>
           <div className="font-bold text-slate-900 text-sm" style={{ fontFamily: "Satoshi, sans-serif" }}>{platform.name}</div>
           <span className={cn("text-[10px] font-medium px-2 py-0.5 rounded-full border inline-flex mt-0.5", compatColor)}>
             {compat === "compatible" ? "Compatible" : compat === "partial" ? "Partial" : compat === "limited" ? "Limited" : "Not Compatible"}
           </span>
         </div>
-        <span className="text-2xl font-bold text-slate-900 flex-shrink-0" style={{ fontFamily: "Satoshi, sans-serif" }}>{platform.score}</span>
       </div>
-      <div className="mb-3">
-        <ProgressBar score={platform.score} maxScore={100} />
+      <div className="flex-1 min-w-0 space-y-2">
+        <p className="text-xs text-slate-600 leading-relaxed">{platform.explanation}</p>
+        <div className="flex items-start gap-2 rounded-lg bg-slate-50 border border-slate-100 p-2.5">
+          <ArrowUpRight className="h-3.5 w-3.5 text-cyan-500 flex-shrink-0 mt-0.5" />
+          <p className="text-[11px] text-slate-600 leading-relaxed">{platform.topRecommendation}</p>
+        </div>
       </div>
-      <p className="text-xs text-slate-600 leading-relaxed mb-3">{platform.explanation}</p>
-      <div className="flex items-start gap-2 rounded-lg bg-slate-50 border border-slate-100 p-2.5">
-        <ArrowUpRight className="h-3.5 w-3.5 text-cyan-500 flex-shrink-0 mt-0.5" />
-        <p className="text-[11px] text-slate-600 leading-relaxed">{platform.topRecommendation}</p>
+      <div className="flex items-center gap-3 lg:w-36 shrink-0 lg:justify-end">
+        <div className="text-right">
+          <div className="text-2xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>{platform.score}</div>
+          <div className="text-[10px] text-slate-400">/100</div>
+        </div>
+        <div className="w-16 hidden lg:block">
+          <ProgressBar score={platform.score} maxScore={100} />
+        </div>
       </div>
     </div>
   );
@@ -543,7 +554,7 @@ function IssueCard({ issue }: { issue: Issue }) {
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Why It Matters</span>
                 <p className="text-xs text-slate-700 mt-1 leading-relaxed">{issue.whyItMatters}</p>
               </div>
-              <div>
+<div>
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Recommended Fix</span>
                 <p className="text-xs text-slate-700 mt-1 leading-relaxed">{issue.recommendedFix}</p>
               </div>
@@ -782,42 +793,40 @@ function PagesTable({ pages }: { pages: PageScore[] }) {
 // ---------------------------------------------------------------------------
 function LoadingSkeleton({ domain }: { domain: string }) {
   return (
-    <div className="space-y-6 py-4">
-      {/* Executive summary skeleton */}
+    <div className="space-y-6 py-4" style={{ animation: "fadeUp 700ms ease-out both" }}>
+      {/* Score card skeleton */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 flex flex-col sm:flex-row items-center gap-8">
-            <div className="w-44 h-44 rounded-full bg-slate-100 animate-pulse flex-shrink-0" />
-            <div className="flex-1 w-full space-y-3">
-              <div className="h-6 w-32 bg-slate-200 rounded-xl animate-pulse" />
-              <div className="h-4 w-64 bg-slate-100 rounded animate-pulse" />
-              <div className="h-4 w-48 bg-slate-100 rounded animate-pulse" />
-              <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                <div className="h-3 w-24 bg-slate-200 rounded mb-2 animate-pulse" />
-                <div className="h-2 w-full bg-slate-200 rounded-full animate-pulse" />
-              </div>
-            </div>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="h-16 w-16 rounded-2xl bg-slate-100 animate-pulse" />
+          <div className="space-y-2 flex-1">
+            <div className="h-5 w-48 bg-slate-200 rounded-lg animate-pulse" />
+            <div className="h-4 w-32 bg-slate-100 rounded animate-pulse" />
           </div>
-          <div className="grid grid-cols-2 gap-3">
-            {[1, 2, 3, 4].map(i => (
-              <div key={i} className="h-20 rounded-xl bg-slate-100 animate-pulse" />
-            ))}
-          </div>
+          <div className="h-10 w-24 rounded-xl bg-slate-100 animate-pulse" />
         </div>
-      </div>
-      {/* Category skeleton */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div className="h-5 w-40 bg-slate-200 rounded animate-pulse mb-5" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map(i => (
-            <div key={i} className="h-32 rounded-xl bg-slate-100 animate-pulse" />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} className="h-16 rounded-xl bg-slate-100 animate-pulse" />
           ))}
         </div>
       </div>
-      <div className="flex items-center justify-center gap-3 text-sm text-slate-400 py-6">
+      {/* Category breakdown skeleton */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <div className="h-5 w-44 bg-slate-200 rounded-lg animate-pulse mb-5" />
+        <div className="mb-4 p-4 rounded-xl bg-slate-50">
+          <div className="h-3 w-32 bg-slate-200 rounded mb-2 animate-pulse" />
+          <div className="h-3 w-full bg-slate-200 rounded-full animate-pulse" />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map(i => (
+            <div key={i} className="h-28 rounded-xl bg-slate-100 animate-pulse" />
+          ))}
+        </div>
+      </div>
+      {/* Status bar */}
+      <div className="flex items-center justify-center gap-3 text-sm text-slate-400 py-4">
         <Loader2 className="h-4 w-4 animate-spin text-cyan-500" />
         <span>Analyzing <span className="font-medium text-slate-600">{domain}</span> across 60+ AI visibility signals...</span>
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
       </div>
     </div>
   );
@@ -829,6 +838,8 @@ function LoadingSkeleton({ domain }: { domain: string }) {
 function AuditReport({ result, domain }: { result: AuditResult; domain: string }) {
   const reportRef = useRef<HTMLDivElement>(null);
   const [exporting, setExporting] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
+  const [showSignInModal, setShowSignInModal] = useState(false);
   if (!result) return null;
   const band = BAND_META[result.band] || BAND_META.poor;
   const displayDomain = formatDomain(domain);
@@ -1019,22 +1030,109 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </div>
       </div>
 
+      {!signedIn && (
+        <div className="flex items-center justify-center py-8">
+          <button
+            onClick={() => setShowSignInModal(true)}
+            className="inline-flex items-center gap-3 h-14 px-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-base font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-[1.02]"
+          >
+            <Sparkles className="h-5 w-5 text-cyan-400" />
+            View Full Report <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
+      )}
+
+      {showSignInModal && createPortal(
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setShowSignInModal(false)}>
+          <div
+            className="relative w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowSignInModal(false)}
+              className="absolute top-4 right-4 h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-200 transition-colors"
+            >
+              <XCircle className="h-5 w-5" />
+            </button>
+            <div className="text-center mb-6">
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-lg">
+                <Sparkles className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>
+                Sign in to your account
+              </h3>
+              <p className="text-sm text-slate-500 mt-1">
+                Unlock the full AI visibility report
+              </p>
+            </div>
+            <form onSubmit={(e) => { e.preventDefault(); setSignedIn(true); setShowSignInModal(false); }} className="space-y-4">
+              <div>
+                <label htmlFor="signin-email" className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+                <input
+                  id="signin-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                  className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 transition"
+                />
+              </div>
+              <div>
+                <label htmlFor="signin-password" className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+                <input
+                  id="signin-password"
+                  type="password"
+                  placeholder="Enter your password"
+                  required
+                  className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 transition"
+                />
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <label className="flex items-center gap-2 text-slate-500">
+                  <input type="checkbox" defaultChecked className="rounded border-slate-300 text-cyan-600 focus:ring-cyan-200" />
+                  Remember me
+                </label>
+                <button type="button" className="text-cyan-600 hover:text-cyan-700 font-medium">Forgot password?</button>
+              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 h-12 w-full rounded-xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-sm font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+              >
+                Sign In <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+            <div className="relative my-5">
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
+              <div className="relative flex justify-center"><span className="bg-white px-3 text-xs text-slate-400">or continue with</span></div>
+            </div>
+            <button
+              onClick={() => { setSignedIn(true); setShowSignInModal(false); }}
+              className="inline-flex items-center justify-center gap-3 h-11 w-full rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 transition"
+            >
+              <svg className="h-5 w-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
+<p className="text-xs text-slate-400 text-center mt-5">No credit card required</p>
+            </div>
+          </div>,
+          document.body
+        )}
+
       {/* ── SECTION 3: AI Platform Compatibility ───────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Globe className="h-5 w-5" />}
           title="AI Platform Compatibility"
           subtitle="How visible your business is to each major AI platform"
           iconGradient="from-violet-500 to-purple-600"
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="space-y-3">
           {(result.aiPlatforms ?? []).map((p: any) => <PlatformCard key={p.id} platform={p} />)}
         </div>
       </div>
 
       {/* ── SECTION 4: AI Citability Deep Dive ────────────────────────────── */}
       {citabilityCategory && (
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<BookOpen className="h-5 w-5" />}
             title="AI Citability Deep Dive"
@@ -1050,7 +1148,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       )}
 
       {/* ── SECTION 5: Entity Recognition ─────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Network className="h-5 w-5" />}
           title="Entity Recognition & Knowledge Graph"
@@ -1073,7 +1171,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 6: Content Quality Analysis ───────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<FileText className="h-5 w-5" />}
           title="Content Quality Analysis"
@@ -1087,7 +1185,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 
       {/* ── SECTION 7: Critical Issues ─────────────────────────────────────── */}
       {result.criticalIssues?.length > 0 && (
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<AlertTriangle className="h-5 w-5" />}
             title="Critical Issues"
@@ -1104,7 +1202,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 
       {/* ── SECTION 8: Quick Wins ─────────────────────────────────────────── */}
       {result.quickWins?.length > 0 && (
-        <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<Zap className="h-5 w-5" />}
             title="Quick Wins"
@@ -1120,7 +1218,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       )}
 
       {/* ── SECTION 9: Priority Roadmap ───────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Target className="h-5 w-5" />}
           title="6-Month Priority Roadmap"
@@ -1148,7 +1246,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 10: Key Pages Analyzed ────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Globe className="h-5 w-5" />}
           title="Key Pages Analyzed"
@@ -1257,71 +1355,229 @@ function AuditReportContent() {
   };
 
   const displayDomain = domain ? formatDomain(domain) : "";
-  const compactLayout = isLoading;
-  const showPrompt = !compactLayout && !result;
+  const showResults = result && !isLoading;
 
   return (
     <>
       <Navbar />
 
-      <main className="min-h-screen bg-white">
-        <HeroSection
-          className={cn("w-full", compactLayout ? "min-h-[24vh]" : "min-h-[76vh]")}
-          compact={compactLayout}
-          initialDomain={domain}
-          onSubmit={handleSubmit}
-          showIntro={false}
-          showPrompt={showPrompt}
-          contentClassName={cn("pt-4 sm:pt-5", compactLayout ? "justify-start" : "justify-center")}
-          cardClassName={cn("mx-auto px-0", compactLayout ? "w-full max-w-4xl" : "max-w-3xl")}
-          placeholder="Enter your website URL"
-          submitLabel="Run Audit"
-        />
+      <main className="bg-white text-ink">
+        {!showResults && (
+          <section className="relative isolate overflow-hidden px-6 bg-white min-h-screen flex items-center justify-center pt-20">
+            <NeuralBackground
+              className="absolute inset-0 -z-10"
+              color="#22d3ee"
+              trailOpacity={0.16}
+              particleCount={950}
+              speed={1.6}
+              theme="light"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px)",
+                backgroundSize: "72px 72px",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl"
+              aria-hidden="true"
+            />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-4 pb-16 pt-2 sm:px-6 lg:px-8">
-          {isLoading && <div className="mt-4"><LoadingSkeleton domain={displayDomain || domain} /></div>}
+            <div className="relative z-10 mx-auto max-w-4xl text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-100 bg-white/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-700 shadow-[0_12px_35px_rgba(59,130,246,0.10)] backdrop-blur-md">
+                <Sparkles size={14} aria-hidden="true" />
+                Find Out Why AI Ignores Your Site — Free
+              </div>
 
-          {error && (
-            <>
-              {(/^(Unable to reach|Could not connect|Timeout|Connection refused|ENOTFOUND|ECONNREFUSED|ETIMEDOUT)/i).test(error) ? (
-                <div className="mx-auto mt-8 max-w-lg">
-                  <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50/50 p-8 text-center shadow-lg">
-                    <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-                      <span className="text-3xl">🔌</span>
+              <h1
+                className="mt-6 font-display font-bold text-balance text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-600 bg-clip-text text-transparent"
+              >
+                AI VISIBILITY AUDIT
+              </h1>
+
+              <p className="mt-4 text-2xl text-slate-600 max-w-2xl mx-auto">
+                See why ChatGPT, Gemini, and Claude won&apos;t cite your business — get a full report with prioritized solutions
+              </p>
+
+              <div className="mt-8 mx-auto w-full max-w-2xl">
+                <form
+                  id="hero-audit-form"
+                  onSubmit={(e) => { e.preventDefault(); handleSubmit(domain); }}
+                  className="flex flex-col gap-2.5 sm:flex-row"
+                >
+                  <div className="relative flex-1">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-stone-400">
+                      <Search className="h-4 w-4" />
                     </div>
-                    <h3 className="mb-2 text-xl font-bold text-amber-900">Domain Unreachable</h3>
-                    <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-200/60 px-3 py-1 text-xs font-medium text-amber-800">
-                      <AlertCircle className="h-3 w-3" />Connection timeout
-                    </div>
-                    <p className="mb-6 text-sm leading-relaxed text-amber-700">
-                      We couldn&apos;t reach <span className="font-semibold">{displayDomain || domain}</span>. The server may be down, blocking our request, or the domain doesn&apos;t exist.
-                    </p>
-                    <button
-                      onClick={() => { setError(null); void handleSubmit(domain); }}
-                      className="inline-flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-700 transition hover:bg-amber-100 hover:text-amber-800"
-                    >
-                      <Loader2 className="h-3.5 w-3.5" />Retry Audit
-                    </button>
+                    <input
+                      type="text"
+                      value={domain}
+                      onChange={(e) => setDomain(e.target.value)}
+                      placeholder="Enter your website URL"
+                      autoFocus
+                      className="h-12 w-full rounded-2xl border border-cyan-400 bg-white/90 pl-10 pr-4 text-[14px] text-stone-900 outline-none placeholder:text-stone-400 ring-2 ring-cyan-100"
+                      aria-label="Domain to audit"
+                    />
                   </div>
+                  <StarButton
+                    as="span"
+                    lightColor="#00f0ff"
+                    backgroundColor="#0f172a"
+                    borderWidth={2.2}
+                    glow={true}
+                    sparkGradient="conic-gradient(from 0deg, transparent 0deg, transparent 40deg, rgba(0, 240, 255, 0.7) 100deg, var(--light-color) 180deg, #ffffff 200deg, #00f0ff 220deg, rgba(0, 240, 255, 0.7) 280deg, transparent 330deg)"
+                    className="h-12 w-full font-sans text-[11px] font-semibold uppercase tracking-[0.2em] sm:w-auto"
+                    onClick={() => {
+                      const form = document.querySelector("#hero-audit-form") as HTMLFormElement;
+                      form?.requestSubmit();
+                    }}
+                  >
+                    Run Audit
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/star-button:translate-x-1" />
+                  </StarButton>
+                </form>
+
+                <div className="mt-3 flex flex-wrap justify-center gap-2 text-[11px] text-stone-600 sm:gap-3 sm:text-[12px]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-white/80 px-3 py-1.5">
+                    <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
+                    No signup required
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-white/80 px-3 py-1.5">
+                    <Activity className="h-3.5 w-3.5 text-cyan-500" />
+                    Takes ~30 seconds
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-stone-200 bg-white/80 px-3 py-1.5">
+                    <Sparkles className="h-3.5 w-3.5 text-indigo-500" />
+                    Free
+                  </span>
                 </div>
-              ) : (
-                <div className="mx-auto mt-8 max-w-lg rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100/50 p-8 text-center shadow-lg">
-                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100">
-                    <AlertCircle className="h-7 w-7 text-red-500" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold text-red-800">Audit Failed</h3>
-                  <p className="text-sm text-red-600">{error}</p>
+              </div>
+
+              {isLoading && (
+                <div className="mt-8" style={{ animation: "fadeUp 700ms ease-out both" }}>
+                  <LoadingSkeleton domain={displayDomain || domain} />
                 </div>
               )}
-            </>
-          )}
 
-          {result && !isLoading && (
-            <div className="mt-2 rounded-[32px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_30px_90px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8" style={{ animation: "fadeUp 650ms ease-out both" }}>
-              <AuditReport result={result} domain={domain} />
+              {error && (
+                <div className="mt-8 mx-auto max-w-lg">
+                  {(/^(Unable to reach|Could not connect|Timeout|Connection refused|ENOTFOUND|ECONNREFUSED|ETIMEDOUT)/i).test(error) ? (
+                    <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50/50 p-8 text-center shadow-lg">
+                      <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
+                        <span className="text-3xl">🔌</span>
+                      </div>
+                      <h3 className="mb-2 text-xl font-bold text-amber-900">Domain Unreachable</h3>
+                      <div className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-amber-200/60 px-3 py-1 text-xs font-medium text-amber-800">
+                        <AlertCircle className="h-3 w-3" />Connection timeout
+                      </div>
+                      <p className="mb-6 text-sm leading-relaxed text-amber-700">
+                        We couldn&apos;t reach <span className="font-semibold">{displayDomain || domain}</span>. The server may be down, blocking our request, or the domain doesn&apos;t exist.
+                      </p>
+                      <button
+                        onClick={() => { setError(null); void handleSubmit(domain); }}
+                        className="inline-flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-700 transition hover:bg-amber-100 hover:text-amber-800"
+                      >
+                        <Loader2 className="h-3.5 w-3.5" />Retry Audit
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="mx-auto mt-8 max-w-lg rounded-2xl border border-red-200 bg-gradient-to-br from-red-50 to-red-100/50 p-8 text-center shadow-lg">
+                      <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100">
+                        <AlertCircle className="h-7 w-7 text-red-500" />
+                      </div>
+                      <h3 className="mb-2 text-lg font-bold text-red-800">Audit Failed</h3>
+                      <p className="text-sm text-red-600">{error}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </section>
+        )}
+
+        {showResults && (
+          <section className="relative isolate overflow-hidden px-6 pb-20 pt-28 md:pb-28 md:pt-36 bg-white">
+            <NeuralBackground
+              className="absolute inset-0 -z-10"
+              color="#22d3ee"
+              trailOpacity={0.16}
+              particleCount={950}
+              speed={1.6}
+              theme="light"
+            />
+            <div
+              className="pointer-events-none absolute inset-0 z-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px)",
+                backgroundSize: "72px 72px",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl"
+              aria-hidden="true"
+            />
+
+            <div className="relative z-10 mx-auto max-w-7xl">
+              <div className="rounded-[32px] bg-gradient-to-br from-emerald-50/60 to-cyan-50/30 border border-emerald-100/60 p-8 md:p-12 shadow-sm mb-10">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                  <div className="flex items-center gap-5">
+                    <div className="relative shrink-0">
+                      <div className="absolute -inset-3 animate-ping rounded-full bg-emerald-400/20" style={{ animationDuration: "2s" }} />
+                      <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-lg shadow-emerald-200/50">
+                        <CheckCircle className="h-10 w-10 text-white" />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-700 mb-2">
+                        Audit Complete
+                      </div>
+                      <h1 className="font-display font-bold text-[#0F172A] text-3xl md:text-4xl">
+                        {displayDomain || domain}
+                      </h1>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-6 shrink-0">
+                    <div className="text-right">
+                      <div className="text-xs font-semibold uppercase tracking-widest text-slate-400">Score</div>
+                      <div className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight leading-none mt-0.5">{result.score}</div>
+                    </div>
+                    <div className="h-14 w-px bg-emerald-200/60" />
+                    <div className="flex flex-col items-start">
+                      <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Band</span>
+                      <div className="flex items-center gap-1.5 mt-1">
+                        <span className="h-3 w-3 rounded-full bg-emerald-500" />
+                        <span className="text-lg font-bold text-slate-700 capitalize">{result.band}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-emerald-100/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">
+                    Your AI visibility audit is complete. We&apos;ve analyzed your site across all major AI platforms and identified key opportunities to improve your presence.
+                  </p>
+                  <button
+                    onClick={() => { setResult(null); setDomain(""); }}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-slate-600 transition shrink-0"
+                  >
+                    <ArrowRight className="h-4 w-4 rotate-180" />
+                    Run another audit
+                  </button>
+                </div>
+              </div>
+
+              <div className="rounded-[32px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_30px_90px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8" style={{ animation: "fadeUp 650ms ease-out both" }}>
+                <AuditReport result={result} domain={domain} />
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <style jsx global>{`
@@ -1334,6 +1590,14 @@ function AuditReportContent() {
             opacity: 1;
             transform: translateY(0);
           }
+        }
+        @keyframes aiFloat {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
+        @keyframes aiPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.3); }
+          50% { box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
         }
       `}</style>
     </>

@@ -35,7 +35,7 @@ export default function HeroSection({
   placeholder,
 }: HeroSectionProps) {
   return (
-    <section className={cn("relative isolate overflow-hidden bg-transparent", compact ? "min-h-0" : "h-screen", className)}>
+    <section className={cn("relative isolate overflow-hidden bg-transparent", compact ? "min-h-0" : "h-screen overflow-y-auto", className)}>
       <div className={cn("relative flex justify-center", compact ? "items-start py-4" : "items-center h-full")}> 
         <GoogleGeminiEffect
           className={cn(compact ? "w-full" : "h-screen w-full")}
