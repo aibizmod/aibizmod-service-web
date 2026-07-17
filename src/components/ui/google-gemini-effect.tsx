@@ -93,7 +93,6 @@ export const GoogleGeminiEffect = ({
   description = "Audit how ChatGPT, Perplexity, Gemini, and Claude describe, cite, and rank your business — then close the gap before your competitors do.",
   showIntro = true,
   showPrompt = true,
-  placeholder = "Enter your website — e.g. stripe.com",
   contentClassName,
   cardClassName,
 }: GoogleGeminiEffectProps) => {
@@ -101,6 +100,59 @@ export const GoogleGeminiEffect = ({
   const [isFocused, setIsFocused] = useState(false);
   const [ripples, setRipples] = useState<{ id: number; strandIndex: number }[]>([]);
   const [serviceIndex, setServiceIndex] = useState(0);
+  const [placeholderText, setPlaceholderText] = useState("");
+
+  useEffect(() => {
+    if (isFocused) return;
+    const domains = ["stripe.com", "airbnb.com", "apple.com", "vercel.com", "figma.com"];
+    let currentIdx = 0;
+    let initialTypeComplete = false;
+    let currentStr = ""; 
+    let isDeleting = false;
+    let speed = 100;
+    let timerId: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      if (!initialTypeComplete) {
+        const fullTarget = "Enter your website — e.g. " + domains[0];
+        currentStr = fullTarget.substring(0, currentStr.length + 1);
+        setPlaceholderText(currentStr);
+        speed = 50;
+
+        if (currentStr === fullTarget) {
+          initialTypeComplete = true;
+          isDeleting = true;
+          currentStr = domains[0];
+          speed = 2500;
+        }
+      } else {
+        const fullWord = domains[currentIdx];
+        if (isDeleting) {
+          currentStr = fullWord.substring(0, currentStr.length - 1);
+          speed = 40;
+        } else {
+          currentStr = fullWord.substring(0, currentStr.length + 1);
+          speed = 95;
+        }
+
+        setPlaceholderText("Enter your website — e.g. " + currentStr);
+
+        if (!isDeleting && currentStr === fullWord) {
+          isDeleting = true;
+          speed = 2000;
+        } else if (isDeleting && currentStr === "") {
+          isDeleting = false;
+          currentIdx = (currentIdx + 1) % domains.length;
+          speed = 400;
+        }
+      }
+
+      timerId = setTimeout(tick, speed);
+    };
+
+    timerId = setTimeout(tick, 1000);
+    return () => clearTimeout(timerId);
+  }, [isFocused]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -408,7 +460,7 @@ export const GoogleGeminiEffect = ({
                     setRipples((prev) => prev.filter((r) => r.id !== newId));
                   }, 1500); // Shorter cleanup time matches the 0.95s animation duration
                 }}
-                placeholder={placeholder}
+                placeholder={placeholderText}
                 className="h-11 w-full bg-transparent pl-11 pr-4 text-[14px] text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
                 aria-label="Domain to audit"
                 onFocus={() => setIsFocused(true)}

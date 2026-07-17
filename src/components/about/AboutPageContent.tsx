@@ -11,6 +11,7 @@ import ShaderBackground from "@/components/ui/shader-background";
 //   ContainerScroll,
 // } from "@/components/ui/animated-cards-stack";
 import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
+import { TextShimmer } from "@/components/ui/text-shimmer";
 
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -305,7 +306,6 @@ const logos = [
 ];
 
 // ─── Main export ──────────────────────────────────────────────────────────────
-
 export default function AboutPageContent() {
   return (
     <>
@@ -330,7 +330,13 @@ export default function AboutPageContent() {
                 style={{ fontSize: "clamp(38px, 6vw, 72px)", lineHeight: 1.02 }}
               >
                 We are{" "}
-                <span className="font-normal" style={{ color: "#0891B2" }}>aibizmod</span>
+                <TextShimmer
+                  as="span"
+                  duration={2.2}
+                  className="font-normal [--base-color:#0891b2] [--base-gradient-color:#ffffff]"
+                >
+                  aibizmod
+                </TextShimmer>
               </h1>
               <p
                 className="mx-auto mt-6 max-w-2xl rounded-2xl border border-white/70 bg-white/45 px-6 py-4 text-base leading-8 text-slate-600 shadow-[0_18px_55px_rgba(59,130,246,0.12)] backdrop-blur-md md:text-lg"

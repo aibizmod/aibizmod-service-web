@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import StickyFooterLayout from '@/components/layout/StickyFooterLayout';
-import HeroSection from '@/components/sections/HeroSection';
+import { Hero } from '@/components/hero';
 import ServicesGrid from '@/components/sections/ServicesGrid';
 import AIAutomationHero from '@/components/sections/ai-automation-hero';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
@@ -32,7 +32,7 @@ export default function Home() {
 			<Navbar />
 			<StickyFooterLayout footer={<Footer />}>
 				<main>
-				<HeroSection />
+				<Hero />
 				<ServicesGrid />
 					<AIAutomationHero />
 					<WhyChooseUs />
