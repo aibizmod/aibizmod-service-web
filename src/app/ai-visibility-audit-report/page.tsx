@@ -1055,8 +1055,11 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
               <XCircle className="h-5 w-5" />
             </button>
             <div className="text-center mb-6">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-lg">
-                <Sparkles className="h-6 w-6 text-white" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 shadow-lg shadow-slate-200">
+                <span className="relative text-2xl font-bold text-white" style={{ fontFamily: "Satoshi, sans-serif" }}>
+                  {'\u0131'}
+                  <span className="pointer-events-none absolute left-1/2 top-[0.15em] h-[0.2em] w-[0.2em] -translate-x-1/2 rounded-full bg-cyan-400" />
+                </span>
               </div>
               <h3 className="text-xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>
                 Sign in to your account
