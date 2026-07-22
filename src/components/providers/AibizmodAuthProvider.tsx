@@ -12,42 +12,37 @@ import { gql } from "@apollo/client";
 import { client } from "@/lib/apollo-client";
 
 const REQUEST_LOGIN_OTP = gql`
-  mutation AibizmodRequestLoginOtp($email: String!) {
-    aibizmodRequestLoginOtp(email: $email) {
+  mutation RequestEmailLogin($email: String!) {
+    requestEmailLogin(email: $email) {
       otpSent
       message
-      email
     }
   }
 `;
 
 const VERIFY_LOGIN_OTP = gql`
-  mutation AibizmodVerifyLoginOtp($email: String!, $otp: String!) {
-    aibizmodVerifyLoginOtp(email: $email, otp: $otp) {
+  mutation VerifyLoginOtp($tempToken: String!, $otp: String!) {
+    verifyLoginOtp(tempToken: $tempToken, otp: $otp) {
       token
-      userId
-      email
-      firstName
-      lastName
-      role
-      domain
+      userObj {
+        userId
+        email
+        firstName
+        lastName
+        role
+      }
     }
   }
 `;
 
 const GET_ME = gql`
-  query AibizmodMe {
-    aibizmodMe {
+  query Me {
+    me {
       userId
       email
       firstName
       lastName
-      companyName
-      domain
       role
-      status
-      emailVerified
-      lastLoginAt
     }
   }
 `;
@@ -125,13 +120,15 @@ export function AibizmodAuthProvider({ children }: { children: ReactNode }) {
   const requestOtp = useCallback(
     async (email: string): Promise<{ success: boolean; message: string }> => {
       try {
-        const { data } = await client.mutate<{ aibizmodRequestLoginOtp: { message: string } }>({
+        const { data } = await client.mutate<{
+          requestEmailLogin: { message: string }
+        }>({
           mutation: REQUEST_LOGIN_OTP,
           variables: { email: email.toLowerCase().trim() },
         });
         return {
           success: true,
-          message: data?.aibizmodRequestLoginOtp?.message || "OTP sent.",
+          message: data?.requestEmailLogin?.message || "OTP sent.",
         };
       } catch (err: unknown) {
         const graphQLError =
@@ -153,36 +150,48 @@ export function AibizmodAuthProvider({ children }: { children: ReactNode }) {
       otp: string
     ): Promise<{ success: boolean; error?: string }> => {
       try {
+        const otpRes = await client.mutate<{
+          requestEmailLogin: { tempToken: string }
+        }>({
+          mutation: REQUEST_LOGIN_OTP,
+          variables: { email: email.toLowerCase().trim() },
+        });
+
+        const tempToken = otpRes.data?.requestEmailLogin?.tempToken;
+        if (!tempToken) {
+          return { success: false, error: "Failed to initiate verification. Try again." };
+        }
+
         const { data } = await client.mutate<{
-          aibizmodVerifyLoginOtp: {
+          verifyLoginOtp: {
             token: string;
-            userId: string;
-            email: string;
-            firstName?: string;
-            lastName?: string;
-            role?: string;
-            domain?: string;
+            userObj: {
+              userId: string;
+              email: string;
+              firstName?: string;
+              lastName?: string;
+              role?: string;
+            };
           };
         }>({
           mutation: VERIFY_LOGIN_OTP,
           variables: {
-            email: email.toLowerCase().trim(),
+            tempToken,
             otp: otp.trim(),
           },
         });
 
-        const result = data?.aibizmodVerifyLoginOtp;
-        if (!result?.token || !result?.userId) {
+        const result = data?.verifyLoginOtp;
+        if (!result?.token || !result?.userObj?.userId) {
           return { success: false, error: "Invalid response from server." };
         }
 
         const userObj: AibizmodUser = {
-          userId: result.userId,
-          email: result.email,
-          firstName: result.firstName,
-          lastName: result.lastName,
-          domain: result.domain,
-          role: result.role,
+          userId: result.userObj.userId,
+          email: result.userObj.email,
+          firstName: result.userObj.firstName,
+          lastName: result.userObj.lastName,
+          role: result.userObj.role,
         };
 
         persist(result.token, userObj);
@@ -211,21 +220,16 @@ export function AibizmodAuthProvider({ children }: { children: ReactNode }) {
 
     let cancelled = false;
     client
-      .query<{ aibizmodMe: AibizmodUser }>({ query: GET_ME })
+      .query<{ me: { userId: string; email: string; firstName?: string; lastName?: string; companyName?: string; role?: string } }>({ query: GET_ME })
       .then(({ data }) => {
-        if (cancelled || !data?.aibizmodMe) return;
-        const me = data.aibizmodMe;
+        if (cancelled || !data?.me) return;
+        const me = data.me;
         const updatedUser: AibizmodUser = {
           userId: me.userId,
           email: me.email,
           firstName: me.firstName,
           lastName: me.lastName,
-          companyName: me.companyName,
-          domain: me.domain,
           role: me.role,
-          status: me.status,
-          emailVerified: me.emailVerified,
-          lastLoginAt: me.lastLoginAt,
         };
         setUser(updatedUser);
         if (typeof window !== "undefined") {
