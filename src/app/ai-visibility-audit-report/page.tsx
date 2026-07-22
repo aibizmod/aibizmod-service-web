@@ -2,8 +2,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState, Suspense, useCallback, useRef } from "react";
-import { createPortal } from "react-dom";
+import { gql } from "@apollo/client";
 import { cn } from "@/lib/utils";
+import { client } from "@/lib/apollo-client";
 import {
   ArrowRight,
   Loader2,
@@ -33,10 +34,13 @@ import {
   ArrowUpRight,
   Search,
   Activity,
+  LogOut,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import NeuralBackground from "@/components/ui/flow-field-background";
 import { StarButton } from "@/components/ui/star-button";
+import { useAibizmodAuth } from "@/components/providers/AibizmodAuthProvider";
+import { SignInModal } from "@/components/aibizmod/SignInModal";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type CategoryDetail = Record<string, any>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -835,12 +839,59 @@ function LoadingSkeleton({ domain }: { domain: string }) {
 // ---------------------------------------------------------------------------
 // Main report
 // ---------------------------------------------------------------------------
+const SAVE_AUDIT_REPORT = gql`
+  mutation CreateAibizmodAuditReport($input: CreateAibizmodAuditReportInput!) {
+    createAibizmodAuditReport(input: $input) {
+      reportId
+      userId
+      sessionId
+      isLogined
+      domainAudited
+      score
+      band
+      generatedAt
+    }
+  }
+`;
+
 function AuditReport({ result, domain }: { result: AuditResult; domain: string }) {
   const reportRef = useRef<HTMLDivElement>(null);
   const [exporting, setExporting] = useState(false);
-  const [signedIn, setSignedIn] = useState(false);
+  const { isAuthenticated, user, logout } = useAibizmodAuth();
   const [showSignInModal, setShowSignInModal] = useState(false);
-  if (!result) return null;
+  const savedRef = useRef(false);
+
+  // Save audit report once after it is generated
+  useEffect(() => {
+    if (savedRef.current || !result) return;
+
+    const sessionId =
+      typeof window !== "undefined"
+        ? localStorage.getItem("aibizmod_session_id")
+        : null;
+
+    client
+      .mutate({
+        mutation: SAVE_AUDIT_REPORT,
+        variables: {
+          input: {
+            userId: user?.userId || undefined,
+            sessionId: sessionId || undefined,
+            isLogined: isAuthenticated,
+            domainAudited: domain,
+            score: typeof result.score === "number" ? result.score : undefined,
+            band: result.band || undefined,
+            resultJson: JSON.stringify(result),
+          },
+        },
+      })
+      .then(() => {
+        savedRef.current = true;
+      })
+      .catch((err) => {
+        console.error("[Aibizmod] Failed to save audit report:", err);
+      });
+  }, [result, domain, isAuthenticated, user?.userId]);
   const band = BAND_META[result.band] || BAND_META.poor;
   const displayDomain = formatDomain(domain);
   const favicon = getFaviconUrl(domain);
@@ -1030,10 +1081,11 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </div>
       </div>
 
-      {!signedIn && (
+      {!isAuthenticated && (
         <div className="flex items-center justify-center py-8">
           <button
             onClick={() => setShowSignInModal(true)}
+            data-aibizmod-track="View Full Report CTA"
             className="inline-flex items-center gap-3 h-14 px-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-base font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-[1.02]"
           >
             <Sparkles className="h-5 w-5 text-cyan-400" />
@@ -1042,86 +1094,31 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </div>
       )}
 
-      {showSignInModal && createPortal(
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setShowSignInModal(false)}>
-          <div
-            className="relative w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowSignInModal(false)}
-              className="absolute top-4 right-4 h-8 w-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-200 transition-colors"
-            >
-              <XCircle className="h-5 w-5" />
-            </button>
-            <div className="text-center mb-6">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 shadow-lg shadow-slate-200">
-                <span className="relative text-2xl font-bold text-white" style={{ fontFamily: "Satoshi, sans-serif" }}>
-                  {'\u0131'}
-                  <span className="pointer-events-none absolute left-1/2 top-[0.15em] h-[0.2em] w-[0.2em] -translate-x-1/2 rounded-full bg-cyan-400" />
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>
-                Sign in to your account
-              </h3>
-              <p className="text-sm text-slate-500 mt-1">
-                Unlock the full AI visibility report
-              </p>
-            </div>
-            <form onSubmit={(e) => { e.preventDefault(); setSignedIn(true); setShowSignInModal(false); }} className="space-y-4">
-              <div>
-                <label htmlFor="signin-email" className="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
-                <input
-                  id="signin-email"
-                  type="email"
-                  placeholder="you@example.com"
-                  required
-                  className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 transition"
-                />
-              </div>
-              <div>
-                <label htmlFor="signin-password" className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
-                <input
-                  id="signin-password"
-                  type="password"
-                  placeholder="Enter your password"
-                  required
-                  className="block w-full rounded-xl border border-slate-200 bg-slate-50/50 px-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-100 transition"
-                />
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center gap-2 text-slate-500">
-                  <input type="checkbox" defaultChecked className="rounded border-slate-300 text-cyan-600 focus:ring-cyan-200" />
-                  Remember me
-                </label>
-                <button type="button" className="text-cyan-600 hover:text-cyan-700 font-medium">Forgot password?</button>
-              </div>
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 h-12 w-full rounded-xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-sm font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
-              >
-                Sign In <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
-            <div className="relative my-5">
-              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
-              <div className="relative flex justify-center"><span className="bg-white px-3 text-xs text-slate-400">or continue with</span></div>
+      {isAuthenticated && (
+        <div className="flex items-center justify-center py-6">
+          <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-200 bg-white px-5 py-3 shadow-sm">
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold text-slate-900">
+                {user?.firstName ? `Hi, ${user.firstName}` : "Welcome back"}
+              </span>
+              <span className="text-xs text-slate-500">{user?.email}</span>
             </div>
             <button
-              onClick={() => { setSignedIn(true); setShowSignInModal(false); }}
-              className="inline-flex items-center justify-center gap-3 h-11 w-full rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 transition"
+              onClick={logout}
+              data-aibizmod-track="Logout"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-red-600 transition"
             >
-              <svg className="h-5 w-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-              Continue with Google
+              <LogOut className="h-3.5 w-3.5" />
+              Sign out
             </button>
-<p className="text-xs text-slate-400 text-center mt-5">No credit card required</p>
-            </div>
-          </div>,
-          document.body
-        )}
+          </div>
+        </div>
+      )}
+
+      <SignInModal isOpen={showSignInModal} onClose={() => setShowSignInModal(false)} />
 
       {/* ── SECTION 3: AI Platform Compatibility ───────────────────────────── */}
-      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Globe className="h-5 w-5" />}
           title="AI Platform Compatibility"
@@ -1135,7 +1132,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 
       {/* ── SECTION 4: AI Citability Deep Dive ────────────────────────────── */}
       {citabilityCategory && (
-        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<BookOpen className="h-5 w-5" />}
             title="AI Citability Deep Dive"
@@ -1151,7 +1148,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       )}
 
       {/* ── SECTION 5: Entity Recognition ─────────────────────────────────── */}
-      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Network className="h-5 w-5" />}
           title="Entity Recognition & Knowledge Graph"
@@ -1174,7 +1171,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 6: Content Quality Analysis ───────────────────────────── */}
-      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<FileText className="h-5 w-5" />}
           title="Content Quality Analysis"
@@ -1188,7 +1185,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 
       {/* ── SECTION 7: Critical Issues ─────────────────────────────────────── */}
       {result.criticalIssues?.length > 0 && (
-        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<AlertTriangle className="h-5 w-5" />}
             title="Critical Issues"
@@ -1205,7 +1202,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 
       {/* ── SECTION 8: Quick Wins ─────────────────────────────────────────── */}
       {result.quickWins?.length > 0 && (
-        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+        <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
           <SectionHeader
             icon={<Zap className="h-5 w-5" />}
             title="Quick Wins"
@@ -1221,7 +1218,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       )}
 
       {/* ── SECTION 9: Priority Roadmap ───────────────────────────────────── */}
-      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Target className="h-5 w-5" />}
           title="6-Month Priority Roadmap"
@@ -1249,7 +1246,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 10: Key Pages Analyzed ────────────────────────────────── */}
-      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", signedIn ? "" : "blur-sm select-none")}>
+      <div className={cn("bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm", isAuthenticated ? "" : "blur-sm select-none")}>
         <SectionHeader
           icon={<Globe className="h-5 w-5" />}
           title="Key Pages Analyzed"

@@ -3,6 +3,8 @@ import { Inter, Manrope, Fraunces } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import SmoothScroll from '@/components/providers/SmoothScroll';
+import { AibizmodAuthProvider } from '@/components/providers/AibizmodAuthProvider';
+import { AibizmodTrackingInit } from '@/components/providers/AibizmodTrackingInit';
 
 const generalSans = localFont({
 	src: [
@@ -142,7 +144,10 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className='font-sans antialiased bg-canvas text-ink'>
-				<SmoothScroll>{children}</SmoothScroll>
+				<AibizmodAuthProvider>
+					<AibizmodTrackingInit />
+					<SmoothScroll>{children}</SmoothScroll>
+				</AibizmodAuthProvider>
 			</body>
 		</html>
 	);

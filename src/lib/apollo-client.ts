@@ -1,11 +1,26 @@
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, HttpLink, InMemoryCache, ApolloLink } from "@apollo/client";
 
 const httpLink = new HttpLink({
-  uri: "https://spaceaiapp.com/backend/graphql",
+  uri: process.env.NEXT_PUBLIC_GRAPHQL_URL || "https://spaceaiapp.com/backend/graphql",
+});
+
+// Attach Aibizmod JWT token when available.
+const authLink = new ApolloLink((operation, forward) => {
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("aibizmod_token");
+    if (token) {
+      operation.setContext({
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+  }
+  return forward(operation);
 });
 
 export const client = new ApolloClient({
-  link: httpLink,
+  link: ApolloLink.from([authLink, httpLink]),
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: { fetchPolicy: "network-only" },
