@@ -32,6 +32,9 @@ export default function HeroSwitcher() {
         {active === "original" ? (
           <motion.div
             key="original"
+            id="hero-panel-original"
+            role="tabpanel"
+            aria-labelledby="hero-tab-original"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -42,6 +45,9 @@ export default function HeroSwitcher() {
         ) : (
           <motion.div
             key="ai-visibility"
+            id="hero-panel-ai-visibility"
+            role="tabpanel"
+            aria-labelledby="hero-tab-ai-visibility"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

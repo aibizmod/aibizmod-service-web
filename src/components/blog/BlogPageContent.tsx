@@ -156,6 +156,7 @@ export default function BlogPageContent() {
 								placeholder='Search articles by title or author...'
 								value={searchQuery}
 								onChange={(e) => setSearchQuery(e.target.value)}
+								aria-label='Search articles by title or author'
 								className='w-full rounded-full border border-stone-300 bg-white px-5 py-2.5 pl-11 text-sm font-medium text-stone-900 placeholder-stone-400 shadow-sm transition hover:border-stone-400 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20'
 							/>
 							<div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-stone-500'>
@@ -279,6 +280,7 @@ export default function BlogPageContent() {
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								required
+								aria-label="Email address for newsletter"
 								className="flex-1 px-4 py-3 rounded-btn text-white placeholder:text-white/40 text-sm transition-colors focus:outline-none"
 								style={{
 									background: "rgba(255,255,255,0.08)",

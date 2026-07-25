@@ -83,7 +83,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 {tag}
               </Badge>
             )}
-            {tag && readingTime && <span className="mx-2 text-slate-300">•</span>}
+            {tag && readingTime && <span className="mx-2 text-slate-400">•</span>}
             {readingTime && <span>{formatReadTime(readingTime)}</span>}
           </div>
         )}

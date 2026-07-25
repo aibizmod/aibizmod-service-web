@@ -489,6 +489,9 @@ export default function ServicesGrid() {
                           <img 
                             src={image} 
                             alt={service.name} 
+                            width={600}
+                            height={400}
+                            loading="lazy"
                             className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-500 hover:scale-105" 
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>

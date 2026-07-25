@@ -98,7 +98,7 @@ export function FocusRail({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden outline-none select-none",
+        "relative w-full overflow-hidden focus-visible:ring-2 focus-visible:ring-cyan-500 select-none",
         !noBg && "bg-[#F8FEFF]",
         className
       )}
@@ -165,6 +165,9 @@ export function FocusRail({
                 <img
                   src={item.imageSrc}
                   alt={item.imageAlt || item.title}
+                  width={600}
+                  height={400}
+                  loading="lazy"
                   className="h-full w-full object-cover pointer-events-none"
                 />
                 {/* Subtle bottom vignette */}

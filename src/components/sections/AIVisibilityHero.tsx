@@ -118,7 +118,7 @@ export default function AIVisibilityHero() {
                 onChange={(e) => setDomain(e.target.value)}
                 placeholder="Enter your domain (e.g., aibizmod.com)"
                 disabled={isLoading}
-                className="w-full h-14 pl-12 pr-16 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-0"
+                className="w-full h-14 pl-12 pr-16 text-base text-[#0F172A] placeholder-stone-400 bg-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 aria-label="Domain to audit"
               />
               <button

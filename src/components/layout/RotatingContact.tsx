@@ -50,6 +50,9 @@ export default function RotatingContact() {
                 setSelectedCountry(country);
                 setContactOpen(false);
               }}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedCountry(country); setContactOpen(false); } }}
+              role="button"
+              tabIndex={0}
               className="flex items-start gap-3.5 p-3 rounded-xl cursor-pointer hover:bg-white hover:border-slate-200 hover:shadow-sm"
             >
               <span className="text-[20px] select-none mt-0.5">{country.flag}</span>

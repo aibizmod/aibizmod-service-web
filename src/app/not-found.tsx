@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import Link from "next/link";
 import { Home, ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
+
+export const metadata: Metadata = {
+	title: '404 - Page Not Found',
+	description: 'The page you are looking for does not exist or has been moved.',
+	robots: { index: false },
+};
 
 export default function NotFound() {
   return (

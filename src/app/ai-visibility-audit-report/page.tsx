@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useEffect, useState, Suspense, useCallback, useRef } from "react";
+import { useEffect, useState, useRef, Suspense, useCallback } from "react";
 import { gql } from "@apollo/client";
 import { cn } from "@/lib/utils";
 import { client } from "@/lib/apollo-client";
@@ -225,6 +225,37 @@ function scoreToBarColor(score: number): string {
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
+
+// Scroll reveal wrapper
+function ScrollReveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.08 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 600ms cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 600ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 // Score Ring (preserved from original)
 function ScoreRing({ score, size = 176 }: { score: number; size?: number }) {
@@ -796,41 +827,74 @@ function PagesTable({ pages }: { pages: PageScore[] }) {
 // Loading skeleton
 // ---------------------------------------------------------------------------
 function LoadingSkeleton({ domain }: { domain: string }) {
+  const [scanPhase, setScanPhase] = useState(0);
+  const phases = [
+    "Resolving domain & establishing connection...",
+    "Scanning structured data & schema markup...",
+    "Analyzing content quality & E-E-A-T signals...",
+    "Checking AI platform citability...",
+    "Building your visibility report...",
+  ];
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setScanPhase((p) => (p < phases.length - 1 ? p + 1 : p));
+    }, 2800);
+    return () => clearInterval(t);
+  }, []);
+
   return (
-    <div className="space-y-6 py-4" style={{ animation: "fadeUp 700ms ease-out both" }}>
-      {/* Score card skeleton */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-16 w-16 rounded-2xl bg-slate-100 animate-pulse" />
-          <div className="space-y-2 flex-1">
-            <div className="h-5 w-48 bg-slate-200 rounded-lg animate-pulse" />
-            <div className="h-4 w-32 bg-slate-100 rounded animate-pulse" />
+    <div className="py-8 max-w-2xl mx-auto">
+      {/* Animated radar ring */}
+      <div className="relative flex items-center justify-center mb-10">
+        <div className="absolute w-32 h-32 rounded-full border-2 border-cyan-300/40 animate-ping" style={{ animationDuration: "2.5s" }} />
+        <div className="absolute w-24 h-24 rounded-full border-2 border-cyan-400/30 animate-ping" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }} />
+        <div className="absolute w-16 h-16 rounded-full border-2 border-cyan-500/20 animate-ping" style={{ animationDuration: "2.5s", animationDelay: "1s" }} />
+        <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-lg shadow-cyan-200/50">
+          <Search className="h-6 w-6 text-white" />
+        </div>
+      </div>
+
+      {/* Domain being scanned */}
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-200 px-4 py-1.5 text-xs font-mono text-slate-600">
+          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          Scanning <span className="font-bold text-slate-900">{domain}</span>
+        </div>
+      </div>
+
+      {/* Phase indicators */}
+      <div className="space-y-3 mb-8">
+        {phases.map((phase, i) => (
+          <div
+            key={i}
+            className={cn(
+              "flex items-center gap-3 p-3 rounded-xl border transition-all duration-500",
+              i < scanPhase ? "bg-emerald-50 border-emerald-200 text-emerald-700" :
+                i === scanPhase ? "bg-cyan-50 border-cyan-200 text-cyan-700" :
+                  "bg-slate-50 border-slate-100 text-slate-400"
+            )}
+          >
+            <div className="flex-shrink-0">
+              {i < scanPhase ? (
+                <CheckCircle className="h-4 w-4 text-emerald-500" />
+              ) : i === scanPhase ? (
+                <Loader2 className="h-4 w-4 text-cyan-500 animate-spin" />
+              ) : (
+                <div className="h-4 w-4 rounded-full border-2 border-slate-300" />
+              )}
+            </div>
+            <span className="text-xs font-medium">{phase}</span>
           </div>
-          <div className="h-10 w-24 rounded-xl bg-slate-100 animate-pulse" />
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} className="h-16 rounded-xl bg-slate-100 animate-pulse" />
-          ))}
-        </div>
+        ))}
       </div>
-      {/* Category breakdown skeleton */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <div className="h-5 w-44 bg-slate-200 rounded-lg animate-pulse mb-5" />
-        <div className="mb-4 p-4 rounded-xl bg-slate-50">
-          <div className="h-3 w-32 bg-slate-200 rounded mb-2 animate-pulse" />
-          <div className="h-3 w-full bg-slate-200 rounded-full animate-pulse" />
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map(i => (
-            <div key={i} className="h-28 rounded-xl bg-slate-100 animate-pulse" />
-          ))}
-        </div>
-      </div>
-      {/* Status bar */}
-      <div className="flex items-center justify-center gap-3 text-sm text-slate-400 py-4">
-        <Loader2 className="h-4 w-4 animate-spin text-cyan-500" />
-        <span>Analyzing <span className="font-medium text-slate-600">{domain}</span> across 60+ AI visibility signals...</span>
+
+      {/* Progress bar */}
+      <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 transition-all duration-1000"
+          style={{ width: `${Math.round(((scanPhase + 1) / phases.length) * 100)}%` }}
+        />
       </div>
     </div>
   );
@@ -931,14 +995,14 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         <div className="relative flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            {favicon && <img src={favicon} alt="" className="w-11 h-11 rounded-xl border border-slate-200 shadow-sm" />}
+            {favicon && <img src={favicon} alt={`${displayDomain} favicon`} width={44} height={44} className="w-11 h-11 rounded-xl border border-slate-200 shadow-sm" />}
             <div>
               <h1 className="text-xl font-bold text-slate-900" style={{ fontFamily: "Satoshi, sans-serif" }}>{displayDomain}</h1>
               <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded-full border border-cyan-200">
                   <Shield className="h-3 w-3" />AI Visibility Report
                 </span>
-                <span className="text-slate-300">·</span>
+                <span className="text-slate-400">·</span>
                 <span className="text-xs text-slate-400">
                   {new Date(result.checkedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                 </span>
@@ -964,7 +1028,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 1: Executive Summary ───────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className="rounded-2xl bg-gradient-to-br from-cyan-50/40 via-white to-emerald-50/30 border border-cyan-100/60 p-6 sm:p-8 shadow-sm">
         <SectionHeader
           icon={<BarChart3 className="h-5 w-5" />}
           title="Executive Summary"
@@ -984,11 +1048,11 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
                     "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-bold border bg-gradient-to-r text-white shadow-sm",
                     band.gradient
                   )}>
-                    {result.band === "excellent" && "🏆"}
-                    {result.band === "good" && "👍"}
-                    {result.band === "fair" && "📊"}
-                    {result.band === "poor" && "⚠️"}
-                    {result.band === "critical" && "🚨"}
+                    {result.band === "excellent" && <Sparkles className="h-4 w-4" />}
+                    {result.band === "good" && <CheckCircle className="h-4 w-4" />}
+                    {result.band === "fair" && <BarChart3 className="h-4 w-4" />}
+                    {result.band === "poor" && <AlertTriangle className="h-4 w-4" />}
+                    {result.band === "critical" && <XCircle className="h-4 w-4" />}
                     {" "}{band.label} AI Visibility
                   </span>
                 </div>
@@ -1050,7 +1114,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
       </div>
 
       {/* ── SECTION 2: Category Breakdown ──────────────────────────────────── */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
+      <div className="rounded-2xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-sm ring-1 ring-slate-100">
         <SectionHeader
           icon={<BarChart3 className="h-5 w-5" />}
           title="Weighted Category Breakdown"
@@ -1086,10 +1150,10 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           <button
             onClick={() => setShowSignInModal(true)}
             data-aibizmod-track="View Full Report CTA"
-            className="inline-flex items-center gap-3 h-14 px-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-base font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-[1.02]"
+            className="group inline-flex items-center gap-3 h-14 px-10 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white text-base font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 hover:scale-[1.02]"
           >
-            <Sparkles className="h-5 w-5 text-cyan-400" />
-            View Full Report <ArrowRight className="h-5 w-5" />
+            <Sparkles className="h-5 w-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+            Unlock Full Report <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       )}
@@ -1393,13 +1457,13 @@ function AuditReportContent() {
               </div>
 
               <h1
-                className="mt-6 font-display font-bold text-balance text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-600 bg-clip-text text-transparent"
+                className="mt-6 font-display font-bold text-balance text-4xl md:text-5xl lg:text-6xl text-slate-900 leading-[1.08]"
               >
-                AI VISIBILITY AUDIT
+                See Exactly How AI Search Engines See Your Business
               </h1>
 
-              <p className="mt-4 text-2xl text-slate-600 max-w-2xl mx-auto">
-                See why ChatGPT, Gemini, and Claude won&apos;t cite your business — get a full report with prioritized solutions
+              <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                ChatGPT, Gemini, Claude, Perplexity — AI platforms cite businesses they can verify. Enter your domain and discover exactly what signals you&apos;re missing, ranked by impact.
               </p>
 
               <div className="mt-8 mx-auto w-full max-w-2xl">
