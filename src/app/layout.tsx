@@ -140,12 +140,11 @@ export default function RootLayout({
 			<head>
 				<link rel="preconnect" href="https://api.fontshare.com" />
 				<link rel="preconnect" href="https://images.unsplash.com" />
-				{/* Satoshi font — preload then apply to avoid render blocking */}
-				<link
-					rel="preload"
-					href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2,3,4,5,6,7&display=swap"
-					as="style"
-					onLoad="this.onload=null;this.rel='stylesheet'"
+				{/* Satoshi font — load non-blocking via JS */}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `(function(){var d=document;var l=d.createElement('link');l.rel='stylesheet';l.href='https://api.fontshare.com/v2/css?f[]=satoshi@1,2,3,4,5,6,7&display=swap';d.head.appendChild(l)})()`
+					}}
 				/>
 				<noscript>
 					<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2,3,4,5,6,7&display=swap" />

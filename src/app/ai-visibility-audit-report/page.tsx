@@ -841,7 +841,7 @@ function LoadingSkeleton({ domain }: { domain: string }) {
       setScanPhase((p) => (p < phases.length - 1 ? p + 1 : p));
     }, 2800);
     return () => clearInterval(t);
-  }, []);
+  }, [phases.length]);
 
   return (
     <div className="py-8 max-w-2xl mx-auto">
@@ -987,6 +987,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
   const visColor = result.score >= 70 ? "text-emerald-600" : result.score >= 45 ? "text-amber-600" : "text-red-600";
 
   return (
+    <ScrollReveal>
     <div className="space-y-6" ref={reportRef}>
 
       {/* ── Domain header ─────────────────────────────────────────────────── */}
@@ -1361,6 +1362,7 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
         </p>
       </div>
     </div>
+    </ScrollReveal>
   );
 }
 
