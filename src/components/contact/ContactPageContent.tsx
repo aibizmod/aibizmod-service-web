@@ -222,7 +222,7 @@ function CustomSelect({ id, value, onChange, options, placeholder, suffix = '' }
 			{isOpen && (
 				<>
 					{/* Click outside backdrop */}
-					<div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+					<div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} onKeyDown={(e) => { if (e.key === 'Escape') setIsOpen(false); }} role="presentation" />
 					
 					{/* Dropdown list */}
 					<ul
@@ -231,6 +231,10 @@ function CustomSelect({ id, value, onChange, options, placeholder, suffix = '' }
 					>
 						<li
 							onClick={() => handleSelect('')}
+							onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelect(''); } }}
+							role="option"
+							aria-selected={value === ''}
+							tabIndex={0}
 							className="relative flex cursor-pointer select-none items-center rounded-xl px-3.5 py-2.5 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
 						>
 							{placeholder}
@@ -239,6 +243,10 @@ function CustomSelect({ id, value, onChange, options, placeholder, suffix = '' }
 							<li
 								key={option}
 								onClick={() => handleSelect(option)}
+								onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelect(option); } }}
+								role="option"
+								aria-selected={value === option}
+								tabIndex={0}
 								className={`relative flex cursor-pointer select-none items-center rounded-xl px-3.5 py-2.5 text-sm transition hover:bg-slate-800 hover:text-white ${
 									value === option ? 'bg-cyan-950/50 text-cyan-400 font-semibold border-l-2 border-cyan-400 pl-2.5' : 'text-white'
 								}`}

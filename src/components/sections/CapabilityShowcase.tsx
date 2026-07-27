@@ -150,7 +150,7 @@ export default function CapabilityShowcase() {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [selectService]);
 
   // --- Three.js Scene Configuration ---
   const currentGroupRef = useRef<THREE.Group | null>(null);

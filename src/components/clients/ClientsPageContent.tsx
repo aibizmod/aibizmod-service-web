@@ -775,9 +775,10 @@ export default function ClientsPageContent() {
                     value={searchQuery}
                     onChange={(e) => {
                       setSearchQuery(e.target.value);
-                      setExpandedClientId(null); // Collapse drawer when searching
+                      setExpandedClientId(null);
                     }}
                     placeholder="Search by client name, tech stack, or keyword..."
+                    aria-label="Search client showcase"
                     className="w-full h-12 pl-12 pr-10 rounded-full border border-slate-200 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 shadow-[0_4px_12px_rgba(15,23,42,0.02)] transition-all"
                   />
                   {searchQuery && (

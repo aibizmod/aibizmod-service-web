@@ -173,9 +173,9 @@ export default function Footer() {
 					<div className='md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8'>
 						{/* Services */}
 						<div className='min-w-0'>
-							<h5 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
+							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
 								Services
-							</h5>
+							</h3>
 							<ul className='space-y-2.5'>
 								{services.map((item) => (
 									<li key={item.href}>
@@ -192,9 +192,9 @@ export default function Footer() {
 
 						{/* Company */}
 						<div className='min-w-0'>
-							<h5 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
+							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
 								Company
-							</h5>
+							</h3>
 							<ul className='space-y-2.5'>
 								{company.map((item) => (
 									<li key={item.href}>
@@ -211,9 +211,9 @@ export default function Footer() {
 
 						{/* Legal */}
 						<div className='min-w-0'>
-							<h5 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
+							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
 								Legal
-							</h5>
+							</h3>
 							<ul className='space-y-2.5'>
 								{legal.map((item) => (
 									<li key={item.href}>
@@ -232,9 +232,9 @@ export default function Footer() {
 					{/* Newsletter Column */}
 					<div className='md:col-span-3 space-y-6'>
 						<div>
-							<h5 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
+							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
 								Newsletter
-							</h5>
+							</h3>
 							<p className='font-sans text-[12px] text-white/50 leading-relaxed'>
 								Insights on digital growth and intelligent automation — coming
 								soon.

@@ -345,11 +345,11 @@ export const GoogleGeminiEffect = ({
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 Tracking Across:
                 <span className="font-semibold text-slate-700">ChatGPT</span>
-                <span className="text-slate-300">•</span>
+                <span className="text-slate-400">•</span>
                 <span className="font-semibold text-slate-700">Perplexity</span>
-                <span className="text-slate-300">•</span>
+                <span className="text-slate-400">•</span>
                 <span className="font-semibold text-slate-700">Gemini</span>
-                <span className="text-slate-300">•</span>
+                <span className="text-slate-400">•</span>
                 <span className="font-semibold text-slate-700">Claude</span>
               </div>
 
@@ -461,7 +461,7 @@ export const GoogleGeminiEffect = ({
                   }, 1500); // Shorter cleanup time matches the 0.95s animation duration
                 }}
                 placeholder={placeholderText}
-                className="h-11 w-full bg-transparent pl-11 pr-4 text-[14px] text-slate-800 outline-none placeholder:text-slate-400 focus:ring-0"
+                className="h-11 w-full bg-transparent pl-11 pr-4 text-[14px] text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 placeholder:text-slate-400"
                 aria-label="Domain to audit"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}

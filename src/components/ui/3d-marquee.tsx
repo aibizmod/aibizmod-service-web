@@ -97,6 +97,9 @@ export default function ThreeDMarquee({
                       src={src}
                       draggable={false}
                       alt={getMarqueeAlt(src)}
+                      width={400}
+                      height={300}
+                      loading="lazy"
                     />
                   </div>
                 ))}

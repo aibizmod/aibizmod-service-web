@@ -70,7 +70,7 @@ export default function AutomationRoiCalculatorPage() {
                       <Users size={16} className="text-cyan-600" />
                       Employees doing manual work
                     </label>
-                    <input type="range" min="1" max="200" value={employees} onChange={(e) => setEmployees(Number(e.target.value))} className="w-full accent-cyan-600" />
+                    <input type="range" min="1" max="200" value={employees} onChange={(e) => setEmployees(Number(e.target.value))} className="w-full accent-cyan-600" aria-label="Employees doing manual work" />
                     <div className="flex justify-between text-xs text-slate-400 mt-1">
                       <span>1</span>
                       <span className="font-semibold text-cyan-700">{employees}</span>
@@ -83,7 +83,7 @@ export default function AutomationRoiCalculatorPage() {
                       <Clock size={16} className="text-cyan-600" />
                       Hours per week spent on manual tasks (per person)
                     </label>
-                    <input type="range" min="1" max="40" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} className="w-full accent-cyan-600" />
+                    <input type="range" min="1" max="40" value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} className="w-full accent-cyan-600" aria-label="Hours per week spent on manual tasks per person" />
                     <div className="flex justify-between text-xs text-slate-400 mt-1">
                       <span>1</span>
                       <span className="font-semibold text-cyan-700">{hoursPerWeek}h</span>
@@ -96,7 +96,7 @@ export default function AutomationRoiCalculatorPage() {
                       <PoundSterling size={16} className="text-cyan-600" />
                       Average fully loaded hourly cost (per employee)
                     </label>
-                    <input type="range" min="15" max="150" value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))} className="w-full accent-cyan-600" />
+                    <input type="range" min="15" max="150" value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))} className="w-full accent-cyan-600" aria-label="Average fully loaded hourly cost per employee" />
                     <div className="flex justify-between text-xs text-slate-400 mt-1">
                       <span>£15</span>
                       <span className="font-semibold text-cyan-700">£{hourlyRate}</span>
@@ -109,7 +109,7 @@ export default function AutomationRoiCalculatorPage() {
                       <TrendingUp size={16} className="text-cyan-600" />
                       Percentage of manual work that can be automated
                     </label>
-                    <input type="range" min="10" max="95" value={automationFactor} onChange={(e) => setAutomationFactor(Number(e.target.value))} className="w-full accent-cyan-600" />
+                    <input type="range" min="10" max="95" value={automationFactor} onChange={(e) => setAutomationFactor(Number(e.target.value))} className="w-full accent-cyan-600" aria-label="Percentage of manual work that can be automated" />
                     <div className="flex justify-between text-xs text-slate-400 mt-1">
                       <span>10%</span>
                       <span className="font-semibold text-cyan-700">{automationFactor}%</span>

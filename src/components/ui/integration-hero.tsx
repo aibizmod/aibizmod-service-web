@@ -206,6 +206,9 @@ function IconCircleContent({ item }: { item: IntegrationIconItem }) {
       <img
         src={item.src}
         alt={`${item.alt} platform integration logo`}
+        width={32}
+        height={32}
+        loading="lazy"
         className="h-8 w-8 object-contain"
         draggable={false}
       />

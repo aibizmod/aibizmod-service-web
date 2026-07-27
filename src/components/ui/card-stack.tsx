@@ -221,7 +221,7 @@ export function CardStack<T extends CardStackItem>({
     >
       {/* Stage */}
       <div
-        className="relative w-full flex justify-center focus:outline-none"
+        className="relative w-full flex justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 rounded-lg"
         style={{ height: Math.max(340, screenSize.height + 40) }}
         tabIndex={0}
         onKeyDown={onKeyDown}
@@ -400,6 +400,8 @@ function DefaultFanCard({ item }: { item: CardStackItem; active: boolean }) {
           <img
             src={item.imageSrc}
             alt={item.imageAlt || item.title}
+            width={800}
+            height={600}
             className="h-full w-full object-cover"
             draggable={false}
             loading="eager"
