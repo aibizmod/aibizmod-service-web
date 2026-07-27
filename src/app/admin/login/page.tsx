@@ -70,10 +70,16 @@ export default function AdminLoginPage() {
         return;
       }
 
-      // Step 3: Store the real JWT so Apollo client sends it as Bearer token
-      localStorage.setItem("aibizmod_token", result.token);
+      // Step 3: Store session for admin layout + JWT for Apollo client
       localStorage.setItem("admin_session", "true");
       localStorage.setItem("admin_email", result.email);
+      localStorage.setItem("aibizmod_token", result.token);
+      localStorage.setItem("aibizmod_user", JSON.stringify({
+        userId: result.userId,
+        email: result.email,
+        firstName: result.firstName || "Admin",
+        role: result.role || "biz_admin",
+      }));
 
       window.location.href = "/admin";
     } catch (err: unknown) {
