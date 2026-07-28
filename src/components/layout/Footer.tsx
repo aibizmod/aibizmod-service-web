@@ -229,20 +229,9 @@ export default function Footer() {
 						</div>
 					</div>
 
-					{/* Newsletter Column */}
+					{/* Global Offices & Social */}
 					<div className='md:col-span-3 space-y-6'>
-						<div>
-							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
-								Newsletter
-							</h3>
-							<p className='font-sans text-[12px] text-white/50 leading-relaxed'>
-								Insights on digital growth and intelligent automation — coming
-								soon.
-							</p>
-						</div>
-
-						{/* Global Offices */}
-						<div className='pt-4 border-t border-white/10 space-y-3'>
+						<div className='space-y-3'>
 							<p className='font-sans text-[11px] text-white/40 uppercase tracking-widest'>
 								Global Offices
 							</p>
