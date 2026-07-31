@@ -82,11 +82,22 @@ export default function ServicesGrid() {
     window.addEventListener('resize', measureTops, { passive: true });
 
     // Build one quickSetter triple per card — these bypass GSAP's tween engine
-    cardSettersRef.current = cardRefs.current.map((card) => ({
-      rotateX: card ? gsap.quickSetter(card, 'rotateX', 'deg') as (v: number) => void : () => {},
-      scale:   card ? gsap.quickSetter(card, 'scale')    as (v: number) => void : () => {},
-      opacity: card ? gsap.quickSetter(card, 'opacity')  as (v: number) => void : () => {},
-    }));
+    // Use type assertions to bypass the type checking issue with quickSetter
+    cardSettersRef.current = cardRefs.current.map((card) => {
+      if (!card) {
+        return {
+          rotateX: () => {},
+          scale: () => {},
+          opacity: () => {},
+        };
+      }
+
+      return {
+        rotateX: (gsap as any).quickSetter(card, 'rotateX', 'deg') as (v: number) => void,
+        scale:   (gsap as any).quickSetter(card, 'scale')    as (v: number) => void,
+        opacity: (gsap as any).quickSetter(card, 'opacity')  as (v: number) => void,
+      };
+    });
 
     // ── Scroll spy — runs in rAF, touches zero React state ──
     let ticking = false;
@@ -131,7 +142,7 @@ export default function ServicesGrid() {
         }
       });
     };
-
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
