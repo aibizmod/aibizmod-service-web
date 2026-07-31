@@ -315,6 +315,61 @@ const data: SubservicePageData = {
     },
   ],
 
+  pricing: {
+    intro:
+      "Fixed-scope engagements with transparent pricing. Every engagement includes the benchmark, the gap analysis, and the implementation roadmap — the difference is how much of the roadmap we execute for you.",
+    tiers: [
+      {
+        name: "AI Visibility Audit",
+        price: "£1,450",
+        period: "one-off",
+        description:
+          "A diagnostic engagement: benchmark your brand across ChatGPT, Gemini, Claude, and Perplexity, map citation gaps against competitors, and receive a 90-day roadmap your team can execute.",
+        features: [
+          "20–30 prompts across category, comparison, and problem queries",
+          "Visibility benchmark vs 3 competitors across 4 engines",
+          "Citation gap and site readiness review",
+          "Structured data and entity recognition assessment",
+          "Prioritised 90-day roadmap with quick wins",
+          "One executive review session",
+        ],
+      },
+      {
+        name: "Audit + Implementation",
+        price: "£3,900",
+        period: "typical retainer",
+        description:
+          "The audit plus execution: our team implements the highest-impact fixes — page structure, schema, content, and internal linking — and re-measures the benchmark at the end.",
+        features: [
+          "Everything in AI Visibility Audit",
+          "Implementation of P0 and P1 roadmap fixes",
+          "Page-level GEO rewrites and schema markup",
+          "Internal linking and authority signal plan",
+          "Re-measurement scorecard after 90 days",
+          "Monthly status calls and Slack access",
+        ],
+        featured: true,
+      },
+      {
+        name: "Continuous Programme",
+        price: "£950",
+        period: "per month",
+        description:
+          "Ongoing monitoring and optimisation: a monthly AI search scorecard, prompt-set updates, content and citation work each sprint, and quarterly re-benchmarking.",
+        features: [
+          "Monthly AI visibility scorecard",
+          "Monthly prompt set refresh and monitoring",
+          "Continuous content, schema, and citation work",
+          "Quarterly competitor re-benchmark",
+          "Drop alerts on key prompts",
+          "Dedicated delivery team",
+        ],
+      },
+    ],
+    note:
+      "Prices are indicative starting points for UK small and medium businesses. Final scopes and pricing are confirmed after a free consultation call — larger or multi-brand programmes are scoped individually.",
+  },
+
   faqs: [
     {
       q: "What is an AI Visibility Audit?",
@@ -366,6 +421,18 @@ const data: SubservicePageData = {
       description:
         "What Google actually says about AI Overviews and AI Mode, what does not help, and what to measure.",
       href: "/blog/google-ai-search-optimization",
+    },
+    {
+      title: "AI Visibility Audit Prompts",
+      description:
+        "54 free, ready-to-run prompts for auditing brand visibility, competitor comparisons, citations, and sentiment across answer engines.",
+      href: "/ai-visibility-prompts",
+    },
+    {
+      title: "How We Audit AI Visibility: Methodology, Metrics & Scoring",
+      description:
+        "The documented five-metric methodology, prompt sets, and scoring rubric behind every AI visibility audit.",
+      href: "/how-we-audit-ai-visibility",
     },
   ],
 };

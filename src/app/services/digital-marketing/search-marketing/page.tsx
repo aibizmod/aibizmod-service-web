@@ -200,6 +200,59 @@ const data: SubservicePageData = {
 		},
 	],
 
+	pricing: {
+		intro:
+			'Engagements combine technical SEO, content, and AI search visibility work with clear scopes and monthly reporting. Every plan starts with a keyword and AI visibility baseline.',
+		tiers: [
+			{
+				name: 'Search Foundation',
+				price: '£1,850',
+				period: 'per month',
+				description:
+					'A technical and on-page programme for businesses with an existing site: crawl fixes, keyword baseline, on-page optimisation, and monthly reporting.',
+				features: [
+					'Technical SEO audit and crawl fixes',
+					'Keyword baseline and monthly rank reporting',
+					'On-page optimisation for priority pages',
+					'Core Web Vitals improvement plan',
+					'Monthly reporting call',
+				],
+			},
+			{
+				name: 'Search + AI Visibility',
+				price: '£3,400',
+				period: 'per month',
+				description:
+					'The full programme: technical SEO, content development, and AI search visibility work — schema, entity clarity, citations, and prompt monitoring — for businesses where AI answers already drive enquiries.',
+				features: [
+					'Everything in Search Foundation',
+					'Monthly content production and publishing',
+					'AI visibility prompt set and monthly scorecard',
+					'Schema and entity optimisation',
+					'Citation and authority signal building',
+					'Quarterly AI visibility re-benchmark',
+				],
+				featured: true,
+			},
+			{
+				name: 'Growth Programme',
+				price: 'from £5,900',
+				period: 'per month',
+				description:
+					'For competitive markets: content velocity, link building, comparison page programmes, and dedicated SEO and GEO specialists on your account.',
+				features: [
+					'Everything in Search + AI Visibility',
+					'Competitor gap analysis and content programme',
+					'Digital PR and authority building',
+					'Comparison and category page programme',
+					'Dedicated SEO lead and account team',
+				],
+			},
+		],
+		note:
+			'Indicative pricing for UK small and medium businesses. Scopes are confirmed after a free consultation and baseline audit — larger or multi-location programmes are scoped individually.',
+	},
+
 	faqs: [
 		{
 			q: 'How long does SEO take to show results?',
@@ -255,6 +308,18 @@ const data: SubservicePageData = {
 			description:
 				'What Google actually says about AI Overviews and AI Mode, what does not help, and what to measure.',
 			href: '/blog/google-ai-search-optimization',
+		},
+		{
+			title: 'AI Visibility Audit Prompts',
+			description:
+				'54 free prompts for auditing how ChatGPT, Perplexity, Gemini, and Claude see your brand across retrieval, citation, and recommendation.',
+			href: '/ai-visibility-prompts',
+		},
+		{
+			title: 'How We Audit AI Visibility: Methodology, Metrics & Scoring',
+			description:
+				'The documented five-metric methodology, prompt sets, and scoring rubric behind every AI visibility audit.',
+			href: '/how-we-audit-ai-visibility',
 		},
 	],
 };

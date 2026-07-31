@@ -2015,6 +2015,136 @@ export const blogPosts: BlogPost[] = [
 			},
 		],
 	},
+	{
+		slug: 'ai-visibility-benchmarks-service-businesses',
+		title:
+			'AI Visibility Benchmarks: How Service Businesses Compare in AI Search',
+		excerpt:
+			'How often should a service business appear in ChatGPT, Perplexity, Gemini, and Google AI answers? Here is how to build an AI visibility benchmark, what metrics matter, and how to act on the results.',
+		answerSummary:
+			'AI visibility benchmarks measure how often a brand is retrieved, cited, mentioned, and recommended in AI-generated answers for a fixed set of industry prompts. There is no universal "good score" — benchmarks are comparative: your brand against competitors, across engines, over time. The five metrics that matter are retrieval rate (is your brand present in the answer at all), citation share (how often your pages are named as sources), recommendation rate (how often the AI suggests your business), position within the answer, and sentiment of the mention. Any business can build a benchmark with a fixed prompt set, a baseline run, and a monthly repeat.',
+		keyTakeaways: [
+			'A benchmark is a fixed prompt set measured at a fixed cadence — comparability beats breadth.',
+			'Measure five things: retrieval, citation share, recommendation rate, position, and sentiment.',
+			'Always benchmark against competitors — an AI visibility score only means something relative to your market.',
+			'Run a baseline, then repeat monthly; single snapshot audits mislead because AI answers change.',
+			'The benchmark is only half the job — the other half is fixing the citation and content gaps it reveals.',
+		],
+		definitions: [
+			{
+				term: 'AI visibility benchmark',
+				definition:
+					'A repeatable measurement of how often and how favourably a brand appears in AI-generated answers for a fixed set of prompts, compared across engines, competitors, and time periods.',
+			},
+			{
+				term: 'Retrieval rate',
+				definition:
+					'The percentage of benchmark prompts for which a brand appears somewhere in the AI-generated answer — the first rung of the visibility ladder.',
+			},
+			{
+				term: 'Citation share',
+				definition:
+					'The share of benchmark answers in which the brand\'s own pages or profiles are named as the source of information, versus competitors or third-party sites.',
+			},
+		],
+		category: 'GEO',
+		image: '/blog/ai-visibility-benchmarks.svg',
+		imageAlt:
+			'AI visibility benchmark dashboard comparing retrieval, citation share, and recommendations across answer engines.',
+		date: 'July 31, 2026',
+		readTime: '8 min read',
+		author: blogAuthor,
+		relatedServices: [
+			{
+				name: 'AI Visibility Audit',
+				href: '/services/ai-automation/ai-visibility-audit',
+			},
+			{
+				name: 'SEO Services & AI Search Optimization',
+				href: '/services/digital-marketing/search-marketing',
+			},
+		],
+		faqs: [
+			{
+				q: 'What is a good AI visibility score?',
+				a: 'There is no universal good score. AI visibility is comparative: what matters is your retrieval, citation, and recommendation rates relative to the competitors who answer the same prompts, measured on the same engines, over the same period. A business can be invisible against one set of competitors and dominant against another.',
+			},
+			{
+				q: 'How many prompts do I need for a benchmark?',
+				a: 'Twenty to fifty prompts is a practical starting point for most service businesses: a mix of category queries ("best CRM consultancy in London"), comparison queries ("X vs Y"), and problem queries ("how to choose a marketing agency"). More prompts give statistical stability; fewer are easier to maintain monthly.',
+			},
+			{
+				q: 'How often should I run an AI visibility benchmark?',
+				a: 'Monthly is the right cadence for most teams. AI answers change as models update and sources change, so weekly runs create noise while quarterly runs miss shifts. Monthly also matches the typical content and citation work cycle — you fix, then re-measure.',
+			},
+			{
+				q: 'Why does my brand get cited but never recommended?',
+				a: 'Being cited means your content was informative; being recommended means the AI judged your business the answer to the user\'s intent. The gap usually comes from missing trust signals — reviews, third-party mentions, entity clarity, and comparison coverage — rather than from the cited page itself.',
+			},
+		],
+		sections: [
+			{
+				heading: 'Why AI Visibility Needs Benchmarks',
+				paragraphs: [
+					'Traditional SEO has decades of established benchmarks: rank distributions, click-through curves, and index coverage. AI search is younger, and most businesses have no baseline at all — they do not know whether appearing in one ChatGPT answer in ten is good, bad, or typical for their market. That gap is exactly why visibility software vendors sell scores: a score without a comparison set is hard to interpret.',
+					'The shift is real and measurable. Gartner forecast that traditional search engine volume would drop 25% by 2026 as consumers and AI assistants replace classical search with conversational answers. Whether the exact figure is right matters less than the direction: an increasing share of buyer research happens inside AI answers, and appearing there is becoming a prerequisite for being shortlisted.',
+				],
+				citations: [
+					{
+						label: 'Gartner — Search Engine Volume Will Drop 25% by 2026',
+						url: 'https://www.gartner.com/en/newsroom/press-releases/2024-02-19-gartner-predicts-search-engine-volume-will-drop-25-percent-by-2026-due-to-ai-chatbots-and-other-virtual-agents',
+					},
+				],
+			},
+			{
+				heading: 'The Five Metrics That Matter',
+				paragraphs: [
+					'A practical benchmark measures five things per prompt, not one. The visibility ladder — retrieved, cited, mentioned, recommended — describes how deeply a brand appears in an answer; a benchmark quantifies each rung.',
+				],
+				bullets: [
+					'Retrieval rate — is your brand present anywhere in the answer, even as a passing mention?',
+					'Citation share — how often are your own pages or profiles named as the source?',
+					'Recommendation rate — how often does the AI suggest your business to the questioner?',
+					'Position — where in the answer your brand appears: first among three named suppliers, or last of ten?',
+					'Sentiment — is the mention neutral, positive (named as a good option), or negative (warnings, complaints)?',
+				],
+			},
+			{
+				heading: 'Building a Benchmark in Five Steps',
+				paragraphs: [
+					'Any team can build a benchmark without buying software. The discipline is comparability: the same prompts, same engines, same recording format, measured at the same cadence. Concretely:',
+				],
+				bullets: [
+					'Write 20–50 prompts across category, comparison, and problem queries relevant to your service.',
+					'Choose engines — ChatGPT, Perplexity, Gemini, and Google AI Overviews cover the main surfaces.',
+					'Record per prompt: your retrieval, citation, recommendation, position, and sentiment — plus the same for three to five competitors.',
+					'Score each rung with a simple 0/1 per prompt, then compute rates per engine.',
+					'Repeat monthly and chart the trend; a benchmark without a second measurement is just a snapshot.',
+				],
+			},
+			{
+				heading: 'What Audits Typically Reveal',
+				paragraphs: [
+					'Across the audits our team runs, the findings are consistent regardless of industry. The most common pattern is a gap between traditional SEO strength and AI recommendation: businesses that rank well on Google are often retrieved in AI answers but rarely recommended — AI systems cite their content but steer the user to a competitor with stronger third-party signals.',
+					'Other recurring findings: vague service pages give AI nothing specific to cite; missing comparison coverage means the AI lists competitors but has no information about your business to include; and absent entity clarity (no consistent brand, service, and people data) makes AI systems unsure whether your business is a distinct, trusted supplier. None of these require exotic fixes — they are structural content and authority problems.',
+					'One caution: treat any vendor\'s published "average visibility score" with suspicion. Without a disclosed prompt set and methodology, the number is not comparable to your benchmark.',
+				],
+			},
+			{
+				heading: 'From Benchmark to Roadmap',
+				paragraphs: [
+					'A benchmark tells you where you stand; it does not move the needle. The standard follow-up sequence is: fix the pages that should be cited but are not (structure, specificity, schema); add the comparison and category coverage that AI systems need to include you; strengthen third-party signals — reviews, mentions, and citations from sites the engines already trust; then re-run the benchmark and watch each rung of the ladder.',
+					'Expect lags. Model training and answer generation do not update instantly when you publish a fix — most changes show in retrieval and citation within weeks, while recommendation changes often take longer as the AI system\'s view of your brand shifts.',
+				],
+			},
+			{
+				heading: 'Benchmarking as a Service',
+				paragraphs: [
+					'The AI Visibility Audit packages exactly this discipline: a fixed prompt set built around your market, retrieval/citation/recommendation scoring across ChatGPT, Gemini, Claude, and Perplexity, competitor benchmarking, citation gap analysis, and a 90-day roadmap that implements the fixes — followed by a re-measurement scorecard. If you would rather run the benchmark yourself first, the free AI Visibility Audit Report on our tools page is a no-signup starting point.',
+				],
+			},
+		],
+	},
 ];
 
 export const featuredPost =

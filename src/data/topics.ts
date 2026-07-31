@@ -76,6 +76,30 @@ export const topicHubs: TopicHub[] = [
         type: 'blog',
       },
       {
+        title: 'AI Visibility Benchmarks: How Service Businesses Compare in AI Search',
+        description: 'How to build an AI visibility benchmark: the five metrics, prompt set construction, and what audits typically reveal.',
+        href: '/blog/ai-visibility-benchmarks-service-businesses',
+        type: 'guide',
+      },
+      {
+        title: 'AI Visibility Audit Prompts',
+        description: '54 free, ready-to-run prompts for auditing brand visibility, competitor comparisons, citations, and sentiment across answer engines.',
+        href: '/ai-visibility-prompts',
+        type: 'checklist',
+      },
+      {
+        title: 'How We Audit AI Visibility: Methodology, Metrics & Scoring',
+        description: 'The documented five-metric methodology, prompt sets, and scoring rubric behind every AI visibility audit.',
+        href: '/how-we-audit-ai-visibility',
+        type: 'guide',
+      },
+      {
+        title: 'LLMClicks Alternative: AI Visibility Audit Services vs a DIY Tracking Tool',
+        description: 'When to buy an AI visibility tracking subscription and when a managed audit-and-implementation engagement closes the gap faster.',
+        href: '/comparisons/llmclicks-alternative',
+        type: 'comparison',
+      },
+      {
         title: 'AI Visibility Audit, AI Ranking & GEO Roadmap',
         description: 'Benchmark how your business appears across ChatGPT, Gemini, Claude, Perplexity, and Google AI Search, then prioritise citation and recommendation gaps.',
         href: '/services/ai-automation/ai-visibility-audit',

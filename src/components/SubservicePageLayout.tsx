@@ -279,6 +279,21 @@ export interface SubserviceWhatsIncluded {
   imageAlt: string;
 }
 
+export interface SubservicePricingTier {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  featured?: boolean;
+}
+
+export interface SubservicePricing {
+  intro: string;
+  tiers: SubservicePricingTier[];
+  note?: string;
+}
+
 export interface SubservicePageData {
   name: string;
   parentName: string;
@@ -300,6 +315,7 @@ export interface SubservicePageData {
   useCases: SubserviceUseCase[];
   technologies: string[];
   benefits: SubserviceBenefit[];
+  pricing?: SubservicePricing;
   faqs: SubserviceFAQ[];
   relatedResources?: { title: string; description: string; href: string }[];
 }
@@ -745,6 +761,86 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
               </div>
             </div>
           </section>
+
+          {/* ── 6. Pricing / Engagement ─────────────────────────────────────── */}
+          {data.pricing && (
+            <section
+              className="relative overflow-hidden px-6 py-24 bg-white"
+              style={{ borderTop: "1px solid rgba(8,145,178,0.10)", borderBottom: "1px solid rgba(8,145,178,0.10)" }}
+            >
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_85%,rgba(210,247,255,0.55),transparent_35%)]"
+                aria-hidden="true"
+              />
+              <div className="relative mx-auto max-w-7xl">
+                <AnimatedSection className="text-center mb-14">
+                  <SectionHeading eyebrow="Engagement & Investment" heading="How Engagements Are Structured" centered />
+                  <p className="mt-4 text-[15px] leading-relaxed text-slate-500 max-w-2xl mx-auto">
+                    {data.pricing.intro}
+                  </p>
+                </AnimatedSection>
+
+                <div className="grid gap-6 md:grid-cols-3">
+                  {data.pricing.tiers.map((tier, i) => (
+                    <AnimatedSection key={tier.name} delay={i * 0.08} className="h-full">
+                      <div
+                        className={`relative flex h-full flex-col rounded-[24px] border p-7 transition-all duration-300 hover:-translate-y-1 ${
+                          tier.featured
+                            ? "border-cyan-300 bg-[#F0FDFF] shadow-[0_20px_60px_rgba(8,145,178,0.16)]"
+                            : "border-cyan-100/80 bg-white/75 shadow-[0_12px_36px_rgba(59,130,246,0.07)]"
+                        }`}
+                      >
+                        {tier.featured && (
+                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cyan-600 px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
+                            Most Popular
+                          </span>
+                        )}
+                        <h3 className="text-sm font-bold uppercase tracking-[0.14em] text-cyan-700">
+                          {tier.name}
+                        </h3>
+                        <div className="mt-4 flex items-baseline gap-1.5">
+                          <span className="font-display font-thin text-[#0F172A]" style={{ fontSize: 40, lineHeight: 1 }}>
+                            {tier.price}
+                          </span>
+                          <span className="text-sm text-slate-400">{tier.period}</span>
+                        </div>
+                        <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                          {tier.description}
+                        </p>
+                        <ul className="mt-6 flex-1 space-y-3">
+                          {tier.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-600">
+                              <svg className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                              </svg>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                        <Link
+                          href="/contact"
+                          className={`mt-8 inline-flex h-11 items-center justify-center rounded-full px-5 text-sm font-semibold transition ${
+                            tier.featured
+                              ? "bg-[#0f172a] text-white hover:bg-cyan-700"
+                              : "border border-cyan-200 bg-white text-[#0F172A] hover:border-cyan-300 hover:bg-cyan-50"
+                          }`}
+                        >
+                          Discuss This Engagement
+                          <ArrowRight size={15} className="ml-2" aria-hidden="true" />
+                        </Link>
+                      </div>
+                    </AnimatedSection>
+                  ))}
+                </div>
+
+                {data.pricing.note && (
+                  <p className="mt-8 text-center text-xs leading-relaxed text-slate-400">
+                    {data.pricing.note}
+                  </p>
+                )}
+              </div>
+            </section>
+          )}
 
           {/* ── 7. FAQ ──────────────────────────────────────────────────────── */}
           <section id="faq" className="py-24 px-6 bg-[#F8FEFF] border-t border-[#E0F2FE]">

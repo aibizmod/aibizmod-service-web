@@ -12,6 +12,8 @@ import {
   BarChart3,
   Zap,
   Lock,
+  FileText,
+  BookOpen,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -49,6 +51,26 @@ const tools = [
     badge: "Coming Soon",
     badgeColor: "bg-amber-500/10 text-amber-700 border-amber-200",
     available: false,
+  },
+  {
+    title: "AI Visibility Prompts",
+    description:
+      "54 ready-to-run prompts for auditing how ChatGPT, Perplexity, Gemini, and Claude see your brand — retrieval, citation, recommendation, and sentiment checks. Copy, run, and score monthly.",
+    icon: FileText,
+    href: "/ai-visibility-prompts",
+    badge: "Free",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+    available: true,
+  },
+  {
+    title: "Audit Methodology",
+    description:
+      "The documented five-metric methodology behind every AI visibility audit: prompt sets, scoring rubric, and the visibility levels — so you can evaluate the audit before you buy it.",
+    icon: BookOpen,
+    href: "/how-we-audit-ai-visibility",
+    badge: "Free",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+    available: true,
   },
 ];
 

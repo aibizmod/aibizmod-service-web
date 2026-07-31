@@ -66,6 +66,9 @@ ${allSubServiceUrls}
 ## Tools
 
 ${BASE}/automation-roi-calculator
+${BASE}/ai-visibility-prompts
+${BASE}/how-we-audit-ai-visibility
+${BASE}/ai-visibility-audit-report
 
 ## Topic hubs
 
