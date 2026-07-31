@@ -672,7 +672,7 @@ export function Hero() {
                   onBlur={() => setIsFocused(false)}
                   placeholder={placeholderText}
                   aria-label="Enter your website domain"
-                  className="h-14 flex-1 bg-transparent px-3 text-base focus:outline-none"
+                  className="h-14 min-w-0 w-full flex-1 bg-transparent px-3 text-base focus:outline-none"
                   style={{ color: "#0f172a" }}
                 />
 
@@ -681,7 +681,7 @@ export function Hero() {
                   id="hero-audit-submit"
                   aria-label="Check AI Visibility"
                   disabled={!domain.trim()}
-                  className="group mr-1.5 flex h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group mr-1.5 flex h-11 shrink-0 items-center gap-2 rounded-full px-3.5 text-sm font-semibold text-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:px-5"
                   style={{
                     backgroundColor: "#0891b2",
                     // @ts-expect-error CSS custom property
@@ -695,7 +695,7 @@ export function Hero() {
                     e.currentTarget.style.backgroundColor = "#0891b2";
                   }}
                 >
-                  Check AI Visibility
+                  <span className="hidden sm:inline">Check AI Visibility</span>
                   <ArrowRight
                     aria-hidden="true"
                     className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
