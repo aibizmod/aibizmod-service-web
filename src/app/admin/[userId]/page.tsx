@@ -643,6 +643,14 @@ export default function UserDetailPage({ params }: { params: { userId: string } 
                             </div>
                           )}
                           <div className="text-xs text-ink/40 mt-1">{formatDate(a.generatedAt)}</div>
+                          <a
+                            href={`/audit/${a.reportId}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-royal-deep hover:text-royal mt-1.5 transition-colors"
+                          >
+                            View hosted report ↗
+                          </a>
                         </div>
                       </div>
                     </div>

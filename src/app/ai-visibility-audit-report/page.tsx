@@ -35,6 +35,9 @@ import {
   Search,
   Activity,
   LogOut,
+  Link2,
+  Copy,
+  Check,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import NeuralBackground from "@/components/ui/flow-field-background";
@@ -924,6 +927,8 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
   const { isAuthenticated, user, logout } = useAibizmodAuth();
   const [showSignInModal, setShowSignInModal] = useState(false);
   const savedRef = useRef(false);
+  const [hostedReportId, setHostedReportId] = useState<string | null>(null);
+  const [linkCopied, setLinkCopied] = useState(false);
 
   // Save audit report once after it is generated
   useEffect(() => {
@@ -949,13 +954,43 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           },
         },
       })
-      .then(() => {
+      .then((res: any) => {
         savedRef.current = true;
+        const reportId = res?.data?.createAibizmodAuditReport?.reportId as string | undefined;
+        if (!reportId) return;
+
+        setHostedReportId(reportId);
+        try {
+          const key = "aibizmod_audit_reports";
+          const existing = JSON.parse(localStorage.getItem(key) || "{}") as Record<
+            string,
+            { domain: string; result: AuditResult; savedAt: number }
+          >;
+          existing[reportId] = { domain, result, savedAt: Date.now() };
+          const ids = Object.keys(existing).sort(
+            (a, b) => existing[b].savedAt - existing[a].savedAt,
+          );
+          for (const staleId of ids.slice(10)) delete existing[staleId];
+          localStorage.setItem(key, JSON.stringify(existing));
+        } catch (err) {
+          console.error("[Aibizmod] Failed to cache audit report locally:", err);
+        }
       })
       .catch((err) => {
         console.error("[Aibizmod] Failed to save audit report:", err);
       });
   }, [result, domain, isAuthenticated, user?.userId]);
+
+  const copyHostedLink = async () => {
+    if (!hostedReportId) return;
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}/audit/${hostedReportId}`);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch (err) {
+      console.error("[Aibizmod] Clipboard unavailable:", err);
+    }
+  };
   const band = BAND_META[result.band] || BAND_META.poor;
   const displayDomain = formatDomain(domain);
   const favicon = getFaviconUrl(domain);
@@ -1027,6 +1062,39 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
           </div>
         </div>
       </div>
+
+      {/* ── Hosted report link ────────────────────────────────────────────── */}
+      {hostedReportId && (
+        <div className="flex flex-col lg:flex-row lg:items-center gap-3 rounded-xl border border-cyan-200 bg-cyan-50/60 px-4 py-3">
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            <Link2 className="h-4 w-4 text-cyan-600 flex-shrink-0" />
+            <p className="text-xs sm:text-sm text-slate-700">
+              <span className="font-semibold text-cyan-800">Hosted report ready.</span>{" "}
+              Share this link with anyone — it stays live on aibizmod.com. No login required.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <code className="hidden xl:block text-xs text-slate-500 bg-white border border-cyan-200 rounded-md px-2 py-1 max-w-[240px] truncate">
+              {window.location.origin}/audit/{hostedReportId}
+            </code>
+            <button
+              onClick={copyHostedLink}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-cyan-700 bg-white border border-cyan-200 rounded-lg px-3 py-1.5 hover:bg-cyan-100/60 transition"
+            >
+              {linkCopied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
+              {linkCopied ? "Copied" : "Copy link"}
+            </button>
+            <a
+              href={`/audit/${hostedReportId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-white bg-gradient-to-r from-cyan-500 to-teal-500 rounded-lg px-3 py-1.5 hover:opacity-90 transition"
+            >
+              Open report <ExternalLink className="h-3 w-3" />
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* ── SECTION 1: Executive Summary ───────────────────────────────────── */}
       <div className="rounded-2xl bg-gradient-to-br from-cyan-50/40 via-white to-emerald-50/30 border border-cyan-100/60 p-6 sm:p-8 shadow-sm">
