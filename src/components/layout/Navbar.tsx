@@ -635,26 +635,26 @@ export default function Navbar() {
 				</AnimatePresence>
 
 				{/* ── Mobile hamburger ──────────────────────────────────────────── */}
-				<button
-					type='button'
-					className={`lg:hidden p-2.5 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
-						scrolled
-							? 'text-white hover:bg-white/10'
-							: 'text-white hover:bg-white/10'
-					}`}
-					onClick={() => setMenuOpen((p) => !p)}
-					aria-label={
-						menuOpen ? 'Close navigation menu' : 'Open navigation menu'
-					}
-					aria-expanded={menuOpen}
-					aria-controls='mobile-menu'
-				>
-					{menuOpen ? (
-						<X size={20} aria-hidden='true' />
-					) : (
-						<Menu size={20} aria-hidden='true' />
-					)}
-				</button>
+					<button
+						type='button'
+						className={`lg:hidden p-3 rounded-full transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/40 ${
+							scrolled
+								? 'text-white hover:bg-white/10'
+								: 'text-white hover:bg-white/10'
+						}`}
+						onClick={() => setMenuOpen((p) => !p)}
+						aria-label={
+							menuOpen ? 'Close navigation menu' : 'Open navigation menu'
+						}
+						aria-expanded={menuOpen}
+						aria-controls='mobile-menu'
+					>
+						{menuOpen ? (
+							<X size={20} aria-hidden='true' />
+						) : (
+							<Menu size={20} aria-hidden='true' />
+						)}
+					</button>
 			</motion.nav>
 
 			{/* ── Mobile menu ───────────────────────────────────────────────────── */}
@@ -666,10 +666,10 @@ export default function Navbar() {
 						animate={{ opacity: 1, y: 0, scale: 1 }}
 						exit={{ opacity: 0, y: -10, scale: 0.95 }}
 						transition={springTransition}
-						className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 backdrop-blur-md overflow-x-hidden ${
+						className={`lg:hidden z-50 pointer-events-auto origin-top mt-2 w-[92%] max-w-sm rounded-2xl shadow-2xl p-2 overflow-y-auto overflow-x-hidden overscroll-contain max-h-[calc(100svh-96px)] text-white ${
 							scrolled
-								? 'bg-slate-950/95 border border-cyan-500/20 text-white'
-								: 'bg-slate-950/95 border border-cyan-500/20 text-white'
+								? 'bg-slate-950 border border-cyan-500/20'
+								: 'bg-slate-950 border border-cyan-500/20'
 						}`}
 						role='navigation'
 						aria-label='Mobile navigation'
@@ -687,7 +687,7 @@ export default function Navbar() {
 												type='button'
 												aria-expanded={mobileServicesOpen}
 												onClick={() => setMobileServicesOpen((p) => !p)}
-												className={`w-full flex items-center justify-between px-3 py-2.5 text-[14px] rounded-md transition-colors focus-visible:outline-none
+												className={`w-full flex items-center justify-between px-3 py-3 text-[14px] rounded-md transition-colors focus-visible:outline-none
                           ${
 														scrolled
 															? active
@@ -734,11 +734,11 @@ export default function Navbar() {
 																		setMenuOpen(false);
 																		setMobileServicesOpen(false);
 																	}}
-																	className={`flex items-center gap-2.5 px-3 py-2 text-[14px] rounded-md transition-colors ${
-																		scrolled
-																			? 'text-stone-400 hover:text-white hover:bg-white/5'
-																			: 'text-muted-foreground hover:text-ink hover:bg-tint/60'
-																	}`}
+																className={`flex items-center gap-2.5 px-3 py-2.5 text-[14px] rounded-md transition-colors ${
+																	scrolled
+																		? 'text-stone-400 hover:text-white hover:bg-white/5'
+																		: 'text-muted-foreground hover:text-ink hover:bg-tint/60'
+																}`}
 																>
 																	<Icon
 																		size={13}
@@ -780,7 +780,7 @@ export default function Navbar() {
 											href={item.href}
 											aria-current={active ? 'page' : undefined}
 											onClick={() => setMenuOpen(false)}
-											className={`flex items-center gap-2.5 px-3 py-2.5 text-[14px] rounded-md transition-colors focus-visible:outline-none
+											className={`flex items-center gap-2.5 px-3 py-3 text-[14px] rounded-md transition-colors focus-visible:outline-none
                         ${
 													scrolled
 														? active
