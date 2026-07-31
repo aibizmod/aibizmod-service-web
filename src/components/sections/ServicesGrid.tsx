@@ -82,7 +82,6 @@ export default function ServicesGrid() {
     window.addEventListener('resize', measureTops, { passive: true });
 
     // Build one quickSetter triple per card — these bypass GSAP's tween engine
-    // Use type assertions to bypass the type checking issue with quickSetter
     cardSettersRef.current = cardRefs.current.map((card) => {
       if (!card) {
         return {
@@ -93,9 +92,9 @@ export default function ServicesGrid() {
       }
 
       return {
-        rotateX: (gsap as any).quickSetter(card, 'rotateX', 'deg') as (v: number) => void,
-        scale:   (gsap as any).quickSetter(card, 'scale')    as (v: number) => void,
-        opacity: (gsap as any).quickSetter(card, 'opacity')  as (v: number) => void,
+        rotateX: gsap.quickSetter(card, 'rotateX', 'deg') as (v: number) => void,
+        scale:   gsap.quickSetter(card, 'scale')    as (v: number) => void,
+        opacity: gsap.quickSetter(card, 'opacity')  as (v: number) => void,
       };
     });
 
@@ -488,7 +487,7 @@ export default function ServicesGrid() {
                                 className="w-fit cursor-pointer hover:scale-[1.02] transition-transform"
                               >
                                 Explore capability
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" className="transform group-hover/star-button:translate-x-0.5 group-hover/star-button:-translate-y-0.5 transition-transform"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover/star-button:translate-x-0.5 group-hover/star-button:-translate-y-0.5 transition-transform"><path d="M7 17L17 7M9 7h8v8"/></svg>
                               </StarButton>
                             </Link>
                           </div>
@@ -537,7 +536,7 @@ export default function ServicesGrid() {
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[var(--paper)] px-5 py-3 text-sm font-semibold text-[var(--ink)] hover:bg-[var(--accent)] hover:text-white transition-all duration-300 shadow-[0_4px_12px_rgba(15,23,42,0.1)]"
             >
               Book a call
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </Link>
           </div>
         </div>

@@ -255,7 +255,7 @@ const valueArtworks: Record<string, React.ReactNode> = {
       </g>
       <g opacity=".7">
         <circle cx="50" cy="120" r="18" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.6"/>
-        <path d="M50 112v8l6 4" stroke="#0F172A" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path d="M50 112v8l6 4" stroke="#0F172A" strokeWidth="1.6" strokeLinecap="round" fill="none"/>
         <line x1="34" y1="104" x2="66" y2="136" stroke="var(--fc)" strokeWidth="2.4" strokeLinecap="round"/>
       </g>
       <g fill="var(--fc)" opacity=".6">
