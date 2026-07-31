@@ -301,6 +301,7 @@ export interface SubservicePageData {
   technologies: string[];
   benefits: SubserviceBenefit[];
   faqs: SubserviceFAQ[];
+  relatedResources?: { title: string; description: string; href: string }[];
 }
 
 // ─── Structured data ─────────────────────────────────────────────────────────
@@ -775,6 +776,47 @@ export default function SubservicePageLayout({ data }: { data: SubservicePageDat
               </AnimatedSection>
             </div>
           </section>
+
+          {/* ── 7b. Related Resources ─────────────────────────────────────── */}
+          {data.relatedResources && data.relatedResources.length > 0 && (
+            <section className="py-20 px-6 bg-white border-t border-[#E0F2FE]">
+              <div className="max-w-6xl mx-auto">
+                <AnimatedSection className="text-center mb-12">
+                  <p className="text-cyan-700 text-sm font-semibold uppercase tracking-[0.16em]">Go Deeper</p>
+                  <h2
+                    className="mt-4 font-display font-thin text-[#0F172A] text-balance"
+                    style={{
+                      fontSize: "clamp(28px, 3.5vw, 40px)",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    Related Guides and Resources
+                  </h2>
+                </AnimatedSection>
+                <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  {data.relatedResources.map((res) => (
+                    <AnimatedSection key={res.href}>
+                      <a
+                        href={res.href}
+                        className="group block h-full rounded-2xl border border-cyan-100/80 bg-white/70 p-6 shadow-[0_8px_24px_rgba(59,130,246,0.06)] transition hover:border-cyan-200 hover:shadow-[0_12px_36px_rgba(8,145,178,0.10)]"
+                      >
+                        <h3 className="font-display font-semibold text-[#0F172A] text-sm leading-snug group-hover:text-cyan-700 transition-colors">
+                          {res.title}
+                        </h3>
+                        <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                          {res.description}
+                        </p>
+                        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700">
+                          Read guide
+                          <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                        </span>
+                      </a>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
         </main>
       </StickyFooterLayout>
     </>

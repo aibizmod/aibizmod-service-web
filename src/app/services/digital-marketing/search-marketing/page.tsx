@@ -4,57 +4,62 @@ import SubservicePageLayout, {
 } from '@/components/SubservicePageLayout';
 
 export const metadata: Metadata = {
-	title: 'SEO & GEO Services | Search Marketing | aibizmod',
+	title: 'SEO Services & AI Search Optimization | aibizmod',
 	description:
-		'SEO, GEO (Generative Engine Optimisation), local SEO, and technical SEO services that improve rankings in both traditional and AI-powered search engines.',
+		'SEO, GEO, AEO, and AI SEO services for businesses that need stronger visibility across Google, AI Overviews, ChatGPT, Gemini, and Perplexity.',
 	keywords: [
-		'search marketing',
 		'SEO services',
-		'search engine optimization',
-		'PPC advertising',
+		'search engine optimization services',
+		'seo optimisation services',
+		'search engine optimization agency',
+		'seo optimization agency',
+		'ai seo services',
+		'ai seo agency',
+		'geo seo',
+		'seo aeo',
+		'technical SEO services',
+		'local SEO services',
 		'keyword research',
-		'SEO optimization',
-		'search ads',
-		'Google Ads',
-		'search traffic',
 	],
 	alternates: {
 		canonical:
 			'https://aibizmod.com/services/digital-marketing/search-marketing',
 	},
 	openGraph: {
-		title: 'Search Marketing & SEO | Organic & Paid | aibizmod',
+		title: 'SEO Services & AI Search Optimization | aibizmod',
 		description:
-			'SEO and search marketing services that drive qualified traffic through organic search and paid search campaigns.',
+			'SEO, GEO, AEO, and AI SEO services that improve visibility across traditional search and AI-powered answer engines.',
 		url: '/services/digital-marketing/search-marketing',
 	},
 };
 
 const data: SubservicePageData = {
-	name: 'SEO & GEO Services',
+	name: 'SEO Services & AI Search Optimization',
 	parentName: 'Digital Marketing',
 	parentSlug: 'digital-marketing',
 	slug: 'search-marketing',
 	tagline:
-		'SEO, GEO, local SEO, and technical SEO services that improve search visibility, drive qualified organic traffic, and build sustainable rankings across traditional search engines and AI-powered discovery platforms.',
+		'SEO services for businesses that need to be found in Google and understood by AI answer engines. We combine technical SEO, content strategy, local search, AI SEO, AEO, and GEO so your pages can rank, earn citations, and turn search demand into qualified leads.',
 	heroImage:
 		'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=1000&q=80&auto=format&fit=crop',
 
 	solves: {
 		challenge:
-			'Organic search traffic should be one of the most cost-effective acquisition channels, but most businesses are not extracting the available value. Pages that could rank are buried by technical issues — slow load times, missing structured data, crawl errors, or thin content. Keyword strategies are based on volume data rather than commercial intent. Local SEO is neglected despite driving the majority of high-intent searches for service businesses.',
+			'Organic search traffic should be one of the most cost-effective acquisition channels, but most businesses are not extracting the available value. Pages that could rank are buried by technical issues, slow load times, missing structured data, crawl errors, or thin content. Keyword strategies are often based on volume data instead of commercial intent. AI search adds another layer: if your service pages are vague, answer engines may cite clearer competitors instead.',
 		challengePoints: [
 			'Core pages not ranking despite being directly relevant to high-intent search queries',
 			'Technical crawl issues blocking indexation of important content',
 			'No content strategy tied to keyword research, so published content does not target rankable opportunities',
+			'AI SEO, AEO, and GEO terms not mapped to clear service pages or useful answer blocks',
 			'Local SEO neglected, with Google Business Profile incomplete and citations inconsistent',
 		],
 		solution:
-			'We audit your current search visibility, identify the technical and content gaps causing ranking underperformance, and execute a structured programme covering technical fixes, content strategy, and local SEO. Every change is tracked against baseline rankings and traffic so progress is measurable.',
+			'We audit your current search visibility, identify the technical and content gaps causing ranking underperformance, and execute a structured programme covering technical fixes, content strategy, local SEO, and AI search readiness. Every change is mapped to a target query, target page, and measurement baseline so progress is visible.',
 		solutionPoints: [
 			'Full technical SEO audit with prioritised fix list covering crawl, indexation, and Core Web Vitals',
-			'Keyword research tied to commercial intent, mapped to pages or content gaps',
-			'Content brief and delivery for target queries with the best ranking potential',
+			'Keyword research tied to commercial intent, mapped to service pages, topic hubs, FAQs, and content gaps',
+			'AI SEO, AEO, and GEO optimisation using clear definitions, comparison sections, FAQs, entity coverage, and structured data',
+			'Content briefs and delivery for target queries with the best ranking and citation potential',
 			'Google Business Profile optimisation and local citation consistency for location-based visibility',
 		],
 	},
@@ -94,9 +99,9 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'activity',
-			title: 'Generative Engine Optimisation',
+			title: 'AI SEO, AEO, and GEO Services',
 			description:
-				'Optimise content structure, entity coverage, and authority signals for discovery and citation in AI-generated answer surfaces like ChatGPT, Gemini, and Perplexity.',
+				'Optimise content structure, entity coverage, FAQs, comparison blocks, and authority signals for discovery and citation in AI-generated answer surfaces like ChatGPT, Gemini, Perplexity, and Google AI Overviews.',
 			image: '/services/digital-marketing/search-marketing-generative-engine-optimisation.webp',
 			imageAlt: 'Digital Marketing Generative Engine Optimisation capability illustration.',
 		},
@@ -104,7 +109,7 @@ const data: SubservicePageData = {
 			icon: 'lineChart',
 			title: 'Rank Tracking and Reporting',
 			description:
-				'Keyword rank tracking with monthly reporting covering visibility changes, traffic attribution, and progress against the target keyword set.',
+				'Keyword rank tracking with monthly reporting covering traditional rankings, Search Console movement, AI-search prompt visibility, traffic attribution, and progress against the target keyword set.',
 			image: '/services/digital-marketing/search-marketing-rank-tracking-and-reporting.webp',
 			imageAlt: 'Digital Marketing Rank Tracking and Reporting capability illustration.',
 		}
@@ -186,7 +191,7 @@ const data: SubservicePageData = {
 		{
 			title: 'AI Search Visibility',
 			description:
-				'As AI-generated answers become a significant share of search traffic, optimising for entity coverage and factual accuracy ensures your brand and content are cited rather than ignored.',
+				'As AI-generated answers become a larger part of discovery, AI SEO and GEO improvements make your service pages easier to extract, cite, compare, and recommend.',
 		},
 		{
 			title: 'Measurable Progress Against Baseline',
@@ -202,7 +207,19 @@ const data: SubservicePageData = {
 		},
 		{
 			q: 'What is GEO and how is it different from standard SEO?',
-			a: "Generative Engine Optimisation (GEO) focuses on being cited and referenced by AI-powered answer surfaces like ChatGPT, Perplexity, and Google's AI Overviews. Standard SEO optimises for traditional blue-link rankings. The two overlap significantly — high-quality, authoritative content benefits both — but GEO additionally requires strong entity coverage, clear factual claims, and structured content that AI systems can extract and cite accurately.",
+			a: "Generative Engine Optimisation (GEO) focuses on being cited and referenced by AI-powered answer surfaces like ChatGPT, Perplexity, Gemini, and Google's AI Overviews. Standard SEO optimises for traditional blue-link rankings. The two overlap significantly because high-quality, authoritative content benefits both, but GEO additionally requires strong entity coverage, clear factual claims, and structured content that AI systems can extract and cite accurately.",
+		},
+		{
+			q: 'What are AI SEO services?',
+			a: 'AI SEO services improve how your business appears in AI-powered search and answer engines. The work includes traditional SEO foundations, structured data, clear service definitions, FAQ content, comparison-ready sections, citation gap analysis, and prompt-based monitoring across platforms such as ChatGPT, Perplexity, Gemini, Claude, and Google AI Overviews.',
+		},
+		{
+			q: 'Is AEO the same as GEO?',
+			a: 'AEO usually means answer engine optimisation, while GEO means generative engine optimisation. In practice, both focus on making your content easy for AI systems to understand, extract, and cite. We treat AEO, GEO, and AI SEO as related work streams built on top of strong technical SEO and useful human-readable content.',
+		},
+		{
+			q: 'Do you offer SEO services for small businesses?',
+			a: 'Yes. For small businesses, we prioritise the pages and fixes most likely to produce qualified enquiries: service-page optimisation, local SEO, Search Console setup, technical crawl fixes, FAQ schema, content briefs, and monthly reporting against a focused keyword set.',
 		},
 		{
 			q: 'Do you guarantee specific ranking positions?',
@@ -211,6 +228,33 @@ const data: SubservicePageData = {
 		{
 			q: 'Can you work with our existing website CMS?',
 			a: 'Yes. Technical SEO work is largely independent of the CMS. We provide the fixes as specifications for your development team or implement them directly, depending on access. For structured data, meta tags, and content, we work within your CMS workflow.',
+		},
+	],
+
+	relatedResources: [
+		{
+			title: 'AI SEO Services: What Businesses Need Before AI Search Takes More Clicks',
+			description:
+				'What AI SEO services include, how they differ from traditional SEO, and how to improve visibility across ChatGPT, Perplexity, Gemini, and Google AI Search.',
+			href: '/blog/ai-seo-services',
+		},
+		{
+			title: 'AI SEO Tools vs AI SEO Services: Which Do You Need?',
+			description:
+				'A decision framework for buying AI monitoring software, hiring expert-led services, or combining both.',
+			href: '/blog/ai-seo-tools-vs-ai-seo-services',
+		},
+		{
+			title: 'How To Improve AI Ranking Across AI Answer Engines',
+			description:
+				'The AI visibility ladder — retrieved, cited, mentioned, recommended — and what improves each rung.',
+			href: '/blog/how-to-improve-ai-ranking',
+		},
+		{
+			title: 'Google AI Search Optimization: What Helps, What Does Not',
+			description:
+				'What Google actually says about AI Overviews and AI Mode, what does not help, and what to measure.',
+			href: '/blog/google-ai-search-optimization',
 		},
 	],
 };

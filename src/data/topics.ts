@@ -5,6 +5,12 @@ export interface TopicResource {
   type: 'guide' | 'service' | 'comparison' | 'checklist' | 'blog' | 'template';
 }
 
+export interface ComparisonRow {
+  term: string;
+  focus: string;
+  bestFor: string;
+}
+
 export interface TopicHub {
   slug: string;
   title: string;
@@ -12,47 +18,113 @@ export interface TopicHub {
   summary: string;
   corePage: TopicResource;
   supportingAssets: TopicResource[];
+  comparison?: {
+    heading: string;
+    intro: string;
+    rows: ComparisonRow[];
+  };
 }
 
 export const topicHubs: TopicHub[] = [
   {
     slug: 'geo-for-service-businesses',
-    title: 'Generative Engine Optimisation (GEO) for Service Businesses',
-    excerpt: 'Make your service business discoverable in AI-powered search engines like ChatGPT, Perplexity, and Google AI Overviews.',
+    title: 'GEO, AEO & AI SEO for Service Businesses',
+    excerpt: 'Improve AI search visibility across ChatGPT, Perplexity, Gemini, Claude, and Google AI Overviews with practical GEO, AEO, and AI SEO guidance.',
     summary:
-      'GEO is the practice of structuring content, evidence, and technical signals so answer engines cite your pages. For service businesses, this means publishing verifiable claims, named expertise, clear service definitions, and crawlable FAQ content. This hub brings together aibizmod\'s GEO guides, tools, and service offerings.',
+      'GEO, AEO, and AI SEO help service businesses become easier for answer engines to understand, extract, cite, and recommend. GEO focuses on generative engine optimisation, AEO focuses on answer-ready content, and traditional SEO remains the technical and content foundation. This hub brings together aibizmod\'s guides, AI visibility audit, SEO services, and practical resources for teams targeting queries like geo seo, seo aeo, ai seo services, and AI search visibility.',
     corePage: {
       title: 'What Is Generative Engine Optimization (GEO)?',
-      description: 'A comprehensive guide to GEO — what it is, how answer engines work, and how to make your content citable.',
+      description: 'A comprehensive guide to GEO, AI search visibility, answer-engine citation, and how service businesses can make content citable.',
       href: '/blog/what-is-generative-engine-optimization-geo',
       type: 'guide',
     },
     supportingAssets: [
       {
+        title: 'AI SEO Services: What Businesses Need Before AI Search Takes More Clicks',
+        description: 'What AI SEO services include, how they differ from traditional SEO, and how to improve visibility across ChatGPT, Perplexity, Gemini, and Google AI Search.',
+        href: '/blog/ai-seo-services',
+        type: 'blog',
+      },
+      {
+        title: 'AI SEO Tools vs AI SEO Services',
+        description: 'Whether to buy AI monitoring software, hire expert-led services, or combine both — with a decision framework for each situation.',
+        href: '/blog/ai-seo-tools-vs-ai-seo-services',
+        type: 'comparison',
+      },
+      {
         title: 'Generative Engine Optimisation for Service Businesses',
-        description: 'Practical GEO strategies tailored for agencies, consultancies, and technology service providers.',
+        description: 'Practical GEO strategies for agencies, consultancies, and technology service providers that need clearer AI search visibility.',
         href: '/blog/generative-engine-optimisation-for-service-businesses',
         type: 'blog',
       },
       {
-        title: 'AI Visibility Audit',
-        description: 'A service that benchmarks your site\'s visibility in AI-powered search and provides a roadmap for improvement.',
+        title: 'How To Improve AI Ranking Across ChatGPT, Perplexity, Gemini, and Google AI Search',
+        description: 'The visibility ladder from retrieved to recommended — and what improves each rung across AI answer platforms.',
+        href: '/blog/how-to-improve-ai-ranking',
+        type: 'guide',
+      },
+      {
+        title: 'Google AI Search Optimization: What Helps, What Does Not, and What To Measure',
+        description: 'What Google actually says about AI Overviews and AI Mode, what does not help, and how to measure progress.',
+        href: '/blog/google-ai-search-optimization',
+        type: 'guide',
+      },
+      {
+        title: 'AI Monitoring Tools for Brand Visibility',
+        description: 'What to track before buying AI visibility software: prompt sets, baselines, citation sources, and monthly cadence.',
+        href: '/blog/ai-monitoring-tools',
+        type: 'blog',
+      },
+      {
+        title: 'AI Visibility Audit, AI Ranking & GEO Roadmap',
+        description: 'Benchmark how your business appears across ChatGPT, Gemini, Claude, Perplexity, and Google AI Search, then prioritise citation and recommendation gaps.',
         href: '/services/ai-automation/ai-visibility-audit',
         type: 'service',
       },
       {
-        title: 'SEO & GEO Services',
-        description: 'Search marketing services covering both traditional SEO and generative engine optimisation.',
+        title: 'SEO Services & AI Search Optimization',
+        description: 'SEO, AEO, GEO, and AI SEO services for businesses that need stronger rankings, clearer answer blocks, and better AI-search citability.',
         href: '/services/digital-marketing/search-marketing',
         type: 'service',
       },
       {
         title: 'Website Performance Optimisation',
-        description: 'Core Web Vitals improvements and technical SEO fixes that help both traditional and AI search engines.',
+        description: 'Core Web Vitals, semantic page structure, and technical SEO fixes that support both traditional rankings and AI-powered content extraction.',
         href: '/services/web-development/web-optimization',
         type: 'service',
       },
     ],
+    comparison: {
+      heading: 'SEO vs AEO vs GEO',
+      intro:
+        'The three disciplines overlap, but each targets a different discovery surface. Most service businesses need all three — the difference is where the optimisation is aimed.',
+      rows: [
+        {
+          term: 'SEO',
+          focus: 'Ranking in traditional search engine results pages.',
+          bestFor:
+            'Technical visibility, search traffic, and being the page Google lists for a query.',
+        },
+        {
+          term: 'AEO',
+          focus: 'Answer engine optimisation — answer-ready content.',
+          bestFor:
+            'Featured snippets and short, extractable answers in search and assistant surfaces.',
+        },
+        {
+          term: 'GEO',
+          focus: 'Generative engine optimisation — citation and recommendation in AI answers.',
+          bestFor:
+            'Being retrieved, cited, mentioned, and recommended by ChatGPT, Perplexity, Gemini, and Google AI Overviews.',
+        },
+        {
+          term: 'AI SEO',
+          focus: 'The combined practical operating layer across all of the above.',
+          bestFor:
+            'A coordinated programme: technical SEO, schema, entity clarity, citations, and prompt monitoring.',
+        },
+      ],
+    },
   },
   {
     slug: 'business-automation',

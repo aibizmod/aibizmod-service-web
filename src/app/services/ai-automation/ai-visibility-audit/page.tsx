@@ -4,14 +4,21 @@ import SubservicePageLayout, {
 } from "@/components/SubservicePageLayout";
 
 export const metadata: Metadata = {
-  title: "AI Visibility Audit & Optimization Services | Benchmark & Roadmap | aibizmod",
+  title: "AI Visibility Audit, AI Ranking & GEO Roadmap | aibizmod",
   description:
-    "Is your business visible in the era of ChatGPT, Gemini, and Claude? Our AI Visibility Audit benchmarks your presence, identifies citation gaps, and delivers a 90-day roadmap.",
+    "Benchmark your visibility across ChatGPT, Gemini, Claude, Perplexity, and Google AI Search. Find citation gaps, AI ranking issues, and competitor opportunities.",
   keywords: [
     "AI visibility audit",
+    "AI ranking",
+    "AI optimization",
+    "AI optimisation",
+    "AI monitoring tools",
+    "AI search visibility",
     "generative engine optimization",
     "GEO services",
     "ChatGPT optimization",
+    "Perplexity visibility",
+    "Google AI search optimization",
     "Gemini search visibility",
     "AI search strategy",
     "citation gap analysis",
@@ -22,16 +29,16 @@ export const metadata: Metadata = {
     canonical: "https://aibizmod.com/services/ai-automation/ai-visibility-audit",
   },
   openGraph: {
-    title: "AI Visibility Audit & Optimization | Benchmark & Roadmap | aibizmod",
+    title: "AI Visibility Audit, AI Ranking & GEO Roadmap | aibizmod",
     description:
-      "Is your business visible in the era of ChatGPT, Gemini, and Claude? Our AI Visibility Audit benchmarks your presence, identifies citation gaps, and delivers a 90-day roadmap.",
+      "Benchmark AI search visibility, citation gaps, and competitor opportunities across ChatGPT, Gemini, Claude, Perplexity, and Google AI Search.",
     url: "/services/ai-automation/ai-visibility-audit",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Visibility Audit & Optimization | Benchmark & Roadmap | aibizmod",
+    title: "AI Visibility Audit, AI Ranking & GEO Roadmap | aibizmod",
     description:
-      "Is your business visible in the era of ChatGPT, Gemini, and Claude? Our AI Visibility Audit benchmarks your presence, identifies citation gaps, and delivers a 90-day roadmap.",
+      "Benchmark AI search visibility, citation gaps, and competitor opportunities across ChatGPT, Gemini, Claude, Perplexity, and Google AI Search.",
   },
 };
 
@@ -41,24 +48,26 @@ const data: SubservicePageData = {
   parentSlug: "ai-automation",
   slug: "ai-visibility-audit",
   tagline:
-    "• The way people discover businesses is changing. Instead of browsing search results, customers now ask AI assistants like ChatGPT, Gemini, Claude, and Perplexity for recommendations.\n• If your business isn't recognized or referenced by these AI systems, you're missing valuable opportunities.\n• Our AI Visibility Audit measures your current visibility, identifies gaps, benchmarks you against competitors, and delivers a practical roadmap to improve your presence across AI-powered search experiences.",
+    "• Buyers now ask ChatGPT, Gemini, Claude, Perplexity, and Google AI Search for recommendations before they visit supplier websites.\n• AI ranking means more than one position. It covers whether your brand is retrieved, cited, mentioned, recommended, or ignored.\n• Our AI Visibility Audit benchmarks your current AI search visibility, identifies citation gaps, compares competitor presence, and turns the findings into a practical GEO roadmap.",
   heroImage:
     "/services/automation/ai-visibility-audit-hero.webp",
 
   solves: {
     challenge:
-      "Many businesses have strong websites but rarely appear in AI-generated answers because AI systems don't clearly recognize or understand their content. Your competitors may have stronger authority signals, structured data, or better content, causing AI assistants to recommend them instead of your business. Most organizations still optimize only for Google SEO and lack a strategy tailored for AI search, entity recognition, and citation optimization, causing them to lose key leads.",
+      "Many businesses have strong websites but rarely appear in AI-generated answers because AI systems do not clearly recognize, trust, or extract their content. Competitors may have stronger authority signals, clearer service pages, better structured data, or more third-party citations, causing AI assistants to recommend them instead. Most teams still monitor only Google rankings and have no baseline for AI search visibility, AI ranking, citation share, or recommendation share.",
     challengePoints: [
-      "Low AI Visibility — Many businesses have strong websites but rarely appear in AI-generated answers because AI systems don't clearly recognize or understand their content.",
-      "Competitors Get Recommended — Your competitors may have stronger authority signals, structured data, or better content, causing AI assistants to recommend them instead of your business.",
-      "No AI Search Strategy — Most organizations still optimize only for Google SEO and lack a strategy tailored for AI search, entity recognition, and citation optimization.",
+      "Low AI Visibility - Strong websites can still be absent from AI-generated answers if their content is hard to extract or verify.",
+      "Competitors Get Recommended - Competitors with clearer content, stronger authority signals, and better citation footprints may appear where you do not.",
+      "No AI Search Baseline - Standard rank tracking does not show prompt visibility, citation share, recommendation rate, or AI answer sentiment.",
+      "No AI Monitoring Process - Teams do not know which prompts, platforms, and competitor mentions to review each month.",
     ],
     solution:
-      "We evaluate how visible your brand is across leading AI platforms and compare your performance against competitors to establish a clear baseline. By analyzing your website, content, structured data, authority signals, and citations, we uncover the reasons AI systems aren't recommending your business. Finally, we deliver a prioritized 90-day roadmap with clear recommendations, quick wins, and long-term improvements to strengthen your AI visibility.",
+      "We evaluate how visible your brand is across leading AI platforms and compare your performance against competitors to establish a clear baseline. By analyzing prompts, search intent, website content, structured data, authority signals, and external citations, we uncover why AI systems are or are not recommending your business. The final roadmap prioritises the fixes most likely to improve retrieval, citation, mention, and recommendation outcomes.",
     solutionPoints: [
-      "Benchmark Your AI Presence — We evaluate how visible your brand is across leading AI platforms and compare your performance against competitors to establish a clear baseline.",
-      "Identify Visibility Gaps — We analyze your website, content, structured data, authority signals, and citations to uncover the reasons AI systems aren't recommending your business.",
-      "Deliver an Actionable Roadmap — You'll receive a prioritized 90-day roadmap with clear recommendations, quick wins, and long-term improvements to strengthen your AI visibility.",
+      "Benchmark Your AI Presence - We evaluate brand visibility across leading AI platforms and compare results against competitors.",
+      "Map Prompt and Citation Gaps - We identify the prompts, topics, and sources where your brand is missing, misrepresented, or outranked.",
+      "Improve AI Search Readiness - We prioritise page structure, entity coverage, FAQ content, schema, internal links, and authority signals.",
+      "Deliver an Actionable Roadmap - You receive a 90-day plan with quick wins, content updates, monitoring cadence, and measurement checkpoints.",
     ],
   },
 
@@ -91,15 +100,23 @@ const data: SubservicePageData = {
 			icon: 'target',
 			title: 'Prompt Mapping',
 			description:
-				'Understand which prompts trigger your brand and discover where you are missing from AI-generated responses.',
+				'Identify the exact prompts, follow-up questions, and search intents that should trigger your brand, then record where competitors appear instead.',
 			image: '/services/ai-automation/ai-visibility-audit-prompt-mapping.webp',
 			imageAlt: 'AI & Automation Prompt Mapping capability illustration.',
+		},
+		{
+			icon: 'lineChart',
+			title: 'AI Ranking and Monitoring',
+			description:
+				'Track retrieval, citation, mention, recommendation share, platform coverage, and competitor visibility across a monthly AI search scorecard.',
+			image: '/services/ai-automation/ai-visibility-audit-opportunity-identification.webp',
+			imageAlt: 'AI ranking and monitoring dashboard for AI search visibility.',
 		},
 		{
 			icon: 'fileText',
 			title: 'Site Readiness Review',
 			description:
-				'Evaluate your website',
+				'Evaluate whether your website is crawlable, readable, semantically structured, and clear enough for search engines, AI answer systems, and browser agents.',
 			image: '/services/ai-automation/ai-visibility-audit-site-readiness-review.webp',
 			imageAlt: 'AI & Automation Site Readiness Review capability illustration.',
 		},
@@ -131,7 +148,7 @@ const data: SubservicePageData = {
 			icon: 'compass',
 			title: 'Opportunity Identification',
 			description:
-				'Prioritize high-impact improvements that can quickly increase your AI visibility.',
+				'Prioritise high-impact improvements that can increase AI search visibility without creating thin AI-only content or chasing unverified ranking tricks.',
 			image: '/services/ai-automation/ai-visibility-audit-opportunity-identification.webp',
 			imageAlt: 'AI & Automation Opportunity Identification capability illustration.',
 		},
@@ -158,7 +175,7 @@ const data: SubservicePageData = {
     {
       title: "Visibility Benchmark",
       description:
-        "A clear score of your current brand presence and recommendation share across ChatGPT, Gemini, Claude, and Perplexity.",
+        "A clear score of your current brand presence, citation share, mention quality, recommendation share, and competitor visibility across ChatGPT, Gemini, Claude, and Perplexity.",
       image:
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&fit=crop",
       imageAlt:
@@ -221,7 +238,7 @@ const data: SubservicePageData = {
     {
       title: "Opportunity Report",
       description:
-        "A prioritized breakdown of quick wins and high-impact changes to immediately improve your AI discovery share.",
+        "A prioritized breakdown of quick wins and high-impact changes to improve AI discovery share, AI ranking signals, and answer-engine citation readiness.",
       image:
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&q=80&fit=crop",
       imageAlt:
@@ -284,7 +301,7 @@ const data: SubservicePageData = {
     {
       title: "Increase AI Search Visibility",
       description:
-        "Ensure your brand is recognized and recommended by AI assistants like ChatGPT, Gemini, Claude, and Perplexity when potential customers search.",
+        "Make your brand easier for AI assistants like ChatGPT, Gemini, Claude, Perplexity, and Google AI Search to retrieve, cite, mention, and recommend.",
     },
     {
       title: "Generate More Qualified Leads",
@@ -308,8 +325,47 @@ const data: SubservicePageData = {
       a: "While traditional SEO focuses on driving clicks from Google's standard search results page, AI Search Optimization (or GEO - Generative Engine Optimization) focuses on getting your brand cited, referenced, and recommended inside conversational answers. This requires a strategy centered on clear structured data, entity recognition, brand authority, and answering direct user intent.",
     },
     {
+      q: "How do you measure AI ranking?",
+      a: "We measure AI ranking as a visibility ladder rather than a single position: whether your brand is retrieved, cited, mentioned, recommended, or excluded for priority prompts. The audit records platform coverage, citation sources, competitor mentions, answer sentiment, and recommendation share across a fixed prompt set.",
+    },
+    {
       q: "Which AI platforms are included?",
-      a: "Our audit covers the most widely used conversational assistants and generative search engines, including OpenAI's ChatGPT, Google's Gemini, Anthropic's Claude, and Perplexity AI. We analyze both desktop and mobile search contexts to ensure a comprehensive overview.",
+      a: "Our audit covers the most widely used conversational assistants and generative search engines, including OpenAI's ChatGPT, Google's Gemini, Anthropic's Claude, Perplexity AI, and Google AI Search or AI Overviews where available. We analyze both desktop and mobile search contexts to ensure a comprehensive overview.",
+    },
+    {
+      q: "What are AI monitoring tools used for?",
+      a: "AI monitoring tools track how often a brand appears in AI-generated answers, which competitors are cited, which source pages are used, and how answer sentiment changes over time. We can use dedicated tools or a manual prompt scorecard depending on budget and the number of prompts that need tracking.",
+    },
+    {
+      q: "What is the difference between AI optimization and GEO?",
+      a: "AI optimization is the broader work of making a business easier for AI systems to understand, retrieve, and recommend. GEO, or generative engine optimization, is the search-specific part of that work: improving crawlable content, entity clarity, structured data, citations, and answer-ready page sections.",
+    },
+  ],
+
+  relatedResources: [
+    {
+      title: "How To Improve AI Ranking Across ChatGPT, Perplexity, Gemini, and Google AI Search",
+      description:
+        "The AI visibility ladder — retrieved, cited, mentioned, recommended — and what improves each rung across answer engines.",
+      href: "/blog/how-to-improve-ai-ranking",
+    },
+    {
+      title: "AI Monitoring Tools for Brand Visibility: What To Track Before Buying Software",
+      description:
+        "What to track before buying AI visibility software: prompt sets, baselines, citation sources, and monthly cadence.",
+      href: "/blog/ai-monitoring-tools",
+    },
+    {
+      title: "AI SEO Services: What Businesses Need Before AI Search Takes More Clicks",
+      description:
+        "What AI SEO services include, how they differ from traditional SEO, and how to improve visibility across answer engines.",
+      href: "/blog/ai-seo-services",
+    },
+    {
+      title: "Google AI Search Optimization: What Helps, What Does Not",
+      description:
+        "What Google actually says about AI Overviews and AI Mode, what does not help, and what to measure.",
+      href: "/blog/google-ai-search-optimization",
     },
   ],
 };

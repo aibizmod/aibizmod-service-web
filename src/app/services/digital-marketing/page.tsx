@@ -18,6 +18,9 @@ export const metadata: Metadata = {
 		'geo optimization',
 		'generative engine optimization',
 		'ai seo services',
+		'ai driven digital marketing',
+		'ai marketing tools',
+		'ai tools for marketing',
 		'digital marketing',
 		'digital marketing agency',
 		'SEO services',
@@ -52,6 +55,7 @@ const data: ServicePageData = {
 	overview: {
 		paragraphs: [
 			"A lot of digital marketing spend goes in before anyone has checked whether the tracking actually works. Tags fire on the wrong pages, form submissions don't register as conversions, and the reporting dashboard shows sessions instead of the leads that matter. Before campaigns scale, those foundations need to be solid. The work here covers auditing what's already set up, configuring GA4 and Google Tag Manager correctly, fixing Search Console errors that stop pages from being indexed, and building Looker Studio dashboards that show what's actually happening rather than what looks good in a weekly report.",
+			'Search visibility has also changed: discovery now happens across traditional search results, Google AI Overviews, and answer-engine citation surfaces like ChatGPT, Perplexity, and Gemini. That is why our digital marketing programme pairs measured campaign performance with AI search readiness — starting with the Search Marketing service page and the AI Visibility Audit, which benchmarks how your brand is retrieved, cited, and recommended across AI platforms.',
 		],
 		benefits: [
 			'Accurate Google Analytics Attribution',
@@ -60,6 +64,7 @@ const data: ServicePageData = {
 			'Competitor Search Term Comparisons',
 			'Unified Dashboards in Looker Studio',
 			'Structured Paid Campaign Frameworks',
+			'AI Search Visibility Benchmarking Across Answer Engines',
 		],
 	},
 
@@ -209,6 +214,15 @@ const serviceCards: ServiceCard[] = [
 		href: '/services/digital-marketing/performance-insights',
 		color: '#16a34a',
 		iconKey: 'barChart',
+	},
+	{
+		title: 'AI Visibility Audit',
+		image:
+			'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80&auto=format&fit=crop',
+		bullets: ['AI Ranking', 'Citation Gap Analysis', 'GEO Roadmap'],
+		href: '/services/ai-automation/ai-visibility-audit',
+		color: '#7c3aed',
+		iconKey: 'activity',
 	},
 ];
 

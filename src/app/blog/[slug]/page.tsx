@@ -77,6 +77,22 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     },
   };
 
+  const faqSchema =
+    post.faqs && post.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.a,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       <Navbar />
@@ -86,6 +102,12 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
           />
+          {faqSchema && (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+          )}
 
         <section className="relative overflow-hidden bg-white px-6 pb-12 pt-44 md:pb-16 md:pt-48">
           <div
@@ -255,6 +277,23 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                   )}
                 </AnimatedSection>
               ))}
+
+              {/* FAQs (rendered only when present) */}
+              {post.faqs && post.faqs.length > 0 && (
+                <AnimatedSection className="mb-14 rounded-2xl border border-stone-200 bg-white px-6 py-8 shadow-[0_14px_36px_rgba(15,23,42,0.05)] md:px-9">
+                  <h2 className="font-display font-semibold text-[#0F172A] mb-5" style={{ fontSize: "clamp(18px, 2.5vw, 22px)", lineHeight: 1.2 }}>
+                    Frequently Asked Questions
+                  </h2>
+                  <div className="space-y-6">
+                    {post.faqs.map((faq) => (
+                      <div key={faq.q}>
+                        <h3 className="text-sm font-semibold text-[#0F172A]">{faq.q}</h3>
+                        <p className="mt-1.5 text-sm leading-7 text-stone-600">{faq.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </AnimatedSection>
+              )}
 
               {/* Related Services (rendered only when present) */}
               {post.relatedServices && post.relatedServices.length > 0 && (

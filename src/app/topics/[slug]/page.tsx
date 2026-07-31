@@ -97,6 +97,42 @@ export default function TopicDetailPage({ params }: TopicDetailPageProps) {
             </div>
           </section>
 
+          {/* Comparison section (rendered only when present) */}
+          {hub.comparison && (
+            <section className="px-4 sm:px-6 py-14 bg-white">
+              <div className="max-w-4xl mx-auto">
+                <AnimatedSection>
+                  <SectionHeading eyebrow="At a glance" heading={hub.comparison.heading} centered />
+                  <p className="mt-4 text-slate-500 text-center max-w-2xl mx-auto text-sm leading-relaxed">
+                    {hub.comparison.intro}
+                  </p>
+                </AnimatedSection>
+
+                <AnimatedSection delay={0.08} className="mt-8 overflow-x-auto rounded-2xl border border-cyan-100 bg-white shadow-[0_12px_32px_rgba(59,130,246,0.06)]">
+                  <table className="w-full min-w-[640px] text-left text-sm">
+                    <caption className="sr-only">{hub.comparison.heading}</caption>
+                    <thead>
+                      <tr className="border-b border-cyan-100 bg-cyan-50/50">
+                        <th scope="col" className="px-5 py-3.5 font-display font-semibold text-[#0F172A]">Term</th>
+                        <th scope="col" className="px-5 py-3.5 font-display font-semibold text-[#0F172A]">Main focus</th>
+                        <th scope="col" className="px-5 py-3.5 font-display font-semibold text-[#0F172A]">Best for</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {hub.comparison.rows.map((row) => (
+                        <tr key={row.term} className="border-b border-cyan-50 last:border-0">
+                          <th scope="row" className="px-5 py-4 font-semibold text-cyan-800 whitespace-nowrap align-top">{row.term}</th>
+                          <td className="px-5 py-4 text-slate-600 leading-relaxed align-top">{row.focus}</td>
+                          <td className="px-5 py-4 text-slate-600 leading-relaxed align-top">{row.bestFor}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </AnimatedSection>
+              </div>
+            </section>
+          )}
+
           {/* Core page */}
           <section className="px-4 sm:px-6 py-12 bg-[#F8FEFF] border-y border-cyan-100">
             <div className="max-w-4xl mx-auto">
