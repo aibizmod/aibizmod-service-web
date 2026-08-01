@@ -39,9 +39,30 @@ const company = [
 	{ label: 'About Us', href: '/about' },
 	{ label: 'Clients', href: '/clients' },
 	{ label: 'Blog', href: '/blog' },
-	{ label: 'Comparisons', href: '/comparisons' },
 	{ label: 'Careers', href: '/careers' },
 	{ label: 'FAQs', href: '/faq' },
+];
+
+const comparisons = [
+	{ label: 'All Comparisons', href: '/comparisons' },
+	{ label: 'Custom Software vs SaaS', href: '/comparisons/custom-software-vs-saas' },
+	{
+		label: 'Native vs Cross-Platform Apps',
+		href: '/comparisons/native-vs-cross-platform-apps',
+	},
+	{
+		label: 'Automation Platform vs Custom Workflow',
+		href: '/comparisons/automation-platform-vs-custom-workflow',
+	},
+	{
+		label: 'Redesign vs Incremental Improvements',
+		href: '/comparisons/redesign-vs-improve-existing-website',
+	},
+	{ label: 'LLMClicks Alternative', href: '/comparisons/llmclicks-alternative' },
+	{ label: 'Otterly Alternative', href: '/comparisons/otterly-alternative' },
+	{ label: 'Peec Alternative', href: '/comparisons/peec-alternative' },
+	{ label: 'Profound Alternative', href: '/comparisons/profound-alternative' },
+	{ label: 'AIclicks Alternative', href: '/comparisons/aiclicks-alternative' },
 ];
 
 const legal = [
@@ -170,7 +191,7 @@ export default function Footer() {
 					</div>
 
 					{/* Links Grid Column (6 out of 12) */}
-					<div className='md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8'>
+					<div className='md:col-span-6 grid grid-cols-2 lg:grid-cols-4 gap-8'>
 						{/* Services */}
 						<div className='min-w-0'>
 							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
@@ -197,6 +218,25 @@ export default function Footer() {
 							</h3>
 							<ul className='space-y-2.5'>
 								{company.map((item) => (
+									<li key={item.href}>
+										<Link
+											href={item.href}
+											className='text-[13.5px] text-white/60 hover:text-white transition-colors duration-150 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-white/30 after:transition-all after:duration-300'
+										>
+											{item.label}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</div>
+
+						{/* Comparisons */}
+						<div className='min-w-0'>
+							<h3 className='text-[11px] font-semibold uppercase tracking-[0.15em] text-white/50 mb-4'>
+								Comparisons
+							</h3>
+							<ul className='space-y-2.5'>
+								{comparisons.map((item) => (
 									<li key={item.href}>
 										<Link
 											href={item.href}
