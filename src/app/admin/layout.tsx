@@ -2,6 +2,13 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FiLayout, FiSend, FiFileText, FiLogOut } from "react-icons/fi";
+
+const NAV_LINKS = [
+  { href: "/admin", label: "Dashboard", icon: FiLayout },
+  { href: "/admin/campaigns", label: "Campaigns", icon: FiSend },
+  { href: "/admin/audits", label: "Audits", icon: FiFileText },
+];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -49,7 +56,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!ready) {
     return (
       <div className="admin-canvas flex items-center justify-center">
-        <span className="admin-live text-sm text-slate-400">Loading</span>
+        <span className="admin-live text-sm text-slate-500">Loading</span>
       </div>
     );
   }
@@ -61,39 +68,42 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="admin-canvas">
-      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#050a14]/80 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
           <div className="flex items-center gap-8">
-            <a href="/admin" className="flex items-baseline gap-1.5 font-display text-lg font-semibold tracking-tight text-white">
-              aibiz<span className="text-cyan-400">mod</span>
-              <span className="font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-slate-500">/admin</span>
+            <a href="/admin" className="flex items-baseline gap-1.5 font-display text-lg font-semibold tracking-tight text-ink">
+              aibiz<span className="text-royal">mod</span>
+              <span className="font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-slate-400">/admin</span>
             </a>
             <nav className="hidden items-center gap-1 sm:flex">
-              {[
-                { href: "/admin", label: "Dashboard" },
-                { href: "/admin/campaigns", label: "Campaigns" },
-                { href: "/admin/audits", label: "Audits" },
-              ].map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-                    pathname === link.href
-                      ? "bg-cyan-400/10 text-cyan-300"
-                      : "text-slate-400 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const Icon = link.icon;
+                const active = pathname === link.href;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                      active
+                        ? "bg-royal/10 text-royal"
+                        : "text-slate-600 hover:bg-slate-100 hover:text-ink"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {link.label}
+                  </a>
+                );
+              })}
             </nav>
           </div>
           <div className="flex items-center gap-5">
             <span className="hidden font-mono text-xs text-slate-500 md:inline">{adminEmail}</span>
             <button
               onClick={handleSignOut}
-              className="text-xs font-medium text-slate-400 transition-colors hover:text-cyan-300"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 transition-colors hover:text-royal"
             >
+              <FiLogOut className="h-3.5 w-3.5" aria-hidden="true" />
               Sign out
             </button>
           </div>

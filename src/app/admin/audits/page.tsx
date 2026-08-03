@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { client } from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
+import { FiFileText, FiFilter, FiExternalLink } from "react-icons/fi";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // GraphQL
@@ -68,19 +69,19 @@ function formatDate(d?: string | number | null): string {
 }
 
 const BAND_COLORS: Record<string, string> = {
-  excellent: "bg-emerald-400/10 text-emerald-300 border-emerald-400/30",
-  good: "bg-cyan-400/10 text-cyan-300 border-cyan-400/30",
-  fair: "bg-amber-400/10 text-amber-300 border-amber-400/30",
-  poor: "bg-red-400/10 text-red-300 border-red-400/30",
-  critical: "bg-red-500/15 text-red-400 border-red-400/40",
+  excellent: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  good: "bg-cyan-50 text-cyan-700 border-cyan-200",
+  fair: "bg-amber-50 text-amber-700 border-amber-200",
+  poor: "bg-orange-50 text-orange-700 border-orange-200",
+  critical: "bg-red-50 text-red-700 border-red-200",
 };
 
 function scoreColor(score?: number): string {
-  if (!score) return "text-slate-600";
-  if (score >= 80) return "text-emerald-300";
-  if (score >= 65) return "text-cyan-300";
-  if (score >= 45) return "text-amber-300";
-  return "text-red-400";
+  if (!score) return "text-slate-400";
+  if (score >= 80) return "text-emerald-600";
+  if (score >= 65) return "text-cyan-600";
+  if (score >= 45) return "text-amber-600";
+  return "text-red-600";
 }
 
 function buildFilter(filters: Filters): Record<string, unknown> | undefined {
@@ -149,12 +150,15 @@ export default function AuditsAdminPage() {
       {/* ── Header ── */}
       <header className="admin-panel admin-groove admin-aura px-7 py-7">
         <div className="flex items-center gap-3">
-          <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-royal/10 text-royal">
+            <FiFileText className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">
             Live · mongo
           </span>
         </div>
-        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white">Audit reports</h1>
-        <p className="mt-2 text-sm text-slate-400">Every AI visibility audit run across the site, live from the store.</p>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">Audit reports</h1>
+        <p className="mt-2 text-sm text-slate-600">Every AI visibility audit run across the site, live from the store.</p>
       </header>
 
       {/* ── Filters ── */}
@@ -198,7 +202,8 @@ export default function AuditsAdminPage() {
               <option value="anonymous">Anonymous</option>
             </select>
           </div>
-          <button onClick={applyFilters} className="admin-btn-primary px-5 py-2.5">
+          <button onClick={applyFilters} className="admin-btn-primary inline-flex items-center gap-2 px-5 py-2.5">
+            <FiFilter className="h-3.5 w-3.5" aria-hidden="true" />
             Apply filters
           </button>
         </div>
@@ -206,17 +211,17 @@ export default function AuditsAdminPage() {
 
       {/* ── Results ── */}
       <div className="admin-panel admin-groove overflow-hidden">
-        <div className="flex items-center justify-between border-b border-white/[0.07] px-6 py-4">
-          <h2 className="text-sm font-semibold text-slate-300 tabular-nums">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
+          <h2 className="text-sm font-semibold text-slate-700 tabular-nums">
             {totalCount} report{totalCount !== 1 ? "s" : ""}
           </h2>
           {(filters.band || filters.domain || filters.isLogined) && (
-            <span className="font-mono text-[11px] uppercase tracking-widest text-slate-500">filtered</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest text-slate-400">filtered</span>
           )}
         </div>
 
         {error && (
-          <div className="border-b border-red-400/20 bg-red-500/10 px-6 py-4 text-sm text-red-300">{error}</div>
+          <div className="border-b border-red-200 bg-red-50 px-6 py-4 text-sm text-red-600">{error}</div>
         )}
 
         {loading ? (
@@ -225,7 +230,7 @@ export default function AuditsAdminPage() {
           </div>
         ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-center">
-            <p className="text-sm font-medium text-slate-300">No audit reports match these filters.</p>
+            <p className="text-sm font-medium text-slate-600">No audit reports match these filters.</p>
             <p className="mt-1 text-xs text-slate-500">Clear a band, mode, or domain and try again.</p>
           </div>
         ) : (
@@ -245,8 +250,8 @@ export default function AuditsAdminPage() {
                 {items.map((a) => (
                   <tr key={a.reportId} className="admin-row">
                     <td className="admin-td">
-                      <div className="text-sm font-medium text-white">{a.domainAudited}</div>
-                      <div className="mt-0.5 font-mono text-[11px] text-slate-600">{a.reportId}</div>
+                      <div className="text-sm font-medium text-ink">{a.domainAudited}</div>
+                      <div className="mt-0.5 font-mono text-[11px] text-slate-400">{a.reportId}</div>
                     </td>
                     <td className="admin-td">
                       {a.score !== undefined ? (
@@ -254,7 +259,7 @@ export default function AuditsAdminPage() {
                           {a.score}
                         </span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-slate-400">—</span>
                       )}
                     </td>
                     <td className="admin-td">
@@ -263,24 +268,24 @@ export default function AuditsAdminPage() {
                           {a.band}
                         </span>
                       ) : (
-                        <span className="text-slate-600">—</span>
+                        <span className="text-slate-400">—</span>
                       )}
                     </td>
                     <td className="admin-td">
                       {a.userId ? (
                         <a
                           href={`/admin/${encodeURIComponent(a.userId)}`}
-                          className="text-xs font-medium text-cyan-300 underline-offset-2 hover:text-cyan-200 hover:underline"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-royal underline-offset-2 hover:text-royal-deep hover:underline"
                         >
                           {a.isLogined ? "Registered" : "Guest"} → profile
                         </a>
                       ) : (
-                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${a.isLogined ? "bg-emerald-400/10 text-emerald-300" : "bg-white/5 text-slate-500"}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${a.isLogined ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>
                           {a.isLogined ? "Logged in" : "Anonymous"}
                         </span>
                       )}
                     </td>
-                    <td className="admin-td whitespace-nowrap text-xs text-slate-400 tabular-nums">
+                    <td className="admin-td whitespace-nowrap text-xs text-slate-500 tabular-nums">
                       {formatDate(a.generatedAt)}
                     </td>
                     <td className="admin-td text-right">
@@ -288,12 +293,10 @@ export default function AuditsAdminPage() {
                         href={`/audit/${a.reportId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 transition-colors hover:text-cyan-200"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-royal transition-colors hover:text-royal-deep"
                       >
                         View report
-                        <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
+                        <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     </td>
                   </tr>
@@ -304,13 +307,13 @@ export default function AuditsAdminPage() {
         )}
 
         {!loading && hasMore && (
-          <div className="border-t border-white/[0.07] px-6 py-4">
+          <div className="border-t border-slate-200 px-6 py-4">
             <button
               onClick={() => fetchPage(page + 1, false)}
               disabled={loadMoreLoading}
               className="admin-btn-ghost inline-flex items-center gap-2 px-4 py-2 text-sm"
             >
-              {loadMoreLoading && <span className="h-4 w-4 animate-spin rounded-full border-2 border-cyan-400 border-t-transparent" />}
+              {loadMoreLoading && <span className="h-4 w-4 animate-spin rounded-full border-2 border-royal border-t-transparent" />}
               Load more ({items.length} of {totalCount})
             </button>
           </div>

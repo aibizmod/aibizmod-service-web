@@ -3,6 +3,18 @@
 import { useState, useEffect, useCallback } from "react";
 import { client } from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
+import {
+  FiUsers,
+  FiUserCheck,
+  FiActivity,
+  FiEye,
+  FiMousePointer,
+  FiClock,
+  FiTrendingUp,
+  FiFileText,
+  FiPercent,
+  FiExternalLink,
+} from "react-icons/fi";
 
 const GET_GLOBAL_ANALYTICS = gql`
   query AibizmodGlobalAnalytics {
@@ -91,13 +103,18 @@ interface UserItem {
 const fmt = (n: number) => (Number.isFinite(n) ? n.toLocaleString("en-US") : "0");
 const clamp = (n: number, min: number, max: number) => Math.min(Math.max(n, min), max);
 
-function StatCard({ label, value }: { label: string; value: string | number }) {
+function StatCard({ label, value, icon: Icon }: { label: string; value: string | number; icon: typeof FiUsers }) {
   return (
-    <div className="admin-panel p-5">
-      <p className="admin-label !mb-3">{label}</p>
-      <p className="font-display text-[27px] font-semibold leading-none tracking-tight text-white tabular-nums">
-        {value}
-      </p>
+    <div className="admin-panel flex items-start gap-4 p-5">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-royal/10 text-royal">
+        <Icon className="h-5 w-5" aria-hidden="true" />
+      </span>
+      <div>
+        <p className="admin-label !mb-1.5">{label}</p>
+        <p className="font-display text-[27px] font-semibold leading-none tracking-tight text-ink tabular-nums">
+          {value}
+        </p>
+      </div>
     </div>
   );
 }
@@ -107,7 +124,7 @@ function MetricGroup({ label, cols, children }: { label: string; cols: 2 | 3 | 4
   return (
     <section className="space-y-4">
       <div className="flex items-center gap-3 px-1">
-        <span aria-hidden="true" className="h-px w-10 shrink-0 bg-gradient-to-r from-[#22D3EE] to-transparent" />
+        <span aria-hidden="true" className="h-px w-10 shrink-0 bg-gradient-to-r from-royal to-transparent" />
         <h2 className="admin-eyebrow">{label}</h2>
       </div>
       <div className={`grid grid-cols-2 gap-4 ${grid}`}>{children}</div>
@@ -127,16 +144,16 @@ function StickinessBand({ dau, wau, mau }: { dau: number; wau: number; mau: numb
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <p className="admin-eyebrow">Audience stickiness</p>
-          <p className="mt-4 font-display text-5xl font-semibold leading-none tracking-tight text-white tabular-nums">
+          <p className="mt-4 font-display text-5xl font-semibold leading-none tracking-tight text-ink tabular-nums">
             {fmt(dau)}
-            <span className="ml-2 align-middle text-base font-normal text-slate-400">daily active</span>
+            <span className="ml-2 align-middle text-base font-normal text-slate-500">daily active</span>
           </p>
-          <p className="mt-3 font-mono text-sm text-slate-400 tabular-nums">
+          <p className="mt-3 font-mono text-sm text-slate-500 tabular-nums">
             {fmt(wau)} WEEKLY · {fmt(mau)} MONTHLY
           </p>
         </div>
         <div className="text-left sm:text-right">
-          <p className="font-display text-4xl font-semibold leading-none text-cyan-300 tabular-nums">{stickiness}%</p>
+          <p className="font-display text-4xl font-semibold leading-none text-royal tabular-nums">{stickiness}%</p>
           <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
             return daily
           </p>
@@ -146,17 +163,17 @@ function StickinessBand({ dau, wau, mau }: { dau: number; wau: number; mau: numb
       <div
         role="img"
         aria-label={`${stickiness}% of monthly active users return daily`}
-        className="mt-7 flex h-2 w-full overflow-hidden rounded-full bg-white/[0.07]"
+        className="mt-7 flex h-2 w-full overflow-hidden rounded-full bg-slate-100"
       >
-        <span style={{ width: `${daily * 100}%`, background: "linear-gradient(90deg,#22D3EE,#0EA5E9)" }} />
-        <span style={{ width: `${weeklyOnly * 100}%`, background: "rgba(34,211,238,0.28)" }} />
-        <span className="flex-1 bg-white/[0.05]" />
+        <span style={{ width: `${daily * 100}%`, background: "linear-gradient(90deg,#0891b2,#0ea5e9)" }} />
+        <span style={{ width: `${weeklyOnly * 100}%`, background: "rgba(8,145,178,0.25)" }} />
+        <span className="flex-1 bg-slate-100" />
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-[11px] text-slate-500">
-        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-cyan-400" />Daily</span>
-        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-cyan-400/30" />Weekly</span>
-        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-white/20" />Monthly</span>
+        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-royal" />Daily</span>
+        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-royal/25" />Weekly</span>
+        <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-slate-300" />Monthly</span>
       </div>
     </div>
   );
@@ -164,10 +181,12 @@ function StickinessBand({ dau, wau, mau }: { dau: number; wau: number; mau: numb
 
 function TableCard({
   title,
+  icon: Icon,
   hint,
   children,
 }: {
   title: string;
+  icon: typeof FiUsers;
   hint?: string;
   children: React.ReactNode;
 }) {
@@ -175,10 +194,12 @@ function TableCard({
     <div className="admin-panel admin-groove overflow-hidden">
       <div className="flex items-baseline justify-between gap-4 px-6 pb-4 pt-6">
         <div className="flex items-center gap-3">
-          <span aria-hidden="true" className="h-px w-4 shrink-0 bg-[linear-gradient(90deg,#D4AF37,transparent)]" />
-          <h2 className="font-display text-lg font-semibold text-white">{title}</h2>
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gold/10 text-gold">
+            <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+          </span>
+          <h2 className="font-display text-lg font-semibold text-ink">{title}</h2>
         </div>
-        {hint && <span className="font-mono text-[11px] uppercase tracking-widest text-slate-500">{hint}</span>}
+        {hint && <span className="font-mono text-[11px] uppercase tracking-widest text-slate-400">{hint}</span>}
       </div>
       <div className="overflow-x-auto px-2 pb-2">{children}</div>
     </div>
@@ -269,27 +290,25 @@ export default function AdminDashboard() {
       <header className="admin-panel admin-groove admin-aura px-7 py-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <div className="flex items-center gap-3">
-              <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                Live signal
-              </span>
-            </div>
-            <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">
+              Live signal
+            </span>
+            <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Performance at a glance
             </h1>
             {analytics ? (
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 tabular-nums">
-                <span className="font-medium text-cyan-200">{fmt(analytics.totalSessions)}</span> sessions from{" "}
-                <span className="font-medium text-cyan-200">{fmt(analytics.totalUsers)}</span> users ·{" "}
-                <span className="font-medium text-cyan-200">{fmt(analytics.totalAuditReports)}</span> audit reports.
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 tabular-nums">
+                <span className="font-medium text-royal-deep">{fmt(analytics.totalSessions)}</span> sessions from{" "}
+                <span className="font-medium text-royal-deep">{fmt(analytics.totalUsers)}</span> users ·{" "}
+                <span className="font-medium text-royal-deep">{fmt(analytics.totalAuditReports)}</span> audit reports.
               </p>
             ) : (
               <p className="mt-3 text-sm text-slate-500">Reading a snapshot of activity…</p>
             )}
           </div>
-          <div className="shrink-0 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4">
+          <div className="shrink-0 rounded-xl border border-slate-200 bg-white px-5 py-4">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">Uptime window</p>
-            <p className="mt-1 font-mono text-lg text-white tabular-nums">90 days</p>
+            <p className="mt-1 font-mono text-lg text-ink tabular-nums">90 days</p>
           </div>
         </div>
       </header>
@@ -304,26 +323,26 @@ export default function AdminDashboard() {
 
           <div className="space-y-10">
             <MetricGroup label="Audience" cols={3}>
-              <StatCard label="Total Users" value={fmt(analytics.totalUsers)} />
-              <StatCard label="Logged-in Users" value={fmt(analytics.loggedUsers)} />
-              <StatCard label="Sessions" value={fmt(analytics.totalSessions)} />
+              <StatCard label="Total Users" value={fmt(analytics.totalUsers)} icon={FiUsers} />
+              <StatCard label="Logged-in Users" value={fmt(analytics.loggedUsers)} icon={FiUserCheck} />
+              <StatCard label="Sessions" value={fmt(analytics.totalSessions)} icon={FiActivity} />
             </MetricGroup>
 
             <MetricGroup label="Engagement" cols={4}>
-              <StatCard label="Page Views" value={fmt(analytics.totalPageViews)} />
-              <StatCard label="Clicks" value={fmt(analytics.totalClicks)} />
-              <StatCard label="Avg Session Duration" value={formatDuration(analytics.avgSessionDuration)} />
-              <StatCard label="Total Duration" value={formatDuration(analytics.totalDurationSeconds)} />
+              <StatCard label="Page Views" value={fmt(analytics.totalPageViews)} icon={FiEye} />
+              <StatCard label="Clicks" value={fmt(analytics.totalClicks)} icon={FiMousePointer} />
+              <StatCard label="Avg Session Duration" value={formatDuration(analytics.avgSessionDuration)} icon={FiClock} />
+              <StatCard label="Total Duration" value={formatDuration(analytics.totalDurationSeconds)} icon={FiTrendingUp} />
             </MetricGroup>
 
             <MetricGroup label="Pipeline" cols={2}>
-              <StatCard label="Audit Reports" value={fmt(analytics.totalAuditReports)} />
-              <StatCard label="Conversion Rate" value={`${analytics.conversionRate}%`} />
+              <StatCard label="Audit Reports" value={fmt(analytics.totalAuditReports)} icon={FiFileText} />
+              <StatCard label="Conversion Rate" value={`${analytics.conversionRate}%`} icon={FiPercent} />
             </MetricGroup>
           </div>
 
           {analytics.topPages.length > 0 && (
-            <TableCard title="Top Pages" hint="by views">
+            <TableCard title="Top Pages" icon={FiTrendingUp} hint="by views">
               <table className="admin-table">
                 <thead>
                   <tr>
@@ -337,23 +356,23 @@ export default function AdminDashboard() {
                   {analytics.topPages.map((p, i) => (
                     <tr key={i} className="admin-row">
                       <td className="admin-td">
-                        <span className="font-mono text-xs font-semibold text-[#D4AF37]/90 tabular-nums">
+                        <span className="font-mono text-xs font-semibold text-gold tabular-nums">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                       </td>
                       <td className="admin-td">
                         <div className="flex items-center gap-3">
-                          <span className="relative h-1.5 w-24 overflow-hidden rounded-full bg-white/[0.07] sm:w-40">
+                          <span className="relative h-1.5 w-24 overflow-hidden rounded-full bg-slate-100 sm:w-40">
                             <span
                               className="absolute inset-y-0 left-0 rounded-full"
-                              style={{ width: `${(p.views / topPageMax) * 100}%`, background: "linear-gradient(90deg,#22D3EE,#0EA5E9)" }}
+                              style={{ width: `${(p.views / topPageMax) * 100}%`, background: "linear-gradient(90deg,#0891b2,#0ea5e9)" }}
                             />
                           </span>
-                          <span className="truncate font-mono text-xs text-cyan-200/90">{p.path}</span>
+                          <span className="truncate font-mono text-xs text-royal-deep">{p.path}</span>
                         </div>
                       </td>
-                      <td className="admin-td text-right font-medium text-white tabular-nums">{fmt(p.views)}</td>
-                      <td className="admin-td text-right text-slate-400 tabular-nums">{formatDuration(p.avgDuration)}</td>
+                      <td className="admin-td text-right font-medium text-ink tabular-nums">{fmt(p.views)}</td>
+                      <td className="admin-td text-right text-slate-500 tabular-nums">{formatDuration(p.avgDuration)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -362,7 +381,7 @@ export default function AdminDashboard() {
           )}
 
           {analytics.topClicks.length > 0 && (
-            <TableCard title="Top Clicks" hint="most-clicked elements">
+            <TableCard title="Top Clicks" icon={FiMousePointer} hint="most-clicked elements">
               <table className="admin-table">
                 <thead>
                   <tr>
@@ -374,9 +393,9 @@ export default function AdminDashboard() {
                 <tbody>
                   {analytics.topClicks.map((c, i) => (
                     <tr key={i} className="admin-row">
-                      <td className="admin-td font-mono text-xs text-cyan-200/90">{c.path}</td>
-                      <td className="admin-td text-slate-300">{c.elementText || "—"}</td>
-                      <td className="admin-td text-right font-semibold text-white tabular-nums">{fmt(c.clicks)}</td>
+                      <td className="admin-td font-mono text-xs text-royal-deep">{c.path}</td>
+                      <td className="admin-td text-slate-600">{c.elementText || "—"}</td>
+                      <td className="admin-td text-right font-semibold text-ink tabular-nums">{fmt(c.clicks)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -386,7 +405,7 @@ export default function AdminDashboard() {
 
           {/* Users */}
           <div className="admin-panel admin-groove overflow-hidden">
-            <div className="flex flex-col gap-3 border-b border-white/[0.07] p-5 sm:flex-row">
+            <div className="flex flex-col gap-3 border-b border-slate-200 p-5 sm:flex-row">
               <input
                 type="text"
                 value={domainFilter}
@@ -412,7 +431,7 @@ export default function AdminDashboard() {
 
             <div className="overflow-x-auto px-2 py-2">
               {error && (
-                <div className="mx-4 mb-4 rounded-xl border border-red-400/20 bg-red-500/10 p-3 text-sm text-red-300">
+                <div className="mx-4 mb-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
                   {error}
                 </div>
               )}
@@ -439,7 +458,7 @@ export default function AdminDashboard() {
                   ) : users.length === 0 ? (
                     <tr>
                       <td colSpan={7} className="admin-td py-12 text-center">
-                        <p className="text-sm font-medium text-slate-300">No matching users</p>
+                        <p className="text-sm font-medium text-slate-600">No matching users</p>
                         <p className="mt-1 text-xs text-slate-500">Try a different domain or status filter.</p>
                       </td>
                     </tr>
@@ -447,16 +466,16 @@ export default function AdminDashboard() {
                     users.map((u) => (
                       <tr key={u.userId} className="admin-row">
                         <td className="admin-td">
-                          <div className="font-medium text-white">
+                          <div className="font-medium text-ink">
                             {u.firstName} {u.lastName}
                           </div>
                           <div className="text-xs text-slate-500">{u.email}</div>
                         </td>
-                        <td className="admin-td font-mono text-xs text-cyan-200/90">{u.domain}</td>
+                        <td className="admin-td font-mono text-xs text-royal-deep">{u.domain}</td>
                         <td className="admin-td">
                           <span
                             className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
-                              u.role === "biz_admin" ? "bg-cyan-400/15 text-cyan-300" : "bg-white/5 text-slate-400"
+                              u.role === "biz_admin" ? "bg-royal/10 text-royal" : "bg-slate-100 text-slate-600"
                             }`}
                           >
                             {u.role}
@@ -465,17 +484,17 @@ export default function AdminDashboard() {
                         <td className="admin-td">
                           <span
                             className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
-                              u.status === "active" ? "bg-emerald-400/10 text-emerald-300" : "bg-white/5 text-slate-500"
+                              u.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500"
                             }`}
                           >
                             {u.status}
                           </span>
                         </td>
-                        <td className="admin-td text-slate-400 tabular-nums">{formatDate(u.lastLoginAt)}</td>
-                        <td className="admin-td text-slate-400 tabular-nums">{formatDate(u.createdAt)}</td>
+                        <td className="admin-td text-slate-500 tabular-nums">{formatDate(u.lastLoginAt)}</td>
+                        <td className="admin-td text-slate-500 tabular-nums">{formatDate(u.createdAt)}</td>
                         <td className="admin-td text-right">
-                          <a href={`/admin/${u.userId}`} className="text-xs font-medium text-cyan-300 hover:text-cyan-200">
-                            View details →
+                          <a href={`/admin/${u.userId}`} className="inline-flex items-center gap-1 text-xs font-medium text-royal hover:text-royal-deep">
+                            View details <FiExternalLink className="h-3 w-3" aria-hidden="true" />
                           </a>
                         </td>
                       </tr>
@@ -485,7 +504,7 @@ export default function AdminDashboard() {
               </table>
             </div>
 
-            <div className="flex flex-col items-center justify-between gap-4 border-t border-white/[0.07] px-6 py-5 sm:flex-row">
+            <div className="flex flex-col items-center justify-between gap-4 border-t border-slate-200 px-6 py-5 sm:flex-row">
               <div className="text-sm text-slate-500 tabular-nums">{fmt(totalCount)} total users</div>
               <div className="flex items-center gap-2">
                 <button
@@ -495,7 +514,7 @@ export default function AdminDashboard() {
                 >
                   Previous
                 </button>
-                <span className="px-4 py-2 text-sm text-slate-400 tabular-nums">
+                <span className="px-4 py-2 text-sm text-slate-500 tabular-nums">
                   Page {page} / {Math.max(Math.ceil(totalCount / limit), 1)}
                 </span>
                 <button
