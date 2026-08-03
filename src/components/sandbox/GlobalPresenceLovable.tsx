@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Globe, Clock, ShieldCheck, MapPin } from "lucide-react";
+import { Clock, ShieldCheck, MapPin } from "lucide-react";
 
 interface LocationItem {
   id: string;
@@ -37,7 +37,7 @@ export default function GlobalPresenceLovable() {
             second: "2-digit",
             hour12: false,
           }).format(new Date());
-        } catch (e) {
+        } catch {
           newTimes[loc.id] = "--:--:--";
         }
       });
@@ -140,7 +140,7 @@ export default function GlobalPresenceLovable() {
                 />
 
                 {/* Connection lines between points */}
-                {locations.map((loc, idx) => {
+                {locations.map((loc) => {
                   const blr = locations.find(l => l.id === "blr")!;
                   if (loc.id === "blr") return null;
                   return (
@@ -207,7 +207,7 @@ export default function GlobalPresenceLovable() {
                 LAT_LNC_COORD: GRID_MODE
               </div>
               <div className="absolute bottom-4 right-6 font-mono text-[9px] text-cyan-500">
-                // WORLDWIDE_COVERAGE
+                {"// WORLDWIDE_COVERAGE"}
               </div>
             </div>
           </div>
