@@ -2,6 +2,13 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FiLayout, FiSend, FiFileText, FiLogOut } from "react-icons/fi";
+
+const NAV_LINKS = [
+  { href: "/admin", label: "Dashboard", icon: FiLayout },
+  { href: "/admin/campaigns", label: "Campaigns", icon: FiSend },
+  { href: "/admin/audits", label: "Audits", icon: FiFileText },
+];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -48,8 +55,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   // Still loading localStorage
   if (!ready) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-canvas">
-        <div className="text-ink/50 text-sm">Loading...</div>
+      <div className="admin-canvas flex items-center justify-center">
+        <span className="admin-live text-sm text-slate-500">Loading</span>
       </div>
     );
   }
@@ -60,46 +67,49 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="min-h-screen bg-canvas">
-      <header className="border-b border-border bg-surface sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href="/admin" className="font-display font-semibold text-ink text-lg">
-              Aibizmod Admin
+    <div className="admin-canvas">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur-md">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+          <div className="flex items-center gap-8">
+            <a href="/admin" className="flex items-baseline gap-1.5 font-display text-lg font-semibold tracking-tight text-ink">
+              aibiz<span className="text-royal">mod</span>
+              <span className="font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-slate-400">/admin</span>
             </a>
-            <nav className="hidden sm:flex items-center gap-1">
-              {[
-                { href: "/admin", label: "Dashboard" },
-                { href: "/admin/campaigns", label: "Campaigns" },
-                { href: "/admin/audits", label: "Audits" },
-              ].map(link => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                    pathname === link.href
-                      ? "bg-royal/10 text-royal"
-                      : "text-ink/50 hover:text-ink hover:bg-tint"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              ))}
+            <nav className="hidden items-center gap-1 sm:flex">
+              {NAV_LINKS.map((link) => {
+                const Icon = link.icon;
+                const active = pathname === link.href;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                      active
+                        ? "bg-royal/10 text-royal"
+                        : "text-slate-600 hover:bg-slate-100 hover:text-ink"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {link.label}
+                  </a>
+                );
+              })}
             </nav>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-ink/60">{adminEmail}</span>
+          <div className="flex items-center gap-5">
+            <span className="hidden font-mono text-xs text-slate-500 md:inline">{adminEmail}</span>
             <button
               onClick={handleSignOut}
-              className="text-sm text-royal-deep hover:text-royal font-medium"
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 transition-colors hover:text-royal"
             >
+              <FiLogOut className="h-3.5 w-3.5" aria-hidden="true" />
               Sign out
             </button>
           </div>
         </div>
       </header>
-      <main className="max-w-7xl mx-auto px-6 py-8">{children}</main>
-
+      <main className="admin-aura mx-auto max-w-7xl px-6 py-10">{children}</main>
     </div>
   );
 }

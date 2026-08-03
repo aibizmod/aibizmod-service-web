@@ -3,6 +3,19 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { client } from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
+import {
+  FiSend,
+  FiMail,
+  FiClock,
+  FiCheckCircle,
+  FiXCircle,
+  FiRefreshCw,
+  FiChevronDown,
+  FiChevronUp,
+  FiX,
+  FiEye,
+  FiGrid,
+} from "react-icons/fi";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // GraphQL
@@ -162,38 +175,45 @@ function fmt(d?: string | null) {
   return date.toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit" });
 }
 
+const TAG_PILLS: Record<string, string> = {
+  Welcome: "bg-emerald-50 text-emerald-700",
+  Report: "bg-cyan-50 text-cyan-700",
+  Newsletter: "bg-purple-50 text-purple-700",
+  Outreach: "bg-amber-50 text-amber-700",
+};
+
 function StatusBadge({ status, sent, total, failed }: { status: string; sent: number; total: number; failed: number }) {
   if (status === "processing") {
     const pct = total > 0 ? Math.round((sent / total) * 100) : 0;
     return (
-      <div className="flex flex-col gap-1 min-w-[120px]">
+      <div className="flex flex-col gap-1.5 min-w-[130px]">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
           <span className="text-xs font-semibold text-amber-700">Sending… {pct}%</span>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-amber-100 overflow-hidden">
-          <div className="h-full bg-amber-400 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
+        <div className="h-1.5 w-full rounded-full bg-slate-200 overflow-hidden">
+          <div className="h-full bg-amber-500 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
         </div>
-        <span className="text-[11px] text-ink/40">{sent}/{total} sent{failed > 0 ? `, ${failed} failed` : ""}</span>
+        <span className="text-[11px] text-slate-500 tabular-nums">{sent}/{total} sent{failed > 0 ? `, ${failed} failed` : ""}</span>
       </div>
     );
   }
   if (status === "completed") return (
     <div className="flex flex-col gap-0.5">
       <div className="flex items-center gap-1.5">
-        <span className="text-emerald-600 text-sm">✅</span>
+        <FiCheckCircle className="h-4 w-4 text-emerald-600" aria-hidden="true" />
         <span className="text-xs font-semibold text-emerald-700">Completed</span>
       </div>
-      <span className="text-[11px] text-ink/40">{sent}/{total} sent{failed > 0 ? `, ${failed} failed` : ""}</span>
+      <span className="text-[11px] text-slate-500 tabular-nums">{sent}/{total} sent{failed > 0 ? `, ${failed} failed` : ""}</span>
     </div>
   );
   if (status === "failed") return (
     <div className="flex items-center gap-1.5">
-      <span className="text-red-500 text-sm">❌</span>
-      <span className="text-xs font-semibold text-red-600">Failed</span>
+      <FiXCircle className="h-4 w-4 text-red-600" aria-hidden="true" />
+      <span className="text-xs font-semibold text-red-700">Failed</span>
     </div>
   );
-  return <span className="text-xs text-ink/40">{status}</span>;
+  return <span className="text-xs text-slate-500">{status}</span>;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -342,30 +362,42 @@ export default function CampaignsPage() {
     <div className="space-y-8">
 
       {/* Header */}
-      <div>
-        <h1 className="font-display font-semibold text-2xl text-ink">Email Campaigns</h1>
-        <p className="text-sm text-ink/50 mt-1">Compose and send bulk email campaigns to Aibizmod users</p>
-      </div>
+      <header className="admin-panel admin-groove admin-aura px-7 py-7">
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-royal/10 text-royal">
+            <FiSend className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">
+            Dispatch
+          </span>
+        </div>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">Email campaigns</h1>
+        <p className="mt-2 text-sm text-slate-600">Compose and send bulk email to Aibizmod users, then watch delivery live.</p>
+      </header>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 items-start">
 
         {/* ── COMPOSE PANEL ── */}
-        <div className="bg-surface rounded-2xl border border-border shadow-card overflow-hidden">
-          <div className="px-6 py-4 border-b border-border flex items-center gap-2">
-            <span className="text-lg">✉️</span>
-            <h2 className="font-display font-semibold text-ink">Compose Campaign</h2>
+        <div className="admin-panel admin-groove overflow-hidden">
+          <div className="flex items-center gap-2.5 border-b border-slate-200 px-6 py-4">
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-royal/10 text-royal">
+              <FiMail className="h-3.5 w-3.5" aria-hidden="true" />
+            </span>
+            <h2 className="font-display font-semibold text-ink">Compose campaign</h2>
           </div>
-          <div className="p-6 space-y-5">
+          <div className="p-6 space-y-6">
 
             {/* Template Picker */}
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-ink/50 uppercase tracking-wide">Start from a Template</label>
+              <div className="flex items-center justify-between mb-2">
+                <label className="admin-label !mb-0">Start from a template</label>
                 <button
                   onClick={() => setShowTemplatePicker(p => !p)}
-                  className="text-xs font-semibold text-royal hover:text-royal-deep transition flex items-center gap-1"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-royal hover:text-royal-deep transition"
                 >
-                  {showTemplatePicker ? "▲ Hide" : "▼ Choose template"}
+                  <FiGrid className="h-3.5 w-3.5" aria-hidden="true" />
+                  {showTemplatePicker ? "Hide" : "Choose template"}
+                  {showTemplatePicker ? <FiChevronUp className="h-3 w-3" aria-hidden="true" /> : <FiChevronDown className="h-3 w-3" aria-hidden="true" />}
                 </button>
               </div>
 
@@ -380,36 +412,31 @@ export default function CampaignsPage() {
                         setSelectedTemplateId(tpl.id);
                         setShowTemplatePicker(false);
                       }}
-                      className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition hover:shadow-sm ${
+                      className={`flex flex-col items-start gap-1.5 rounded-xl border p-3 text-left transition ${
                         selectedTemplateId === tpl.id
-                          ? "border-royal bg-royal/5 shadow-sm"
-                          : "border-border bg-canvas hover:border-royal/40 hover:bg-tint/50"
+                          ? "border-royal bg-royal/5 ring-1 ring-royal/20"
+                          : "border-slate-200 bg-white hover:border-royal/30 hover:bg-royal/5"
                       }`}
                     >
                       <span className="text-xl">{tpl.emoji}</span>
                       <span className="text-xs font-semibold text-ink leading-tight">{tpl.label}</span>
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
-                        tpl.tag === "Welcome" ? "bg-emerald-100 text-emerald-700" :
-                        tpl.tag === "Report" ? "bg-cyan-100 text-cyan-700" :
-                        tpl.tag === "Newsletter" ? "bg-purple-100 text-purple-700" :
-                        "bg-amber-100 text-amber-700"
-                      }`}>{tpl.tag}</span>
+                      <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${TAG_PILLS[tpl.tag] || "bg-slate-100 text-slate-600"}`}>{tpl.tag}</span>
                     </button>
                   ))}
                 </div>
               )}
 
               {selectedTemplateId && !showTemplatePicker && (
-                <div className="flex items-center gap-2 mb-3 px-3 py-2 rounded-lg bg-royal/5 border border-royal/20">
+                <div className="flex items-center gap-2 mb-3 rounded-lg border border-royal/20 bg-royal/5 px-3 py-2">
                   <span className="text-sm">{PRESET_TEMPLATES.find(t => t.id === selectedTemplateId)?.emoji}</span>
-                  <span className="text-xs font-medium text-royal flex-1">
+                  <span className="flex-1 text-xs font-medium text-royal-deep">
                     Template: {PRESET_TEMPLATES.find(t => t.id === selectedTemplateId)?.label}
                   </span>
                   <button
                     onClick={() => { setSelectedTemplateId(null); setSubject(""); setMessage(""); }}
-                    className="text-[11px] text-ink/40 hover:text-red-500 transition"
+                    className="inline-flex items-center gap-1 text-[11px] text-slate-500 hover:text-red-600 transition"
                   >
-                    ✕ Clear
+                    <FiX className="h-3 w-3" aria-hidden="true" /> Clear
                   </button>
                 </div>
               )}
@@ -417,31 +444,31 @@ export default function CampaignsPage() {
 
             {/* Subject */}
             <div>
-              <label className="block text-xs font-semibold text-ink/50 uppercase tracking-wide mb-1.5">Subject Line</label>
+              <label className="admin-label">Subject line</label>
               <input
                 type="text"
                 value={subject}
                 onChange={e => { setSubject(e.target.value); setSelectedTemplateId(null); }}
                 placeholder="e.g. Improve your AI visibility today"
-                className="w-full px-4 py-2.5 rounded-xl border border-border bg-canvas text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-royal/30 focus:border-royal text-sm transition"
+                className="admin-input px-4 py-2.5"
               />
             </div>
 
             {/* Recipients */}
             <div>
-              <label className="block text-xs font-semibold text-ink/50 uppercase tracking-wide mb-1.5">Recipients</label>
+              <label className="admin-label">Recipients</label>
               <div className="flex gap-2 mb-3">
                 {(["all", "manual"] as const).map(mode => (
                   <button
                     key={mode}
                     onClick={() => setRecipientMode(mode)}
-                    className={`px-4 py-1.5 rounded-xl text-xs font-semibold border transition ${
+                    className={`rounded-xl border px-4 py-1.5 text-xs font-semibold transition ${
                       recipientMode === mode
-                        ? "bg-royal text-white border-royal"
-                        : "bg-canvas text-ink/50 border-border hover:border-royal/30"
+                        ? "border-royal bg-royal/10 text-royal-deep"
+                        : "border-slate-200 text-slate-500 hover:border-royal/30 hover:text-ink"
                     }`}
                   >
-                    {mode === "all" ? "All Active Users" : "Custom List"}
+                    {mode === "all" ? "All active users" : "Custom list"}
                   </button>
                 ))}
               </div>
@@ -453,11 +480,11 @@ export default function CampaignsPage() {
                     value={domainFilter}
                     onChange={e => setDomainFilter(e.target.value)}
                     placeholder="Filter by domain (leave blank for all)"
-                    className="w-full px-4 py-2 rounded-xl border border-border bg-canvas text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-royal/30 text-sm"
+                    className="admin-input px-4 py-2"
                   />
-                  <div className="text-xs text-ink/50 px-1">
+                  <div className="px-1 text-xs text-slate-500 tabular-nums">
                     {usersLoaded
-                      ? <><span className="font-semibold text-royal">{recipients.length}</span> active users selected</>
+                      ? <><span className="font-semibold text-royal-deep">{recipients.length}</span> active users selected</>
                       : "Loading users…"}
                   </div>
                 </div>
@@ -468,10 +495,10 @@ export default function CampaignsPage() {
                     onChange={e => setManualEmails(e.target.value)}
                     placeholder={"Paste emails separated by commas, semicolons, or newlines:\nuser@company.com\nanother@example.com"}
                     rows={4}
-                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-canvas text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-royal/30 text-sm font-mono resize-y"
+                    className="admin-input resize-y px-4 py-2.5 font-mono"
                   />
-                  <div className="text-xs text-ink/50 mt-1 px-1">
-                    <span className="font-semibold text-royal">{recipients.length}</span> valid email{recipients.length !== 1 ? "s" : ""} parsed
+                  <div className="mt-1 px-1 text-xs text-slate-500 tabular-nums">
+                    <span className="font-semibold text-royal-deep">{recipients.length}</span> valid email{recipients.length !== 1 ? "s" : ""} parsed
                   </div>
                 </div>
               )}
@@ -480,12 +507,13 @@ export default function CampaignsPage() {
             {/* Message body */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-semibold text-ink/50 uppercase tracking-wide">Email Body (HTML)</label>
+                <label className="admin-label !mb-0">Email body (HTML)</label>
                 <button
                   onClick={() => setShowPreview(p => !p)}
-                  className="text-xs text-royal hover:text-royal-deep font-medium transition"
+                  className="inline-flex items-center gap-1 text-xs text-royal hover:text-royal-deep font-medium transition"
                 >
-                  {showPreview ? "Hide Preview" : "Show Preview"}
+                  <FiEye className="h-3.5 w-3.5" aria-hidden="true" />
+                  {showPreview ? "Hide preview" : "Show preview"}
                 </button>
               </div>
               <textarea
@@ -493,21 +521,21 @@ export default function CampaignsPage() {
                 onChange={e => setMessage(e.target.value)}
                 placeholder={"<h2>Hello!</h2>\n<p>Your message here...</p>\n<p><a href=\"https://aibizmod.com\">Visit Aibizmod</a></p>"}
                 rows={10}
-                className="w-full px-4 py-2.5 rounded-xl border border-border bg-canvas text-ink placeholder:text-ink/30 focus:outline-none focus:ring-2 focus:ring-royal/30 text-sm font-mono resize-y"
+                className="admin-input resize-y px-4 py-2.5 font-mono"
               />
-              <p className="text-[11px] text-ink/30 mt-1 px-1">
-                Supports HTML. Click tracking and open tracking pixels are injected automatically.
+              <p className="px-1 mt-1 text-[11px] text-slate-500">
+                Supports HTML. Click and open-tracking pixels are injected automatically.
               </p>
             </div>
 
             {/* Preview */}
             {showPreview && message && (
-              <div className="rounded-xl border border-border overflow-hidden">
-                <div className="bg-tint px-4 py-2 text-xs font-semibold text-ink/50 border-b border-border flex items-center gap-2">
-                  <span>📧</span> Email Preview — <span className="font-mono text-royal">{subject || "(no subject)"}</span>
+              <div className="rounded-xl border border-slate-200 overflow-hidden">
+                <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-500">
+                  <FiMail className="h-3.5 w-3.5" aria-hidden="true" /> Email preview — <span className="font-mono text-royal-deep">{subject || "(no subject)"}</span>
                 </div>
                 <div
-                  className="p-5 bg-white text-sm prose prose-sm max-w-none"
+                  className="max-w-none bg-white p-5 text-sm prose prose-sm"
                   dangerouslySetInnerHTML={{ __html: message }}
                 />
               </div>
@@ -515,15 +543,17 @@ export default function CampaignsPage() {
 
             {/* Error / Success */}
             {sendError && (
-              <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700">
-                ⚠️ {sendError}
+              <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
+                {sendError}
               </div>
             )}
             {sendResult && (
-              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
-                <div className="font-semibold text-emerald-700 text-sm">✅ Campaign queued!</div>
-                <div className="text-xs text-emerald-600 mt-1">{sendResult.message}</div>
-                <div className="text-[11px] text-emerald-500 mt-1 font-mono">Job ID: {sendResult.jobId}</div>
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
+                  <FiCheckCircle className="h-4 w-4" aria-hidden="true" /> Campaign queued
+                </div>
+                <div className="mt-1 text-xs text-emerald-600">{sendResult.message}</div>
+                <div className="mt-1 font-mono text-[11px] text-emerald-600/80">Job ID: {sendResult.jobId}</div>
               </div>
             )}
 
@@ -531,42 +561,44 @@ export default function CampaignsPage() {
             <button
               onClick={handleSend}
               disabled={sending || recipients.length === 0 || !subject.trim() || !message.trim()}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-royal to-royal-deep text-white font-semibold text-sm shadow-lg hover:opacity-90 active:scale-[0.98] transition disabled:opacity-40 disabled:cursor-not-allowed"
+              className="admin-btn-primary w-full py-3 text-sm active:scale-[0.99]"
             >
               {sending
                 ? "Sending…"
-                : `🚀 Send to ${recipients.length} recipient${recipients.length !== 1 ? "s" : ""}`}
+                : `Send to ${recipients.length} recipient${recipients.length !== 1 ? "s" : ""}`}
             </button>
           </div>
         </div>
 
         {/* ── STATUS PANEL ── */}
-        <div className="bg-surface rounded-2xl border border-border shadow-card overflow-hidden">
-          <div className="px-6 py-4 border-b border-border flex items-center justify-between">
+        <div className="admin-panel admin-groove overflow-hidden">
+          <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
             <div className="flex items-center gap-2">
-              <span className="text-lg">📊</span>
-              <h2 className="font-display font-semibold text-ink">Campaign History</h2>
+              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-royal/10 text-royal">
+                <FiClock className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+              <h2 className="font-display font-semibold text-ink">Campaign history</h2>
               {jobsTotal > 0 && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-royal/10 text-royal font-semibold">{jobsTotal}</span>
+                <span className="rounded-full bg-royal/10 px-2 py-0.5 text-xs font-semibold text-royal tabular-nums">{jobsTotal}</span>
               )}
             </div>
             <button
               onClick={fetchJobs}
-              className="text-xs text-ink/40 hover:text-royal transition font-medium"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-500 transition hover:text-royal font-medium"
             >
-              ↺ Refresh
+              <FiRefreshCw className="h-3 w-3" aria-hidden="true" /> Refresh
             </button>
           </div>
 
           <div className="p-4">
             {jobsLoading ? (
               <div className="flex items-center justify-center py-16">
-                <div className="w-6 h-6 border-2 border-royal border-t-transparent rounded-full animate-spin" />
+                <span className="admin-live text-sm text-slate-500">Loading campaigns</span>
               </div>
             ) : jobs.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
-                <span className="text-4xl mb-3">📭</span>
-                <p className="text-sm text-ink/40">No campaigns sent yet.<br />Compose your first one!</p>
+                <p className="text-sm font-medium text-slate-600">No campaigns sent yet.</p>
+                <p className="mt-1 text-xs text-slate-500">Compose your first one on the left.</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -575,19 +607,19 @@ export default function CampaignsPage() {
                     key={job.jobId}
                     className={`rounded-xl border p-4 transition-all ${
                       job.status === "processing"
-                        ? "border-amber-200 bg-amber-50/40"
+                        ? "border-amber-200 bg-amber-50/60"
                         : job.status === "completed"
-                        ? "border-emerald-200 bg-emerald-50/30"
+                        ? "border-emerald-200 bg-emerald-50/40"
                         : job.status === "failed"
-                        ? "border-red-200 bg-red-50/30"
-                        : "border-border bg-canvas"
+                        ? "border-red-200 bg-red-50/40"
+                        : "border-slate-200 bg-white"
                     }`}
                   >
                     <div className="flex flex-col gap-2">
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1 min-w-0">
-                          <div className="font-semibold text-ink text-sm truncate">{job.subject}</div>
-                          <div className="text-[11px] text-ink/40 font-mono mt-0.5">{job.jobId}</div>
+                          <div className="truncate text-sm font-semibold text-ink">{job.subject}</div>
+                          <div className="mt-0.5 font-mono text-[11px] text-slate-400">{job.jobId}</div>
                         </div>
                         <div className="flex-shrink-0">
                           <StatusBadge
@@ -599,28 +631,27 @@ export default function CampaignsPage() {
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-ink/50">
-                        <span>👥 {job.totalRecipients} recipients</span>
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-500 tabular-nums">
+                        <span>{job.totalRecipients} recipients</span>
                         {job.status === "completed" && (
                           <>
-                            <span className="text-emerald-600">✔ {job.sentCount} sent</span>
-                            {job.failedCount > 0 && <span className="text-red-500">✘ {job.failedCount} failed</span>}
+                            <span className="text-emerald-600">{job.sentCount} sent</span>
+                            {job.failedCount > 0 && <span className="text-red-600">{job.failedCount} failed</span>}
                           </>
                         )}
-                        <span>🕐 Started {fmt(job.startedAt || job.createdAt)}</span>
-                        {job.completedAt && <span>✅ Done {fmt(job.completedAt)}</span>}
+                        <span>Started {fmt(job.startedAt || job.createdAt)}</span>
+                        {job.completedAt && <span>Done {fmt(job.completedAt)}</span>}
                       </div>
 
-                      {/* Real-time send rate bar (for completed) */}
                       {job.status === "completed" && job.totalRecipients > 0 && (
                         <div className="flex items-center gap-2 mt-1">
-                          <div className="flex-1 h-1.5 rounded-full bg-ink/10 overflow-hidden">
+                          <div className="flex-1 h-1.5 rounded-full bg-slate-200 overflow-hidden">
                             <div
-                              className="h-full rounded-full bg-emerald-400"
+                              className="h-full rounded-full bg-emerald-500"
                               style={{ width: `${Math.round((job.sentCount / job.totalRecipients) * 100)}%` }}
                             />
                           </div>
-                          <span className="text-[11px] text-emerald-600 font-semibold w-10 text-right">
+                          <span className="w-10 text-right text-[11px] font-semibold text-emerald-600 tabular-nums">
                             {Math.round((job.sentCount / job.totalRecipients) * 100)}%
                           </span>
                         </div>

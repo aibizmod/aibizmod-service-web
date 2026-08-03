@@ -481,4 +481,139 @@ body.is-scrolling [class*="backdrop-blur"] {
   animation: fade-in 200ms ease-out;
 }
 
+/* ════════════════════════════════════════════════════════════════════════
+   Admin — minimal, modern white theme
+   Brand-grounded: clean slate canvas, white surfaces, royal-cyan accents,
+   and a single gold hairline signature. Used by /admin, /admin/audits,
+   /admin/campaigns. Matches the site-wide white design tokens.
+   ════════════════════════════════════════════════════════════════════════ */
+.admin-canvas {
+  background-color: #f8fafc;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+/* Soft cyan wash behind the hero read-out */
+.admin-aura {
+  background:
+    radial-gradient(720px 320px at 20% 0%, rgba(8, 145, 178, 0.07), transparent 60%),
+    radial-gradient(640px 300px at 90% 10%, rgba(59, 130, 246, 0.05), transparent 55%);
+}
+
+.admin-panel {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 28px rgba(15, 23, 42, 0.05);
+}
+
+/* Gold seam — the one signature detail in the whole admin */
+.admin-groove {
+  position: relative;
+  overflow: hidden;
+}
+.admin-groove::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.5), transparent);
+  pointer-events: none;
+}
+
+.admin-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.admin-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.admin-input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.admin-input::placeholder { color: #94a3b8; }
+.admin-input:focus {
+  outline: none;
+  border-color: #0891b2;
+  box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.admin-btn-primary {
+  border-radius: 10px;
+  font-weight: 600;
+  background: linear-gradient(120deg, #06b6d4, #0891b2);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 24px rgba(8, 145, 178, 0.18);
+  transition: box-shadow 0.15s, transform 0.1s;
+}
+.admin-btn-primary:hover { box-shadow: 0 10px 32px rgba(8, 145, 178, 0.28); }
+.admin-btn-primary:active { transform: translateY(1px) scale(0.99); }
+.admin-btn-primary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+.admin-btn-ghost {
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  transition: background 0.15s, border-color 0.15s;
+}
+.admin-btn-ghost:hover { background: #ecfeff; border-color: #0891b2; }
+.admin-btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.admin-th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+.admin-td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+.admin-row { transition: background 0.12s; }
+.admin-row:hover { background: #f0fdfa; }
+
+/* Live signal dot — the single animated element */
+.admin-live { position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.admin-live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0891b2;
+  box-shadow: 0 0 0 0 rgba(8, 145, 178, 0.4);
+  animation: admin-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes admin-ping {
+  0%   { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0.4); }
+  70%  { box-shadow: 0 0 0 9px rgba(8, 145, 178, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(8, 145, 178, 0); }
+}
+
 

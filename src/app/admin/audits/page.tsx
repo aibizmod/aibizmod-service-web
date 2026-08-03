@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { client } from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
+import { FiFileText, FiFilter, FiExternalLink } from "react-icons/fi";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // GraphQL
@@ -68,15 +69,15 @@ function formatDate(d?: string | number | null): string {
 }
 
 const BAND_COLORS: Record<string, string> = {
-  excellent: "bg-emerald-100 text-emerald-700 border-emerald-200",
-  good: "bg-cyan-100 text-cyan-700 border-cyan-200",
-  fair: "bg-amber-100 text-amber-700 border-amber-200",
-  poor: "bg-red-100 text-red-700 border-red-200",
-  critical: "bg-red-200 text-red-800 border-red-300",
+  excellent: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  good: "bg-cyan-50 text-cyan-700 border-cyan-200",
+  fair: "bg-amber-50 text-amber-700 border-amber-200",
+  poor: "bg-orange-50 text-orange-700 border-orange-200",
+  critical: "bg-red-50 text-red-700 border-red-200",
 };
 
 function scoreColor(score?: number): string {
-  if (!score) return "text-ink/40";
+  if (!score) return "text-slate-400";
   if (score >= 80) return "text-emerald-600";
   if (score >= 65) return "text-cyan-600";
   if (score >= 45) return "text-amber-600";
@@ -145,39 +146,41 @@ export default function AuditsAdminPage() {
   const hasMore = items.length < totalCount;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* ── Header ── */}
-      <div>
-        <h1 className="font-display font-bold text-2xl text-ink">Audit Reports</h1>
-        <p className="text-sm text-ink/50 mt-1">
-          All AI visibility audits run across the site — live from MongoDB.
-        </p>
-      </div>
+      <header className="admin-panel admin-groove admin-aura px-7 py-7">
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-royal/10 text-royal">
+            <FiFileText className="h-4 w-4" aria-hidden="true" />
+          </span>
+          <span className="admin-live text-[11px] font-semibold uppercase tracking-[0.16em] text-royal">
+            Live · mongo
+          </span>
+        </div>
+        <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">Audit reports</h1>
+        <p className="mt-2 text-sm text-slate-600">Every AI visibility audit run across the site, live from the store.</p>
+      </header>
 
       {/* ── Filters ── */}
-      <div className="bg-surface rounded-2xl border border-border shadow-card p-5">
-        <div className="flex flex-col lg:flex-row lg:items-end gap-3">
+      <div className="admin-panel p-5">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end">
           <div className="flex-1">
-            <label className="text-xs font-semibold text-ink/40 uppercase tracking-wide block mb-1.5">
-              Domain
-            </label>
+            <label className="admin-label">Domain</label>
             <input
               type="text"
               value={filters.domain}
               onChange={(e) => setFilters((f) => ({ ...f, domain: e.target.value }))}
               onKeyDown={(e) => e.key === "Enter" && applyFilters()}
               placeholder="e.g. acme.com"
-              className="w-full rounded-xl border border-border bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none focus:border-royal/50 focus:ring-2 focus:ring-royal/10"
+              className="admin-input px-3.5 py-2.5"
             />
           </div>
-          <div>
-            <label className="text-xs font-semibold text-ink/40 uppercase tracking-wide block mb-1.5">
-              Band
-            </label>
+          <div className="lg:w-44">
+            <label className="admin-label">Band</label>
             <select
               value={filters.band}
               onChange={(e) => setFilters((f) => ({ ...f, band: e.target.value }))}
-              className="w-full lg:w-44 rounded-xl border border-border bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none focus:border-royal/50"
+              className="admin-input px-3.5 py-2.5"
             >
               <option value="">All bands</option>
               <option value="excellent">Excellent</option>
@@ -187,115 +190,113 @@ export default function AuditsAdminPage() {
               <option value="critical">Critical</option>
             </select>
           </div>
-          <div>
-            <label className="text-xs font-semibold text-ink/40 uppercase tracking-wide block mb-1.5">
-              User type
-            </label>
+          <div className="lg:w-44">
+            <label className="admin-label">User type</label>
             <select
               value={filters.isLogined}
               onChange={(e) => setFilters((f) => ({ ...f, isLogined: e.target.value }))}
-              className="w-full lg:w-44 rounded-xl border border-border bg-canvas px-3.5 py-2.5 text-sm text-ink outline-none focus:border-royal/50"
+              className="admin-input px-3.5 py-2.5"
             >
               <option value="">All</option>
               <option value="logged">Logged in</option>
               <option value="anonymous">Anonymous</option>
             </select>
           </div>
-          <button
-            onClick={applyFilters}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-royal text-white px-5 py-2.5 text-sm font-semibold hover:bg-royal-deep transition-colors"
-          >
+          <button onClick={applyFilters} className="admin-btn-primary inline-flex items-center gap-2 px-5 py-2.5">
+            <FiFilter className="h-3.5 w-3.5" aria-hidden="true" />
             Apply filters
           </button>
         </div>
       </div>
 
       {/* ── Results ── */}
-      <div className="bg-surface rounded-2xl border border-border shadow-card overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-          <h2 className="text-sm font-semibold text-ink">{totalCount} report{totalCount !== 1 ? "s" : ""} found</h2>
+      <div className="admin-panel admin-groove overflow-hidden">
+        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
+          <h2 className="text-sm font-semibold text-slate-700 tabular-nums">
+            {totalCount} report{totalCount !== 1 ? "s" : ""}
+          </h2>
           {(filters.band || filters.domain || filters.isLogined) && (
-            <span className="text-xs text-ink/40">Filtered</span>
+            <span className="font-mono text-[11px] uppercase tracking-widest text-slate-400">filtered</span>
           )}
         </div>
 
         {error && (
-          <div className="px-6 py-4 text-sm text-red-600 bg-red-50 border-b border-red-100">
-            {error}
-          </div>
+          <div className="border-b border-red-200 bg-red-50 px-6 py-4 text-sm text-red-600">{error}</div>
         )}
 
         {loading ? (
           <div className="flex items-center justify-center py-24">
-            <div className="w-8 h-8 border-2 border-royal border-t-transparent rounded-full animate-spin" />
+            <span className="admin-live text-sm text-slate-500">Loading audits</span>
           </div>
         ) : items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-24 text-center">
-            <span className="text-5xl mb-4">🔍</span>
-            <p className="text-sm text-ink/40">No audit reports match these filters.</p>
+            <p className="text-sm font-medium text-slate-600">No audit reports match these filters.</p>
+            <p className="mt-1 text-xs text-slate-500">Clear a band, mode, or domain and try again.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="admin-table">
               <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-3 px-6 text-xs font-semibold text-ink/40 uppercase tracking-wide">Domain</th>
-                  <th className="text-left py-3 px-3 text-xs font-semibold text-ink/40 uppercase tracking-wide">Score</th>
-                  <th className="text-left py-3 px-3 text-xs font-semibold text-ink/40 uppercase tracking-wide">Band</th>
-                  <th className="text-left py-3 px-3 text-xs font-semibold text-ink/40 uppercase tracking-wide">User</th>
-                  <th className="text-left py-3 px-3 text-xs font-semibold text-ink/40 uppercase tracking-wide">Generated</th>
-                  <th className="text-right py-3 px-6 text-xs font-semibold text-ink/40 uppercase tracking-wide">Actions</th>
+                <tr>
+                  <th className="admin-th">Domain</th>
+                  <th className="admin-th">Score</th>
+                  <th className="admin-th">Band</th>
+                  <th className="admin-th">User</th>
+                  <th className="admin-th">Generated</th>
+                  <th className="admin-th text-right">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {items.map((a) => (
-                  <tr key={a.reportId} className="border-b border-border/50 last:border-0 hover:bg-tint/30 transition-colors">
-                    <td className="py-3.5 px-6">
-                      <div className="font-medium text-ink">{a.domainAudited}</div>
-                      <div className="font-mono text-[11px] text-ink/30 mt-0.5">{a.reportId}</div>
+                  <tr key={a.reportId} className="admin-row">
+                    <td className="admin-td">
+                      <div className="text-sm font-medium text-ink">{a.domainAudited}</div>
+                      <div className="mt-0.5 font-mono text-[11px] text-slate-400">{a.reportId}</div>
                     </td>
-                    <td className="py-3.5 px-3">
+                    <td className="admin-td">
                       {a.score !== undefined ? (
-                        <span className={`text-xl font-display font-bold ${scoreColor(a.score)}`}>{a.score}</span>
+                        <span className={`font-display text-2xl font-bold tabular-nums ${scoreColor(a.score)}`}>
+                          {a.score}
+                        </span>
                       ) : (
-                        <span className="text-ink/30">—</span>
+                        <span className="text-slate-400">—</span>
                       )}
                     </td>
-                    <td className="py-3.5 px-3">
+                    <td className="admin-td">
                       {a.band ? (
-                        <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border capitalize ${BAND_COLORS[a.band] || BAND_COLORS.poor}`}>
+                        <span className={`inline-block rounded-full border px-2 py-0.5 text-[11px] font-semibold capitalize ${BAND_COLORS[a.band] || BAND_COLORS.poor}`}>
                           {a.band}
                         </span>
                       ) : (
-                        <span className="text-ink/30">—</span>
+                        <span className="text-slate-400">—</span>
                       )}
                     </td>
-                    <td className="py-3.5 px-3">
+                    <td className="admin-td">
                       {a.userId ? (
                         <a
                           href={`/admin/${encodeURIComponent(a.userId)}`}
-                          className="text-royal-deep hover:text-royal font-medium text-xs underline-offset-2 hover:underline"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-royal underline-offset-2 hover:text-royal-deep hover:underline"
                         >
                           {a.isLogined ? "Registered" : "Guest"} → profile
                         </a>
                       ) : (
-                        <span className={`text-[11px] px-2 py-0.5 rounded-full ${a.isLogined ? "bg-emerald-50 text-emerald-700" : "bg-ink/5 text-ink/40"}`}>
+                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${a.isLogined ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-600"}`}>
                           {a.isLogined ? "Logged in" : "Anonymous"}
                         </span>
                       )}
                     </td>
-                    <td className="py-3.5 px-3 text-xs text-ink/50 whitespace-nowrap">{formatDate(a.generatedAt)}</td>
-                    <td className="py-3.5 px-6 text-right">
+                    <td className="admin-td whitespace-nowrap text-xs text-slate-500 tabular-nums">
+                      {formatDate(a.generatedAt)}
+                    </td>
+                    <td className="admin-td text-right">
                       <a
                         href={`/audit/${a.reportId}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-royal-deep hover:text-royal transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-royal transition-colors hover:text-royal-deep"
                       >
                         View report
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
+                        <FiExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                       </a>
                     </td>
                   </tr>
@@ -306,15 +307,13 @@ export default function AuditsAdminPage() {
         )}
 
         {!loading && hasMore && (
-          <div className="px-6 py-4 border-t border-border">
+          <div className="border-t border-slate-200 px-6 py-4">
             <button
               onClick={() => fetchPage(page + 1, false)}
               disabled={loadMoreLoading}
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-canvas px-4 py-2 text-sm font-medium text-ink/70 hover:bg-tint/50 disabled:opacity-50 transition-colors"
+              className="admin-btn-ghost inline-flex items-center gap-2 px-4 py-2 text-sm"
             >
-              {loadMoreLoading && (
-                <span className="w-4 h-4 border-2 border-royal border-t-transparent rounded-full animate-spin" />
-              )}
+              {loadMoreLoading && <span className="h-4 w-4 animate-spin rounded-full border-2 border-royal border-t-transparent" />}
               Load more ({items.length} of {totalCount})
             </button>
           </div>
