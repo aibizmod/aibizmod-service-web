@@ -1,11 +1,52 @@
 # Keyword, Slug, Title & Description Action Plan — aibizmod.com
 
-**Generated:** 2026-06-25  
+**Generated:**  2026-06-25  
 **Sources:** Tech_Services_Catalog (1).docx · Keyword Stats 2026-06-23 CSV · Live codebase audit
 
 ---
 
 ## Executive Summary
+
+### 2026-07-31 Competitor Keyword Update
+
+The `competitors-keywords/` exports add a new AI-search and SEO-services opportunity set. Across five CSV files there are 1,749 exported rows, 1,401 unique keywords, 306 duplicate keyword groups, 11 keywords already marked in account, and 0 keywords marked in plan.
+
+Add these P0 keywords to the active keyword plan first:
+
+| Keyword | Volume | Trend | Competition | Target Page |
+| --- | ---: | --- | --- | --- |
+| seo services | 50,000 | +900% YoY | Low | `/services/digital-marketing/search-marketing` |
+| search engine optimization services | 50,000 | +900% YoY | Low | `/services/digital-marketing/search-marketing` |
+| seo optimisation services | 5,000 | +9,900% YoY | Low | `/services/digital-marketing/search-marketing` |
+| ai seo services | 5,000 | +900% YoY | Low | `/services/digital-marketing/search-marketing` and `/services/ai-automation/ai-visibility-audit` |
+| search engine optimization agency | 5,000 | Stable | Low | `/services/digital-marketing/search-marketing` |
+| seo optimization agency | 5,000 | Stable | Low | `/services/digital-marketing/search-marketing` |
+| ai optimization | 5,000 | +900% 3-month | Low | `/services/ai-automation/ai-visibility-audit` |
+| ai optimisation | 5,000 | +900% 3-month | Low | `/services/ai-automation/ai-visibility-audit` |
+| ai ranking | 5,000 | +900% YoY | Low | `/services/ai-automation/ai-visibility-audit` |
+| geo seo | 5,000 | Stable | Low | `/services/digital-marketing/search-marketing` and `/topics/geo-for-service-businesses` |
+
+Add these P1 keywords as supporting page terms and content targets:
+
+| Keyword | Volume | Trend | Competition | Target |
+| --- | ---: | --- | --- | --- |
+| ai seo tools | 5,000 | +900% YoY | Low | Comparison article |
+| ai seo tool | 5,000 | +900% YoY | Low | Comparison article |
+| google ai search | 5,000 | Stable | Low | AI-search explainer |
+| ai search engine | 5,000 | Stable | Low | AI-search explainer |
+| perplexity ai search engine | 5,000 | +900% YoY | Low | AI-search explainer |
+| ai marketing tools | 5,000 | Stable | Low | Digital marketing article |
+| ai tools for marketing | 5,000 | Stable | Low | Digital marketing article |
+| geo agency | 500 | +900% YoY | Low | GEO FAQ / service section |
+| seo aeo | 500 | +900% YoY | Low | SEO vs AEO vs GEO content |
+| ai seo agency | 500 | Stable | Low | Search Marketing FAQ |
+| ai monitoring tools | 500 | +900% YoY | Low | AI visibility monitoring article |
+| best ai tools for seo | 500 | +900% YoY | Low | AI SEO tools article |
+| best ai seo tools | 500 | Stable | Low | AI SEO tools article |
+| ai driven digital marketing | 500 | +900% YoY | Low | Digital Marketing page |
+| ai marketing automation | 500 | Stable | Low | Digital Marketing / AI Automation content |
+
+Do not use broad terms like `ai tool`, `tools ai`, `free ai`, `free ai tools`, `best ai`, or brand-navigation terms like `semrush login` as service-page targets. Use them only when they support a useful article or comparison.
 
 ### What the CSV Tells Us
 
