@@ -1,929 +1,546 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
-import { motion, MotionConfigContext, LayoutGroup } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-// Types
-interface Props {
-  heading?: string;
-  text?: string;
-  variant?: 'Default' | 'Hover';
+export type Stage3DVariant = 'slices' | 'grid' | 'stack' | 'cross' | 'orbit' | 'prism';
+export type GeometryVariant = Stage3DVariant;
+
+interface IconHover3DProps {
+  variant?: Stage3DVariant;
+  iconSize?: number;
+  centered?: boolean;
+  active?: boolean;
   className?: string;
   style?: React.CSSProperties;
-  width?: number | string;
-  height?: number | string;
-  badge?: string;
 }
 
-// Transitions
-const transition1 = {
-  bounce: 0,
-  delay: 0,
-  duration: 0.4,
-  type: "spring" as const
+const tweenTransition = {
+  type: 'tween' as const,
+  duration: 0.7,
+  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
 };
 
-const transition2 = {
-  delay: 0,
-  duration: 0.4,
-  ease: [0.44, 0, 0.56, 1] as [number, number, number, number],
-  type: "tween" as const
+const smoothDeactivate = {
+  type: 'tween' as const,
+  duration: 0.7,
+  ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
 };
 
-const transformTemplate1 = (_: unknown, t: string) => `translate(-50%, -50%) ${t}`;
+/* ------------ shared cube-face style builder ------------ */
+const face = (
+  w: number,
+  h: number,
+  border: string,
+  bg: string,
+): React.CSSProperties => ({
+  position: 'absolute',
+  width: `${w}px`,
+  height: `${h}px`,
+  border: `3px solid ${border}`,
+  backgroundColor: bg,
+  backfaceVisibility: 'hidden',
+  transition: 'border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+});
 
-// Transition wrapper component
-const Transition: React.FC<{ value: unknown; children: React.ReactNode }> = ({ value, children }) => {
-  const config = React.useContext(MotionConfigContext);
-  const transition = value ?? config.transition;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const contextValue = React.useMemo(() => ({ ...config, transition }), [config, transition]);
+/* ======================================================= */
+/*  PUBLIC COMPONENT                                        */
+/* ======================================================= */
 
-  return (
-    <MotionConfigContext.Provider value={contextValue}>
-      {children}
-    </MotionConfigContext.Provider>
-  );
-};
-
-const Variants = motion.create(React.Fragment);
-
-export const IconHover3D: React.FC<Props> = ({
-  heading = "Library",
-  text = "A comprehensive collection of digital books and resources for learning and research. ",
-  variant = 'Default',
-  className = "",
+export const IconHover3D: React.FC<IconHover3DProps> = ({
+  variant = 'slices',
+  iconSize = 150,
+  centered = true,
+  active = false,
+  className = '',
   style = {},
-  width = "100%",
-  height = "auto",
-  badge,
-  ...restProps
 }) => {
-  const [currentVariant, setCurrentVariant] = useState<'Default' | 'Hover'>(variant);
-  const refBinding = useRef<HTMLDivElement>(null);
-  const defaultLayoutId = React.useId();
+  const [isHovered, setIsHovered] = useState(false);
+  const isActive = active || isHovered;
 
-  const isHoverVariant = currentVariant === 'Hover';
-  const variants = [currentVariant === 'Default' ? 'GPnJri30y' : 'zEwHlJ7zp'];
-
-  const handleMouseEnter = async () => {
-    setCurrentVariant('Hover');
-  };
-
-  const handleMouseLeave = async () => {
-    setCurrentVariant('Default');
-  };
-
-  const cubeSliceVariants = {
-    zEwHlJ7zp: {
-      "--border-color": "rgb(139, 47, 250)"
-    }
-  };
-
-  // Transition for the title
-  const titleTransition = {
-    duration: 0.3,
-    ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number], // Smoother easing curve
-    type: "tween" as const
-  };
-
-  const sliceCubeVariants = {
-    zEwHlJ7zp: {
-      rotateX: -28,
-      rotateY: -43,
-      scale: 1.1
-    }
-  };
-
-  const cornerScaleVariants = {
-    zEwHlJ7zp: {
-      scale: 2.2
-    }
-  };
-
-  const containerWidth = typeof width === 'number' ? `${width}px` : width;
-  const containerHeight = typeof height === 'number' ? `${height}px` : height;
+  const sizePx = `${iconSize}px`;
 
   return (
-    <div style={{ width: containerWidth, height: containerHeight === "auto" ? "100%" : containerHeight }} className={`w-full flex flex-col ${className}`}>
-      <LayoutGroup id={defaultLayoutId}>
-        <Variants animate={variants} initial={false}>
-          <Transition value={transition1}>
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        width: sizePx,
+        height: sizePx,
+        perspective: '1200px',
+        ...style,
+      }}
+      className={`relative select-none ${centered ? 'mx-auto flex items-center justify-center' : 'inline-block'} ${className}`}
+    >
+      {/* Container that houses the icon + corner brackets */}
+      <div className="relative w-[120px] h-[120px] flex items-center justify-center">
+        {/* Corner Brackets — expand outward on active */}
+        <CornerBracket pos="tl" active={isActive} />
+        <CornerBracket pos="bl" active={isActive} />
+        <CornerBracket pos="br" active={isActive} />
+        <CornerBracket pos="tr" active={isActive} />
+
+        {/* 3D Icon Area — border box container */}
+        <div
+          className="relative flex items-center justify-center overflow-visible"
+          style={{
+            width: '100px',
+            height: '100px',
+            border: `1px solid ${isActive ? 'rgba(8,145,178,0.35)' : 'rgba(15,23,42,0.12)'}`,
+            transition: 'border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          {/* BG Container — scaled-down 3D stage */}
+          <motion.div
+            className="absolute"
+            style={{
+              width: '340px',
+              height: '340px',
+              overflow: 'visible',
+              transformStyle: 'preserve-3d',
+            }}
+            animate={{
+              scale: isActive ? 0.32 : 0.28,
+              y: isActive ? [0, -6, 0, 4, 0] : 0,
+            }}
+            transition={
+              isActive
+                ? {
+                    scale: tweenTransition,
+                    y: {
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    },
+                  }
+                : smoothDeactivate
+            }
+          >
+            {/* The 3D geometry itself */}
             <motion.div
-              {...restProps}
-              className={`icon-hover-3d flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 p-6 rounded-[24px] w-full h-full border border-cyan-100/80 bg-white shadow-[0_12px_40px_rgba(8,145,178,0.08)] transition-all duration-300`}
-              data-framer-name="Default"
-              data-highlight={true}
-              ref={refBinding}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={currentVariant === 'Hover' ? handleMouseLeave : undefined}
+              className="absolute"
               style={{
-                "--background": "var(--surface)",
-                "--foreground": "var(--ink)",
-                backgroundColor: "var(--background)",
-                position: "relative",
-                overflow: "visible",
-                ...style
-              } as React.CSSProperties}
-            >
-              {/* Icon Container */}
-              <motion.div
-                className="icon-container flex-none flex items-center justify-center relative"
-                data-framer-name="Icon"
-                style={{
-                  alignContent: "center",
-                  alignItems: "center",
-                  display: "flex",
-                  flex: "none",
-                  flexDirection: "row",
-                  flexWrap: "nowrap",
-                  gap: "10px",
-                  height: "100px", // Increased from 64px
-                  justifyContent: "center",
-                  overflow: "visible",
-                  padding: "0px",
-                  position: "relative",
-                  width: "100px", // Increased from 64px
-                  zIndex: 1,
-                  border: "1px solid color-mix(in srgb, var(--foreground) 20%, transparent)"
-                }}
-              >
-                {/* BG Container */}
-                <motion.div
-                  className="bg-container"
-                  data-framer-name="BG"
-                  style={{
-                    flex: "none",
-                    height: "348px",
-                    overflow: "visible",
-                    position: "relative",
-                    width: "348px",
-                    zIndex: 2,
-                    scale: 0.3 // Increased from 0.2
-                  }}
-                >
-                  {/* Slice Cube */}
-                  <motion.div
-                    className="slice-cube"
-                    data-framer-name="Slice Cube"
-                    style={{
-                      alignContent: "center",
-                      alignItems: "center",
-                      display: "flex",
-                      flex: "none",
-                      flexDirection: "column",
-                      flexWrap: "nowrap",
-                      gap: "28px",
-                      height: "min-content",
-                      justifyContent: "center",
-                      left: "50%",
-                      overflow: "visible",
-                      padding: "0px",
-                      position: "absolute",
-                      top: "50%",
-                      transformStyle: "preserve-3d",
-                      width: "min-content",
-                      zIndex: 3,
-                      rotate: 49,
+                left: '50%',
+                top: '50%',
+                transformStyle: 'preserve-3d',
+                transformPerspective: 1200,
+              }}
+              animate={
+                isActive
+                  ? {
+                      rotateX: [-28, -22, -32, -26, -28],
+                      rotateY: [-43, -35, -48, -38, -43],
+                      rotate: [49, 53, 46, 51, 49],
+                      scale: [1.1, 1.14, 1.08, 1.12, 1.1],
+                    }
+                  : {
                       rotateX: 23,
                       rotateY: 33,
+                      rotate: 49,
                       scale: 0.7,
-                      transformPerspective: 1200
-                    }}
-                    transformTemplate={transformTemplate1}
-                    variants={sliceCubeVariants}
-                    animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                  >
-                    {/* Slice 1 */}
-                    <Transition value={transition2}>
-                      <motion.div
-                        className="slice-1"
-                        data-framer-name="Slice 1"
-                        style={{
-                          alignContent: "center",
-                          alignItems: "center",
-                          display: "flex",
-                          flex: "none",
-                          flexDirection: "row",
-                          flexWrap: "nowrap",
-                          gap: "10px",
-                          height: "min-content",
-                          justifyContent: "center",
-                          overflow: "visible",
-                          padding: "0px",
-                          position: "relative",
-                          transformStyle: "preserve-3d",
-                          width: "min-content"
-                        }}
-                      >
-                        {/* Front */}
-                        <motion.div
-                          className="slice-1-front"
-                          data-framer-name="Front"
-                          style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            height: "34px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            zIndex: 120
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Back */}
-                        <motion.div
-                          className="slice-1-back"
-                          data-framer-name="Back" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "0px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 180,
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Right */}
-                        <motion.div
-                          className="slice-1-right"
-                          data-framer-name="Right" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            left: "120px",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Left */}
-                        <motion.div
-                          className="slice-1-left"
-                          data-framer-name="Left" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "120px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: -90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Top */}
-                        <motion.div
-                          className="slice-1-top"
-                          data-framer-name="Top" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-120px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Bottom */}
-                        <motion.div
-                          className="slice-1-bottom"
-                          data-framer-name="Bottom" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-86px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                      </motion.div>
-                    </Transition>
-
-                    {/* Slice 2 */}
-                    <Transition value={transition2}>
-                      <motion.div
-                        className="slice-2"
-                        data-framer-name="Slice 2"
-                        style={{
-                          alignContent: "center",
-                          alignItems: "center",
-                          display: "flex",
-                          flex: "none",
-                          flexDirection: "row",
-                          flexWrap: "nowrap",
-                          gap: "10px",
-                          height: "min-content",
-                          justifyContent: "center",
-                          overflow: "visible",
-                          padding: "0px",
-                          position: "relative",
-                          transformStyle: "preserve-3d",
-                          width: "min-content"
-                        }}
-                      >
-                        {/* Front */}
-                        <motion.div
-                          className="slice-1-front"
-                          data-framer-name="Front"
-                          style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            height: "34px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            zIndex: 120
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Back */}
-                        <motion.div
-                          className="slice-1-back"
-                          data-framer-name="Back" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "0px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 180,
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Right */}
-                        <motion.div
-                          className="slice-1-right"
-                          data-framer-name="Right" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            left: "120px",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Left */}
-                        <motion.div
-                          className="slice-1-left"
-                          data-framer-name="Left" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "120px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: -90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Top */}
-                        <motion.div
-                          className="slice-1-top"
-                          data-framer-name="Top" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-120px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Bottom */}
-                        <motion.div
-                          className="slice-1-bottom"
-                          data-framer-name="Bottom" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-86px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                      </motion.div>
-                    </Transition>
-
-                    {/* Slice 3 */}
-                    <Transition value={transition2}>
-                      <motion.div
-                        className="slice-3"
-                        data-framer-name="Slice 3"
-                        style={{
-                          alignContent: "center",
-                          alignItems: "center",
-                          display: "flex",
-                          flex: "none",
-                          flexDirection: "row",
-                          flexWrap: "nowrap",
-                          gap: "10px",
-                          height: "min-content",
-                          justifyContent: "center",
-                          overflow: "visible",
-                          padding: "0px",
-                          position: "relative",
-                          transformStyle: "preserve-3d",
-                          width: "min-content"
-                        }}
-                      >
-                        {/* Front */}
-                        <motion.div
-                          className="slice-1-front"
-                          data-framer-name="Front"
-                          style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            height: "34px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "relative",
-                            width: "240px",
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            zIndex: 120
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Back */}
-                        <motion.div
-                          className="slice-1-back"
-                          data-framer-name="Back" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "0px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 180,
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Right */}
-                        <motion.div
-                          className="slice-1-right"
-                          data-framer-name="Right" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            left: "120px",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Left */}
-                        <motion.div
-                          className="slice-1-left"
-                          data-framer-name="Left" style={{
-                            alignContent: "center",
-                            alignItems: "center",
-                            bottom: "0px",
-                            display: "flex",
-                            flex: "none",
-                            flexDirection: "column",
-                            flexWrap: "nowrap",
-                            gap: "10px",
-                            justifyContent: "center",
-                            overflow: "hidden",
-                            padding: "0px",
-                            position: "absolute",
-                            right: "120px",
-                            top: "0px",
-                            width: "240px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateY: -90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Top */}
-                        <motion.div
-                          className="slice-1-top"
-                          data-framer-name="Top" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-120px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                        {/* Bottom */}
-                        <motion.div
-                          className="slice-1-bottom"
-                          data-framer-name="Bottom" style={{
-                            flex: "none",
-                            height: "240px",
-                            left: "0px",
-                            overflow: "hidden",
-                            position: "absolute",
-                            right: "0px",
-                            top: "-86px",
-                            zIndex: 1,
-                            border: "4px solid var(--foreground)",
-                            backgroundColor: "var(--background)",
-                            rotateX: 90
-                          }}
-                          variants={cubeSliceVariants}
-                          animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                        />
-                      </motion.div>
-                    </Transition>
-                  </motion.div>
-                  {/* Corner elements */}
-                  <motion.div
-                    style={{
-                      flex: "none",
-                      height: "24px",
-                      left: isHoverVariant ? "-6px" : "14px",
-                      overflow: "hidden",
-                      position: "absolute",
-                      top: isHoverVariant ? "-6px" : "14px",
-                      width: "24px",
-                      zIndex: 2,
-                      borderLeft: "4px solid var(--foreground)",
-                      borderTop: "4px solid var(--foreground)",
-                      scale: 1
-                    }}
-                    variants={cornerScaleVariants}
-                    animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                  />
-                  <motion.div
-                    style={{
-                      flex: "none",
-                      height: "24px",
-                      left: isHoverVariant ? "-6px" : "14px",
-                      overflow: "hidden",
-                      position: "absolute",
-                      top: isHoverVariant ? "330px" : "310px",
-                      width: "24px",
-                      zIndex: 2,
-                      borderLeft: "4px solid var(--foreground)",
-                      borderBottom: "4px solid var(--foreground)",
-                      scale: 1
-                    }}
-                    variants={cornerScaleVariants}
-                    animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                  />
-                  <motion.div
-                    style={{
-                      bottom: isHoverVariant ? "-6px" : "14px",
-                      flex: "none",
-                      height: "24px",
-                      overflow: "hidden",
-                      position: "absolute",
-                      right: isHoverVariant ? "-6px" : "14px",
-                      width: "24px",
-                      zIndex: 2,
-                      borderRight: "4px solid var(--foreground)",
-                      borderBottom: "4px solid var(--foreground)",
-                      scale: 1
-                    }}
-                    variants={cornerScaleVariants}
-                    animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                  />
-                  <motion.div
-                    style={{
-                      flex: "none",
-                      height: "24px",
-                      overflow: "hidden",
-                      position: "absolute",
-                      right: isHoverVariant ? "-6px" : "14px",
-                      top: isHoverVariant ? "-6px" : "14px",
-                      width: "24px",
-                      zIndex: 2,
-                      borderRight: "4px solid var(--foreground)",
-                      borderTop: "4px solid var(--foreground)",
-                      scale: 1
-                    }}
-                    variants={cornerScaleVariants}
-                    animate={isHoverVariant ? 'zEwHlJ7zp' : 'default'}
-                  />
-                </motion.div>
-              </motion.div>
-
-              {/* Content */}
-              <motion.div
-                className="content flex-1 w-full"
-                data-framer-name="Content"
-                style={{
-                  alignContent: "flex-start",
-                  alignItems: "flex-start",
-                  display: "flex",
-                  flexDirection: "column",
-                  flexWrap: "nowrap",
-                  gap: "12px", // Increased gap
-                  height: "min-content",
-                  justifyContent: "center",
-                  overflow: "hidden",
-                  padding: "0px",
-                  position: "relative",
-                }}
-              >
-                {/* Badge if present */}
-                {badge && (
-                  <span className="inline-flex self-start items-center rounded-full bg-cyan-50 border border-cyan-100 px-3 py-1 text-xs font-semibold text-cyan-700">
-                    {badge}
-                  </span>
-                )}
-
-                {/* Text Container */}
-                <motion.div
-                  className="text-container w-full"
-                  data-framer-name="Text"
-                  style={{
-                    alignContent: "flex-start",
-                    alignItems: "center",
-                    display: "flex",
-                    flexDirection: "row",
-                    flexWrap: "nowrap",
-                    gap: "10px",
-                    justifyContent: "flex-start",
-                    overflow: "visible",
-                    padding: "0px",
-                    position: "relative",
-                  }}
-                >
-                  {/* BG Fill - Hidden for clean black/white effect */}
-                  <motion.div
-                    className="bg-fill"
-                    data-framer-name="BG Fill"
-                    style={{
-                      flex: "none",
-                      height: "32px", // Increased height
-                      left: "0px",
-                      overflow: "hidden",
-                      position: "absolute",
-                      top: "calc(50% - 16px)", // Adjusted for new height
-                      width: "1px", // Keep minimal
-                      zIndex: 0,
-                      backgroundColor: "transparent", // Made transparent
-                      opacity: 0 // Always hidden
-                    }}
-                  />
-                  {/* Heading Text with hover effect */}
-                  <motion.div
-                    style={{
-                      flex: "1",
-                      height: "auto",
-                      minHeight: "32px",
-                      position: "relative",
-                      whiteSpace: "normal",
-                      width: "auto",
-                      fontFamily: '"Inter", "Inter Placeholder", sans-serif',
-                      fontWeight: "600",
-                      fontSize: "18px", // Increased font size
-                      color: "var(--foreground)",
-                      userSelect: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      overflow: "hidden",
-                      paddingTop: "2px",
-                      paddingBottom: "2px"
-                    }}
-                  >
-                    {/* Background text (white/slate) */}
-                    <span className="text-left leading-snug" style={{ position: "relative", zIndex: 1 }}>
-                      {heading}
-                    </span>
-                    {/* Animated overlay text (black/white invert) */}
-                    <motion.span
-                      className="text-left leading-snug"
-                      style={{
-                        position: "absolute",
-                        top: "2px",
-                        left: 0,
-                        right: 0,
-                        color: "var(--background)",
-                        clipPath: `inset(0 ${isHoverVariant ? '0%' : '100%'} 0 0)`,
-                        zIndex: 2
-                      }}
-                      animate={{
-                        clipPath: `inset(0 ${isHoverVariant ? '0%' : '100%'} 0 0)`
-                      }}
-                      transition={titleTransition}
-                    >
-                      {heading}
-                    </motion.span>
-
-                    {/* background fill that moves from left to right */}
-                    <motion.div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backgroundColor: "var(--royal)",
-                        transformOrigin: "left center",
-                        scaleX: 0,
-                        zIndex: 1
-                      }}
-                      animate={{
-                        scaleX: isHoverVariant ? 1 : 0
-                      }}
-                      transition={titleTransition}
-                    />
-                  </motion.div>
-                </motion.div>
-
-                {/* Description Text */}
-                <motion.div
-                  style={{
-                    flex: "none",
-                    height: "auto",
-                    position: "relative",
-                    whiteSpace: "pre-wrap",
-                    width: "100%",
-                    wordBreak: "break-word",
-                    wordWrap: "break-word",
-                    fontFamily: '"Inter", "Inter Placeholder", sans-serif',
-                    fontWeight: "400", // Reduced weight for better readability
-                    fontSize: "15px", // Adjusted to fit nicely
-                    lineHeight: "1.5em", // Improved line height
-                    color: "color-mix(in srgb, var(--foreground) 70%, transparent)",
-                    userSelect: "none"
-                  }}
-                >
-                  {text}
-                </motion.div>
-              </motion.div>
+                    }
+              }
+              transition={
+                isActive
+                  ? {
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }
+                  : smoothDeactivate
+              }
+            >
+              {variant === 'slices' && <SlicesGeometry active={isActive} />}
+              {variant === 'grid' && <GridGeometry active={isActive} />}
+              {variant === 'stack' && <StackGeometry active={isActive} />}
+              {variant === 'cross' && <CrossGeometry active={isActive} />}
+              {variant === 'orbit' && <OrbitGeometry active={isActive} />}
+              {variant === 'prism' && <PrismGeometry active={isActive} />}
             </motion.div>
-          </Transition>
-        </Variants>
-      </LayoutGroup>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 };
+
+/* ======================================================= */
+/*  CORNER BRACKET                                          */
+/* ======================================================= */
+
+function CornerBracket({ pos, active }: { pos: 'tl' | 'tr' | 'bl' | 'br'; active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const size = '20px';
+
+  const posProps: Record<string, Record<string, string>> = {
+    tl: { left: active ? '-8px' : '6px', top: active ? '-8px' : '6px' },
+    tr: { right: active ? '-8px' : '6px', top: active ? '-8px' : '6px' },
+    bl: { left: active ? '-8px' : '6px', bottom: active ? '-8px' : '6px' },
+    br: { right: active ? '-8px' : '6px', bottom: active ? '-8px' : '6px' },
+  };
+
+  const borderStyle: React.CSSProperties = {
+    width: size,
+    height: size,
+    borderLeft: (pos === 'tl' || pos === 'bl') ? `3px solid ${color}` : 'none',
+    borderRight: (pos === 'tr' || pos === 'br') ? `3px solid ${color}` : 'none',
+    borderTop: (pos === 'tl' || pos === 'tr') ? `3px solid ${color}` : 'none',
+    borderBottom: (pos === 'bl' || pos === 'br') ? `3px solid ${color}` : 'none',
+    transition: 'border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+  };
+
+  return (
+    <motion.div
+      className="absolute z-10"
+      animate={{
+        ...posProps[pos],
+        scale: active ? 1.5 : 1,
+      }}
+      transition={tweenTransition}
+      style={borderStyle}
+    />
+  );
+}
+
+/* ======================================================= */
+/*  SHARED: Single 3D Slab (a rectangular solid)            */
+/* ======================================================= */
+
+interface SlabProps {
+  w: number;    // front face width
+  h: number;    // front face height
+  d: number;    // depth
+  color: string;
+  bg: string;
+}
+
+/** A single 3D rectangular prism built from 6 CSS faces */
+function Slab({ w, h, d, color, bg }: SlabProps) {
+  const hw = w / 2;
+  const hh = h / 2;
+  const hd = d / 2;
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: `${w}px`,
+        height: `${h}px`,
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {/* Front */}
+      <div style={{ ...face(w, h, color, bg), transform: `translateZ(${hd}px)` }} />
+      {/* Back */}
+      <div style={{ ...face(w, h, color, bg), transform: `translateZ(${-hd}px) rotateY(180deg)` }} />
+      {/* Right */}
+      <div
+        style={{
+          ...face(d, h, color, bg),
+          left: `${hw - hd}px`,
+          transform: `translateX(${hw - hd}px) rotateY(90deg)`,
+        }}
+      />
+      {/* Left */}
+      <div
+        style={{
+          ...face(d, h, color, bg),
+          right: `${hw - hd}px`,
+          transform: `translateX(${-(hw - hd)}px) rotateY(-90deg)`,
+        }}
+      />
+      {/* Top */}
+      <div
+        style={{
+          position: 'absolute',
+          width: `${w}px`,
+          height: `${d}px`,
+          border: `3px solid ${color}`,
+          backgroundColor: bg,
+          top: `${-hd + hh - hd}px`,
+          transform: `translateY(${-(hh - hd)}px) rotateX(90deg)`,
+        }}
+      />
+      {/* Bottom */}
+      <div
+        style={{
+          position: 'absolute',
+          width: `${w}px`,
+          height: `${d}px`,
+          border: `3px solid ${color}`,
+          backgroundColor: bg,
+          bottom: `${-hd + hh - hd}px`,
+          transform: `translateY(${hh - hd}px) rotateX(-90deg)`,
+        }}
+      />
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  1. SLICES — Three horizontal slabs stacked (book stack) */
+/*     Signature: Flat pages splitting apart vertically      */
+/* ======================================================= */
+
+function SlicesGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: active ? '28px' : '4px',
+        transition: 'gap 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+      }}
+    >
+      <Slab w={240} h={34} d={240} color={color} bg={bg} />
+      <Slab w={240} h={34} d={240} color={color} bg={bg} />
+      <Slab w={240} h={34} d={240} color={color} bg={bg} />
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  2. GRID — 2×2 mini-cube matrix                          */
+/*     Signature: Four small cubes in a grid pattern         */
+/* ======================================================= */
+
+function GridGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+  const gap = active ? 40 : 8;
+  const cubeSize = 100;
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+        display: 'grid',
+        gridTemplateColumns: `${cubeSize}px ${cubeSize}px`,
+        gridTemplateRows: `${cubeSize}px ${cubeSize}px`,
+        gap: `${gap}px`,
+        transition: 'gap 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+      }}
+    >
+      <Slab w={cubeSize} h={cubeSize} d={cubeSize} color={color} bg={bg} />
+      <Slab w={cubeSize} h={cubeSize} d={cubeSize} color={color} bg={bg} />
+      <Slab w={cubeSize} h={cubeSize} d={cubeSize} color={color} bg={bg} />
+      <Slab w={cubeSize} h={cubeSize} d={cubeSize} color={color} bg={bg} />
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  3. STACK — Fanned cards at progressive angles            */
+/*     Signature: Layered cards fanning like a dealt hand    */
+/* ======================================================= */
+
+function StackGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+  const angles = active ? [-18, -6, 6, 18] : [-3, -1, 1, 3];
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {angles.map((angle, i) => (
+        <div
+          key={i}
+          style={{
+            position: i === 0 ? 'relative' : 'absolute',
+            left: i === 0 ? undefined : '50%',
+            top: i === 0 ? undefined : '50%',
+            transform: i === 0
+              ? `rotateZ(${angle}deg)`
+              : `translate(-50%, -50%) rotateZ(${angle}deg) translateZ(${i * (active ? 22 : 6)}px)`,
+            transformStyle: 'preserve-3d',
+            transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <Slab w={220} h={160} d={20} color={color} bg={bg} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  4. CROSS — Interlocking L-beams                          */
+/*     Signature: Two tall + short beams crossing at 90°     */
+/* ======================================================= */
+
+function CrossGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {/* Vertical beam */}
+      <div style={{ transformStyle: 'preserve-3d' }}>
+        <Slab w={60} h={260} d={60} color={color} bg={bg} />
+      </div>
+      {/* Horizontal beam crossing */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) rotateZ(90deg) translateY(${active ? '50px' : '0px'})`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
+        <Slab w={60} h={260} d={60} color={color} bg={bg} />
+      </div>
+      {/* Small accent cube at intersection */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) translateZ(${active ? '40px' : '0px'})`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
+        <Slab w={80} h={80} d={80} color={color} bg={active ? 'rgba(8,145,178,0.15)' : 'white'} />
+      </div>
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  5. ORBIT — Central cube with intersecting ring planes    */
+/*     Signature: Nucleus with tilted orbital rings           */
+/* ======================================================= */
+
+function OrbitGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {/* Central solid cube — the nucleus */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        <Slab w={90} h={90} d={90} color={color} bg={bg} />
+      </div>
+      {/* Ring plane 1 — tilted XZ */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) rotateX(${active ? '75deg' : '50deg'}) rotateZ(${active ? '25deg' : '0deg'})`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
+        <Slab w={260} h={14} d={260} color={color} bg="transparent" />
+      </div>
+      {/* Ring plane 2 — tilted opposite */}
+      <div
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: `translate(-50%, -50%) rotateY(${active ? '75deg' : '50deg'}) rotateZ(${active ? '-25deg' : '0deg'})`,
+          transformStyle: 'preserve-3d',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
+        <Slab w={260} h={14} d={260} color={color} bg="transparent" />
+      </div>
+    </div>
+  );
+}
+
+/* ======================================================= */
+/*  6. PRISM — Stepped staircase / ziggurat                  */
+/*     Signature: Three blocks ascending in size             */
+/* ======================================================= */
+
+function PrismGeometry({ active }: { active: boolean }) {
+  const color = active ? '#22d3ee' : '#0f172a';
+  const bg = active ? 'rgba(8,145,178,0.12)' : 'white';
+
+  const steps = [
+    { w: 80,  h: 70, offset: active ? -80 : -50, z: active ? 50 : 0 },
+    { w: 150, h: 70, offset: active ? 0 : 0,      z: active ? 25 : 0 },
+    { w: 240, h: 70, offset: active ? 80 : 50,     z: 0 },
+  ];
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {steps.map((step, i) => (
+        <div
+          key={i}
+          style={{
+            position: i === 0 ? 'relative' : 'absolute',
+            left: i === 0 ? undefined : '50%',
+            top: i === 0 ? undefined : '50%',
+            transform: i === 0
+              ? `translateY(${step.offset}px) translateZ(${step.z}px)`
+              : `translate(-50%, -50%) translateY(${step.offset}px) translateZ(${step.z}px)`,
+            transformStyle: 'preserve-3d',
+            transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <Slab w={step.w} h={step.h} d={step.w} color={color} bg={bg} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default IconHover3D;

@@ -210,20 +210,20 @@ export const GoogleGeminiEffect = ({
               <stop offset="100%" stopColor="#3B82F6" />
             </linearGradient>
             <linearGradient id="cyan-blue-grad-2" x1="0%" y1="0%" x2="100%" y2="40%">
-              <stop offset="0%" stopColor="#22D3EE" />
-              <stop offset="100%" stopColor="#06B6D4" />
+              <stop offset="0%" stopColor="#0891B2" />
+              <stop offset="100%" stopColor="#22D3EE" />
             </linearGradient>
             <linearGradient id="cyan-blue-grad-3" x1="0%" y1="0%" x2="100%" y2="40%">
-              <stop offset="0%" stopColor="#67E8F9" />
+              <stop offset="0%" stopColor="#22D3EE" />
               <stop offset="100%" stopColor="#3B82F6" />
             </linearGradient>
             <linearGradient id="cyan-blue-grad-4" x1="0%" y1="0%" x2="100%" y2="40%">
               <stop offset="0%" stopColor="#0891B2" />
-              <stop offset="100%" stopColor="#1D4ED8" />
+              <stop offset="100%" stopColor="#06B6D4" />
             </linearGradient>
             <linearGradient id="cyan-blue-grad-5" x1="0%" y1="0%" x2="100%" y2="40%">
-              <stop offset="0%" stopColor="#0E7490" />
-              <stop offset="100%" stopColor="#1E3A8A" />
+              <stop offset="0%" stopColor="#06B6D4" />
+              <stop offset="100%" stopColor="#3B82F6" />
             </linearGradient>
             <filter id="cyan-glow-filter" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="2.2" result="blur" />
@@ -291,17 +291,17 @@ export const GoogleGeminiEffect = ({
                       <motion.path
                         d={strand.d}
                         stroke={strand.gradientUrl}
-                        strokeWidth="1.6" // Sleek, minimal width
+                        strokeWidth="1.8"
                         strokeLinecap="round"
                         fill="none"
-                        strokeDasharray="90, 1600" // Compact comet dash
-                        initial={{ strokeDashoffset: 800, opacity: 0.7 }}
+                        strokeDasharray="100, 1600"
+                        initial={{ strokeDashoffset: 800, opacity: 0.75 }}
                         animate={{
                           strokeDashoffset: [800, 1600],
-                          opacity: [0.7, 0.7, 0], // Fades out at the left edge
+                          opacity: [0.75, 0.75, 0],
                         }}
                         transition={{
-                          duration: 0.95, // Consistent snappy zip
+                          duration: 0.9,
                           ease: "easeOut",
                         }}
                       />
@@ -309,14 +309,14 @@ export const GoogleGeminiEffect = ({
                       <motion.path
                         d={strand.d}
                         stroke={strand.gradientUrl}
-                        strokeWidth="1.6" // Sleek, minimal width
+                        strokeWidth="1.8"
                         strokeLinecap="round"
                         fill="none"
-                        strokeDasharray="90, 1600" // Compact comet dash
-                        initial={{ strokeDashoffset: 800, opacity: 0.7 }}
+                        strokeDasharray="100, 1600"
+                        initial={{ strokeDashoffset: 800, opacity: 0.75 }}
                         animate={{
                           strokeDashoffset: [800, 0],
-                          opacity: [0.7, 0.7, 0], // Fades out at the right edge
+                          opacity: [0.75, 0.75, 0],
                         }}
                         transition={{
                           duration: 0.95, // Consistent snappy zip
@@ -455,7 +455,7 @@ export const GoogleGeminiEffect = ({
                   setDomain(e.target.value);
                   const newId = Date.now() + Math.random();
                   const strandIndex = Math.floor(Math.random() * 5); // Target a single random strand
-                  setRipples((prev) => [...prev, { id: newId, strandIndex }].slice(-3)); // Cap active ripples queue to 3
+                  setRipples((prev) => [...prev, { id: newId, strandIndex }].slice(-5));
                   setTimeout(() => {
                     setRipples((prev) => prev.filter((r) => r.id !== newId));
                   }, 1500); // Shorter cleanup time matches the 0.95s animation duration

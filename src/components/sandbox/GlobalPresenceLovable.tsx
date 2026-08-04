@@ -207,7 +207,7 @@ export default function GlobalPresenceLovable() {
                 LAT_LNC_COORD: GRID_MODE
               </div>
               <div className="absolute bottom-4 right-6 font-mono text-[9px] text-cyan-500">
-                WORLDWIDE_COVERAGE
+                {"// WORLDWIDE_COVERAGE"}
               </div>
             </div>
           </div>
