@@ -132,11 +132,13 @@ export function CardStack<T extends CardStackItem>({
   React.useEffect(() => {
     const handleResize = () => {
       const screenW = window.innerWidth;
-      // Subtract margins/paddings from viewport width for safety
-      const targetW = Math.min(cardWidth, screenW - 32); 
-      // Scale height proportionally but keep a safe minimum so text fits
+      const isMobile = screenW < 640;
+      const padding = isMobile ? 24 : 32;
+      const targetW = Math.min(cardWidth, screenW - padding); 
+      // On mobile screens, ensure height provides enough vertical room for text wrapping
+      const minH = isMobile ? Math.min(340, Math.max(300, cardHeight)) : 280;
       const scaledH = Math.round(targetW * (cardHeight / cardWidth));
-      const targetH = Math.max(280, Math.min(cardHeight, scaledH));
+      const targetH = Math.max(minH, Math.min(cardHeight, scaledH));
       setScreenSize({ width: targetW, height: targetH });
     };
     
@@ -158,8 +160,13 @@ export function CardStack<T extends CardStackItem>({
 
   const maxOffset = Math.max(0, Math.floor(maxVisible / 2));
 
-  const cardSpacing = Math.max(10, Math.round(screenSize.width * (1 - overlap)));
-  const stepDeg = maxOffset > 0 ? spreadDeg / maxOffset : 0;
+  // Tweak fan parameters dynamically for smaller screens so side cards don't break page width
+  const isMobile = screenSize.width < 500;
+  const effectiveSpreadDeg = isMobile ? Math.min(16, spreadDeg) : spreadDeg;
+  const effectiveOverlap = isMobile ? 0.72 : overlap;
+
+  const cardSpacing = Math.max(8, Math.round(screenSize.width * (1 - effectiveOverlap)));
+  const stepDeg = maxOffset > 0 ? effectiveSpreadDeg / maxOffset : 0;
 
   const canGoPrev = loop || active > 0;
   const canGoNext = loop || active < len - 1;

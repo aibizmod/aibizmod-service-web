@@ -75,7 +75,7 @@ export default function Testimonials() {
               cardHeight={340}
               renderCard={(item, { active }) => (
                 <div
-                  className={`card-royal h-full w-full p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${
+                  className={`card-royal h-full w-full p-5 sm:p-6 md:p-8 flex flex-col justify-between transition-all duration-300 relative ${
                     active
                       ? "border-cyan-400/50 shadow-[0_0_25px_rgba(6,182,212,0.15),0_8px_30px_rgba(6,182,212,0.06)]"
                       : "border-border/30 opacity-60"
@@ -83,10 +83,9 @@ export default function Testimonials() {
                 >
                   <div>
                     {/* Highlighted decorative quote icon */}
-                    <div className="mb-3">
+                    <div className="mb-2 sm:mb-3">
                       <svg
-                        width="36"
-                        height="36"
+                        className="w-7 h-7 sm:w-9 sm:h-9"
                         viewBox="0 0 36 36"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -106,18 +105,18 @@ export default function Testimonials() {
                     </div>
 
                     {/* Quote body */}
-                    <p className="text-muted-foreground leading-relaxed text-[16px] md:text-[15px]">
+                    <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm md:text-[15px]">
                       &ldquo;{item.quote}&rdquo;
                     </p>
                   </div>
 
                   <div>
                     {/* Divider with cyan tint */}
-                    <div className="my-5 h-px bg-gradient-to-r from-cyan-400/40 via-cyan-400/10 to-transparent" />
+                    <div className="my-3 sm:my-5 h-px bg-gradient-to-r from-cyan-400/40 via-cyan-400/10 to-transparent" />
 
                     {/* Author */}
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full shrink-0 border-2 border-cyan-400/30 bg-white flex items-center justify-center p-1">
+                    <div className="flex items-center gap-2.5 sm:gap-3">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full shrink-0 border-2 border-cyan-400/30 bg-white flex items-center justify-center p-1">
                         <Image
                           src={item.logo}
                           alt={`${item.company} client brand logo representing partner testimonial`}
@@ -127,8 +126,8 @@ export default function Testimonials() {
                         />
                       </div>
                       <div>
-                        <p className="font-semibold text-ink text-sm">{item.title}, {item.company}</p>
-                        <p className="text-[12px] text-cyan-600 font-medium">Client</p>
+                        <p className="font-semibold text-ink text-xs sm:text-sm">{item.title}, {item.company}</p>
+                        <p className="text-[11px] sm:text-[12px] text-cyan-600 font-medium">Client</p>
                       </div>
                     </div>
                   </div>
