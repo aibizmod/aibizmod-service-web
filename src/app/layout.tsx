@@ -154,6 +154,7 @@ export default function RootLayout({
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(entityGraph) }}
 				/>
 			</head>
+			<meta name="google-site-verification" content="ifsj7MlKrmbeOn9NkKOI8ydf8fOXFqIpXFXks1XDUkk" />
 			<body className='font-sans antialiased bg-canvas text-ink'>
 				<a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-white focus:text-cyan-700 focus:shadow-lg focus:outline-none focus:text-sm focus:font-medium">
 					Skip to main content
