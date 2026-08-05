@@ -520,13 +520,70 @@ export function Hero() {
     }
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const scanEnergyRef = useRef(0);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const targetDomain = domain.trim();
-    if (!targetDomain) return;
+    if (!targetDomain || isSubmitting) return;
 
-    window.sessionStorage.setItem("pending-audit-domain", targetDomain);
-    router.push("/ai-visibility-audit-report");
+    setIsSubmitting(true);
+
+    // 1. Measure search form rect & store in sessionStorage for scanning page entrance
+    try {
+      if (formRef.current) {
+        const r = formRef.current.getBoundingClientRect();
+        sessionStorage.setItem(
+          "strand-handoff",
+          JSON.stringify({
+            cx: r.left + r.width / 2,
+            cy: r.top + r.height / 2,
+            w: r.width,
+            t: Date.now(),
+          })
+        );
+      }
+    } catch {
+      // Storage failure degrades to plain centered entrance
+    }
+
+    try {
+      sessionStorage.setItem("pending-audit-domain", targetDomain);
+    } catch {
+      // Storage failure ignored
+    }
+
+    // 2. Dispatch ripple bursts at 0, 120, 260, 420ms
+    const dispatchRipple = () => {
+      const now = performance.now() / 1000;
+      if (ripples.current.length >= MAX_RIPPLES) ripples.current.shift();
+      ripples.current.push({ t0: now, life: RIPPLE_LIFE });
+    };
+
+    dispatchRipple(); // 0ms
+    setTimeout(dispatchRipple, 120);
+    setTimeout(dispatchRipple, 260);
+    setTimeout(dispatchRipple, 420);
+
+    // 3. Scan energy ramp (0 -> 1100ms) with easeOutCubic
+    const startTime = performance.now();
+    const rampEnergy = (timestamp: number) => {
+      const elapsed = timestamp - startTime;
+      const p = Math.min(1, elapsed / 1100);
+      const eased = 1 - Math.pow(1 - p, 3);
+      scanEnergyRef.current = eased;
+
+      if (p < 1) {
+        requestAnimationFrame(rampEnergy);
+      }
+    };
+    requestAnimationFrame(rampEnergy);
+
+    // 4. Navigate at 1050ms while dissolve finishes
+    setTimeout(() => {
+      router.push(`/scanning?url=${encodeURIComponent(targetDomain)}`);
+    }, 1050);
   };
 
   const rippleRequestId = useRef(0);
@@ -547,7 +604,7 @@ export function Hero() {
         }}
       />
 
-      {/* Animated strands SVG */}
+      {/* Animated strands SVG (carries visual continuity) */}
       <StrandsSVG
         searchTarget={searchTarget}
         isTyping={isTyping}
@@ -556,8 +613,16 @@ export function Hero() {
         reducedMotion={reducedMotion}
       />
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 pb-20 text-center" style={{ paddingTop: "calc(68px)" }}>
+      {/* Content dissolve */}
+      <div
+        className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 pb-20 text-center transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{
+          paddingTop: "calc(68px)",
+          opacity: isSubmitting ? 0 : 1,
+          transform: isSubmitting ? "translateY(-10px)" : "translateY(0px)",
+          filter: isSubmitting ? "blur(6px)" : "blur(0px)",
+        }}
+      >
         <div className="w-full max-w-6xl">
 
           {/* 1. Main Heading (Rotating Service Ticker in 2 Lines) */}

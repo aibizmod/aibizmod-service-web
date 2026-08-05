@@ -40,7 +40,236 @@ import {
   Check,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
-import NeuralBackground from "@/components/ui/flow-field-background";
+import { TextShimmer } from "@/components/ui/text-shimmer";
+// ---------------------------------------------------------------------------
+// Audit Page Strands Background Component
+// ---------------------------------------------------------------------------
+const PAGE_STRANDS = 7;
+const PAGE_SAMPLES = 33;
+const PAGE_VB_W = 1440;
+const PAGE_VB_H = 900;
+
+const PAGE_STRAND_GRADIENTS = [
+  { start: "#06B6D4", mid: "#22D3EE", end: "#3B82F6" },
+  { start: "#0891B2", mid: "#06B6D4", end: "#22D3EE" },
+  { start: "#22D3EE", mid: "#0891B2", end: "#3B82F6" },
+  { start: "#06B6D4", mid: "#0891B2", end: "#06B6D4" },
+  { start: "#3B82F6", mid: "#22D3EE", end: "#0891B2" },
+  { start: "#0891B2", mid: "#3B82F6", end: "#06B6D4" },
+  { start: "#22D3EE", mid: "#06B6D4", end: "#3B82F6" },
+];
+
+interface SearchTarget {
+  cx: number;
+  cy: number;
+  left: number;
+  right: number;
+  pillW: number;
+}
+
+const FALLBACK_TARGET: SearchTarget = {
+  cx: 720,
+  cy: 580,
+  left: 396,
+  right: 1044,
+  pillW: 648,
+};
+
+interface AuditPageStrandsProps {
+  searchTarget?: SearchTarget | null;
+  isTyping?: boolean;
+  ripples?: React.MutableRefObject<{ t0: number; life: number }[]>;
+  className?: string;
+}
+
+function AuditPageStrandsBackground({ searchTarget, isTyping, ripples, className }: AuditPageStrandsProps) {
+  const phaseRef = useRef<number[]>(Array.from({ length: PAGE_STRANDS }, (_, i) => i * 0.8));
+  const phase2Ref = useRef<number[]>(Array.from({ length: PAGE_STRANDS }, (_, i) => i * 0.5 + 1.2));
+  const disturbRef = useRef(0);
+  const pathRefs = useRef<(SVGPathElement | null)[]>(Array(PAGE_STRANDS).fill(null));
+  const dotLeftRef = useRef<SVGCircleElement | null>(null);
+  const dotRightRef = useRef<SVGCircleElement | null>(null);
+  const frameRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+
+  const searchTargetRef = useRef<SearchTarget>(searchTarget ?? FALLBACK_TARGET);
+  useEffect(() => {
+    searchTargetRef.current = searchTarget ?? FALLBACK_TARGET;
+  }, [searchTarget]);
+
+  useEffect(() => {
+    const animate = (time: number) => {
+      const dt = lastTimeRef.current === null ? 0 : Math.min((time - lastTimeRef.current) / 1000, 0.05);
+      lastTimeRef.current = time;
+
+      const target = isTyping ? 1 : 0;
+      const tau = isTyping ? 0.11 : 0.65;
+      disturbRef.current += (target - disturbRef.current) * (1 - Math.exp(-dt / tau));
+
+      const disturb = disturbRef.current;
+      const speed = 0.85 + 0.9 * disturb;
+
+      for (let i = 0; i < PAGE_STRANDS; i++) {
+        phaseRef.current[i] += speed * dt;
+        phase2Ref.current[i] += speed * dt * 1.3;
+      }
+
+      const st = searchTargetRef.current;
+      const { cx, cy } = st;
+
+      const maxFunnelHalf = Math.min(st.pillW / 2, 340);
+      const sLeft = Math.max(cx - maxFunnelHalf, 340);
+      const sRight = Math.min(cx + maxFunnelHalf, 1100);
+
+      for (let i = 0; i < PAGE_STRANDS; i++) {
+        const baseRow = (PAGE_VB_H / (PAGE_STRANDS + 1)) * (i + 1);
+        const sign = i % 2 === 0 ? 1 : -1;
+        const points: [number, number][] = [];
+
+        for (let s = 0; s < PAGE_SAMPLES; s++) {
+          const x = (s / (PAGE_SAMPLES - 1)) * PAGE_VB_W;
+          let y = baseRow;
+
+          if (x <= sLeft) {
+            const t = smoothstepStrand(0, sLeft, x);
+            y = baseRow + (cy - baseRow) * t;
+            const swayFade = 1 - t;
+            y += Math.sin(phaseRef.current[i] * 1.5 - x * 0.008 + i * 0.7) * (14 + 9.5 * disturb) * swayFade;
+
+            if (ripples?.current) {
+              for (const rip of ripples.current) {
+                const age = performance.now() / 1000 - rip.t0;
+                if (age < 0 || age > rip.life) continue;
+                const norm = age / rip.life;
+                const fade = Math.sin(norm * Math.PI);
+                const front = age * 950;
+                const dist = (sLeft - x) - front;
+                const bump = Math.exp(-(dist * dist) / (2 * 145 * 145));
+                y += sign * bump * fade * 11.5 * swayFade;
+              }
+            }
+          } else if (x >= sRight) {
+            const t = smoothstepStrand(sRight, PAGE_VB_W, x);
+            y = cy + (baseRow - cy) * t;
+            y += Math.sin(phaseRef.current[i] * 1.5 + x * 0.008 + i * 0.7) * (14 + 9.5 * disturb) * t;
+
+            if (ripples?.current) {
+              for (const rip of ripples.current) {
+                const age = performance.now() / 1000 - rip.t0;
+                if (age < 0 || age > rip.life) continue;
+                const norm = age / rip.life;
+                const fade = Math.sin(norm * Math.PI);
+                const front = age * 950;
+                const dist = (x - sRight) - front;
+                const bump = Math.exp(-(dist * dist) / (2 * 145 * 145));
+                y += sign * bump * fade * 11.5 * (1 - t);
+              }
+            }
+          } else {
+            const u = (x - sLeft) / (sRight - sLeft);
+            const env = Math.sin(u * Math.PI);
+            const breathe = 0.15 + 0.85 * (0.5 + 0.5 * Math.sin(phaseRef.current[i] * 1.3));
+            const braidAmp = PAGE_VB_H * 0.064 * (breathe + disturb * 0.5) * env;
+            const harmonic = Math.sin(phase2Ref.current[i] + u * 8 * Math.PI) * env * (0.22 + 0.35 * disturb);
+            let yBraid = Math.sin(phaseRef.current[i] + u * 4 * Math.PI) + harmonic;
+            if (yBraid < 0) yBraid *= 0.73;
+            y = cy + yBraid * braidAmp;
+          }
+
+          points.push([x, y]);
+        }
+
+        const d = catmullRomToBezier(points);
+        if (pathRefs.current[i]) {
+          pathRefs.current[i]!.setAttribute("d", d);
+        }
+      }
+
+      if (dotLeftRef.current) {
+        dotLeftRef.current.setAttribute("cx", sLeft.toFixed(1));
+        dotLeftRef.current.setAttribute("cy", st.cy.toFixed(1));
+      }
+      if (dotRightRef.current) {
+        dotRightRef.current.setAttribute("cx", sRight.toFixed(1));
+        dotRightRef.current.setAttribute("cy", st.cy.toFixed(1));
+      }
+
+      frameRef.current = requestAnimationFrame(animate);
+    };
+
+    frameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [isTyping, ripples]);
+
+  return (
+    <div className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)} aria-hidden="true">
+      <svg
+        viewBox={`0 0 ${PAGE_VB_W} ${PAGE_VB_H}`}
+        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full opacity-65"
+      >
+        <defs>
+          <filter id="page-strand-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="1.8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          <filter id="page-dot-glow" x="-200%" y="-200%" width="500%" height="500%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          {PAGE_STRAND_GRADIENTS.map((grad, i) => (
+            <linearGradient key={i} id={`page-strand-${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor={grad.start} stopOpacity="0" />
+              <stop offset="15%" stopColor={grad.start} stopOpacity="0.85" />
+              <stop offset="50%" stopColor={grad.mid} stopOpacity="1" />
+              <stop offset="85%" stopColor={grad.end} stopOpacity="0.85" />
+              <stop offset="100%" stopColor={grad.end} stopOpacity="0" />
+            </linearGradient>
+          ))}
+        </defs>
+
+        <g filter="url(#page-strand-glow)">
+          {Array.from({ length: PAGE_STRANDS }, (_, i) => (
+            <path
+              key={i}
+              ref={(el) => { pathRefs.current[i] = el; }}
+              stroke={`url(#page-strand-${i})`}
+              strokeWidth={isTyping ? "1.35" : "1.15"}
+              strokeLinecap="round"
+              fill="none"
+              d=""
+            />
+          ))}
+        </g>
+
+        <circle
+          ref={dotLeftRef}
+          cx={searchTarget?.left ?? FALLBACK_TARGET.left}
+          cy={searchTarget?.cy ?? FALLBACK_TARGET.cy}
+          r="3.5"
+          fill="#67e8f9"
+          filter="url(#page-dot-glow)"
+        />
+        <circle
+          ref={dotRightRef}
+          cx={searchTarget?.right ?? FALLBACK_TARGET.right}
+          cy={searchTarget?.cy ?? FALLBACK_TARGET.cy}
+          r="3.5"
+          fill="#67e8f9"
+          filter="url(#page-dot-glow)"
+        />
+      </svg>
+    </div>
+  );
+}
 import { StarButton } from "@/components/ui/star-button";
 import { useAibizmodAuth } from "@/components/providers/AibizmodAuthProvider";
 import { SignInModal } from "@/components/aibizmod/SignInModal";
@@ -827,8 +1056,48 @@ function PagesTable({ pages }: { pages: PageScore[] }) {
 }
 
 // ---------------------------------------------------------------------------
-// Loading skeleton
 // ---------------------------------------------------------------------------
+// Hero Strands Loading Animation for AI Visibility Search
+// ---------------------------------------------------------------------------
+const LOADING_STRANDS = 7;
+const LOADING_SAMPLES = 33;
+const LOADING_VB_W = 1440;
+const LOADING_VB_H = 900;
+
+const LOADING_STRAND_GRADIENTS = [
+  { start: "#06B6D4", mid: "#22D3EE", end: "#3B82F6" },
+  { start: "#0891B2", mid: "#06B6D4", end: "#22D3EE" },
+  { start: "#22D3EE", mid: "#0891B2", end: "#3B82F6" },
+  { start: "#06B6D4", mid: "#0891B2", end: "#06B6D4" },
+  { start: "#3B82F6", mid: "#22D3EE", end: "#0891B2" },
+  { start: "#0891B2", mid: "#3B82F6", end: "#06B6D4" },
+  { start: "#22D3EE", mid: "#06B6D4", end: "#3B82F6" },
+];
+
+function smoothstepStrand(edge0: number, edge1: number, x: number): number {
+  const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
+  return t * t * (3 - 2 * t);
+}
+
+function catmullRomToBezier(points: [number, number][]): string {
+  if (points.length < 2) return "";
+  const n = points.length;
+  let d = `M ${points[0][0].toFixed(2)},${points[0][1].toFixed(2)}`;
+  for (let i = 0; i < n - 1; i++) {
+    const p0 = points[Math.max(0, i - 1)];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[Math.min(n - 1, i + 2)];
+    const cp1x = p1[0] + (p2[0] - p0[0]) / 6;
+    const cp1y = p1[1] + (p2[1] - p0[1]) / 6;
+    const cp2x = p2[0] - (p3[0] - p1[0]) / 6;
+    const cp2y = p2[1] - (p3[1] - p1[1]) / 6;
+    d += ` C ${cp1x.toFixed(2)},${cp1y.toFixed(2)} ${cp2x.toFixed(2)},${cp2y.toFixed(2)} ${p2[0].toFixed(2)},${p2[1].toFixed(2)}`;
+  }
+  return d;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function LoadingSkeleton({ domain }: { domain: string }) {
   const [scanPhase, setScanPhase] = useState(0);
   const phases = [
@@ -839,65 +1108,219 @@ function LoadingSkeleton({ domain }: { domain: string }) {
     "Building your visibility report...",
   ];
 
+  const phaseRef = useRef<number[]>(Array.from({ length: LOADING_STRANDS }, (_, i) => i * 0.8));
+  const phase2Ref = useRef<number[]>(Array.from({ length: LOADING_STRANDS }, (_, i) => i * 0.5 + 1.2));
+  const ripplesRef = useRef<{ t0: number; life: number }[]>([]);
+  const pathRefs = useRef<(SVGPathElement | null)[]>(Array(LOADING_STRANDS).fill(null));
+  const frameRef = useRef(0);
+  const lastTimeRef = useRef<number | null>(null);
+
+  // Trigger strand ripple pulse whenever scan phase advances
+  const triggerRipple = useCallback(() => {
+    const now = performance.now() / 1000;
+    ripplesRef.current.push({ t0: now, life: 1.4 });
+    if (ripplesRef.current.length > 8) ripplesRef.current.shift();
+  }, []);
+
   useEffect(() => {
+    triggerRipple();
     const t = setInterval(() => {
-      setScanPhase((p) => (p < phases.length - 1 ? p + 1 : p));
+      setScanPhase((p) => {
+        const next = p < phases.length - 1 ? p + 1 : p;
+        triggerRipple();
+        return next;
+      });
     }, 2800);
     return () => clearInterval(t);
-  }, [phases.length]);
+  }, [phases.length, triggerRipple]);
+
+  useEffect(() => {
+    const animate = (time: number) => {
+      const dt = lastTimeRef.current === null ? 0 : Math.min((time - lastTimeRef.current) / 1000, 0.05);
+      lastTimeRef.current = time;
+
+      const speed = 1.1;
+
+      for (let i = 0; i < LOADING_STRANDS; i++) {
+        phaseRef.current[i] += speed * dt;
+        phase2Ref.current[i] += speed * dt * 1.3;
+      }
+
+      const sLeft = 396;
+      const sRight = 1044;
+      const cy = 450;
+
+      for (let i = 0; i < LOADING_STRANDS; i++) {
+        const baseRow = (LOADING_VB_H / (LOADING_STRANDS + 1)) * (i + 1);
+        const sign = i % 2 === 0 ? 1 : -1;
+        const points: [number, number][] = [];
+
+        for (let s = 0; s < LOADING_SAMPLES; s++) {
+          const x = (s / (LOADING_SAMPLES - 1)) * LOADING_VB_W;
+          let y = baseRow;
+
+          if (x <= sLeft) {
+            const t = smoothstepStrand(0, sLeft, x);
+            y = baseRow + (cy - baseRow) * t;
+            const swayFade = 1 - t;
+            y += Math.sin(phaseRef.current[i] * 1.5 - x * 0.008 + i * 0.7) * 16 * swayFade;
+
+            for (const rip of ripplesRef.current) {
+              const age = performance.now() / 1000 - rip.t0;
+              if (age < 0 || age > rip.life) continue;
+              const norm = age / rip.life;
+              const fade = Math.sin(norm * Math.PI);
+              const front = age * 950;
+              const dist = (sLeft - x) - front;
+              const bump = Math.exp(-(dist * dist) / (2 * 145 * 145));
+              y += sign * bump * fade * 12.0 * swayFade;
+            }
+          } else if (x >= sRight) {
+            const t = smoothstepStrand(sRight, LOADING_VB_W, x);
+            y = cy + (baseRow - cy) * t;
+            y += Math.sin(phaseRef.current[i] * 1.5 + x * 0.008 + i * 0.7) * 16 * t;
+
+            for (const rip of ripplesRef.current) {
+              const age = performance.now() / 1000 - rip.t0;
+              if (age < 0 || age > rip.life) continue;
+              const norm = age / rip.life;
+              const fade = Math.sin(norm * Math.PI);
+              const front = age * 950;
+              const dist = (x - sRight) - front;
+              const bump = Math.exp(-(dist * dist) / (2 * 145 * 145));
+              y += sign * bump * fade * 12.0 * (1 - t);
+            }
+          } else {
+            const u = (x - sLeft) / (sRight - sLeft);
+            const env = Math.sin(u * Math.PI);
+            const breathe = 0.15 + 0.85 * (0.5 + 0.5 * Math.sin(phaseRef.current[i] * 1.3));
+            const braidAmp = LOADING_VB_H * 0.064 * (breathe + 0.35) * env;
+            const harmonic = Math.sin(phase2Ref.current[i] + u * 8 * Math.PI) * env * 0.32;
+            let yBraid = Math.sin(phaseRef.current[i] + u * 4 * Math.PI) + harmonic;
+            if (yBraid < 0) yBraid *= 0.73;
+            y = cy + yBraid * braidAmp;
+          }
+
+          points.push([x, y]);
+        }
+
+        const d = catmullRomToBezier(points);
+        if (pathRefs.current[i]) {
+          pathRefs.current[i]!.setAttribute("d", d);
+        }
+      }
+
+      const now = performance.now() / 1000;
+      ripplesRef.current = ripplesRef.current.filter((r) => now - r.t0 < r.life);
+
+      frameRef.current = requestAnimationFrame(animate);
+    };
+
+    frameRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, []);
 
   return (
-    <div className="py-8 max-w-2xl mx-auto">
-      {/* Animated radar ring */}
-      <div className="relative flex items-center justify-center mb-10">
-        <div className="absolute w-32 h-32 rounded-full border-2 border-cyan-300/40 animate-ping" style={{ animationDuration: "2.5s" }} />
-        <div className="absolute w-24 h-24 rounded-full border-2 border-cyan-400/30 animate-ping" style={{ animationDuration: "2.5s", animationDelay: "0.5s" }} />
-        <div className="absolute w-16 h-16 rounded-full border-2 border-cyan-500/20 animate-ping" style={{ animationDuration: "2.5s", animationDelay: "1s" }} />
-        <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-teal-500 shadow-lg shadow-cyan-200/50">
-          <Search className="h-6 w-6 text-white" />
-        </div>
-      </div>
+    <div className="relative isolate min-h-[640px] w-full overflow-hidden rounded-3xl bg-slate-950 py-12 px-6 flex items-center justify-center border border-cyan-900/30 shadow-2xl">
+      {/* Background Hero Strands SVG */}
+      <svg
+        aria-hidden="true"
+        viewBox={`0 0 ${LOADING_VB_W} ${LOADING_VB_H}`}
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-70"
+        style={{ zIndex: 0 }}
+      >
+        <defs>
+          <filter id="loading-strand-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="2.2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
 
-      {/* Domain being scanned */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 rounded-full bg-slate-100 border border-slate-200 px-4 py-1.5 text-xs font-mono text-slate-600">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-          Scanning <span className="font-bold text-slate-900">{domain}</span>
-        </div>
-      </div>
+          {LOADING_STRAND_GRADIENTS.map((grad, i) => (
+            <linearGradient key={i} id={`loading-strand-${i}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor={grad.start} stopOpacity="0" />
+              <stop offset="15%" stopColor={grad.start} stopOpacity="0.9" />
+              <stop offset="50%" stopColor={grad.mid} stopOpacity="1" />
+              <stop offset="85%" stopColor={grad.end} stopOpacity="0.9" />
+              <stop offset="100%" stopColor={grad.end} stopOpacity="0" />
+            </linearGradient>
+          ))}
+        </defs>
 
-      {/* Phase indicators */}
-      <div className="space-y-3 mb-8">
-        {phases.map((phase, i) => (
-          <div
-            key={i}
-            className={cn(
-              "flex items-center gap-3 p-3 rounded-xl border transition-all duration-500",
-              i < scanPhase ? "bg-emerald-50 border-emerald-200 text-emerald-700" :
-                i === scanPhase ? "bg-cyan-50 border-cyan-200 text-cyan-700" :
-                  "bg-slate-50 border-slate-100 text-slate-400"
-            )}
-          >
-            <div className="flex-shrink-0">
-              {i < scanPhase ? (
-                <CheckCircle className="h-4 w-4 text-emerald-500" />
-              ) : i === scanPhase ? (
-                <Loader2 className="h-4 w-4 text-cyan-500 animate-spin" />
-              ) : (
-                <div className="h-4 w-4 rounded-full border-2 border-slate-300" />
-              )}
-            </div>
-            <span className="text-xs font-medium">{phase}</span>
+        <g filter="url(#loading-strand-glow)">
+          {Array.from({ length: LOADING_STRANDS }, (_, i) => (
+            <path
+              key={i}
+              ref={(el) => { pathRefs.current[i] = el; }}
+              stroke={`url(#loading-strand-${i})`}
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              fill="none"
+              d=""
+            />
+          ))}
+        </g>
+      </svg>
+
+      {/* Radial Glow wash behind center loading card */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12)_0%,transparent_70%)]" />
+
+      {/* Center Glass Loading Card */}
+      <div className="relative z-10 w-full max-w-xl rounded-2xl border border-cyan-500/30 bg-slate-900/80 p-8 backdrop-blur-xl shadow-[0_0_50px_rgba(6,182,212,0.18)]">
+        {/* Domain indicator pill */}
+        <div className="text-center mb-6">
+          <div className="inline-flex items-center gap-2.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 px-4 py-1.5 text-xs font-mono text-cyan-200 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+            </span>
+            Auditing AI Visibility for <span className="font-bold text-white">{domain}</span>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Progress bar */}
-      <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-teal-500 transition-all duration-1000"
-          style={{ width: `${Math.round(((scanPhase + 1) / phases.length) * 100)}%` }}
-        />
+        {/* Phase indicators */}
+        <div className="space-y-3 mb-8">
+          {phases.map((phase, i) => (
+            <div
+              key={i}
+              className={cn(
+                "flex items-center gap-3 p-3.5 rounded-xl border transition-all duration-500",
+                i < scanPhase
+                  ? "bg-emerald-950/40 border-emerald-500/30 text-emerald-300"
+                  : i === scanPhase
+                  ? "bg-cyan-950/60 border-cyan-400/50 text-cyan-200 shadow-[0_0_20px_rgba(6,182,212,0.15)]"
+                  : "bg-slate-900/40 border-slate-800/80 text-slate-500"
+              )}
+            >
+              <div className="flex-shrink-0">
+                {i < scanPhase ? (
+                  <CheckCircle className="h-4 w-4 text-emerald-400" />
+                ) : i === scanPhase ? (
+                  <Loader2 className="h-4 w-4 text-cyan-400 animate-spin" />
+                ) : (
+                  <div className="h-4 w-4 rounded-full border border-slate-700" />
+                )}
+              </div>
+              <span className="text-xs font-medium tracking-wide">{phase}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Gradient Progress bar */}
+        <div className="w-full h-2 rounded-full bg-slate-950 border border-slate-800 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-500 transition-all duration-1000 shadow-[0_0_12px_rgba(6,182,212,0.6)]"
+            style={{ width: `${Math.round(((scanPhase + 1) / phases.length) * 100)}%` }}
+          />
+        </div>
+
+        {/* Subtitle note */}
+        <p className="mt-4 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-slate-400">
+          Analyzing ChatGPT, Gemini, Claude & Perplexity Citations
+        </p>
       </div>
     </div>
   );
@@ -1438,26 +1861,195 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
 // Main page component
 // ---------------------------------------------------------------------------
 function AuditReportContent() {
-  const [domain, setDomain] = useState("");
-  const [result, setResult] = useState<AuditResult | null>(null);
+  const [domain, setDomain] = useState(() => {
+    if (typeof window === "undefined") return "";
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const urlParam = searchParams.get("url") || searchParams.get("domain");
+      const storedDomain = window.sessionStorage.getItem("pending-audit-domain");
+      return (urlParam || storedDomain)?.trim() || "";
+    } catch {
+      return "";
+    }
+  });
+
+  const [result, setResult] = useState<AuditResult | null>(() => {
+    if (typeof window === "undefined") return null;
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const urlParam = searchParams.get("url") || searchParams.get("domain");
+      const storedDomain = window.sessionStorage.getItem("pending-audit-domain");
+      const initialDomain = (urlParam || storedDomain)?.trim();
+      if (initialDomain) {
+        const cached = window.sessionStorage.getItem("audit-cache-" + initialDomain);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (parsed && !parsed.error) return parsed;
+        }
+      }
+    } catch {
+      // Storage error ignored
+    }
+    return null;
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const resultsSectionRef = useRef<HTMLElement>(null);
+  const summaryCardRef = useRef<HTMLDivElement>(null);
+
+  const [searchTarget, setSearchTarget] = useState<SearchTarget | null>(null);
+  const [resultsSearchTarget, setResultsSearchTarget] = useState<SearchTarget | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
+  const ripples = useRef<{ t0: number; life: number }[]>([]);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Measure search form position to pin strand funnel edges
+  const measureForm = useCallback(() => {
+    if (!formRef.current || !sectionRef.current) {
+      setSearchTarget(FALLBACK_TARGET);
+      return;
+    }
+    const sectionRect = sectionRef.current.getBoundingClientRect();
+    const formRect = formRef.current.getBoundingClientRect();
+
+    if (sectionRect.width === 0 || sectionRect.height === 0) {
+      setSearchTarget(FALLBACK_TARGET);
+      return;
+    }
+
+    const sx = 1440 / sectionRect.width;
+    const rawH = Math.max(sectionRect.height, sectionRef.current.scrollHeight, 900);
+    const sy = 900 / rawH;
+
+    const left = (formRect.left - sectionRect.left) * sx;
+    const right = (formRect.right - sectionRect.left) * sx;
+    const top = (formRect.top - sectionRect.top) * sy;
+    const bottom = (formRect.bottom - sectionRect.top) * sy;
+    const cx = (left + right) / 2;
+    let cy = (top + bottom) / 2;
+    const pillW = right - left;
+
+    // Safety guard: ensure cy points to search bar (approx ~580 in 1440x900 coordinate system)
+    if (cy < 480) {
+      cy = 580;
+    }
+
+    setSearchTarget({ cx, cy, left, right, pillW });
+  }, []);
+
+  // Measure top audit summary card position when results are shown
+  const measureResultsCard = useCallback(() => {
+    if (!summaryCardRef.current || !resultsSectionRef.current) return;
+    const sectionRect = resultsSectionRef.current.getBoundingClientRect();
+    const cardRect = summaryCardRef.current.getBoundingClientRect();
+
+    if (sectionRect.width === 0 || sectionRect.height === 0) return;
+
+    const sx = 1440 / sectionRect.width;
+    const rawH = Math.max(sectionRect.height, resultsSectionRef.current.scrollHeight, 900);
+    const sy = 900 / rawH;
+
+    const left = (cardRect.left - sectionRect.left) * sx;
+    const right = (cardRect.right - sectionRect.left) * sx;
+    const top = (cardRect.top - sectionRect.top) * sy;
+    const bottom = (cardRect.bottom - sectionRect.top) * sy;
+    const cx = (left + right) / 2;
+    const cy = (top + bottom) / 2;
+    const pillW = right - left;
+
+    setResultsSearchTarget({ cx, cy, left, right, pillW });
+  }, []);
+
+  useEffect(() => {
+    measureForm();
+    const id1 = requestAnimationFrame(measureForm);
+    const id2 = setTimeout(measureForm, 80);
+    const id3 = setTimeout(measureForm, 300);
+    window.addEventListener("resize", measureForm);
+    window.addEventListener("scroll", measureForm, { passive: true });
+
+    const ro = new ResizeObserver(measureForm);
+    if (sectionRef.current) ro.observe(sectionRef.current);
+
+    return () => {
+      cancelAnimationFrame(id1);
+      clearTimeout(id2);
+      clearTimeout(id3);
+      window.removeEventListener("resize", measureForm);
+      window.removeEventListener("scroll", measureForm);
+      ro.disconnect();
+    };
+  }, [measureForm]);
+
+  useEffect(() => {
+    if (!resultsSectionRef.current) return;
+    measureResultsCard();
+    const id1 = requestAnimationFrame(measureResultsCard);
+    const id2 = setTimeout(measureResultsCard, 100);
+    window.addEventListener("resize", measureResultsCard);
+    window.addEventListener("scroll", measureResultsCard, { passive: true });
+
+    const ro = new ResizeObserver(measureResultsCard);
+    if (resultsSectionRef.current) ro.observe(resultsSectionRef.current);
+
+    return () => {
+      cancelAnimationFrame(id1);
+      clearTimeout(id2);
+      window.removeEventListener("resize", measureResultsCard);
+      window.removeEventListener("scroll", measureResultsCard);
+      ro.disconnect();
+    };
+  }, [measureResultsCard]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDomain(e.target.value);
+    setIsTyping(true);
+    if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current);
+    typingTimeoutRef.current = setTimeout(() => setIsTyping(false), 800);
+
+    const now = performance.now() / 1000;
+    if (ripples.current.length >= 8) ripples.current.shift();
+    ripples.current.push({ t0: now, life: 1.4 });
+  };
+
   const runAudit = useCallback(async (url: string) => {
-    setIsLoading(true);
+    const cleaned = url.trim();
+    if (!cleaned) return;
+
     setError(null);
+
+    // Check pre-fetched audit result cached by /scanning
+    try {
+      const cached = sessionStorage.getItem("audit-cache-" + cleaned);
+      if (cached) {
+        const cachedData = JSON.parse(cached);
+        if (cachedData && !cachedData.error) {
+          setResult(cachedData);
+          setIsLoading(false);
+          return;
+        }
+      }
+    } catch {
+      // Storage error ignored
+    }
+
+    setIsLoading(true);
     setResult(null);
     try {
       const res = await fetch("/api/geo-audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: cleaned }),
       });
       const data = (await res.json()) as AuditResult & { error?: string };
       if (!res.ok) {
         const msg = data.error || "Audit failed";
         if (msg.includes("DNS resolution failed") || msg.includes("hostname not resolvable")) {
-          throw new Error(`"${url}" could not be found. Please check the spelling and try again.`);
+          throw new Error(`"${cleaned}" could not be found. Please check the spelling and try again.`);
         }
         throw new Error(msg);
       }
@@ -1470,22 +2062,46 @@ function AuditReportContent() {
   }, []);
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const urlParam = searchParams.get("url") || searchParams.get("domain");
     const storedDomain = window.sessionStorage.getItem("pending-audit-domain");
-    const initialDomain = storedDomain?.trim();
+    const initialDomain = (urlParam || storedDomain)?.trim();
 
-    if (initialDomain) {
+    if (initialDomain && !result) {
       setDomain(initialDomain);
       window.sessionStorage.removeItem("pending-audit-domain");
       void runAudit(initialDomain);
     }
-  }, [runAudit]);
+  }, [runAudit, result]);
 
   const handleSubmit = async (nextDomain: string) => {
     const cleanedDomain = nextDomain.trim();
     if (!cleanedDomain || isLoading) return;
 
-    setDomain(cleanedDomain);
-    await runAudit(cleanedDomain);
+    try {
+      if (formRef.current) {
+        const r = formRef.current.getBoundingClientRect();
+        sessionStorage.setItem(
+          "strand-handoff",
+          JSON.stringify({
+            cx: r.left + r.width / 2,
+            cy: r.top + r.height / 2,
+            w: r.width,
+            t: Date.now(),
+          })
+        );
+      }
+    } catch {
+      // Storage error ignored
+    }
+
+    try {
+      sessionStorage.setItem("pending-audit-domain", cleanedDomain);
+    } catch {
+      // Ignore storage error
+    }
+
+    window.location.href = `/scanning?url=${encodeURIComponent(cleanedDomain)}`;
   };
 
   const displayDomain = domain ? formatDomain(domain) : "";
@@ -1497,26 +2113,36 @@ function AuditReportContent() {
 
       <main className="bg-white text-ink">
         {!showResults && (
-          <section className="relative isolate overflow-hidden px-6 bg-white min-h-screen flex items-center justify-center pt-20">
-            <NeuralBackground
-              className="absolute inset-0 -z-10"
-              color="#22d3ee"
-              trailOpacity={0.16}
-              particleCount={950}
-              speed={1.6}
-              theme="light"
-            />
+          <section
+            ref={sectionRef}
+            className="relative isolate overflow-hidden px-6 bg-white min-h-screen flex items-center justify-center pt-20"
+          >
+            {/* Radial vignette overlay matching Home Hero */}
             <div
-              className="pointer-events-none absolute inset-0 z-0"
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 z-[1]"
+              style={{
+                background:
+                  "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(255,255,255,0.96) 100%)",
+              }}
+            />
+
+            {/* Waving Strands SVG Background */}
+            <AuditPageStrandsBackground
+              searchTarget={searchTarget}
+              isTyping={isTyping}
+              ripples={ripples}
+              className="absolute inset-0 z-0"
+            />
+
+            {/* Grid Pattern */}
+            <div
+              className="pointer-events-none absolute inset-0 z-0 opacity-60"
               style={{
                 backgroundImage:
-                  "linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px)",
+                  "linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px)",
                 backgroundSize: "72px 72px",
               }}
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl"
               aria-hidden="true"
             />
 
@@ -1529,7 +2155,14 @@ function AuditReportContent() {
               <h1
                 className="mt-6 font-display font-bold text-balance text-4xl md:text-5xl lg:text-6xl text-slate-900 leading-[1.08]"
               >
-                See Exactly How AI Search Engines See Your Business
+                See Exactly How AI Search Engines See{" "}
+                <TextShimmer
+                  as="span"
+                  duration={2.2}
+                  className="italic font-serif [--base-color:theme(colors.cyan.600)] [--base-gradient-color:#ffffff]"
+                >
+                  Your Business.
+                </TextShimmer>
               </h1>
 
               <p className="mt-4 text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
@@ -1538,6 +2171,7 @@ function AuditReportContent() {
 
               <div className="mt-8 mx-auto w-full max-w-2xl">
                 <form
+                  ref={formRef}
                   id="hero-audit-form"
                   onSubmit={(e) => { e.preventDefault(); handleSubmit(domain); }}
                   className="flex flex-col gap-2.5 sm:flex-row"
@@ -1549,10 +2183,10 @@ function AuditReportContent() {
                     <input
                       type="text"
                       value={domain}
-                      onChange={(e) => setDomain(e.target.value)}
+                      onChange={handleInputChange}
                       placeholder="Enter your website URL"
                       autoFocus
-                      className="h-12 w-full rounded-2xl border border-cyan-400 bg-white/90 pl-10 pr-4 text-[14px] text-stone-900 outline-none placeholder:text-stone-400 ring-2 ring-cyan-100"
+                      className="h-12 w-full rounded-2xl border border-cyan-400/80 bg-white shadow-sm pl-10 pr-4 text-[14px] font-medium text-slate-900 outline-none placeholder:text-stone-400 ring-2 ring-cyan-100"
                       aria-label="Domain to audit"
                     />
                   </div>
@@ -1590,11 +2224,7 @@ function AuditReportContent() {
                 </div>
               </div>
 
-              {isLoading && (
-                <div className="mt-8" style={{ animation: "fadeUp 700ms ease-out both" }}>
-                  <LoadingSkeleton domain={displayDomain || domain} />
-                </div>
-              )}
+
 
               {error && (
                 <div className="mt-8 mx-auto max-w-lg">
@@ -1632,86 +2262,231 @@ function AuditReportContent() {
           </section>
         )}
 
-        {showResults && (
-          <section className="relative isolate overflow-hidden px-6 pb-20 pt-28 md:pb-28 md:pt-36 bg-white">
-            <NeuralBackground
-              className="absolute inset-0 -z-10"
-              color="#22d3ee"
-              trailOpacity={0.16}
-              particleCount={950}
-              speed={1.6}
-              theme="light"
-            />
-            <div
-              className="pointer-events-none absolute inset-0 z-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(15, 23, 42, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.055) 1px, transparent 1px)",
-                backgroundSize: "72px 72px",
-              }}
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute left-1/2 top-24 z-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-200/30 blur-3xl"
-              aria-hidden="true"
-            />
+        {showResults && (() => {
+          const band = BAND_META[result.band] || BAND_META.poor;
+          const criticalCount = Array.isArray(result.criticalIssues) ? result.criticalIssues.filter((i: Issue) => i.severity === "critical" || i.severity === "high").length : 0;
+          const quickWinCount = Array.isArray(result.quickWins) ? result.quickWins.length : 0;
+          const platformCount = Array.isArray(result.aiPlatforms) ? result.aiPlatforms.length : 5;
+          const faviconUrl = getFaviconUrl(displayDomain || domain);
 
-            <div className="relative z-10 mx-auto max-w-7xl">
-              <div className="rounded-[32px] bg-gradient-to-br from-emerald-50/60 to-cyan-50/30 border border-emerald-100/60 p-8 md:p-12 shadow-sm mb-10">
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                  <div className="flex items-center gap-5">
-                    <div className="relative shrink-0">
-                      <div className="absolute -inset-3 animate-ping rounded-full bg-emerald-400/20" style={{ animationDuration: "2s" }} />
-                      <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-lg shadow-emerald-200/50">
-                        <CheckCircle className="h-10 w-10 text-white" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-700 mb-2">
-                        Audit Complete
-                      </div>
-                      <h1 className="font-display font-bold text-[#0F172A] text-3xl md:text-4xl">
-                        {displayDomain || domain}
-                      </h1>
-                    </div>
-                  </div>
+          return (
+            <>
+              {/* ── Immersive Report Hero Section ───────────────────────────── */}
+              <section ref={resultsSectionRef} className="relative isolate overflow-hidden bg-white px-6 pt-28 pb-20">
+                {/* Radial vignette overlay */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 z-[1]"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(255,255,255,0.96) 100%)",
+                  }}
+                />
 
-                  <div className="flex items-center gap-6 shrink-0">
-                    <div className="text-right">
-                      <div className="text-xs font-semibold uppercase tracking-widest text-slate-400">Score</div>
-                      <div className="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight leading-none mt-0.5">{result.score}</div>
-                    </div>
-                    <div className="h-14 w-px bg-emerald-200/60" />
-                    <div className="flex flex-col items-start">
-                      <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">Band</span>
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <span className="h-3 w-3 rounded-full bg-emerald-500" />
-                        <span className="text-lg font-bold text-slate-700 capitalize">{result.band}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {/* Waving Strands SVG Background */}
+                <AuditPageStrandsBackground searchTarget={resultsSearchTarget} className="absolute inset-0 z-0" />
 
-                <div className="mt-6 pt-6 border-t border-emerald-100/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                  <p className="text-sm text-slate-500 leading-relaxed max-w-2xl">
-                    Your AI visibility audit is complete. We&apos;ve analyzed your site across all major AI platforms and identified key opportunities to improve your presence.
-                  </p>
-                  <button
-                    onClick={() => { setResult(null); setDomain(""); }}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-slate-600 transition shrink-0"
+                {/* Grid Pattern */}
+                <div
+                  className="pointer-events-none absolute inset-0 z-0 opacity-60"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px)",
+                    backgroundSize: "72px 72px",
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* Band-color-aware floating glow */}
+                <div
+                  className="pointer-events-none absolute left-1/2 top-36 z-0 h-96 w-96 -translate-x-1/2 rounded-full blur-[100px]"
+                  style={{ backgroundColor: band.color, opacity: 0.08 }}
+                  aria-hidden="true"
+                />
+                <div
+                  className="pointer-events-none absolute left-1/2 top-44 z-0 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-200/20 blur-3xl"
+                  aria-hidden="true"
+                />
+
+                {/* Hero Content */}
+                <div ref={summaryCardRef} className="relative z-10 mx-auto max-w-3xl flex flex-col items-center text-center">
+
+                  {/* 1. Eyebrow Pill */}
+                  <div
+                    className="inline-flex items-center gap-2 rounded-full border bg-white/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] shadow-[0_12px_35px_rgba(59,130,246,0.10)] backdrop-blur-md"
+                    style={{
+                      borderColor: band.color + "33",
+                      color: band.color,
+                      animation: "fadeUp 600ms ease-out both",
+                    }}
                   >
-                    <ArrowRight className="h-4 w-4 rotate-180" />
-                    Run another audit
-                  </button>
+                    <CheckCircle size={14} aria-hidden="true" />
+                    Audit Complete
+                  </div>
+
+                  {/* 2. Domain Headline with Favicon */}
+                  <div
+                    className="mt-6 flex items-center justify-center gap-3"
+                    style={{ animation: "fadeUp 600ms ease-out 100ms both" }}
+                  >
+                    {faviconUrl && (
+                      <img
+                        src={faviconUrl}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="h-8 w-8 rounded-lg shadow-sm border border-slate-100"
+                      />
+                    )}
+                    <h1 className="font-display font-bold text-[#0f172a] text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                      <TextShimmer
+                        as="span"
+                        duration={2.8}
+                        className="[--base-color:#0f172a] [--base-gradient-color:#ffffff]"
+                      >
+                        {displayDomain || domain}
+                      </TextShimmer>
+                    </h1>
+                  </div>
+
+                  <p
+                    className="mt-2 text-sm font-medium uppercase tracking-[0.18em] text-slate-400"
+                    style={{ animation: "fadeUp 600ms ease-out 180ms both" }}
+                  >
+                    AI Visibility Score
+                  </p>
+
+                  {/* 3. Score Ring — Visual Centerpiece */}
+                  <div
+                    className="mt-8 relative"
+                    style={{ animation: "fadeUp 700ms ease-out 250ms both" }}
+                  >
+                    {/* Score ring glow halo */}
+                    <div
+                      className="absolute inset-0 -m-4 rounded-full blur-2xl"
+                      style={{ backgroundColor: band.color, opacity: 0.1 }}
+                      aria-hidden="true"
+                    />
+                    <ScoreRing score={result.score} size={200} />
+                  </div>
+
+                  {/* 4. Band Pill */}
+                  <div
+                    className="mt-6"
+                    style={{ animation: "fadeUp 600ms ease-out 450ms both" }}
+                  >
+                    <span
+                      className={cn(
+                        "inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-bold capitalize",
+                        band.bg
+                      )}
+                    >
+                      <span
+                        className="h-2.5 w-2.5 rounded-full"
+                        style={{ backgroundColor: band.color }}
+                      />
+                      {band.label}
+                    </span>
+                  </div>
+
+                  {/* 5. Band Description */}
+                  <p
+                    className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-500"
+                    style={{ animation: "fadeUp 600ms ease-out 520ms both" }}
+                  >
+                    {band.description}
+                  </p>
+
+                  {/* 6. Quick Stats Row */}
+                  <div
+                    className="mt-10 grid w-full max-w-lg grid-cols-3 gap-3"
+                    style={{ animation: "fadeUp 600ms ease-out 620ms both" }}
+                  >
+                    <div className="flex flex-col items-center rounded-2xl border border-slate-100 bg-white/80 px-3 py-4 shadow-sm backdrop-blur-sm">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-red-50">
+                        <AlertTriangle className="h-4 w-4 text-red-500" />
+                      </div>
+                      <span className="mt-2 text-2xl font-bold text-slate-900">{criticalCount}</span>
+                      <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Issues</span>
+                    </div>
+
+                    <div className="flex flex-col items-center rounded-2xl border border-slate-100 bg-white/80 px-3 py-4 shadow-sm backdrop-blur-sm">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50">
+                        <Zap className="h-4 w-4 text-emerald-500" />
+                      </div>
+                      <span className="mt-2 text-2xl font-bold text-slate-900">{quickWinCount}</span>
+                      <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Quick Wins</span>
+                    </div>
+
+                    <div className="flex flex-col items-center rounded-2xl border border-slate-100 bg-white/80 px-3 py-4 shadow-sm backdrop-blur-sm">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-50">
+                        <Brain className="h-4 w-4 text-cyan-500" />
+                      </div>
+                      <span className="mt-2 text-2xl font-bold text-slate-900">{platformCount}</span>
+                      <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Platforms</span>
+                    </div>
+                  </div>
+
+                  {/* 7. Actions Row */}
+                  <div
+                    className="mt-8 flex items-center gap-4"
+                    style={{ animation: "fadeUp 600ms ease-out 720ms both" }}
+                  >
+                    <button
+                      onClick={() => {
+                        const reportSection = document.querySelector("[data-report-body]");
+                        if (reportSection) {
+                          reportSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                      }}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#0f172a] px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-white shadow-lg shadow-slate-900/10 transition-all hover:shadow-xl hover:shadow-slate-900/15 hover:-translate-y-0.5"
+                    >
+                      View Full Report
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        // Clear cached audit data so mount effect doesn't re-read it
+                        try {
+                          const d = domain.trim();
+                          if (d) sessionStorage.removeItem("audit-cache-" + d);
+                          sessionStorage.removeItem("pending-audit-domain");
+                        } catch { /* ignore */ }
+
+                        // Strip ?url= from address bar so mount effect doesn't re-trigger
+                        window.history.replaceState({}, "", window.location.pathname);
+
+                        setResult(null);
+                        setDomain("");
+                        setError(null);
+                        setSearchTarget(FALLBACK_TARGET);
+                        setResultsSearchTarget(null);
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-slate-500 transition-all hover:border-slate-300 hover:text-slate-700 hover:shadow-sm"
+                    >
+                      <ArrowRight className="h-3.5 w-3.5 rotate-180" />
+                      New Audit
+                    </button>
+                  </div>
                 </div>
+              </section>
+
+              {/* ── Smooth divider transition ──────────────────────────────── */}
+              <div className="relative h-16 bg-gradient-to-b from-white to-slate-50/80" aria-hidden="true">
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
               </div>
 
-              <div className="rounded-[32px] border border-slate-200/80 bg-white/85 p-5 shadow-[0_30px_90px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:p-8" style={{ animation: "fadeUp 650ms ease-out both" }}>
-                <AuditReport result={result} domain={domain} />
-              </div>
-            </div>
-          </section>
-        )}
+              {/* ── Main Detailed Report Body (Clean Canvas) ─────────────── */}
+              <section data-report-body className="relative isolate px-6 pb-20 pt-8 bg-slate-50/40">
+                <div className="mx-auto max-w-7xl">
+                  <div className="rounded-[32px] border border-slate-200/80 bg-white p-5 shadow-[0_30px_90px_rgba(15,23,42,0.06)] sm:p-8" style={{ animation: "fadeUp 650ms ease-out both" }}>
+                    <AuditReport result={result} domain={domain} />
+                  </div>
+                </div>
+              </section>
+            </>
+          );
+        })()}
       </main>
 
       <style jsx global>{`
