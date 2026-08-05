@@ -22,7 +22,7 @@ export function generateMetadata({ params }: TopicDetailPageProps): Metadata {
   const hub = getTopicHub(params.slug);
   if (!hub) return { title: 'Topic not found' };
   return {
-    title: hub.title,
+    title: `${hub.title} | aibizmod`,
     description: hub.excerpt,
     alternates: { canonical: `https://aibizmod.com/topics/${hub.slug}` },
     openGraph: {

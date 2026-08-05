@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy | aibizmod",
   description:
     "Privacy policy for aibizmod Ltd. — how we collect, use, and protect your personal data in compliance with UK GDPR and Indian data protection laws.",
   alternates: { canonical: "https://aibizmod.com/privacy" },

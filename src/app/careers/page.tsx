@@ -6,7 +6,7 @@ import Footer from "@/components/layout/Footer";
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 
 export const metadata: Metadata = {
-  title: "Careers",
+  title: "Careers | aibizmod",
   description:
     "Join aibizmod — explore career opportunities in technology consulting, software development, AI & automation, and digital growth.",
   alternates: { canonical: "https://aibizmod.com/careers" },

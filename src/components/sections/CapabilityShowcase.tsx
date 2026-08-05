@@ -865,9 +865,9 @@ export default function CapabilityShowcase() {
           <span className="text-sm font-semibold uppercase tracking-[0.16em] text-[#0891B2]">
             Our Capabilities
           </span>
-          <h1 className="font-display font-thin text-slate-900 text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight mt-2.5 mb-3">
+          <h2 className="font-display font-thin text-slate-900 text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight mt-2.5 mb-3">
             Tailored AI &amp; Automation Services
-          </h1>
+          </h2>
           <p className="text-stone-600 text-base sm:text-[17px] leading-relaxed max-w-[560px] mx-auto">
             From visibility audits to custom LLM integrations and machine learning pipelines, we build systems designed for real business outcomes.
           </p>

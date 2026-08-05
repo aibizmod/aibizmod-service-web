@@ -93,10 +93,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-	title: {
-		default: 'aibizmod | Intelligent Tech Services',
-		template: '%s | aibizmod',
-	},
+	title: 'aibizmod | Intelligent Tech Services',
 	description:
 		'End-to-end technology services for modern businesses — web development, mobile apps, digital marketing, cloud infrastructure, and automation.',
 	keywords: [

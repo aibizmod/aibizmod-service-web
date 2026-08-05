@@ -22,7 +22,7 @@ export function generateMetadata({ params }: ComparisonDetailPageProps): Metadat
   const c = getComparison(params.slug);
   if (!c) return { title: 'Comparison not found' };
   return {
-    title: c.title,
+    title: `${c.title} | aibizmod`,
     description: c.excerpt,
     alternates: { canonical: `https://aibizmod.com/comparisons/${c.slug}` },
     openGraph: {

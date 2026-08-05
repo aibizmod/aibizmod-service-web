@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: "Terms of Service | aibizmod",
   description:
     "Terms of service for aibizmod Ltd. — terms governing the use of our website and the provision of technology services to clients.",
   alternates: { canonical: "https://aibizmod.com/terms" },

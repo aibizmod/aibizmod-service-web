@@ -5,7 +5,7 @@ import SocialMediaPageContent from "@/components/social/SocialMediaPageContent";
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 
 export const metadata: Metadata = {
-  title: "Social Media Platforms",
+  title: "Social Media Platforms | aibizmod",
   description:
     "A directory of all official and registered aibizmod social media accounts — find and follow us across every platform.",
   openGraph: {

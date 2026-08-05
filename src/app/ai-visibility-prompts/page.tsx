@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PromptLibraryContent from '@/components/prompts/PromptLibraryContent';
 
 export const metadata: Metadata = {
-	title: 'AI Visibility Audit Prompts: 54 Free Prompts To Check Your AI Search Presence',
+	title: 'AI Visibility Audit Prompts: 54 Free Prompts To Check Your AI Search Presence | aibizmod',
 	description:
 		'Free prompt library for auditing AI visibility across ChatGPT, Perplexity, Gemini, and Claude. Brand visibility, competitor comparison, citation probes, and buyer-decision prompts. No signup required.',
 	keywords: [

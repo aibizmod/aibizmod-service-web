@@ -29,7 +29,7 @@ export function generateMetadata({ params }: BlogDetailPageProps): Metadata {
   }
 
   return {
-    title: post.title,
+    title: `${post.title} | aibizmod`,
     description: post.excerpt,
     alternates: { canonical: `https://aibizmod.com/blog/${post.slug}` },
     openGraph: {
