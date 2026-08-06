@@ -152,7 +152,8 @@ const MarqueeLogoScroller = React.forwardRef<
                   src={logo.src}
                   alt={logo.alt}
                   fill
-                  className="relative z-10 !h-3/4 !w-auto object-contain transition-all duration-300 group-hover:brightness-110 group-hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]"
+                  sizes="160px"
+                  className="relative z-10 p-3.5 object-contain transition-all duration-300 group-hover:brightness-110 group-hover:drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]"
                 />
 
                 {/* Tooltip */}
