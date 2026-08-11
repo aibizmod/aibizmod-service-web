@@ -215,12 +215,16 @@ export function HowProjectsMoveSection() {
   };
 
   return (
-    <section className="relative w-full bg-white text-[#0f172a] snap-start overflow-hidden">
+    <section className="relative w-full bg-[#FAF9F6] text-[#0f172a] snap-start overflow-hidden border-y border-slate-200/60 z-20">
+      {/* Premium background mesh glow elements matching Why Work With Us section (without particles) */}
+      <div className="absolute top-1/4 -right-1/4 w-[450px] h-[450px] rounded-full bg-cyan-200/10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-1/4 w-[450px] h-[450px] rounded-full bg-blue-200/10 blur-[120px] pointer-events-none" />
+
       {/* Outer Wrapper for GSAP Pinning */}
-      <div ref={pinRef} className="min-h-screen w-full flex flex-col justify-center py-10 lg:py-14">
+      <div ref={pinRef} className="min-h-screen w-full flex flex-col justify-center py-4 lg:py-6">
         
         {/* Top Progress Rail */}
-        <div className="relative w-full h-[3px] bg-[#e7e5e4] mb-6 lg:mb-8">
+        <div className="relative w-full h-[3px] bg-[#e7e5e4] mb-3 lg:mb-4">
           <div
             ref={progressBarRef}
             className="absolute top-0 left-0 h-full w-full bg-[#0891b2] origin-left transition-transform"
@@ -229,15 +233,15 @@ export function HowProjectsMoveSection() {
         </div>
 
         {/* Section Header Block + Interactive Step Pills */}
-        <div className="max-w-7xl mx-auto px-6 w-full mb-8 lg:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-6 w-full mb-4 lg:mb-5 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <Reveal variant="fade-up">
-              <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-[#0891b2] mb-2">
+              <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-[#0891b2] mb-1">
                 HOW PROJECTS MOVE
               </span>
             </Reveal>
 
-            <h2 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-[#0f172a] tracking-tight mb-3">
+            <h2 className="font-display font-medium text-3xl sm:text-4xl lg:text-5xl text-[#0f172a] tracking-tight mb-1.5">
               <WordsReveal text="From First Call to" accentWord="Launch" />{' '}
               <span className="font-display italic font-normal text-[#0891b2]">Launch</span>
             </h2>

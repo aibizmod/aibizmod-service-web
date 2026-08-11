@@ -53,20 +53,23 @@ export default function HowProjectsMoveLovable() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white dark:bg-[#0B0F19] py-16 md:py-24 transition-colors duration-300">
+    <section className="relative w-full bg-[#FAF9F6] dark:bg-[#0B0F19] py-8 md:py-12 transition-colors duration-300 overflow-hidden border-t border-slate-200/60 z-20">
+      {/* Background mesh glow elements matching Why Work With Us section */}
+      <div className="absolute top-1/4 -right-1/4 w-[450px] h-[450px] rounded-full bg-cyan-200/10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-1/4 w-[450px] h-[450px] rounded-full bg-blue-200/10 blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto grid grid-cols-1 gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 items-center">
         
         {/* Left Column: Heading and Introduction */}
         <div className="flex flex-col items-start text-left lg:sticky lg:top-24">
-          <span className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-cyan-500">
+          <span className="mb-1 text-sm font-semibold uppercase tracking-[0.16em] text-cyan-500">
             How Projects Move
           </span>
           
-          <h2 className="mb-4 font-display font-bold text-slate-900 dark:text-white text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight">
+          <h2 className="mb-2 font-display font-bold text-slate-900 dark:text-white text-3xl sm:text-4xl lg:text-[44px] leading-tight tracking-tight">
             From First Call <br className="hidden md:inline" /> to Launch
           </h2>
           
-          <p className="mb-8 text-base sm:text-lg text-slate-650 dark:text-slate-400 leading-relaxed max-w-md">
+          <p className="mb-4 text-base sm:text-lg text-slate-650 dark:text-slate-400 leading-relaxed max-w-md">
             We agree on the goal first, break the work into clear stages, and keep you updated until the project is live and handed over.
           </p>
 
