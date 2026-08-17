@@ -16,6 +16,7 @@ export interface ArticleCardProps {
   excerpt: string;
   cover?: string;
   coverAlt?: string;
+  coverNode?: React.ReactNode;
   tag?: string;
   readingTime?: number; // in seconds
   writer?: string;
@@ -46,6 +47,7 @@ export function formatPostDate(date: Date | string): string {
 export const ArticleCard: React.FC<ArticleCardProps> = ({
   cover,
   coverAlt,
+  coverNode,
   tag,
   readingTime,
   headline,
@@ -61,16 +63,20 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
 
   return (
     <Card className={cn("flex w-full max-w-sm flex-col gap-3 overflow-hidden rounded-3xl border p-3 shadow-lg bg-white border-cyan-100/80", className)}>
-      {cover && (
+      {(coverNode || cover) && (
         <CardHeader className="p-0">
-          <div className="relative h-56 w-full">
-            <Image
-              src={cover}
-              alt={coverAlt || headline}
-              fill
-              unoptimized
-              className="rounded-2xl object-cover"
-            />
+          <div className="relative h-56 w-full overflow-hidden rounded-2xl">
+            {coverNode ? (
+              coverNode
+            ) : cover ? (
+              <Image
+                src={cover}
+                alt={coverAlt || headline}
+                fill
+                unoptimized
+                className="rounded-2xl object-cover"
+              />
+            ) : null}
           </div>
         </CardHeader>
       )}

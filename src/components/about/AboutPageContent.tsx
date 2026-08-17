@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  Target, Lightbulb, Users,
+  Target, Lightbulb, Users, UserCheck, Compass, ShieldCheck, TrendingUp, CheckCircle2,
 } from "lucide-react";
 import AnimatedSection from "@/components/common/AnimatedSection";
 import ShaderBackground from "@/components/ui/shader-background";
@@ -12,6 +12,7 @@ import ShaderBackground from "@/components/ui/shader-background";
 // } from "@/components/ui/animated-cards-stack";
 import MarqueeLogoScroller from "@/components/ui/marquee-logo-scroller";
 import { TextShimmer } from "@/components/ui/text-shimmer";
+import TeamSection from "@/components/about/TeamSection";
 
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -352,53 +353,201 @@ export default function AboutPageContent() {
 
       {/* ── Who We Are ───────────────────────────────────────────────────── */}
       <section
-        className="relative py-24 px-6 bg-white border-t border-border overflow-hidden"
+        className="relative py-24 px-6 bg-slate-50/60 border-t border-slate-200/80 overflow-hidden"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(15,23,42,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.055) 1px, transparent 1px)",
+            "linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px)",
           backgroundSize: "72px 72px",
         }}
       >
-        <div className="absolute top-1/4 -right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-200/10 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 -left-1/4 w-[400px] h-[400px] rounded-full bg-blue-200/10 blur-[120px] pointer-events-none" />
+        {/* Soft Ambient Radial Glows */}
+        <div className="absolute top-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-cyan-200/30 blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-blue-200/20 blur-[140px] pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="relative max-w-7xl mx-auto">
+          
+          {/* Centered Main Story Showcase Card (Highlighted & Enlarged) */}
+          <AnimatedSection delay={0.1} className="max-w-4xl mx-auto">
+            <div className="relative overflow-hidden rounded-[36px] border border-cyan-100/90 bg-white/90 backdrop-blur-xl p-8 sm:p-12 md:p-14 shadow-[0_24px_70px_-15px_rgba(8,145,178,0.14)] text-center">
+              
+              {/* Badge */}
+              <div className="flex justify-center mb-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-800 backdrop-blur-sm shadow-sm">
+                  <Users size={13} aria-hidden="true" className="text-cyan-600" />
+                  Who We Are
+                </span>
+              </div>
 
-          {/* Left — label + heading + brief */}
-          <AnimatedSection direction="left" className="lg:sticky lg:top-28">
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "black" }}>
-              Who We Are
-            </span>
-            <h2
-              className="mt-6 font-display font-thin text-primary text-balance"
-              style={{ fontSize: "clamp(28px, 3.8vw, 42px)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#0E7490" }}
-            >
-              A small team that takes the work seriously
-            </h2>
-            <p className="mt-5 text-muted-foreground leading-[1.8]" style={{ fontSize: 16 }}>
-              We are not a large agency with layers of account managers. We are a team
-              of engineers, designers, and strategists who work directly with the
-              people we are helping.
-            </p>
+              {/* 2-Line Headline */}
+              <h2
+                className="font-display font-light text-slate-900 text-balance tracking-tight"
+                style={{ fontSize: "clamp(34px, 4.8vw, 54px)", lineHeight: 1.1 }}
+              >
+                Engineered for Clarity. <br />
+                <span className="font-normal text-cyan-700">Built for Growth.</span>
+              </h2>
+
+              {/* Main Narrative Body */}
+              <div className="mt-8 space-y-4 max-w-2xl mx-auto">
+                <p className="text-slate-900 text-lg sm:text-xl md:text-[22px] font-normal leading-[1.65]">
+                  We are a specialized technology firm of senior engineers, product designers, and technical strategists. By eliminating intermediary layers, we collaborate directly with business leaders to build resilient, scalable digital solutions.
+                </p>
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
+                  We focus on deliberate architecture, clean execution, and aligning engineering decisions directly with your core business outcomes.
+                </p>
+              </div>
+
+              {/* Quick Trust Highlights Row */}
+              <div className="mt-9 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-center gap-3 sm:gap-4 relative z-10">
+                {[
+                  "Direct collaboration with principal engineers",
+                  "Deliberate architecture over hasty technical debt",
+                  "Transparent feasibility & long-term accountability",
+                ].map((point, idx) => (
+                  <div key={idx} className="inline-flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium bg-slate-50/90 px-3.5 py-1.5 rounded-full border border-slate-200/70">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Decorative Subtle Wave Graphics */}
+              <svg viewBox="0 0 400 100" className="absolute bottom-0 right-0 w-80 h-24 pointer-events-none z-0 opacity-20" fill="none" preserveAspectRatio="none">
+                <path d="M0,70 Q100,20 200,65 T400,40" stroke="#0891B2" strokeWidth="2" strokeOpacity="0.7" />
+                <path d="M0,50 Q90,80 190,30 T400,70" stroke="#06B6D4" strokeWidth="1.5" strokeOpacity="0.4" />
+              </svg>
+            </div>
           </AnimatedSection>
 
-          {/* Right — body paragraphs */}
-          <AnimatedSection direction="right" delay={0.1} className="space-y-6 text-muted-foreground leading-[1.8] text-base">
-            <p>
-              Most of what we do is unglamorous. We plan carefully, build things that
-              hold up, and stay involved long after launch. We think that is what good
-              technology work actually looks like.
-            </p>
-            <p>
-              We are honest about what we can do and what we cannot. If something is
-              not the right fit, we will say so. If a simpler approach works better,
-              we will recommend it.
-            </p>
-            <p>
-              The businesses we work with best are the ones who want a real working
-              relationship, not just a vendor to hand off a spec to.
-            </p>
-          </AnimatedSection>
+          {/* 4 Feature Cards (Pushed Down Below the Main Story Card) */}
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* Card 1: Direct Senior Collaboration */}
+            <AnimatedSection delay={0.15}>
+              <div className="group relative overflow-hidden bg-white rounded-[28px] p-6 md:p-7 border border-cyan-100/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_18px_40px_-10px_rgba(8,145,178,0.16)] hover:border-cyan-300 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 flex flex-col justify-between h-full min-h-[290px]">
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-cyan-50/90 border border-cyan-200/80 flex items-center justify-center text-cyan-700 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <UserCheck className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-700 uppercase bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-100/80">
+                      Direct Team
+                    </span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight font-sans">
+                    Direct Senior Collaboration
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    We eliminate account management layers. You work directly alongside the architects and senior engineers actively designing and building your product.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-slate-100 text-[10px] font-mono tracking-wider text-cyan-800 uppercase font-semibold">
+                  No Intermediary Overhead
+                </div>
+
+                {/* Decorative Wave Graphics */}
+                <svg viewBox="0 0 300 80" className="absolute bottom-0 left-0 w-full h-14 pointer-events-none z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-500" fill="none" preserveAspectRatio="none">
+                  <path d="M0,65 Q75,25 150,58 T300,38" stroke="#0891B2" strokeWidth="2.5" strokeOpacity="0.75" />
+                  <path d="M0,48 Q70,75 145,30 T300,65" stroke="#06B6D4" strokeWidth="1.5" strokeOpacity="0.4" />
+                </svg>
+              </div>
+            </AnimatedSection>
+
+            {/* Card 2: Resilient Architecture */}
+            <AnimatedSection delay={0.2}>
+              <div className="group relative overflow-hidden bg-white rounded-[28px] p-6 md:p-7 border border-cyan-100/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_18px_40px_-10px_rgba(8,145,178,0.16)] hover:border-cyan-300 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 flex flex-col justify-between h-full min-h-[290px]">
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-cyan-50/90 border border-cyan-200/80 flex items-center justify-center text-cyan-700 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <Compass className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-700 uppercase bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-100/80">
+                      Architecture
+                    </span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight font-sans">
+                    Resilient Architecture
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    We prioritize long-term system stability, clean code standards, and thorough technical planning over rushed prototypes and fragile shortcuts.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-slate-100 text-[10px] font-mono tracking-wider text-cyan-800 uppercase font-semibold">
+                  Built to Scale &amp; Last
+                </div>
+
+                <svg viewBox="0 0 300 80" className="absolute bottom-0 left-0 w-full h-14 pointer-events-none z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-500" fill="none" preserveAspectRatio="none">
+                  <path d="M0,58 Q85,15 160,62 T300,30" stroke="#0891B2" strokeWidth="2.5" strokeOpacity="0.75" />
+                  <path d="M0,40 Q65,68 135,28 T300,58" stroke="#22D3EE" strokeWidth="1.5" strokeOpacity="0.4" />
+                </svg>
+              </div>
+            </AnimatedSection>
+
+            {/* Card 3: Transparent Feasibility */}
+            <AnimatedSection delay={0.25}>
+              <div className="group relative overflow-hidden bg-white rounded-[28px] p-6 md:p-7 border border-cyan-100/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_18px_40px_-10px_rgba(8,145,178,0.16)] hover:border-cyan-300 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 flex flex-col justify-between h-full min-h-[290px]">
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-cyan-50/90 border border-cyan-200/80 flex items-center justify-center text-cyan-700 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-700 uppercase bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-100/80">
+                      Honesty
+                    </span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight font-sans">
+                    Transparent Feasibility
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    We offer objective, transparent technical guidance. If a simpler or more cost-effective approach best serves your business objective, we actively recommend it.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-slate-100 text-[10px] font-mono tracking-wider text-cyan-800 uppercase font-semibold">
+                  Honest &amp; Straightforward
+                </div>
+
+                <svg viewBox="0 0 300 80" className="absolute bottom-0 left-0 w-full h-14 pointer-events-none z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-500" fill="none" preserveAspectRatio="none">
+                  <path d="M0,62 Q80,22 155,55 T300,32" stroke="#0891B2" strokeWidth="2.5" strokeOpacity="0.75" />
+                  <path d="M0,45 Q75,70 140,25 T300,60" stroke="#06B6D4" strokeWidth="1.5" strokeOpacity="0.4" />
+                </svg>
+              </div>
+            </AnimatedSection>
+
+            {/* Card 4: Long-Term Value Partner */}
+            <AnimatedSection delay={0.3}>
+              <div className="group relative overflow-hidden bg-white rounded-[28px] p-6 md:p-7 border border-cyan-100/90 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_18px_40px_-10px_rgba(8,145,178,0.16)] hover:border-cyan-300 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 flex flex-col justify-between h-full min-h-[290px]">
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-11 h-11 rounded-2xl bg-cyan-50/90 border border-cyan-200/80 flex items-center justify-center text-cyan-700 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                      <TrendingUp className="w-5 h-5" />
+                    </div>
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-700 uppercase bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-100/80">
+                      Partnership
+                    </span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight font-sans">
+                    Long-Term Value Partner
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                    We measure success by tangible business outcomes. We act as an extended engineering partner dedicated to your product&apos;s continuous success post-launch.
+                  </p>
+                </div>
+
+                <div className="relative z-10 mt-5 pt-3.5 border-t border-slate-100 text-[10px] font-mono tracking-wider text-cyan-800 uppercase font-semibold">
+                  Strategic Alignment
+                </div>
+
+                <svg viewBox="0 0 300 80" className="absolute bottom-0 left-0 w-full h-14 pointer-events-none z-0 opacity-20 group-hover:opacity-50 transition-opacity duration-500" fill="none" preserveAspectRatio="none">
+                  <path d="M0,60 Q75,20 150,55 T300,35" stroke="#0891B2" strokeWidth="2.5" strokeOpacity="0.75" />
+                  <path d="M0,45 Q65,70 140,25 T300,60" stroke="#22D3EE" strokeWidth="1.5" strokeOpacity="0.3" />
+                </svg>
+              </div>
+            </AnimatedSection>
+
+          </div>
 
         </div>
       </section>
@@ -415,6 +564,9 @@ export default function AboutPageContent() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* ── Team Section ─────────────────────────────────────────────────── */}
+      <TeamSection />
 
       {/* ── Mission & Vision ─────────────────────────────────────────────── */}
       <section className="py-20 px-6 border-t border-border">

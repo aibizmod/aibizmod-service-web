@@ -27,7 +27,7 @@ const tools = [
     description:
       "Check how your business appears across AI engines like ChatGPT, Claude, Gemini, and Perplexity. Get a detailed score, citability index, and actionable recommendations to improve your AI discoverability.",
     icon: Search,
-    href: "/services/ai-automation/ai-visibility-audit",
+    href: "/ai-visibility-audit-report",
     badge: "Free",
     badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
     available: true,
