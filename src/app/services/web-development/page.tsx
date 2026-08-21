@@ -49,16 +49,21 @@ const data: ServicePageData = {
 	iconColor: 'text-electric-blue',
 
 	overview: {
+		headline: {
+			main: 'High-Performance Web.',
+			highlight: 'Engineered for Conversion & Ownership.',
+		},
 		paragraphs: [
-			"A website that just looks good but can't connect to your CRM, take a booking, or show a client their account history isn't doing much for the business. The work starts with understanding what the site actually needs to do, not just how it should look. From there, everything is built to spec: the database structure, the user flows, the admin tools, the handover docs. You end up with a codebase you own, a staging environment to review changes before they go live, and a clear record of how everything is set up so any developer can pick it up later.",
+			"A website that looks good but cannot connect to your CRM, accept bookings, or load under 2 seconds costs your business real revenue. Modern web applications require speed, clean code, and maintainable architecture.",
+			'We build custom Next.js web applications with lightning-fast Core Web Vitals, staging preview environments, headless API integrations, and structured handovers so you own and maintain your codebase without lock-in.',
 		],
 		benefits: [
-			'Version-Controlled Codebase Ownership',
-			'Staging Environment for Previewing Updates',
-			'Custom Database and API Integrations',
-			'No Proprietary Platform Licensing Fees',
-			'Direct CRM and Dashboard Synchronization',
-			'Clean Google Search Console Index Configuration',
+			'Version-Controlled Next.js Codebase Ownership',
+			'Isolated Staging Environment for Previews',
+			'Direct CRM, Stripe & Webhook Integrations',
+			'Zero Proprietary CMS Platform Licensing Fees',
+			'Direct Analytics & Search Console Setup',
+			'Complete Deployment & Maintenance Handover',
 		],
 	},
 

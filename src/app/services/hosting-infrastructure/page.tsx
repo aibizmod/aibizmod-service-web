@@ -53,16 +53,21 @@ const data: ServicePageData = {
 	iconColor: 'text-orange-500',
 
 	overview: {
+		headline: {
+			main: 'Resilient Cloud Systems.',
+			highlight: 'Zero Deployment Drama.',
+		},
 		paragraphs: [
-			"Bad deployments are almost always a process problem, not a code problem. Someone pushed directly to production, there was no staging environment to catch the issue first, and now the rollback is manual and stressful. Getting the infrastructure right means putting those safeguards in before they're needed: separate environments for testing and live, automated backups that actually get tested, deployment pipelines that can roll back in under a minute, and monitoring that alerts the right people before users notice something is wrong. The setup is documented in plain language so your team understands what's running and what it costs.",
+			"Bad deployments are almost always a process problem, not a code problem. Pushing directly to production without a staging barrier leads to high-stress rollbacks and unexpected downtime.",
+			'Getting infrastructure right means putting safeguards in before they are needed: isolated staging environments, tested automated backups, one-minute rollback pipelines, and 24/7 telemetry monitoring.',
 		],
 		benefits: [
-			'Separated Staging and Production Systems',
-			'Automated Deployment with Rollback Triggers',
-			'Configured Daily Database Backups',
-			'Active CPU and HTTP Alert Monitors',
-			'Plain Business Language Billing Estimates',
-			'Complete Infrastructure Codebase Access',
+			'Isolated Staging & Production Environments',
+			'Automated CI/CD with 60s Rollback Triggers',
+			'Automated Daily Database Backups',
+			'Active Health & Performance Alert Telemetry',
+			'Plain Language Cloud Billing Estimates',
+			'Complete Infrastructure Codebase Ownership',
 		],
 	},
 

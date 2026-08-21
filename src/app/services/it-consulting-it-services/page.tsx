@@ -53,14 +53,19 @@ const data: ServicePageData = {
 	iconColor: 'text-cyan-600',
 
 	overview: {
+		headline: {
+			main: 'Objective Guidance.',
+			highlight: 'Actionable Roadmaps.',
+		},
 		paragraphs: [
-			"Most technology decisions get made without a clear picture of what's already there. A company pays for three tools that overlap, runs servers twice the size they need, and has no documented process for what happens if a key system goes down. An IT audit starts by mapping what exists: the architecture, the access controls, the billing, and the vendor contracts. From there it identifies where the real risks and inefficiencies are. The output is a set of specific, prioritised recommendations. Not a deck full of frameworks, but a document your technical team can act on.",
+			"Most technology decisions get made without a clear picture of what is already running. Companies pay for overlapping SaaS subscriptions, oversized servers, and untested recovery procedures.",
+			'We conduct thorough architecture reviews, cloud cost audits, vendor evaluations, and security assessments — delivering prioritized, practical roadmaps your engineering team can immediately execute.',
 		],
 		benefits: [
 			'Cloud Cost Reduction Recommendations',
 			'Systems Vulnerability Security Checklists',
-			'Detailed Software Vendor Comparison Charts',
-			'12-Month Release Roadmap Planning',
+			'Detailed Software Vendor Comparisons',
+			'12-Month Prioritized Release Roadmaps',
 			'Documented Database Architecture Reviews',
 			'Objective, Vendor-Neutral Assessments',
 		],

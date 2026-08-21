@@ -53,18 +53,21 @@ const data: ServicePageData = {
 	iconColor: 'text-emerald-600',
 
 	overview: {
+		headline: {
+			main: 'Measured Foundations.',
+			highlight: 'Predictable Growth.',
+		},
 		paragraphs: [
-			"A lot of digital marketing spend goes in before anyone has checked whether the tracking actually works. Tags fire on the wrong pages, form submissions don't register as conversions, and the reporting dashboard shows sessions instead of the leads that matter. Before campaigns scale, those foundations need to be solid. The work here covers auditing what's already set up, configuring GA4 and Google Tag Manager correctly, fixing Search Console errors that stop pages from being indexed, and building Looker Studio dashboards that show what's actually happening rather than what looks good in a weekly report.",
-			'Search visibility has also changed: discovery now happens across traditional search results, Google AI Overviews, and answer-engine citation surfaces like ChatGPT, Perplexity, and Gemini. That is why our digital marketing programme pairs measured campaign performance with AI search readiness — starting with the Search Marketing service page and the AI Visibility Audit, which benchmarks how your brand is retrieved, cited, and recommended across AI platforms.',
+			"A lot of marketing spend goes out before anyone has checked whether tracking works. Tags fire on the wrong pages, conversions get missed, and dashboards show vanity traffic instead of real leads.",
+			'We fix tracking foundations with GA4 and GTM audits, repair search indexing errors, build real-time Looker Studio dashboards, and optimize presence across traditional search and emerging AI answer engines.',
 		],
 		benefits: [
-			'Accurate Google Analytics Attribution',
-			'Fixed Search Console Crawl Indexing Errors',
-			'Custom Conversion Tracking Configuration',
-			'Competitor Search Term Comparisons',
+			'Accurate GA4 & Conversion Attribution',
+			'Fixed Search Console Indexing Errors',
+			'Custom GTM Event Tracking Setup',
 			'Unified Dashboards in Looker Studio',
 			'Structured Paid Campaign Frameworks',
-			'AI Search Visibility Benchmarking Across Answer Engines',
+			'AI Search Visibility Across Answer Engines (GEO)',
 		],
 	},
 

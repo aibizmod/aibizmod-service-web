@@ -51,16 +51,21 @@ const data: ServicePageData = {
 	iconColor: 'text-cyan-600',
 
 	overview: {
+		headline: {
+			main: 'Production-Grade Mobile.',
+			highlight: 'Built for Real-World Field Use.',
+		},
 		paragraphs: [
-			'Building a mobile app is straightforward when the spec is clear. The hard part is usually getting to a clear spec. What does the app need to do offline? How does it handle a bad network connection in the field? What happens when a user submits a form twice? These questions matter more than the choice of framework. The app gets designed around actual use: the technician who needs job details without a signal, the customer who wants to track a delivery, the warehouse team scanning items into a system. It ships with crash reporting connected, the App Store submission handled, and the source code yours to keep.',
+			'Building a mobile app succeeds or fails based on real-world reliability: handling offline mode, spotty cellular networks, and rapid form inputs without crashing or losing field data.',
+			'We engineer custom iOS and Android applications tailored for field operations, customer portals, and internal workflows — complete with store approvals, crash monitoring, and full repository ownership.',
 		],
 		benefits: [
-			'Direct Database API Integration',
+			'Direct Database & REST/GraphQL API Sync',
 			'Tested on Physical Devices, Not Just Emulators',
-			'Offline Local Storage Configuration',
-			'Push Notification Delivery Setup',
-			'App Store and Play Store Compliance Support',
-			'Full Source Code and Repository Access',
+			'Offline Local Storage & Background Sync',
+			'Push Notification Infrastructure Setup',
+			'App Store & Play Store Compliance Handover',
+			'Full Source Code & Repository Ownership',
 		],
 	},
 

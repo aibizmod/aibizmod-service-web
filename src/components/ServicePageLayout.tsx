@@ -4,15 +4,15 @@ import { type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import {
-  ChevronRight, CheckCircle, ArrowRight,
+  ChevronRight, CheckCircle, CheckCircle2, ArrowRight,
   Code2, Database, Server, Network, Cloud, TestTube,
   Smartphone, Monitor, Layers, Eye, Bell, Search,
   Target, FileText, Mail, Megaphone, LineChart,
-  Workflow, Container, Shield, Activity, RefreshCw,
+  Workflow, Container, Shield, ShieldCheck, Activity, RefreshCw,
   Compass, Bot, Cpu, MessageSquare, Headphones,
-  Package, Settings, Wrench, Zap, Users, Lightbulb,
+  Package, Settings, Wrench, Zap, Users, UserCheck, Lightbulb,
   Globe, Award, Clock, Rocket, Pencil, BarChart, GitBranch,
-  Sparkles, HardDrive, type LucideIcon,
+  Sparkles, HardDrive, TrendingUp, type LucideIcon,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -30,22 +30,24 @@ export type IconKey =
   | "code2" | "database" | "server" | "network" | "cloud" | "testTube"
   | "smartphone" | "monitor" | "layers" | "eye" | "bell" | "search"
   | "target" | "fileText" | "mail" | "megaphone" | "lineChart"
-  | "workflow" | "container" | "shield" | "activity" | "refreshCw"
+  | "workflow" | "container" | "shield" | "shieldCheck" | "activity" | "refreshCw"
   | "compass" | "bot" | "cpu" | "messageSquare" | "headphones"
-  | "package" | "settings" | "wrench" | "zap" | "users" | "lightbulb"
-  | "globe" | "award" | "clock" | "rocket" | "pencil" | "barChart" | "gitBranch" | "hardDrive";
+  | "package" | "settings" | "wrench" | "zap" | "users" | "userCheck" | "lightbulb"
+  | "globe" | "award" | "clock" | "rocket" | "pencil" | "barChart" | "gitBranch" | "hardDrive"
+  | "sparkles" | "trendingUp" | "checkCircle" | "checkCircle2";
 
 export const iconMap: Record<IconKey, LucideIcon> = {
   code2: Code2, database: Database, server: Server, network: Network,
   cloud: Cloud, testTube: TestTube, smartphone: Smartphone, monitor: Monitor,
   layers: Layers, eye: Eye, bell: Bell, search: Search, target: Target,
   fileText: FileText, mail: Mail, megaphone: Megaphone, lineChart: LineChart,
-  workflow: Workflow, container: Container, shield: Shield, activity: Activity,
+  workflow: Workflow, container: Container, shield: Shield, shieldCheck: ShieldCheck, activity: Activity,
   refreshCw: RefreshCw, compass: Compass, bot: Bot, cpu: Cpu,
   messageSquare: MessageSquare, headphones: Headphones, package: Package,
-  settings: Settings, wrench: Wrench, zap: Zap, users: Users,
+  settings: Settings, wrench: Wrench, zap: Zap, users: Users, userCheck: UserCheck,
   lightbulb: Lightbulb, globe: Globe, award: Award, clock: Clock,
   rocket: Rocket, pencil: Pencil, barChart: BarChart, gitBranch: GitBranch, hardDrive: HardDrive,
+  sparkles: Sparkles, trendingUp: TrendingUp, checkCircle: CheckCircle, checkCircle2: CheckCircle2,
 };
 
 const serviceImages: Record<string, string> = {
@@ -79,7 +81,11 @@ export interface ServicePageData {
   heroBullets: string[];
   slug: string;
   iconColor: string; // kept for backwards compat; layout uses text-royal throughout
-  overview: { paragraphs: string[]; benefits: string[]; };
+  overview: {
+    headline?: { main: string; highlight: string };
+    paragraphs: string[];
+    benefits: string[];
+  };
   features: FeatureCard[];   // exactly 6
   process: ProcessStep[];    // exactly 4
   techStack?: string[];
@@ -391,51 +397,100 @@ export default function ServicePageLayout({
           </div>
         </section>
 
-        {/* ── 2. Overview ─────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden px-6 py-24 bg-white">
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(210,247,255,0.6),transparent_32%)]"
-            aria-hidden="true"
-          />
+        {/* ── 2. Overview / What We Deliver ───────────────────────────────── */}
+        <section className="relative overflow-hidden px-6 py-20 md:py-24 bg-slate-50/50 border-t border-slate-200/70">
+          {/* Soft ambient glows */}
+          <div className="absolute top-1/4 -right-1/4 w-[450px] h-[450px] rounded-full bg-cyan-200/25 blur-[130px] pointer-events-none" />
+          <div className="absolute bottom-1/4 -left-1/4 w-[450px] h-[450px] rounded-full bg-blue-200/20 blur-[130px] pointer-events-none" />
+
           <div className="relative mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
-              {/* Left: description */}
-              <AnimatedSection direction="left" className="lg:col-span-3">
-                <SectionHeading eyebrow="Overview" heading="What We Deliver" className="mb-6" />
-                <div className="mt-6 space-y-4">
-                  {data.overview.paragraphs.map((p, i) => (
-                    <p
-                      key={i}
-                      className="text-slate-600 leading-relaxed"
-                      style={{ fontSize: 17, lineHeight: 1.65 }}
+              {/* Left: Main Narrative Card (7 cols) */}
+              <AnimatedSection direction="left" className="lg:col-span-7 h-full">
+                <div className="relative overflow-hidden rounded-[32px] border border-cyan-100/90 bg-white/90 backdrop-blur-xl p-8 sm:p-10 shadow-[0_16px_45px_rgba(8,145,178,0.06)] flex flex-col justify-between h-full">
+                  <div className="relative z-10">
+                    {/* Eyebrow Badge */}
+                    <div className="mb-5">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-800 backdrop-blur-sm shadow-sm">
+                        <Sparkles size={13} aria-hidden="true" className="text-cyan-600" />
+                        What We Deliver
+                      </span>
+                    </div>
+
+                    {/* Headline */}
+                    <h2
+                      className="font-display font-light text-slate-900 text-balance tracking-tight mb-6"
+                      style={{ fontSize: "clamp(28px, 3.8vw, 42px)", lineHeight: 1.15 }}
                     >
-                      {p}
-                    </p>
-                  ))}
+                      {data.overview.headline?.main || "Engineered for Clarity."}{" "}
+                      <span className="font-normal text-cyan-700">
+                        {data.overview.headline?.highlight || "Built for Measurable Outcomes."}
+                      </span>
+                    </h2>
+
+                    {/* Paragraph Content */}
+                    <div className="space-y-4">
+                      {data.overview.paragraphs.map((p, i) => (
+                        <p
+                          key={i}
+                          className={
+                            i === 0
+                              ? "text-slate-800 text-base sm:text-lg leading-relaxed font-normal"
+                              : "text-slate-600 text-sm sm:text-base leading-relaxed font-light"
+                          }
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Decorative subtle wave graphic in bottom corner */}
+                  <svg
+                    viewBox="0 0 300 80"
+                    className="absolute bottom-0 right-0 w-64 h-16 pointer-events-none z-0 opacity-25"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path d="M0,60 Q75,20 150,55 T300,35" stroke="#0891B2" strokeWidth="2" strokeOpacity="0.75" />
+                    <path d="M0,45 Q65,70 140,25 T300,60" stroke="#06B6D4" strokeWidth="1.5" strokeOpacity="0.4" />
+                  </svg>
                 </div>
               </AnimatedSection>
 
-              {/* Right: key benefits sticky card */}
-              <AnimatedSection direction="right" delay={0.15} className="lg:col-span-2">
-                <div className="rounded-[28px] border border-cyan-100 bg-white/70 p-8 shadow-[0_18px_55px_rgba(59,130,246,0.10)] backdrop-blur-md lg:sticky lg:top-24">
-                  <h3 className="font-display font-semibold text-[#0F172A] mb-5" style={{ fontSize: 18 }}>
-                    Key Benefits
-                  </h3>
-                  <ul className="space-y-4">
-                    {data.overview.benefits.map((b, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm">
-                        <CheckCircle
-                          size={16}
-                          className="text-cyan-600 mt-0.5 shrink-0"
-                          aria-hidden="true"
-                        />
-                        <span className="text-slate-600 leading-relaxed">{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Right: Key Benefits Bento Grid (5 cols) */}
+              <AnimatedSection direction="right" delay={0.15} className="lg:col-span-5 h-full">
+                <div className="rounded-[32px] border border-cyan-100/90 bg-white/90 backdrop-blur-xl p-7 sm:p-8 shadow-[0_16px_45px_rgba(8,145,178,0.06)] flex flex-col justify-between h-full">
+                  <div>
+                    <div className="flex items-center justify-between mb-5 pb-3 border-b border-slate-100">
+                      <h3 className="font-display font-semibold text-[#0F172A] text-base sm:text-lg">
+                        Key Benefits &amp; Standards
+                      </h3>
+                      <span className="text-[11px] font-mono font-bold text-cyan-700 uppercase bg-cyan-50 px-2.5 py-0.5 rounded-full border border-cyan-100">
+                        {data.overview.benefits.length} Outcomes
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+                      {data.overview.benefits.map((b, i) => (
+                        <div
+                          key={i}
+                          className="group flex items-start gap-3 p-3 rounded-2xl border border-slate-100 bg-slate-50/60 hover:bg-cyan-50/30 hover:border-cyan-200/80 transition-all duration-200"
+                        >
+                          <div className="w-6 h-6 rounded-lg bg-white border border-cyan-200/80 flex items-center justify-center text-cyan-600 shadow-sm shrink-0 group-hover:scale-105 transition-transform mt-0.5">
+                            <CheckCircle2 size={13} />
+                          </div>
+                          <span className="text-xs sm:text-sm font-medium text-slate-700 group-hover:text-slate-900 leading-snug pt-0.5">
+                            {b}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
+
             </div>
           </div>
         </section>

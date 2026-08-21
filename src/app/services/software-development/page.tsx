@@ -50,15 +50,20 @@ const data: ServicePageData = {
 	iconColor: 'text-indigo-600',
 
 	overview: {
+		headline: {
+			main: 'Tailored Software.',
+			highlight: 'Built Around How You Operate.',
+		},
 		paragraphs: [
-			"Off-the-shelf software works until the business outgrows it. At that point you're either paying for features you don't use or working around the ones you need. Custom software is slower to start but built around how the business actually runs: the approval steps that matter, the reports that get pulled every Monday, the way stock moves through a warehouse, the fields your team actually fills in. The database is designed for your data, the access controls reflect your team structure, and the documentation covers how to run it without needing to call anyone.",
+			"Off-the-shelf SaaS platforms work until your operations outgrow them. Teams end up paying recurring per-seat licensing fees for bloat while building clunky spreadsheets for the custom logic they actually need.",
+			'We engineer custom web apps, ERP workflows, internal portals, and SaaS platforms directly aligned with your business operations — complete with direct database access, role-based controls, and 100% source code ownership.',
 		],
 		benefits: [
 			'Direct Database Schema Access',
-			'Custom Business Logic Configuration',
-			'Automated Reporting Pipelines',
+			'Custom Business Logic & Workflows',
+			'Automated Internal Reporting Pipelines',
 			'Role-Based Permission Controls',
-			'No Licensing Cost Per User',
+			'Zero Per-Seat SaaS Subscription Fees',
 			'Complete Source Code Ownership',
 		],
 	},

@@ -23,6 +23,16 @@ import AnimatedSection from "@/components/common/AnimatedSection";
 
 const tools = [
   {
+    title: "llms.txt Generator & Auditor",
+    description:
+      "Generate a perfectly formatted, spec-compliant llms.txt file for your website to boost discoverability and citation accuracy across ChatGPT, Perplexity, Claude, and AI crawlers.",
+    icon: Sparkles,
+    href: "/tools/llms-txt-generator",
+    badge: "Free",
+    badgeColor: "bg-cyan-500/10 text-cyan-700 border-cyan-200",
+    available: true,
+  },
+  {
     title: "AI Visibility Audit Report",
     description:
       "Check how your business appears across AI engines like ChatGPT, Claude, Gemini, and Perplexity. Get a detailed score, citability index, and actionable recommendations to improve your AI discoverability.",

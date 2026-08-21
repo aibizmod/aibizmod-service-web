@@ -65,6 +65,7 @@ ${allSubServiceUrls}
 
 ## Tools
 
+${BASE}/tools/llms-txt-generator
 ${BASE}/automation-roi-calculator
 ${BASE}/ai-visibility-prompts
 ${BASE}/how-we-audit-ai-visibility

@@ -52,16 +52,21 @@ const data: ServicePageData = {
 	iconColor: 'text-pink-600',
 
 	overview: {
+		headline: {
+			main: 'Unified Customer Records.',
+			highlight: 'Faster Support Resolution.',
+		},
 		paragraphs: [
-			"When a support agent can't see a customer's order history, previous tickets, or billing status in one place, the conversation starts badly. Usually the data exists somewhere. It's just split across tools that don't talk to each other, or sitting in a CRM that hasn't been cleaned since it was set up. The work here is practical: deduplicating contact records, configuring ticket routing so queries reach the right team, connecting WhatsApp or email channels into a shared inbox, and making sure the information agents actually need shows up in the right place at the right time.",
+			"When a support agent can't see a customer's order history, previous tickets, or billing status in one place, the conversation starts badly. The data usually exists — it's just split across disconnected tools or an uncleaned CRM.",
+			'The work here is practical: deduplicating contact databases, configuring automated ticket routing so queries reach the right specialists, and connecting WhatsApp and email channels into a single, unified agent inbox.',
 		],
 		benefits: [
-			'Deduplicated and Structured CRM Contacts',
+			'Deduplicated & Structured CRM Contacts',
 			'Automated Ticket Routing Rules',
 			'Unified Customer Support Histories',
 			'Post-Support CSAT Survey Logs',
-			'WhatsApp Business Text Configurations',
-			'Shared Agent Inboxes in Intercom',
+			'WhatsApp Business & Shared Inboxes',
+			'Direct Agent Dashboard Integrations',
 		],
 	},
 
