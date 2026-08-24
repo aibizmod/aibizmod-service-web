@@ -7,6 +7,7 @@ import ServicesGrid from '@/components/sections/ServicesGrid';
 import AIAutomationHero from '@/components/sections/ai-automation-hero';
 import WhyChooseUs from '@/components/sections/WhyChooseUs';
 import GlobalPresence from '@/components/sections/GlobalPresence';
+import GlobalLocations from '@/components/sections/GlobalLocations';
 import HowWeWork from '@/components/sections/HowWeWork';
 import Testimonials from '@/components/sections/Testimonials';
 import FAQSection from '@/components/sections/FAQSection';
@@ -36,8 +37,9 @@ export default function Home() {
 				<ServicesGrid />
 					<AIAutomationHero />
 					<WhyChooseUs />
-					<GlobalPresence />
-					<HowWeWork />
+<GlobalPresence />
+				<GlobalLocations />
+				<HowWeWork />
 					<LatestBlogsSection />
 					<Testimonials />
 					<FAQSection />

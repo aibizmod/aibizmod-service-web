@@ -8,9 +8,11 @@ import { useAibizmodAuth } from "@/components/providers/AibizmodAuthProvider";
 interface SignInModalProps {
   isOpen: boolean;
   onClose: () => void;
+  heading?: string;
+  description?: string;
 }
 
-export function SignInModal({ isOpen, onClose }: SignInModalProps) {
+export function SignInModal({ isOpen, onClose, heading, description }: SignInModalProps) {
   const { requestOtp, verifyOtp } = useAibizmodAuth();
   const [step, setStep] = useState<"email" | "otp">("email");
   const [email, setEmail] = useState("");
@@ -88,23 +90,18 @@ export function SignInModal({ isOpen, onClose }: SignInModalProps) {
 
         <div className="text-center mb-6">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-slate-900 to-slate-800 shadow-lg shadow-slate-200">
-            <span
-              className="relative text-2xl font-bold text-white"
-              style={{ fontFamily: "Satoshi, sans-serif" }}
-            >
-              {"\u0131"}
-              <span className="pointer-events-none absolute left-1/2 top-[0.15em] h-[0.2em] w-[0.2em] -translate-x-1/2 rounded-full bg-cyan-400" />
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icon.svg" alt="aibizmod" width={32} height={32} className="h-9 w-9" />
           </div>
           <h3
             className="text-xl font-bold text-slate-900"
             style={{ fontFamily: "Satoshi, sans-serif" }}
           >
-            {step === "email" ? "Sign in to your account" : "Enter your code"}
+            {step === "email" ? (heading ?? "Sign in to your account") : "Enter your code"}
           </h3>
           <p className="text-sm text-slate-500 mt-1">
             {step === "email"
-              ? "Unlock the full AI visibility report"
+              ? (description ?? "Unlock the full AI visibility report")
               : `We sent a 6-digit code to ${email}`}
           </p>
         </div>

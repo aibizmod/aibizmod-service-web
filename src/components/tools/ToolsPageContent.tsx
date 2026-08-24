@@ -14,6 +14,8 @@ import {
   Lock,
   FileText,
   BookOpen,
+  Tags,
+  Target,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -33,6 +35,16 @@ const tools = [
     available: true,
   },
   {
+    title: "Brand Audit Tool",
+    description:
+      "Audit how clearly your website explains your brand to AI answer engines. Score entity clarity, citability, trust proof, and platform readiness for ChatGPT, Perplexity, Gemini, and Claude.",
+    icon: Target,
+    href: "/tools/brand-audit",
+    badge: "Free",
+    badgeColor: "bg-cyan-500/10 text-cyan-700 border-cyan-200",
+    available: true,
+  },
+  {
     title: "AI Visibility Audit Report",
     description:
       "Check how your business appears across AI engines like ChatGPT, Claude, Gemini, and Perplexity. Get a detailed score, citability index, and actionable recommendations to improve your AI discoverability.",
@@ -47,20 +59,20 @@ const tools = [
     description:
       "Estimate the time and cost savings from automating your business workflows. Input your team size, manual processes, and hours spent — get a projected ROI in seconds.",
     icon: Calculator,
-    href: null,
-    badge: "Coming Soon",
-    badgeColor: "bg-amber-500/10 text-amber-700 border-amber-200",
-    available: false,
+    href: "/automation-roi-calculator",
+    badge: "Free",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+    available: true,
   },
   {
     title: "AI Readiness Score",
     description:
       "Evaluate how prepared your business is to adopt AI tools and automation. Answer a few questions about your data, processes, and tech stack — receive a readiness score with a tailored adoption roadmap.",
     icon: Zap,
-    href: null,
-    badge: "Coming Soon",
-    badgeColor: "bg-amber-500/10 text-amber-700 border-amber-200",
-    available: false,
+    href: "/ai-readiness-score",
+    badge: "Free",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+    available: true,
   },
   {
     title: "AI Visibility Prompts",
@@ -68,6 +80,16 @@ const tools = [
       "54 ready-to-run prompts for auditing how ChatGPT, Perplexity, Gemini, and Claude see your brand — retrieval, citation, recommendation, and sentiment checks. Copy, run, and score monthly.",
     icon: FileText,
     href: "/ai-visibility-prompts",
+    badge: "Free",
+    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
+    available: true,
+  },
+  {
+    title: "Keyword Research Tool",
+    description:
+      "Enter a seed keyword and expand it into dozens of long-tail variants via Google autocomplete, grouped by intent. Free, no signup, no API key — export to CSV.",
+    icon: Tags,
+    href: "/keywords",
     badge: "Free",
     badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
     available: true,

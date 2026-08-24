@@ -555,7 +555,7 @@ export async function POST(req: NextRequest) {
       sitemapRes,
       sitemapIndexRes,
       llmsTxtRes,
-      llmsFullRes,
+      llmsFullRes, // eslint-disable-line @typescript-eslint/no-unused-vars
       robotsRes,
     ] = await Promise.all([
       safeFetch(baseUrl),

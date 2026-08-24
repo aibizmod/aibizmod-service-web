@@ -79,7 +79,7 @@ const socials = [
 	},
 	{
 		label: 'Instagram',
-		href: 'https://instagram.com/aibizmod',
+		href: 'https://www.instagram.com/aibizmod2026/',
 		icon: FaInstagram,
 	},
 	{
@@ -284,12 +284,14 @@ export default function Footer() {
 											<span>{c.name}</span>
 										</div>
 										<div className='pl-6 text-[12.5px] text-white/50 space-y-0.5'>
-											<a
-												href={`tel:${c.phone.replace(/\s/g, '')}`}
-												className='hover:text-white transition-colors block'
-											>
-												{c.phone}
-											</a>
+											{c.phone && (
+												<a
+													href={`tel:${c.phone.replace(/\s/g, '')}`}
+													className='hover:text-white transition-colors block'
+												>
+													{c.phone}
+												</a>
+											)}
 											<a
 												href={`mailto:${c.email}`}
 												className='hover:text-white transition-colors block'

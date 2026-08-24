@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, ChevronRight, Copy, Sparkles } from "lucide-react";
+import { Check, ChevronRight, Copy, Search, Sparkles, X } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
@@ -12,12 +12,27 @@ import { promptCategories, aiPrompts } from "@/data/prompts";
 
 export default function PromptLibraryContent() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [query, setQuery] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const filtered =
-    activeCategory === "all"
-      ? aiPrompts
-      : aiPrompts.filter((p) => p.category === activeCategory);
+  const normalizedQuery = query.trim().toLowerCase();
+
+  const filtered = aiPrompts.filter((p) => {
+    const matchesCategory = activeCategory === "all" || p.category === activeCategory;
+    if (!matchesCategory) return false;
+    if (!normalizedQuery) return true;
+    return (
+      p.title.toLowerCase().includes(normalizedQuery) ||
+      p.prompt.toLowerCase().includes(normalizedQuery) ||
+      p.tags.some((t) => t.toLowerCase().includes(normalizedQuery))
+    );
+  });
+
+  const allCount = normalizedQuery
+    ? filtered.length
+    : activeCategory === "all"
+      ? aiPrompts.length
+      : aiPrompts.filter((p) => p.category === activeCategory).length;
 
   async function copyPrompt(id: string, text: string) {
     try {
@@ -76,6 +91,46 @@ export default function PromptLibraryContent() {
           {/* Category filters */}
           <section className="px-4 sm:px-6 pb-4">
             <div className="mx-auto max-w-6xl">
+              {/* Search bar */}
+              <div className="mx-auto mb-6 max-w-2xl">
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  className="flex flex-col gap-2.5 sm:flex-row"
+                  role="search"
+                >
+                  <div className="relative flex-1">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-stone-400">
+                      <Search className="h-4 w-4" />
+                    </div>
+                    <input
+                      type="search"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Search prompts by keyword, category, or intent…"
+                      aria-label="Search prompts"
+                      className="h-12 w-full rounded-2xl border border-cyan-400/80 bg-white shadow-sm pl-10 pr-10 text-[14px] font-medium text-slate-900 outline-none placeholder:text-stone-400 ring-2 ring-cyan-100 transition focus:border-cyan-500"
+                    />
+                    {query && (
+                      <button
+                        type="button"
+                        onClick={() => setQuery("")}
+                        aria-label="Clear search"
+                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 transition hover:text-slate-600"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    )}
+                  </div>
+                  <button
+                    type="submit"
+                    className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-[#0f172a] px-6 text-sm font-semibold text-white transition hover:bg-cyan-700"
+                  >
+                    <Search className="h-4 w-4" />
+                    Search
+                  </button>
+                </form>
+              </div>
+
               <div className="flex flex-wrap gap-2 justify-center">
                 <button
                   onClick={() => setActiveCategory("all")}
@@ -85,7 +140,7 @@ export default function PromptLibraryContent() {
                       : "border-cyan-100 bg-white text-slate-600 hover:border-cyan-300"
                   }`}
                 >
-                  All ({aiPrompts.length})
+                  All ({normalizedQuery ? allCount : aiPrompts.length})
                 </button>
                 {promptCategories.map((cat) => (
                   <button
@@ -102,7 +157,15 @@ export default function PromptLibraryContent() {
                 ))}
               </div>
 
-              {activeCat && (
+              {normalizedQuery && (
+                <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-slate-500">
+                  {filtered.length === 0
+                    ? `No prompts match “${query.trim()}” in this category. Try a different keyword.`
+                    : `${filtered.length} ${filtered.length === 1 ? "prompt" : "prompts"} match “${query.trim()}”.`}
+                </p>
+              )}
+
+              {!normalizedQuery && activeCat && (
                 <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-slate-500">
                   {activeCat.description}
                 </p>
@@ -113,8 +176,29 @@ export default function PromptLibraryContent() {
           {/* Prompt grid */}
           <section className="px-4 sm:px-6 py-12 pb-24">
             <div className="mx-auto max-w-6xl">
-              <div className="grid gap-5 md:grid-cols-2">
-                {filtered.map((p, i) => (
+              {filtered.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-cyan-200 bg-white/60 p-10 text-center">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-cyan-50">
+                    <Search className="h-6 w-6 text-cyan-500" />
+                  </div>
+                  <h2 className="mt-4 font-display font-semibold text-[#0F172A] text-lg">
+                    No prompts found
+                  </h2>
+                  <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-500">
+                    We couldn&apos;t find any prompts matching your search. Try a broader keyword,
+                    or clear the search to browse all categories.
+                  </p>
+                  <button
+                    onClick={() => setQuery("")}
+                    className="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-[#0f172a] px-6 text-sm font-semibold text-white transition hover:bg-cyan-700"
+                  >
+                    <X className="h-4 w-4" />
+                    Clear Search
+                  </button>
+                </div>
+              ) : (
+                <div className="grid gap-5 md:grid-cols-2">
+                  {filtered.map((p, i) => (
                   <AnimatedSection key={p.id} delay={(i % 2) * 0.05}>
                     <div className="group flex h-full flex-col rounded-2xl border border-cyan-100/80 bg-white/70 p-6 shadow-[0_8px_24px_rgba(59,130,246,0.06)] transition hover:border-cyan-200 hover:shadow-[0_12px_36px_rgba(8,145,178,0.10)]">
                       <div className="flex items-start justify-between gap-4">
@@ -151,7 +235,8 @@ export default function PromptLibraryContent() {
                     </div>
                   </AnimatedSection>
                 ))}
-              </div>
+                </div>
+              )}
             </div>
           </section>
 

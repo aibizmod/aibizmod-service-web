@@ -43,6 +43,7 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
     headline: c.title,
     description: c.excerpt,
     datePublished: c.date,
+    dateModified: c.date,
     author: {
       '@type': 'Organization',
       name: 'aibizmod',
@@ -50,12 +51,28 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
     },
   };
 
+  const faqSchema = c.faqs.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: c.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.a,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
       <Navbar />
       <StickyFooterLayout footer={<Footer />}>
         <main className="bg-white text-ink">
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+          {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
           {/* Hero */}
           <section className="relative isolate overflow-hidden px-4 sm:px-6 pb-16 pt-32 md:pb-20 md:pt-36">
@@ -78,15 +95,16 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <span className="text-sm text-slate-400">{c.date}</span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100">
-                  {c.optionA}
-                </span>
-                <span className="text-xs text-slate-400 font-medium">vs</span>
-                <span className="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-700 border border-cyan-100">
-                  {c.optionB}
-                </span>
+                <span className="text-sm text-slate-400">Last updated {c.date}</span>
+                <span className="text-sm text-slate-300">·</span>
+                <span className="text-sm text-slate-400">aibizmod editorial team</span>
               </div>
+
+              {c.answerBlock && (
+                <div className="mt-8 rounded-xl border border-cyan-100 bg-white/60 px-6 py-5 backdrop-blur-sm shadow-[0_8px_24px_rgba(59,130,246,0.06)]">
+                  <p className="text-sm leading-relaxed text-slate-700">{c.answerBlock}</p>
+                </div>
+              )}
             </div>
           </section>
 
@@ -168,6 +186,33 @@ export default function ComparisonDetailPage({ params }: ComparisonDetailPagePro
               </ul>
             </div>
           </section>
+
+          {/* FAQ */}
+          {c.faqs.length > 0 && (
+            <section className="px-4 sm:px-6 py-16 bg-white">
+              <div className="max-w-3xl mx-auto">
+                <AnimatedSection>
+                  <SectionHeading eyebrow="Common questions" heading="Frequently Asked Questions" centered />
+                </AnimatedSection>
+
+                <div className="mt-10 space-y-4">
+                  {c.faqs.map((faq, i) => (
+                    <AnimatedSection key={i} delay={i * 0.06}>
+                      <details className="group rounded-xl border border-cyan-100 bg-[#F8FEFF] p-5 open:bg-white open:shadow-[0_8px_24px_rgba(59,130,246,0.06)] transition-all">
+                        <summary className="cursor-pointer text-sm font-semibold text-[#0F172A] leading-relaxed list-none flex items-center justify-between gap-4">
+                          {faq.q}
+                          <span className="shrink-0 text-cyan-400 group-open:rotate-180 transition-transform duration-200">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                          </span>
+                        </summary>
+                        <p className="mt-4 text-sm text-slate-600 leading-relaxed">{faq.a}</p>
+                      </details>
+                    </AnimatedSection>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Sources and related services */}
           <section className="px-4 sm:px-6 py-16 bg-white">

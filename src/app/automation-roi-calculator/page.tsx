@@ -9,6 +9,7 @@ import StickyFooterLayout from '@/components/layout/StickyFooterLayout';
 import AnimatedSection from '@/components/common/AnimatedSection';
 import SectionHeading from '@/components/common/SectionHeading';
 import ShaderBackground from '@/components/ui/shader-background';
+import { ReportGate } from '@/components/aibizmod/ReportGate';
 
 export default function AutomationRoiCalculatorPage() {
   const [employees, setEmployees] = useState(10);
@@ -130,7 +131,13 @@ export default function AutomationRoiCalculatorPage() {
                     per year based on {employees} employees
                   </p>
 
-                  <div className="mt-8 space-y-4 border-t border-cyan-100 pt-6">
+                  <ReportGate
+                    tool="ROI Calculator"
+                    heading="Unlock your full savings breakdown"
+                    description="Sign in to see the complete calculation breakdown and methodology."
+                    ctaLabel="Unlock Full Breakdown"
+                  >
+                    <div className="mt-8 space-y-4 border-t border-cyan-100 pt-6">
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-500">Total manual hours per year</span>
                       <span className="font-semibold text-slate-700">{totalHoursPerYear.toLocaleString()}</span>
@@ -158,6 +165,7 @@ export default function AutomationRoiCalculatorPage() {
                       <strong className="text-cyan-700">Methodology:</strong> Calculation uses a standard 48-week working year. The automation percentage reflects the estimated proportion of manual task time that can be eliminated through automation — not all manual work can be fully automated. Actual results depend on workflow complexity, integration requirements, and implementation approach.
                     </p>
                   </div>
+                  </ReportGate>
                 </div>
               </AnimatedSection>
             </div>

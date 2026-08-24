@@ -79,6 +79,22 @@ const CANFlag = () => (
 	</svg>
 );
 
+const INDFlag = () => (
+	<svg
+		width='20'
+		height='14'
+		viewBox='0 0 20 14'
+		className='rounded-sm shrink-0'
+		xmlns='http://www.w3.org/2000/svg'
+	>
+		<rect y='0' width='20' height='4.67' fill='#FF9933' />
+		<rect y='4.67' width='20' height='4.67' fill='#FFF' />
+		<rect y='9.33' width='20' height='4.67' fill='#138808' />
+		<circle cx='10' cy='7' r='1.5' fill='none' stroke='#06038D' strokeWidth='0.5' />
+		<path d='M10 5.4 V8.6 M8.4 7 H11.6' stroke='#06038D' strokeWidth='0.5' />
+	</svg>
+);
+
 const SAUFlag = () => (
 	<svg
 		width='20'
@@ -162,6 +178,14 @@ export const countries: Country[] = [
 		phone: '+1 (979) 326-9493',
 		email: 'canada@aibizmod.com',
 		address: 'Canada Regional Office',
+	},
+	{
+		code: 'IND',
+		name: 'India',
+		flag: <INDFlag />,
+		phone: '',
+		email: 'aibizmod@outlook.com',
+		address: 'Technology & R&D, Kollam, Kerala, India',
 	},
 	{
 		code: 'UAE',

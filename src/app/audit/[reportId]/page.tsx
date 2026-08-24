@@ -24,6 +24,7 @@ import {
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { ReportGate } from "@/components/aibizmod/ReportGate";
 import type { AuditResult } from "@/app/api/geo-audit/route";
 
 interface HostedReportData {
@@ -417,6 +418,12 @@ export default function HostedAuditReportPage() {
               </div>
             )}
 
+            <ReportGate
+              tool="Hosted Audit Report"
+              heading="Unlock this full audit report"
+              description="Sign in to see the category breakdown, key issues, quick wins, and recommended roadmap."
+              className="space-y-6"
+            >
             {/* Category breakdown */}
             {categories.length > 0 && (
               <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
@@ -521,6 +528,7 @@ export default function HostedAuditReportPage() {
                 )}
               </div>
             )}
+            </ReportGate>
 
             {/* CTA */}
             <div className="rounded-2xl bg-gradient-to-br from-cyan-600 via-teal-600 to-emerald-600 p-8 text-center shadow-lg">

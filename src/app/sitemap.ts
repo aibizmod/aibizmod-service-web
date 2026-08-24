@@ -28,6 +28,9 @@ const staticRoutes = [
   '/comparisons',
   '/topics',
   '/tools',
+  '/tools/brand-audit',
+  '/brand-audit',
+  '/keywords',
   '/social-media-platforms',
   '/ai-visibility-prompts',
   '/ai-visibility-audit-report',
@@ -55,6 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/comparisons': 0.7,
     '/topics': 0.7,
     '/tools': 0.6,
+    '/tools/brand-audit': 0.6,
+    '/brand-audit': 0.5,
+    '/keywords': 0.6,
     '/social-media-platforms': 0.6,
     '/ai-visibility-prompts': 0.6,
     '/ai-visibility-audit-report': 0.7,
@@ -73,6 +79,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const extraPages = [
     { url: `${BASE}/automation-roi-calculator`, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: `${BASE}/ai-readiness-score`, changeFrequency: 'monthly' as const, priority: 0.6 },
   ];
 
   const topicPages = topicHubs.map((t) => ({

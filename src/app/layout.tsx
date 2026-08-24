@@ -43,9 +43,16 @@ const entityGraph = {
 			foundingDate: '2019',
 			sameAs: [
 				'https://linkedin.com/company/aibizmod',
-				'https://instagram.com/aibizmod',
+				'https://www.instagram.com/aibizmod2026/',
 				'https://pinterest.com/aibizmod',
 				'https://facebook.com/aibizmod',
+				'https://medium.com/@aibizmod_60676',
+				'https://aibizmod.substack.com',
+				'https://discord.com/invite/bS3zQjGa5',
+				'https://bsky.app/profile/aibizmod.bsky.social',
+				'https://www.quora.com/profile/Aibizmod',
+				'https://mastodon.social/@aibizmod12',
+				'https://www.threads.com/@aibizmod',
 			],
 			knowsAbout: [
 				'Web Development',

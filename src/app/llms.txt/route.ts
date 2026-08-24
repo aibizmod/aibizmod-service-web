@@ -66,7 +66,9 @@ ${allSubServiceUrls}
 ## Tools
 
 ${BASE}/tools/llms-txt-generator
+${BASE}/tools/brand-audit
 ${BASE}/automation-roi-calculator
+${BASE}/ai-readiness-score
 ${BASE}/ai-visibility-prompts
 ${BASE}/how-we-audit-ai-visibility
 ${BASE}/ai-visibility-audit-report

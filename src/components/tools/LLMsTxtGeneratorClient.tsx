@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -793,7 +793,7 @@ export default function LLMsTxtGeneratorClient() {
                         Create a route handler in your App Router directory to serve the file dynamically:
                       </p>
                       <div className="rounded-xl bg-slate-950 p-4 border border-slate-800 font-mono text-xs text-slate-300 overflow-x-auto">
-                        <div className="text-slate-500">// src/app/llms.txt/route.ts</div>
+                        <div className="text-slate-500">{"// src/app/llms.txt/route.ts"}</div>
                         <pre className="mt-2 text-cyan-300">
 {`export function GET(): Response {
   const content = \`${editableContent.replace(/`/g, "\\`")}\`;
@@ -897,7 +897,7 @@ export default function LLMsTxtGeneratorClient() {
                     How do AI Crawlers (Perplexity, ChatGPT, Claude) use llms.txt?
                   </h3>
                   <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                    Modern AI search engines use autonomous scraping agents that have strict token budgets. Instead of crawling hundreds of complex JavaScript-heavy HTML pages, AI crawlers look for <code className="text-cyan-800 font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">/llms.txt</code> to immediately understand the brand's core mission, pricing structure, and key documentation in clean Markdown.
+                    Modern AI search engines use autonomous scraping agents that have strict token budgets. Instead of crawling hundreds of complex JavaScript-heavy HTML pages, AI crawlers look for <code className="text-cyan-800 font-mono text-xs bg-slate-100 px-1 py-0.5 rounded">/llms.txt</code> to immediately understand the brand&apos;s core mission, pricing structure, and key documentation in clean Markdown.
                   </p>
                 </div>
 
