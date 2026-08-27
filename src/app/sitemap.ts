@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { blogPosts } from '@/data/blog';
+import { industries } from '@/data/industries';
 import { comparisons } from '@/data/comparisons';
 import { services } from '@/data/services';
 import { topicHubs } from '@/data/topics';
@@ -31,10 +32,9 @@ const staticRoutes = [
   '/tools/brand-audit',
   '/brand-audit',
   '/keywords',
+  '/industries',
   '/social-media-platforms',
-  '/ai-visibility-prompts',
   '/ai-visibility-audit-report',
-  '/how-we-audit-ai-visibility',
   '/careers',
   '/clients',
   '/privacy',
@@ -61,10 +61,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/tools/brand-audit': 0.6,
     '/brand-audit': 0.5,
     '/keywords': 0.6,
+    '/industries': 0.7,
     '/social-media-platforms': 0.6,
-    '/ai-visibility-prompts': 0.6,
     '/ai-visibility-audit-report': 0.7,
-    '/how-we-audit-ai-visibility': 0.6,
     '/careers': 0.5,
     '/clients': 0.5,
     '/privacy': 0.3,
@@ -77,10 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: priorityByRoute[route] ?? 0.8,
   }));
 
-  const extraPages = [
-    { url: `${BASE}/automation-roi-calculator`, changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${BASE}/ai-readiness-score`, changeFrequency: 'monthly' as const, priority: 0.6 },
-  ];
+  const extraPages: { url: string; changeFrequency: 'monthly'; priority: number }[] = [];
 
   const topicPages = topicHubs.map((t) => ({
     url: `${BASE}/topics/${t.slug}`,
@@ -95,6 +91,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: c.date ? new Date(c.date) : undefined,
   }));
 
+  const industryPages = industries.map((i) => ({
+    url: `${BASE}/industries/${i.slug}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   const posts = blogPosts.map((post) => ({
     url: `${BASE}/blog/${post.slug}`,
     changeFrequency: 'monthly' as const,
@@ -102,5 +104,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: post.date ? new Date(post.date) : undefined,
   }));
 
-  return [...statics, ...extraPages, ...topicPages, ...comparisonPages, ...posts];
+  return [...statics, ...extraPages, ...topicPages, ...comparisonPages, ...industryPages, ...posts];
 }

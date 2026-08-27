@@ -309,18 +309,6 @@ const data: SubservicePageData = {
 				'What Google actually says about AI Overviews and AI Mode, what does not help, and what to measure.',
 			href: '/blog/google-ai-search-optimization',
 		},
-		{
-			title: 'AI Visibility Audit Prompts',
-			description:
-				'54 free prompts for auditing how ChatGPT, Perplexity, Gemini, and Claude see your brand across retrieval, citation, and recommendation.',
-			href: '/ai-visibility-prompts',
-		},
-		{
-			title: 'How We Audit AI Visibility: Methodology, Metrics & Scoring',
-			description:
-				'The documented five-metric methodology, prompt sets, and scoring rubric behind every AI visibility audit.',
-			href: '/how-we-audit-ai-visibility',
-		},
 	],
 };
 

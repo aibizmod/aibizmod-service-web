@@ -3,6 +3,7 @@
 
 import { blogPosts } from '@/data/blog';
 import { comparisons } from '@/data/comparisons';
+import { industries } from '@/data/industries';
 import { services } from '@/data/services';
 import { topicHubs } from '@/data/topics';
 
@@ -26,6 +27,10 @@ function buildContent(): string {
 
   const comparisonUrls = comparisons
     .map((c) => `${BASE}/comparisons/${c.slug}`)
+    .join('\n');
+
+  const industryUrls = industries
+    .map((i) => `${BASE}/industries/${i.slug}`)
     .join('\n');
 
   const blogUrls = blogPosts
@@ -67,10 +72,6 @@ ${allSubServiceUrls}
 
 ${BASE}/tools/llms-txt-generator
 ${BASE}/tools/brand-audit
-${BASE}/automation-roi-calculator
-${BASE}/ai-readiness-score
-${BASE}/ai-visibility-prompts
-${BASE}/how-we-audit-ai-visibility
 ${BASE}/ai-visibility-audit-report
 
 ## Topic hubs
@@ -80,6 +81,10 @@ ${topicUrls}
 ## Comparison pages
 
 ${comparisonUrls}
+
+## Industries
+
+${industryUrls}
 
 ## Blog posts
 

@@ -86,6 +86,7 @@ const serviceItems: {
 const navLinks = [
 	{ label: 'About', href: '/about' },
 	{ label: 'Services', href: '/services', hasDropdown: true },
+	{ label: 'Industries', href: '/industries' },
 	{ label: 'Tools', href: '/tools' },
 	{ label: 'Blog', href: '/blog' },
 	{ label: 'Contact', href: '/contact' },

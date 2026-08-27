@@ -82,18 +82,6 @@ export const topicHubs: TopicHub[] = [
         type: 'guide',
       },
       {
-        title: 'AI Visibility Audit Prompts',
-        description: '54 free, ready-to-run prompts for auditing brand visibility, competitor comparisons, citations, and sentiment across answer engines.',
-        href: '/ai-visibility-prompts',
-        type: 'checklist',
-      },
-      {
-        title: 'How We Audit AI Visibility: Methodology, Metrics & Scoring',
-        description: 'The documented five-metric methodology, prompt sets, and scoring rubric behind every AI visibility audit.',
-        href: '/how-we-audit-ai-visibility',
-        type: 'guide',
-      },
-      {
         title: 'LLMClicks Alternative: AI Visibility Audit Services vs a DIY Tracking Tool',
         description: 'When to buy an AI visibility tracking subscription and when a managed audit-and-implementation engagement closes the gap faster.',
         href: '/comparisons/llmclicks-alternative',

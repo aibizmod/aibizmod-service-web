@@ -6,14 +6,10 @@ import {
   ChevronRight,
   Sparkles,
   Search,
-  Calculator,
-  Clock,
   ArrowRight,
   BarChart3,
-  Zap,
+  Clock,
   Lock,
-  FileText,
-  BookOpen,
   Tags,
   Target,
 } from "lucide-react";
@@ -55,51 +51,11 @@ const tools = [
     available: true,
   },
   {
-    title: "Automation ROI Calculator",
-    description:
-      "Estimate the time and cost savings from automating your business workflows. Input your team size, manual processes, and hours spent — get a projected ROI in seconds.",
-    icon: Calculator,
-    href: "/automation-roi-calculator",
-    badge: "Free",
-    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
-    available: true,
-  },
-  {
-    title: "AI Readiness Score",
-    description:
-      "Evaluate how prepared your business is to adopt AI tools and automation. Answer a few questions about your data, processes, and tech stack — receive a readiness score with a tailored adoption roadmap.",
-    icon: Zap,
-    href: "/ai-readiness-score",
-    badge: "Free",
-    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
-    available: true,
-  },
-  {
-    title: "AI Visibility Prompts",
-    description:
-      "54 ready-to-run prompts for auditing how ChatGPT, Perplexity, Gemini, and Claude see your brand — retrieval, citation, recommendation, and sentiment checks. Copy, run, and score monthly.",
-    icon: FileText,
-    href: "/ai-visibility-prompts",
-    badge: "Free",
-    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
-    available: true,
-  },
-  {
     title: "Keyword Research Tool",
     description:
       "Enter a seed keyword and expand it into dozens of long-tail variants via Google autocomplete, grouped by intent. Free, no signup, no API key — export to CSV.",
     icon: Tags,
     href: "/keywords",
-    badge: "Free",
-    badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
-    available: true,
-  },
-  {
-    title: "Audit Methodology",
-    description:
-      "The documented five-metric methodology behind every AI visibility audit: prompt sets, scoring rubric, and the visibility levels — so you can evaluate the audit before you buy it.",
-    icon: BookOpen,
-    href: "/how-we-audit-ai-visibility",
     badge: "Free",
     badgeColor: "bg-emerald-500/10 text-emerald-700 border-emerald-200",
     available: true,
