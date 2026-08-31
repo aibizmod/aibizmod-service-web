@@ -14,7 +14,6 @@ import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 import { ArticleCard } from "@/components/ui/blog-post-card";
 import NeuralBackground from "@/components/ui/flow-field-background";
 import { FlowButton } from "@/components/ui/flow-button";
-import TeamSection from "@/components/about/TeamSection";
 
 const serviceArtworks: Record<string, React.ReactNode> = {
   "ai-automation": (
@@ -778,9 +777,6 @@ export default function ServicesPageContent() {
               </div>
             </div>
           </section>
-
-          {/* ── Team Section ─────────────────────────────────────────────── */}
-          <TeamSection />
 
           {/* ── CTA ──────────────────────────────────────────────────────── */}
           <section className="relative overflow-hidden bg-white px-6 py-24">

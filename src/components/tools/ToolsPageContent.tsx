@@ -12,6 +12,7 @@ import {
   Lock,
   Tags,
   Target,
+  MessageSquare,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -20,6 +21,16 @@ import StickyFooterLayout from "@/components/layout/StickyFooterLayout";
 import AnimatedSection from "@/components/common/AnimatedSection";
 
 const tools = [
+  {
+    title: "AI Citation Hijacker & Source Finder",
+    description:
+      "Find the exact Reddit threads, YouTube transcripts, and niche blogs cited by ChatGPT, Perplexity, and Google AI Overviews. Get 1-click authentic responses to flip recommendations to your brand.",
+    icon: MessageSquare,
+    href: "/tools/ai-citation-hijacker",
+    badge: "Free",
+    badgeColor: "bg-cyan-500/10 text-cyan-700 border-cyan-200",
+    available: true,
+  },
   {
     title: "llms.txt Generator & Auditor",
     description:

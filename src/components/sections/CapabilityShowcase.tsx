@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import { HeroButton } from "@/components/blocks/animated-video-on-scroll";
 
@@ -114,8 +114,8 @@ export default function CapabilityShowcase() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const selectService = (i: number) => {
-    if (i === active) return;
+  const selectService = useCallback((i: number) => {
+    if (i === activeRef.current) return;
     
     // Clear the active progress
     progressRef.current = 0;
@@ -135,10 +135,9 @@ export default function CapabilityShowcase() {
     setTimeout(() => {
       setVisualFading(false);
     }, 250);
-  };
+  }, []);
 
   // Keyboard navigation
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") {

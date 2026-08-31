@@ -115,6 +115,34 @@
     border: 1px solid #BAE6FD;
   }
 
+  /* ── Shimmering Blue Accent with Metallic Luster ───────────────── */
+  @keyframes textShimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  .shimmer-blue {
+    background: linear-gradient(
+      115deg,
+      #0891B2 10%,
+      #06B6D4 30%,
+      #38BDF8 46%,
+      #FFFFFF 50%,
+      #38BDF8 54%,
+      #06B6D4 70%,
+      #0891B2 90%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmer 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    display: inline-block;
+  }
+
   /* ── Gold Decorative Rule — 2 px × 60 px above section headlines ─── */
   .gold-rule {
     width: 60px;

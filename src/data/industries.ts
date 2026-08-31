@@ -18,7 +18,7 @@ export const industries: IndustryPage[] = [
     tagline: 'AI-driven personalisation, inventory automation, and conversion optimisation for online and physical retail.',
     description: 'Retail businesses use aibizmod to automate inventory management, personalise customer experiences, and build high-converting e-commerce platforms. From AI-powered product recommendations to automated supply chain workflows, we help retailers compete with larger players using technology as the advantage.',
     icon: '🛒',
-    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Inventory mismanagement causing stockouts or overstock that drains cash flow',
       'Generic website experiences that fail to convert visitors into buyers',
@@ -47,7 +47,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Secure, compliant software and automation for financial services, fintech, and banking operations.',
     description: 'Financial institutions use aibizmod to build secure, compliant platforms — from automated reporting and risk analysis to customer-facing dashboards and internal workflow automation. We understand regulatory requirements and build systems that meet them.',
     icon: '💰',
-    heroImage: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual compliance reporting that consumes analyst time and introduces errors',
       'Disconnected data sources making consolidated reporting slow and unreliable',
@@ -76,7 +76,7 @@ export const industries: IndustryPage[] = [
     tagline: 'HIPAA-compliant platforms, patient management systems, and AI-assisted clinical workflows.',
     description: 'Healthcare organisations use aibizmod to build secure patient management platforms, automate clinical documentation, and create AI-assisted diagnostic tools. We build with HIPAA, NHS Digital, and clinical safety standards from day one.',
     icon: '🏥',
-    heroImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Clinical documentation that consumes hours of clinician time daily',
       'Disconnected patient data across multiple systems and departments',
@@ -105,7 +105,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Supply chain automation, IoT integration, and operational intelligence for factories and distribution.',
     description: 'Manufacturing and logistics companies use aibizmod to automate supply chain workflows, integrate IoT sensor data, and build operational dashboards. From warehouse management to predictive maintenance, we turn operational data into competitive advantage.',
     icon: '🏭',
-    heroImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual production scheduling that cannot adapt to demand fluctuations',
       'Reactive maintenance causing unplanned downtime and costly repairs',
@@ -134,7 +134,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Product-led growth, churn reduction, and platform development for SaaS and subscription businesses.',
     description: 'SaaS companies use aibizmod to build product analytics platforms, automate customer success workflows, and develop features that drive retention. From onboarding funnels to usage-based billing, we build the systems that power product-led growth.',
     icon: '☁️',
-    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'High churn rates from poor onboarding and unclear product value',
       'Manual customer success workflows that do not scale with user growth',
@@ -163,7 +163,7 @@ export const industries: IndustryPage[] = [
     tagline: 'CRM automation, project management, and client delivery platforms for consultancies and agencies.',
     description: 'Professional services firms use aibizmod to automate client delivery workflows, build custom CRM integrations, and create dashboards that show project health in real time. From scoping to invoicing, we streamline the operations that drive profitability.',
     icon: '💼',
-    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Project profitability hidden behind manual timesheets and fragmented reporting',
       'Client onboarding and scoping processes that repeat for every engagement',
@@ -192,7 +192,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Document automation, case management, and compliance platforms for law firms and legal teams.',
     description: 'Legal organisations use aibizmod to automate document review, build case management platforms, and create compliance tracking systems. We understand the unique requirements of legal work — confidentiality, audit trails, and precision.',
     icon: '⚖️',
-    heroImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual document review consuming hundreds of billable hours per matter',
       'Case information scattered across emails, files, and practice management systems',
@@ -221,7 +221,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Learning management platforms, student engagement tools, and educational content delivery systems.',
     description: 'Educational institutions and EdTech companies use aibizmod to build learning management systems, automate administrative workflows, and create AI-powered learning tools. From K-12 to corporate training, we build platforms that improve learning outcomes.',
     icon: '🎓',
-    heroImage: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Administrative overhead consuming teacher and faculty time',
       'Student engagement dropping in remote and hybrid learning environments',
@@ -250,11 +250,11 @@ export const industries: IndustryPage[] = [
     tagline: 'Property platforms, tenant management, and AI-powered valuation tools for real estate businesses.',
     description: 'Real estate companies use aibizmod to build property listing platforms, automate tenant management workflows, and create AI-powered valuation and market analysis tools. From letting agents to property developers, we build technology that accelerates deals.',
     icon: '🏠',
-    heroImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual property matching and tenant screening consuming agent time',
       'Disconnected systems for listings, viewings, offers, and completions',
-      'No automated way to track market trends and adjust pricing策略',
+      'No automated way to track market trends and adjust pricing strategies',
       'Tenant communication and maintenance request workflows that are slow and untracked',
     ],
     services: [
@@ -279,7 +279,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Booking platforms, guest management, and operational automation for hotels, restaurants, and venues.',
     description: 'Hospitality businesses use aibizmod to build booking and reservation platforms, automate guest communication, and optimise menu pricing and inventory. From boutique hotels to restaurant chains, we build technology that improves guest experience and operational efficiency.',
     icon: '🏨',
-    heroImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual reservation management across phone, email, and OTAs',
       'No-shows and last-minute cancellations destroying revenue predictability',
@@ -308,7 +308,7 @@ export const industries: IndustryPage[] = [
     tagline: 'CRM automation, lead scoring, and sales intelligence platforms for revenue teams.',
     description: 'Sales teams use aibizmod to automate CRM workflows, build custom lead scoring models, and create sales intelligence dashboards. From pipeline management to forecasting, we build the systems that help sales teams close more deals.',
     icon: '📈',
-    heroImage: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Sales reps spending more time on CRM admin than selling',
       'Lead scoring that is inconsistent and misses high-intent prospects',
@@ -337,7 +337,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Applicant tracking, employee management, and people analytics platforms for HR teams.',
     description: 'HR departments use aibizmod to automate recruitment workflows, build employee self-service portals, and create people analytics dashboards. From hiring to retention, we build technology that helps organisations attract and keep the best talent.',
     icon: '👥',
-    heroImage: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Manual resume screening consuming recruiter time on low-value work',
       'Onboarding processes that are inconsistent and slow for new hires',
@@ -366,7 +366,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Booking platforms, membership management, and AI personalisation for gyms and wellness businesses.',
     description: 'Fitness and wellness businesses use aibizmod to build class booking platforms, automate membership management, and create AI-powered personalisation for training programmes. From gyms to wellness studios, we build technology that improves member experience and retention.',
     icon: '💪',
-    heroImage: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Class scheduling managed manually with no real-time availability',
       'Member retention dropping without personalised engagement',
@@ -395,7 +395,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Content management, audience analytics, and AI-powered publishing platforms for media businesses.',
     description: 'Content and media companies use aibizmod to build publishing platforms, automate content distribution, and create AI-powered analytics dashboards. From newsrooms to content studios, we build technology that scales content operations.',
     icon: '📰',
-    heroImage: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'Content publishing workflows that are slow and require too many manual steps',
       'No unified view of audience engagement across platforms and channels',
@@ -424,7 +424,7 @@ export const industries: IndustryPage[] = [
     tagline: 'Help desk automation, AI chatbots, and customer service platforms for support teams.',
     description: 'Customer support teams use aibizmod to automate ticket routing, build AI-powered chatbots, and create knowledge bases that deflect common questions. From help desks to enterprise support operations, we build technology that improves resolution times and customer satisfaction.',
     icon: '🎧',
-    heroImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=800&q=80&auto=format&fit=crop',
     challenges: [
       'High ticket volume from repetitive questions that could be self-served',
       'Slow first-response times due to manual routing and prioritisation',
@@ -447,8 +447,241 @@ export const industries: IndustryPage[] = [
       { q: 'Can you integrate with our existing help desk?', a: 'Yes. We build integrations with Zendesk, Freshdesk, Intercom, Salesforce Service Cloud, and custom help desk systems — adding AI capabilities without replacing your current platform.' },
     ],
   },
+  {
+    slug: 'telecom-iot',
+    name: 'Telecom & IoT Networks',
+    tagline: 'Edge telemetry, device provisioning, network observability, and high-throughput communication systems.',
+    description: 'Telecommunications providers and IoT hardware operators use aibizmod to build low-latency telemetry pipelines, automated device provisioning platforms, and predictive network maintenance systems. We architect for high concurrency and 99.999% uptime.',
+    icon: '📡',
+    heroImage: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Ingesting and parsing massive telemetry streams from millions of distributed edge devices',
+      'Unplanned network outages causing SLA penalties and degraded customer QoS',
+      'Complex manual device provisioning and firmware over-the-air (FOTA) update rollouts',
+      'Legacy billing systems struggling with real-time metered data consumption',
+    ],
+    services: [
+      { name: 'Software Development', href: '/services/software-development', description: 'Architect distributed IoT ingestion platforms and carrier-grade dashboards.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Real-time anomaly detection and predictive network failure models.' },
+      { name: 'IT Consulting', href: '/services/it-consulting-it-services', description: 'Zero Trust architecture and cloud infrastructure optimization.' },
+    ],
+    useCases: [
+      { title: 'Real-time edge anomaly detection', description: 'ML models process device telemetry at the edge, flagging hardware failure or packet degradation in sub-10ms.' },
+      { title: 'Automated FOTA update orchestrator', description: 'Staged fleet firmware deployment system with automated rollback and health verification.' },
+      { title: 'Carrier-grade usage metering', description: 'Distributed event processing pipeline that rates and bills data usage in real-time.' },
+    ],
+    faqs: [
+      { q: 'Can you handle millions of concurrent IoT messages?', a: 'Yes. We engineer distributed streaming pipelines with Apache Kafka, MQTT brokers, and time-series databases designed for millions of events per second.' },
+      { q: 'Do you support cellular, LoRaWAN, and satellite protocols?', a: 'Yes. We build protocol translation layers and unified APIs across cellular (4G/5G/NB-IoT), LoRaWAN, BLE, and satellite networks.' },
+      { q: 'How do you secure IoT fleets against intrusion?', a: 'We implement zero-touch cryptographic device onboarding, mutual TLS (mTLS), tamper detection, and automated certificate renewal.' },
+    ],
+  },
+  {
+    slug: 'cybersecurity',
+    name: 'Cybersecurity & Privacy',
+    tagline: 'Threat detection pipelines, SOC 2 compliance automation, and Zero Trust security architectures.',
+    description: 'Security-first enterprises use aibizmod to engineer automated incident response workflows, continuous compliance auditing platforms, and identity-centric Zero Trust architectures that safeguard critical assets against modern threats.',
+    icon: '🛡️',
+    heroImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Alert fatigue overwhelming security analysts with thousands of false positives daily',
+      'Continuous compliance tracking across multi-cloud environments requiring manual evidence collection',
+      'Fragmented identity management creating security blind spots across third-party tools',
+      'Slow manual containment of security incidents increasing dwell time and breach risk',
+    ],
+    services: [
+      { name: 'Software Development', href: '/services/software-development', description: 'Build custom SIEM integrations, SOAR playbooks, and security portals.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Automate threat triage, log parsing, and continuous compliance audit collection.' },
+      { name: 'IT Consulting', href: '/services/it-consulting-it-services', description: 'Zero Trust architecture planning and ISO 27001 / SOC 2 readiness.' },
+    ],
+    useCases: [
+      { title: 'Automated SOAR incident containment', description: 'Automated response workflows that isolate compromised endpoints, revoke session tokens, and block malicious IPs within seconds.' },
+      { title: 'Continuous evidence collection for SOC 2', description: 'Automated infrastructure scanners that gather compliance artifacts across AWS, GCP, and Azure continuously.' },
+      { title: 'AI threat intelligence correlation', description: 'NLP and graph neural networks that correlate internal firewall logs with global threat feeds to uncover targeted attacks.' },
+    ],
+    faqs: [
+      { q: 'Do you build custom security tools or integrate with existing SIEMs?', a: 'Both. We build custom security dashboards and automation playbooks for Splunk, Microsoft Sentinel, Datadog, and CrowdStrike, or build bespoke security platforms.' },
+      { q: 'Can you help us achieve SOC 2 or ISO 27001 certification?', a: 'Yes. We architect infrastructure to meet compliance controls out of the box and automate evidence collection pipelines.' },
+      { q: 'How do you handle sensitive customer logs?', a: 'All systems enforce zero-knowledge logging patterns, end-to-end encryption, strict pseudonymization, and tamper-proof write-once audit stores.' },
+    ],
+  },
+  {
+    slug: 'govtech',
+    name: 'GovTech & Public Sector',
+    tagline: 'Accessible citizen portals, public registries, and audit-compliant digital government systems.',
+    description: 'Government agencies and public institutions use aibizmod to build WCAG AAA accessible citizen portals, automate document verification, and modernize legacy databases. We build systems that meet rigorous national security and privacy standards.',
+    icon: '🏛️',
+    heroImage: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Legacy monolithic mainframes creating massive maintenance backlogs and service outages',
+      'Paper-based citizen application processes resulting in weeks of processing delays',
+      'Strict accessibility (WCAG 2.2 AAA) and data sovereignty compliance mandates',
+      'Siloed agency databases preventing cross-departmental coordination',
+    ],
+    services: [
+      { name: 'Web Development', href: '/services/web-development', description: 'Build WCAG 2.2 AAA compliant citizen portals, service portals, and public forms.' },
+      { name: 'Software Development', href: '/services/software-development', description: 'Modernize legacy registry systems with microservices and sovereign cloud architecture.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Automated document classification, identity verification, and case triage.' },
+    ],
+    useCases: [
+      { title: 'One-stop citizen digital identity portal', description: 'Unified authentication platform allowing citizens to access municipal, tax, and social services with a single secure credential.' },
+      { title: 'Automated permit and license processing', description: 'Document OCR and rules engine that validates applicant eligibility instantly, reducing permit turnaround from 3 weeks to 2 hours.' },
+      { title: 'Open government data transparency portal', description: 'Publicly accessible dashboards and APIs providing transparent analytics on municipal budgets and public works.' },
+    ],
+    faqs: [
+      { q: 'Do you comply with government accessibility standards?', a: 'Yes. All public interfaces are engineered to exceed WCAG 2.2 Level AA / AAA standards, ensuring full screen reader support and keyboard accessibility.' },
+      { q: 'Can you work with sovereign or air-gapped cloud environments?', a: 'Yes. We deploy on AWS GovCloud, Azure Government, or on-premises sovereign cloud environments adhering to local data residency laws.' },
+      { q: 'How do you handle legacy database migration?', a: 'We use strangler-fig migration patterns to incrementally replace legacy components with zero downtime for citizens.' },
+    ],
+  },
+  {
+    slug: 'energy-utilities',
+    name: 'Energy & Smart Utilities',
+    tagline: 'Smart grid telemetry, automated metered billing, and renewable asset management platforms.',
+    description: 'Energy providers, renewable operators, and utility companies use aibizmod to balance smart grids, forecast renewable generation with AI, and manage distributed solar and wind assets with real-time operational platforms.',
+    icon: '⚡',
+    heroImage: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Volatile renewable generation causing grid imbalances and curtailment losses',
+      'Managing maintenance across thousands of distributed solar, wind, and storage assets',
+      'Complex time-of-use tariff calculations and legacy metered billing bottlenecks',
+      'Lack of real-time telemetry from distributed energy resources (DERs)',
+    ],
+    services: [
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'AI generation forecasting, grid load balancing, and predictive asset maintenance.' },
+      { name: 'Software Development', href: '/services/software-development', description: 'Build SCADA integration platforms, utility portals, and virtual power plant (VPP) dashboards.' },
+      { name: 'Web Development', href: '/services/web-development', description: 'Customer consumption portals with real-time smart meter analytics and dynamic tariffs.' },
+    ],
+    useCases: [
+      { title: 'AI renewable generation forecasting', description: 'Weather models combined with historical output data predict solar and wind generation 48 hours in advance with 96% accuracy.' },
+      { title: 'Virtual Power Plant (VPP) dispatch engine', description: 'Automated system that aggregates and dispatches battery storage and distributed solar to stabilize frequency on the grid.' },
+      { title: 'Customer energy efficiency dashboard', description: 'Real-time smart meter dashboard showing peak tariff hours and automated suggestions to reduce household energy costs.' },
+    ],
+    faqs: [
+      { q: 'Can you integrate with industrial SCADA systems?', a: 'Yes. We build secure OPC-UA, Modbus, and DNP3 connectors to bridge operational technology (OT) with modern cloud analytics.' },
+      { q: 'How do you support complex dynamic tariff billing?', a: 'Our billing engines process time-series smart meter data against interval pricing models for automated, transparent customer invoicing.' },
+      { q: 'Do you work with microgrids and battery storage systems?', a: 'Yes. We architect control software for battery energy storage systems (BESS) and autonomous islanded microgrids.' },
+    ],
+  },
+  {
+    slug: 'biotech-pharma',
+    name: 'Biotech & Life Sciences',
+    tagline: 'Clinical trial analytics, laboratory data pipelines, and GxP/FDA compliant digital platforms.',
+    description: 'Biotechnology companies and pharmaceutical innovators use aibizmod to build automated laboratory data pipelines, clinical trial management platforms, and AI-accelerated molecular screening tools with full 21 CFR Part 11 compliance.',
+    icon: '🧬',
+    heroImage: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Siloed laboratory instruments producing massive unstructured data files that delay research',
+      'Clinical trial patient recruitment and retention bottlenecks causing costly study delays',
+      'Maintaining rigorous FDA 21 CFR Part 11 audit trails across digital lab workflows',
+      'Complex multi-omics data integration requiring high-performance compute clusters',
+    ],
+    services: [
+      { name: 'Software Development', href: '/services/software-development', description: 'Build LIMS extensions, clinical trial platforms, and regulatory compliance portals.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Automate assay data extraction, bioinformatics pipelines, and patient screening.' },
+      { name: 'IT Consulting', href: '/services/it-consulting-it-services', description: 'GxP validated cloud infrastructure and HIPAA/GDPR health data architecture.' },
+    ],
+    useCases: [
+      { title: 'Automated LIMS data harmonization', description: 'Pipelines that extract raw data from sequencers, mass spectrometers, and plate readers into a structured queryable data lake.' },
+      { title: 'Clinical trial cohort matching', description: 'AI models that screen anonymized electronic health records to identify qualified clinical trial candidates 5x faster.' },
+      { title: 'Validated 21 CFR Part 11 audit trail', description: 'Cryptographic electronic signature and audit log system ensuring complete data integrity for FDA regulatory submissions.' },
+    ],
+    faqs: [
+      { q: 'Are your systems compliant with FDA 21 CFR Part 11 and GxP?', a: 'Yes. We implement tamper-proof audit trails, validated electronic signatures, role-based controls, and complete validation documentation (IQ/OQ/PQ).' },
+      { q: 'Can you scale bioinformatics compute pipelines in the cloud?', a: 'Yes. We build Nextflow and AWS Batch architectures that dynamically spin up high-memory GPU instances for genomic analysis.' },
+      { q: 'How do you secure patient privacy during trial data analysis?', a: 'We apply differential privacy, tokenization, and strict data de-identification techniques compliant with HIPAA and GDPR.' },
+    ],
+  },
+  {
+    slug: 'automotive-mobility',
+    name: 'Automotive & Fleet Mobility',
+    tagline: 'Connected vehicle telemetry, EV charging infrastructure, and fleet routing optimization.',
+    description: 'Fleet operators and automotive mobility companies use aibizmod to build connected vehicle platforms, smart EV charging management systems, and AI route optimization software that reduces operational fuel and dispatch costs.',
+    icon: '🚗',
+    heroImage: 'https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'High fuel and maintenance costs from suboptimal fleet routing and aggressive driving',
+      'Managing EV fleet charging schedules without exceeding depot electrical grid capacity',
+      'Fragmented tracking across third-party telematics providers and GPS hardware',
+      'Unscheduled vehicle downtime interrupting scheduled customer deliveries',
+    ],
+    services: [
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Dynamic route optimization, driver safety scoring, and predictive maintenance.' },
+      { name: 'Software Development', href: '/services/software-development', description: 'Build EV fleet management platforms, depot charging dispatchers, and driver apps.' },
+      { name: 'Mobile App Development', href: '/services/mobile-app-development', description: 'Driver workflow apps with turn-by-turn navigation and electronic proof of delivery.' },
+    ],
+    useCases: [
+      { title: 'Dynamic multi-stop route optimization', description: 'Graph routing algorithms calculate the most efficient delivery sequences considering real-time traffic and time windows, cutting fuel use by 18%.' },
+      { title: 'Smart EV depot charging scheduler', description: 'Load management system that schedules vehicle charging during off-peak power rates while ensuring 100% readiness for morning shifts.' },
+      { title: 'Predictive fleet component failure alerts', description: 'OBD-II and CAN bus telemetry analyzed to detect battery degradation and brake wear before roadside breakdown.' },
+    ],
+    faqs: [
+      { q: 'Can you integrate with existing telematics hardware (Geotab, Samsara, Webfleet)?', a: 'Yes. We build unified APIs that ingest data from any telematics hardware provider, OBD-II device, or OEM connected car API.' },
+      { q: 'Do you support OCPP standards for EV chargers?', a: 'Yes. Our EV charging management systems support OCPP 1.6J and 2.0.1 for open communication with any charging station.' },
+      { q: 'Can you build customer-facing delivery tracking portals?', a: 'Yes. We build real-time live map tracking portals with SMS notifications and electronic proof-of-delivery (ePOD).' },
+    ],
+  },
+  {
+    slug: 'construction-engineering',
+    name: 'Construction & Engineering',
+    tagline: 'BIM integration, site safety automation, and job site project management platforms.',
+    description: 'General contractors and engineering firms use aibizmod to build digital jobsite management platforms, automate subcontractor compliance tracking, and integrate BIM models with on-site progress tracking tools.',
+    icon: '🏗️',
+    heroImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'Project budget overruns caused by poor visibility into field change orders and labor hours',
+      'Subcontractor compliance, safety certifications, and insurance tracking in spreadsheets',
+      'Slow communication between on-site superintendents, project managers, and architects',
+      'Difficulty verifying actual work completed against BIM plans and schedule milestones',
+    ],
+    services: [
+      { name: 'Software Development', href: '/services/software-development', description: 'Build field management portals, subcontractor tracking systems, and change order workflows.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Automate plan change comparisons, safety hazard detection, and invoice matching.' },
+      { name: 'Mobile App Development', href: '/services/mobile-app-development', description: 'Offline-first field inspection and daily log mobile apps for superintendents.' },
+    ],
+    useCases: [
+      { title: 'Real-time jobsite daily log and labor tracking', description: 'Mobile app allowing superintendents to record site conditions, trade headcounts, and deliveries with automatic photo tagging.' },
+      { title: 'Subcontractor compliance and insurance audit', description: 'Automated portal that verifies subcontractor insurance certificates and safety compliance before site entry.' },
+      { title: 'AI plan revision diffing', description: 'Computer vision tool that highlights architectural plan revisions between drawings in seconds to catch scope creep.' },
+    ],
+    faqs: [
+      { q: 'Can your apps work offline on remote jobsites?', a: 'Yes. All mobile field tools are built offline-first, storing data locally on the device and syncing automatically once connectivity is restored.' },
+      { q: 'Do you integrate with Procore, Autodesk Construction Cloud, or Viewpoint?', a: 'Yes. We build custom API extensions and bi-directional synchronizations with major construction ERP and project management software.' },
+      { q: 'How do you handle heavy PDF blueprints and 3D models?', a: 'We build GPU-accelerated drawing viewers that render massive architectural PDFs and IFC/BIM models smoothly on mobile devices.' },
+    ],
+  },
+  {
+    slug: 'nonprofit-impact',
+    name: 'Non-Profit & Social Impact',
+    tagline: 'Donor CRM platforms, grant tracking automation, and transparent impact analytics.',
+    description: 'Charities, foundations, and social enterprises use aibizmod to build donor engagement platforms, automate grant application tracking, and publish transparent impact dashboards that drive recurring philanthropic contributions.',
+    icon: '🌱',
+    heroImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80&auto=format&fit=crop',
+    challenges: [
+      'High donor acquisition costs and low recurring donation retention rates',
+      'Manual grant management workflows with complex reporting requirements',
+      'Disconnected volunteer, donor, and event management databases',
+      'Demonstrating transparent, measurable social return on investment (SROI) to major funders',
+    ],
+    services: [
+      { name: 'Web Development', href: '/services/web-development', description: 'Build high-converting donation portals, campaign landing pages, and impact reports.' },
+      { name: 'AI & Automation', href: '/services/ai-automation', description: 'Automate donor thank-you sequences, grant deadline reminders, and constituent segmentation.' },
+      { name: 'CRM & IT Consulting', href: '/services/customer-experience-management', description: 'Non-profit CRM implementation (Salesforce NPSP, HubSpot) and donor journey optimization.' },
+    ],
+    useCases: [
+      { title: 'AI donor churn prevention and major gift scoring', description: 'Predictive models analyze giving frequency and engagement to identify donors ready for major gift outreach.' },
+      { title: 'Automated grant lifecycle management', description: 'Centralized tracking of funding proposals, submission deadlines, milestone deliverables, and budget reports.' },
+      { title: 'Interactive public impact dashboard', description: 'Real-time dashboard showing live metrics of community outcomes, funds deployed, and program reach.' },
+    ],
+    faqs: [
+      { q: 'Do you offer non-profit pricing or discounted rates?', a: 'Yes. We partner with registered non-profits, charities, and social enterprises with dedicated non-profit advisory and development rates.' },
+      { q: 'Can you integrate with donor CRMs like Salesforce NPSP, Blackbaud, or DonorPerfect?', a: 'Yes. We build seamless integrations for donor data synchronization, custom event registration, and automated gift receipts.' },
+      { q: 'Can you support recurring monthly giving and Gift Aid / tax deduction receipts?', a: 'Yes. We build donation flows supporting recurring direct debits, card payments, Apple Pay, Google Pay, and automated tax-deductible receipt generation.' },
+    ],
+  },
 ];
 
 export function getIndustry(slug: string): IndustryPage | undefined {
   return industries.find((i) => i.slug === slug);
 }
+

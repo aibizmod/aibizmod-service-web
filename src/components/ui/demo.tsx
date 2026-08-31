@@ -1,10 +1,12 @@
-// This is file with demos of your component
-// Each export is one usecase for your component
+"use client";
 
-import { IconHover3D } from "@/components/ui/icon-3d-hover";
+import React from "react";
+import ScrollMorphHero from "@/components/ui/scroll-morph-hero";
 
-const DemoOne = () => {
-  return <IconHover3D />;
-};
-
-export { DemoOne };
+export default function Demo() {
+  return (
+    <div className="w-full h-[800px] border border-cyan-100/80 rounded-2xl overflow-hidden relative shadow-lg">
+      <ScrollMorphHero />
+    </div>
+  );
+}
