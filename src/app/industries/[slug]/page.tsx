@@ -155,21 +155,21 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
                   </div>
 
                   {/* Primary Action Buttons */}
-                  <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                    <Link href="/contact" aria-label="Schedule an architecture review">
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                    <Link href="/contact" aria-label="Schedule an architecture review" className="w-full sm:w-auto">
                       <StarButton
                         as="span"
                         lightColor="#38bdf8"
                         backgroundColor="#0f172a"
-                        className="h-12 px-8 font-semibold shadow-[0_0_16px_rgba(56,189,248,0.28)] transition duration-300 hover:-translate-y-0.5"
+                        className="h-12 w-full flex sm:inline-flex sm:w-auto font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
                       >
                         Talk to {ind.name} Lead
-                        <ArrowRight size={15} aria-hidden="true" />
+                        <ArrowRight size={16} aria-hidden="true" />
                       </StarButton>
                     </Link>
                     <Link
                       href="#challenges"
-                      className="inline-flex h-12 items-center justify-center rounded-full border border-cyan-200/80 bg-white/80 px-7 text-xs font-semibold text-[#0F172A] shadow-sm backdrop-blur-md transition hover:bg-white hover:border-cyan-300"
+                      className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-cyan-100 bg-white/55 px-6 text-sm font-semibold text-[#0F172A] shadow-[0_12px_32px_rgba(15,23,42,0.08)] backdrop-blur-md transition hover:border-cyan-200 hover:bg-white"
                     >
                       View Capabilities & Scope
                     </Link>
@@ -475,9 +475,9 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
             </div>
           </section>
 
-          {/* ── 5. PRODUCTION USE CASES (Modern Dark & Light Case Studies) ─── */}
+          {/* ── 5. PRODUCTION USE CASES (Modern Minimal Case Studies) ─── */}
           <section className="py-24 px-6 bg-[#F8FEFF] border-y border-cyan-100">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               <AnimatedSection className="text-center mb-14">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">
                   Engineered in Production
@@ -493,16 +493,16 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
                 >
                   Key Implementations &amp; Case Studies
                 </h2>
-                <p className="mt-3 text-slate-500 max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
+                <p className="mt-3 text-slate-500 max-w-lg mx-auto text-sm sm:text-base leading-relaxed font-light">
                   Real-world architectures deployed for enterprise performance, data privacy, and scale.
                 </p>
               </AnimatedSection>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 items-stretch">
                 {ind.useCases.map((uc, i) => (
-                  <AnimatedSection key={i} delay={i * 0.08}>
-                    <div className="relative overflow-hidden rounded-[28px] border border-cyan-100 bg-white p-7 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-cyan-200 hover:-translate-y-1">
-                      <div className="flex items-center justify-between gap-4 mb-4">
+                  <AnimatedSection key={i} delay={i * 0.08} className="h-full">
+                    <div className="h-full flex flex-col relative overflow-hidden rounded-[28px] border border-cyan-100 bg-white p-7 sm:p-8 shadow-sm transition-all duration-300 hover:shadow-md hover:border-cyan-200 hover:-translate-y-1">
+                      <div className="flex items-center justify-between gap-4 mb-5">
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-cyan-50 px-3 py-1 text-[11px] font-mono font-bold tracking-wider text-cyan-800 border border-cyan-100">
                           Case 0{i + 1}
                         </span>
@@ -513,14 +513,9 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
                         {uc.title}
                       </h3>
 
-                      <p className="mt-3.5 text-sm text-slate-600 leading-relaxed font-light">
+                      <p className="mt-3.5 text-sm text-slate-600 leading-relaxed font-light flex-grow">
                         {uc.description}
                       </p>
-
-                      <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                        <span className="font-medium text-cyan-700">Delivered Architecture</span>
-                        <span className="font-mono">99.99% Availability</span>
-                      </div>
                     </div>
                   </AnimatedSection>
                 ))}
@@ -595,24 +590,24 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
                   Let&apos;s discuss architecture blueprints, system integration, and deployment timelines tailored to your team.
                 </p>
 
-                <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-                  <Link href="/contact" aria-label="Start project with aibizmod">
+                <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Link href="/contact" aria-label="Start project with aibizmod" className="w-full sm:w-auto">
                     <StarButton
                       as="span"
                       lightColor="#38bdf8"
                       backgroundColor="#0f172a"
-                      className="h-12 px-9 font-semibold shadow-[0_0_16px_rgba(56,189,248,0.28)]"
+                      className="h-12 w-full flex sm:inline-flex sm:w-auto font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
                     >
                       Start a Project
-                      <ArrowRight size={15} aria-hidden="true" />
+                      <ArrowRight size={16} aria-hidden="true" />
                     </StarButton>
                   </Link>
 
                   <Link
                     href="/industries"
-                    className="inline-flex h-12 items-center gap-2 rounded-full border border-cyan-200/80 bg-white px-7 text-xs font-semibold text-[#0F172A] shadow-sm transition hover:border-cyan-300 hover:bg-cyan-50"
+                    className="inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-cyan-100 bg-white/55 px-6 text-sm font-semibold text-[#0F172A] shadow-[0_12px_32px_rgba(15,23,42,0.08)] backdrop-blur-md transition hover:border-cyan-200 hover:bg-white"
                   >
-                    <ArrowLeft size={14} />
+                    <ArrowLeft size={16} />
                     All Industries
                   </Link>
                 </div>

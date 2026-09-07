@@ -614,26 +614,19 @@ function Styles() {
             letter-spacing: normal;
           }
 
-          /* Content section with smooth aibizmod theme transition */
+          /* Content section seamless aibizmod light theme */
           .icsa-cs {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 6rem 1.5rem;
-            background: #09101D;
-            color: #FFFFFF;
-            position: relative;
-            z-index: 10;
-            transition: background 1.5s cubic-bezier(.25,0,.1,1),
-                        color 1.5s cubic-bezier(.25,0,.1,1);
-          }
-
-          .icsa-cs.on {
             background: #F8FEFF;
             color: #0F172A;
             border-top: 1px solid #E0F2FE;
             border-bottom: 1px solid #E0F2FE;
+            position: relative;
+            z-index: 10;
           }
 
           .icsa-inner-container > * {

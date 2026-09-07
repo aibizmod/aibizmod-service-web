@@ -105,12 +105,12 @@ export default function IndustriesPageContent() {
                   We build cross-sector software architectures and custom AI pipelines. Tell us about your operational constraints, tech stack, and goals — we will engineer the exact solution.
                 </p>
                 <div className="mt-8 flex justify-center">
-                  <Link href="/contact" aria-label="Schedule a consultation">
+                  <Link href="/contact" aria-label="Schedule a consultation" className="w-full sm:w-auto">
                     <StarButton
                       as="span"
                       lightColor="#38bdf8"
                       backgroundColor="#0f172a"
-                      className="h-12 font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
+                      className="h-12 w-full flex sm:inline-flex sm:w-auto font-semibold shadow-[0_0_12px_rgba(56,189,248,0.25)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(6,182,212,0.55),0_0_4px_rgba(56,189,248,0.7)]"
                     >
                       Consult an Industry Architect
                       <ArrowRight size={16} aria-hidden="true" />
