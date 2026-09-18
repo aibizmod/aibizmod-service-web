@@ -6,7 +6,7 @@ import SubservicePageLayout, {
 export const metadata: Metadata = {
   title: "Large Language Models (LLMs) | Document Intelligence | aibizmod",
   description:
-    "Harness Generative AI to understand, interpret, and generate complex technical text at scale. LLM services that transform how your teams interact with documentation.",
+    "Deploy private retrieval-augmented pipelines to interpret, query, and process complex technical documentation at scale with zero data leakage.",
   keywords: [
     "large language models",
     "LLM",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Large Language Models (LLMs) | Document Intelligence | aibizmod",
     description:
-      "Harness Generative AI to understand, interpret, and generate complex technical text at scale.",
+      "Deploy private retrieval-augmented pipelines to interpret, query, and process complex technical documentation at scale.",
     url: "/services/ai-automation/llm",
   },
 };
@@ -35,7 +35,7 @@ const data: SubservicePageData = {
   parentSlug: "ai-automation",
   slug: "llm",
   tagline:
-    "Revolutionizing Technical Document Intelligence\n• Harness the power of Generative AI to understand, interpret, and generate complex technical text at scale\n• Deploy state-of-the-art Large Language Models to transform how your teams interact with massive volumes of documentation\n• Provide the intelligence necessary to accelerate administrative workflows",
+    "Enterprise Document Intelligence & Private RAG Pipelines\n• Deploy domain-adapted Large Language Models to interpret and process complex technical text at scale\n• Connect retrieval-augmented pipelines directly to your private archives without third-party data exposure\n• Accelerate high-volume administrative workflows with private VPC deployment",
   heroImage:
     "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1000&q=80&auto=format&fit=crop",
 
@@ -67,9 +67,9 @@ const data: SubservicePageData = {
 		},
 		{
 			icon: 'database',
-			title: 'Retrieval-Augmented Generation (RAG)',
+			title: 'Retrieval-Augmented Generation (RAG) & GraphRAG',
 			description:
-				'Securely tether generative AI to your private repositories and document servers for factual, context-aware answers without compromising data privacy.',
+				'Securely tether generative AI to your private repositories and document servers using vector and GraphRAG knowledge graphs (engineered with VeritasGraph) for factual, multi-hop answers with verifiable source attribution.',
 			image: '/services/ai-automation/llm-retrievalaugmented-generation-rag.webp',
 			imageAlt: 'AI & Automation Retrieval-Augmented Generation (RAG) capability illustration.',
 		},

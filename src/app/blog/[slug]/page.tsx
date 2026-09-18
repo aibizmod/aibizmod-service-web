@@ -255,6 +255,37 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
                       ))}
                     </ul>
                   )}
+                  {section.table && (
+                    <div className="mt-6 overflow-x-auto rounded-xl border border-stone-200 shadow-sm">
+                      <table className="w-full text-left text-sm text-stone-700">
+                        <thead className="bg-stone-50 text-xs uppercase tracking-wider text-stone-500 border-b border-stone-200">
+                          <tr>
+                            {section.table.headers.map((header, idx) => (
+                              <th key={idx} scope="col" className="px-5 py-3.5 font-semibold text-[#0F172A]">
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-stone-100 bg-white">
+                          {section.table.rows.map((row, rowIdx) => (
+                            <tr key={rowIdx} className="hover:bg-stone-50/60 transition-colors">
+                              {row.map((cell, cellIdx) => (
+                                <td
+                                  key={cellIdx}
+                                  className={`px-5 py-3.5 leading-relaxed ${
+                                    cellIdx === 0 ? "font-semibold text-[#0F172A] bg-stone-50/30" : ""
+                                  }`}
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
                   {section.citations && section.citations.length > 0 && (
                     <div className="mt-6 border-t border-stone-100 pt-4">
                       <p className="mb-2 text-xs font-semibold uppercase tracking-[0.12em] text-stone-400">Sources</p>

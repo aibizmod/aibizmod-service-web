@@ -8,6 +8,7 @@ import {
 	FaLinkedinIn,
 	FaPinterestP,
 	FaWhatsapp,
+	FaGithub,
 } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { countries } from '@/lib/countries';
@@ -37,6 +38,7 @@ const services = [
 
 const company = [
 	{ label: 'About Us', href: '/about' },
+	{ label: 'Technology', href: '/technology' },
 	{ label: 'Clients', href: '/clients' },
 	{ label: 'Blog', href: '/blog' },
 	{ label: 'Tools', href: '/tools' },
@@ -331,6 +333,56 @@ export default function Footer() {
 								<LayoutGrid size={18} />
 							</Link>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Powered by VeritasGraph Sleek Attribution Bar */}
+			<div className='max-w-7xl mx-auto px-6 py-3.5 border-t border-white/10'>
+				<div className='flex flex-col md:flex-row md:items-center justify-between gap-3 text-[12px] text-white/60 font-sans'>
+					<div className='flex items-center gap-2 flex-wrap'>
+						<span className='inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/20'>
+							GraphRAG
+						</span>
+						<span>
+							Engineered with{' '}
+							<a
+								href='https://github.com/bibinprathap/VeritasGraph'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='text-white font-medium hover:text-[#22D3EE] transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-[#22D3EE]'
+							>
+								VeritasGraph
+							</a>{' '}
+							— Deterministic AI Reasoning
+						</span>
+					</div>
+
+					<div className='flex items-center gap-4 shrink-0 text-[11.5px]'>
+						<Link
+							href='/technology'
+							className='text-[#22D3EE] hover:underline underline-offset-4 font-medium transition-colors'
+						>
+							Learn how it works →
+						</Link>
+						<span className='text-white/20 select-none'>•</span>
+						<a
+							href='https://bibinprathap.github.io/VeritasGraph/index.html'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-white/50 hover:text-white transition-colors'
+						>
+							VeritasGraph docs
+						</a>
+						<span className='text-white/20 select-none'>•</span>
+						<a
+							href='https://github.com/bibinprathap/VeritasGraph'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-white/50 hover:text-white transition-colors inline-flex items-center gap-1.5'
+						>
+							<FaGithub size={13} /> GitHub
+						</a>
 					</div>
 				</div>
 			</div>

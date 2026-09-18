@@ -22,6 +22,7 @@ const subServiceSlugs: Record<string, string[]> = {
 const staticRoutes = [
   '',
   '/about',
+  '/technology',
   '/blog',
   '/contact',
   '/faq',
@@ -51,6 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const priorityByRoute: Record<string, number> = {
     '': 1,
     '/about': 0.7,
+    '/technology': 0.8,
     '/blog': 0.7,
     '/contact': 0.7,
     '/faq': 0.7,

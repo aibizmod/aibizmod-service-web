@@ -1,0 +1,207 @@
+{
+  "brand_name": "aibizmod",
+  "brand_slug": "aibizmod",
+  "created_at": "2026-09-08T22:44:52.801702",
+  "updated_at": "2026-09-08T22:46:00.000000",
+  "schema_version": "1.0.0",
+  "identity": {
+    "tagline": "Intelligent Tech Services for Modern Businesses",
+    "mission": "Empowering enterprises and high-growth businesses with custom software engineering, private AI automation pipelines, and resilient cloud architectures built for measurable ROI.",
+    "vision": "To be the premier technology partner for organizations modernizing their tech stack and deploying production-grade AI.",
+    "values": [
+      "Engineering Precision",
+      "Zero AI Fluff",
+      "Verified SLAs & Sub-second Latency",
+      "Enterprise Compliance & Data Sovereignty",
+      "Measurable Business Outcomes"
+    ],
+    "unique_selling_proposition": "Full-cycle engineering that bridges modern web/mobile software, private autonomous AI pipelines, and cloud infrastructure with audited uptime and sub-second SLAs.",
+    "positioning_statement": "For CTOs, tech leaders, and founders who need custom software and AI infrastructure that scales, aibizmod delivers production-ready engineering with verified security, zero generic templates, and deterministic outcomes.",
+    "elevator_pitch": "aibizmod builds custom software, AI automation pipelines, and cloud architectures for modern businesses across 20+ specialized verticals."
+  },
+  "business_model": {
+    "type": "B2B Services / Technology Consulting & Engineering",
+    "revenue_model": "Project-based milestone contracts, dedicated engineering retainers, and managed cloud/AI services",
+    "price_range": "£1,450 to £50,000+",
+    "sales_cycle_length": "2 to 6 weeks",
+    "average_deal_size": "£10,000 - £35,000",
+    "customer_lifetime_value": "£45,000 - £120,000"
+  },
+  "industry": {
+    "primary": "Technology Services, Custom Software & AI Automation",
+    "secondary": [
+      "Cloud Infrastructure & DevOps",
+      "Digital Marketing & AI Search (AEO/GEO)",
+      "Customer Experience Management",
+      "Mobile App Development"
+    ],
+    "regulated": true,
+    "regulation_codes": [
+      "HIPAA",
+      "GDPR",
+      "CCPA",
+      "EU_AI_ACT_ART_50",
+      "DPDPA"
+    ],
+    "compliance_notes": "Must adhere to HIPAA for healthcare clients, GDPR/EU AI Act transparency and C2PA provenance for European deployments, and DPDPA for Indian operations. No unverified uptime or latency claims."
+  },
+  "target_markets": [
+    "United States",
+    "United Kingdom",
+    "European Union",
+    "India",
+    "Global Enterprise"
+  ],
+  "brand_voice": {
+    "formality": 8,
+    "energy": 7,
+    "humor": 2,
+    "authority": 9,
+    "personality_traits": [
+      "Architectural",
+      "Direct",
+      "Rigorous",
+      "Clarity-first",
+      "Pragmatic",
+      "Innovative"
+    ],
+    "tone_keywords": [
+      "Engineered",
+      "Production-grade",
+      "Autonomous",
+      "High-throughput",
+      "Sub-second SLAs",
+      "Data sovereignty",
+      "Deterministic"
+    ],
+    "avoid_words": [
+      "delve",
+      "leverage",
+      "game-changer",
+      "revolutionary",
+      "in today's fast-paced digital world",
+      "unlock your potential",
+      "cutting-edge synergy",
+      "seamless integration"
+    ],
+    "prefer_words": [
+      "deploy",
+      "architect",
+      "engineer",
+      "measure",
+      "validate",
+      "harden",
+      "optimize",
+      "production-ready"
+    ],
+    "this_not_that": [
+      {
+        "this": "We engineer sub-second API pipelines with verified 99.99% uptime.",
+        "not_that": "Our revolutionary AI will change your business overnight."
+      },
+      {
+        "this": "Let's review the architecture blueprint and compliance requirements.",
+        "not_that": "Hop on a quick discovery call with our sales team."
+      },
+      {
+        "this": "Private, on-premise model weights with zero third-party data leakage.",
+        "not_that": "Supercharged smart chatbots for your website."
+      }
+    ],
+    "sample_content": [
+      "aibizmod engineers high-concurrency cloud infrastructure and private AI automation workflows for enterprise scale.",
+      "Strategy, engineering, infrastructure, AI & automation, and growth systems shaped around practical business outcomes."
+    ]
+  },
+  "channels": {
+    "active": [
+      "website",
+      "linkedin",
+      "google_search",
+      "email",
+      "github",
+      "perplexity_ai_search"
+    ],
+    "primary": "website & LinkedIn B2B",
+    "handles": {
+      "website": "https://aibizmod.com",
+      "linkedin": "https://linkedin.com/company/aibizmod"
+    }
+  },
+  "competitors": [
+    {
+      "name": "LLMClicks",
+      "url": "https://llmclicks.com",
+      "relationship": "direct",
+      "strengths": "AI search visibility tool, lifetime deal pricing",
+      "weaknesses": "Lacks full-stack engineering and custom AI pipeline development"
+    },
+    {
+      "name": "Peec AI",
+      "url": "https://peec.ai",
+      "relationship": "direct",
+      "strengths": "European AI tracking tool",
+      "weaknesses": "Tool-only SaaS, no custom implementation agency"
+    },
+    {
+      "name": "Profound",
+      "url": "https://profound.com",
+      "relationship": "aspirational",
+      "strengths": "Enterprise AEO tracking",
+      "weaknesses": "Very expensive enterprise tier, no custom automation builds"
+    },
+    {
+      "name": "Otterly AI",
+      "url": "https://otterly.ai",
+      "relationship": "direct",
+      "strengths": "Simple brand AI search tracking",
+      "weaknesses": "No remediation services or custom software"
+    }
+  ],
+  "goals": {
+    "primary_objective": "Establish aibizmod as the top-tier technology partner for custom AI automation and enterprise software, driving qualified consultation bookings through interactive tools, high-intent AEO, and vertical case studies.",
+    "kpis": [
+      "Consultation form submissions",
+      "ReportGate OTP completions",
+      "Perplexity and ChatGPT citation frequency",
+      "Organic B2B search traffic",
+      "B2B ad conversion rate"
+    ],
+    "budget_range": "B2B Growth Budget: £5,000 - £15,000 / month",
+    "team_size": "Engineering & Growth Team (10-25)"
+  },
+  "language": {
+    "primary_language": "en-US",
+    "secondary_languages": [
+      "en-GB"
+    ],
+    "content_languages": [
+      "en-US",
+      "en-GB"
+    ],
+    "do_not_translate": [
+      "aibizmod",
+      "LLM",
+      "API",
+      "SLA",
+      "HIPAA",
+      "GDPR",
+      "C2PA",
+      "GEO",
+      "AEO",
+      "VPC",
+      "Next.js"
+    ],
+    "translation_preferences": {},
+    "locale_formatting": {
+      "date_format": "YYYY-MM-DD",
+      "number_format": "en-US",
+      "measurement": "metric"
+    }
+  },
+  "ai_disclosure": {
+    "mode": "claude-surfaces",
+    "text": "Engineered and reviewed by the aibizmod Technology Architecture team.",
+    "author": "aibizmod Engineering"
+  }
+}

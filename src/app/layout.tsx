@@ -75,6 +75,39 @@ const entityGraph = {
 			publisher: { '@id': 'https://aibizmod.com/#organization' },
 			inLanguage: 'en',
 		},
+		{
+			'@type': 'SoftwareApplication',
+			'@id': 'https://aibizmod.com/#software',
+			name: 'aibizmod',
+			applicationCategory: 'BusinessApplication',
+			operatingSystem: 'All',
+			url: 'https://aibizmod.com',
+			description:
+				'Enterprise AI search, automation, and tech services platform grounded in deterministic knowledge graph reasoning.',
+			publisher: { '@id': 'https://aibizmod.com/#organization' },
+			featureList: [
+				'AI search with source attribution',
+				'Knowledge graph reasoning',
+				'Multi-hop context retrieval',
+				'Deterministic AI answers',
+				'On-premise zero-data-egress execution',
+			],
+			isBasedOn: {
+				'@type': 'SoftwareSourceCode',
+				name: 'VeritasGraph',
+				codeRepository: 'https://github.com/bibinprathap/VeritasGraph',
+				url: 'https://bibinprathap.github.io/VeritasGraph/index.html',
+				sameAs: [
+					'https://github.com/bibinprathap/VeritasGraph',
+					'https://bibinprathap.github.io/VeritasGraph/index.html',
+				],
+			},
+			author: {
+				'@type': 'Person',
+				name: 'Bibin Prathap',
+				url: 'https://bibinprathap.com',
+			},
+		},
 	],
 };
 

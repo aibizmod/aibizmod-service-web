@@ -9,7 +9,17 @@ Root-level `.md` files are reserved for repo configuration and plugin documentat
 docs/
 ├── README.md                  ← this index
 ├── COMPLETED-TASKS.md         ← summary of everything completed to date
+├── DIGITAL_MARKETING_PRO_ADOPTION_PLAN.md ← Strategic proposal & 4-week rollout for digital-marketing-pro
+├── brand-strategy/            ← Brand profile, Living Project Instructions, and baseline scorecards
+│   ├── brand-profile.json     ← Codified multi-pillar brand definition for AI skills
+│   ├── PROJECT_INSTRUCTIONS.md ← Single source of truth for tone, SLAs, and compliance
+│   ├── BASELINE_SCORECARD.md  ← Verification benchmarks and audit findings
+│   ├── REPORTGATE_NURTURE_SEQUENCE.md ← 4-part automated lead nurture sequence & webhook guide
+│   └── FINAL_GOVERNANCE_SCORECARD.md ← Quality assurance & claims verification scorecard
+├── campaigns/                 ← Multi-channel paid acquisition & ad creative repository
+│   └── B2B_PAID_DISTRIBUTION_2026.md ← LinkedIn & Google Search Ad campaigns for interactive tools
 ├── seo-geo/                   ← SEO, indexability, AI-search / GEO work
+│   ├── AEO_SURVEILLANCE_PROTOCOL.md ← Monthly AI search engine citation monitoring procedure
 │   ├── SEO-Action-Plan.md
 │   ├── SEO-METADATA-UPDATES.md
 │   ├── Keyword-SEO-Action-Plan.md
@@ -22,6 +32,8 @@ docs/
 │   ├── Competitor-Gap-Analysis.md
 │   ├── Competitor-Keywords-Action-Plan.md
 │   ├── Competitor-Comparison-Action-Plan.md
+│   ├── COMPETITOR_INTELLIGENCE_2026.md ← 2026 live pricing benchmarks, TCO model & objection playbook
+│   ├── COMPETITOR_MONITORING_PROTOCOL.md ← Quarterly market surveillance & pricing audit standard
 │   └── competitors-keywords/  ← keyword export CSVs
 ├── content/                   ← content, launch, and humanising work
 │   ├── CONTENT_ORIGINALITY_ACTION_PLAN.md

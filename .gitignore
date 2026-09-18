@@ -45,3 +45,6 @@ __pycache__/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# external tools
+tools/digital-marketing-pro/

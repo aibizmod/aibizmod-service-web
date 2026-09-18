@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="50%" stop-color="#0F2444"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#0891B2"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle ambient decorative circles -->
+  <circle cx="180" cy="140" r="220" fill="rgba(34, 211, 238, 0.05)"/>
+  <circle cx="1020" cy="490" r="260" fill="rgba(8, 145, 178, 0.08)"/>
+
+  <!-- Knowledge Graph Visual Network (Right side background decoration) -->
+  <g opacity="0.35">
+    <line x1="880" y1="180" x2="980" y2="130" stroke="#22D3EE" stroke-width="2" stroke-dasharray="4,4"/>
+    <line x1="880" y1="180" x2="960" y2="280" stroke="#22D3EE" stroke-width="2"/>
+    <line x1="960" y1="280" x2="1080" y2="240" stroke="#22D3EE" stroke-width="2"/>
+    <line x1="960" y1="280" x2="920" y2="390" stroke="#22D3EE" stroke-width="2" stroke-dasharray="4,4"/>
+    <line x1="1080" y1="240" x2="1120" y2="360" stroke="#22D3EE" stroke-width="2"/>
+    <line x1="920" y1="390" x2="1040" y2="440" stroke="#22D3EE" stroke-width="2"/>
+    <line x1="1040" y1="440" x2="1120" y2="360" stroke="#22D3EE" stroke-width="2"/>
+
+    <circle cx="880" cy="180" r="14" fill="#0A1628" stroke="#22D3EE" stroke-width="3"/>
+    <circle cx="980" cy="130" r="10" fill="#22D3EE"/>
+    <circle cx="960" cy="280" r="18" fill="#0A1628" stroke="#22D3EE" stroke-width="4" filter="url(#glow)"/>
+    <circle cx="1080" cy="240" r="12" fill="#22D3EE"/>
+    <circle cx="920" cy="390" r="12" fill="#0A1628" stroke="#22D3EE" stroke-width="3"/>
+    <circle cx="1040" cy="440" r="16" fill="#0A1628" stroke="#22D3EE" stroke-width="3"/>
+    <circle cx="1120" cy="360" r="10" fill="#22D3EE"/>
+  </g>
+
+  <!-- Content Pill -->
+  <rect x="100" y="120" width="310" height="38" rx="19" fill="rgba(34, 211, 238, 0.12)" stroke="rgba(34, 211, 238, 0.3)" stroke-width="1.5"/>
+  <text x="255" y="145" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#22D3EE" text-anchor="middle" letter-spacing="1.5">GRAPHRAG • KNOWLEDGE GRAPH AI</text>
+
+  <!-- Main Headline -->
+  <text x="100" y="235" font-family="Inter, sans-serif" font-size="52" font-weight="800" fill="#FFFFFF" letter-spacing="-1">
+    Why We Grounded Our AI in
+  </text>
+  <text x="100" y="305" font-family="Inter, sans-serif" font-size="52" font-weight="800" fill="#22D3EE" letter-spacing="-1">
+    VeritasGraph &amp; GraphRAG
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="380" font-family="Inter, sans-serif" font-size="22" font-weight="400" fill="rgba(255, 255, 255, 0.75)">
+    Replacing vector similarity guessing with deterministic reasoning,
+  </text>
+  <text x="100" y="415" font-family="Inter, sans-serif" font-size="22" font-weight="400" fill="rgba(255, 255, 255, 0.75)">
+    multi-hop path traversal, and verifiable source citations.
+  </text>
+
+  <!-- Footer Info Line -->
+  <line x1="100" y1="485" x2="1100" y2="485" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1"/>
+
+  <text x="100" y="525" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#FFFFFF">
+    aibizmod
+  </text>
+  <text x="180" y="525" font-family="Inter, sans-serif" font-size="16" font-weight="400" fill="rgba(255, 255, 255, 0.4)">
+    |   Enterprise AI &amp; Software Engineering
+  </text>
+
+  <rect x="860" y="505" width="240" height="34" rx="8" fill="rgba(255, 255, 255, 0.08)" stroke="rgba(255, 255, 255, 0.15)"/>
+  <text x="980" y="527" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#22D3EE" text-anchor="middle">
+    Deterministic AI Architecture
+  </text>
+</svg>

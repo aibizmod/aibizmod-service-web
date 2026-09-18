@@ -55,20 +55,70 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
 
   const domainConfig = getIndustryMaskConfig(ind.slug, ind.name);
 
-  const faqSchema = ind.faqs.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: ind.faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.q,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.a,
-          },
-        })),
-      }
-    : null;
+  const pageUrl = `https://aibizmod.com/industries/${ind.slug}`;
+  const graph: Record<string, unknown>[] = [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}/#service`,
+      name: `${ind.name} Enterprise Technology Solutions`,
+      serviceType: ind.name,
+      category: 'Enterprise Software & Technology Consulting',
+      description: ind.description,
+      url: pageUrl,
+      provider: {
+        '@type': 'Organization',
+        '@id': 'https://aibizmod.com/#organization',
+        name: 'aibizmod',
+        url: 'https://aibizmod.com',
+        logo: 'https://aibizmod.com/logo.png',
+      },
+      areaServed: [
+        { '@type': 'Country', name: 'United Kingdom' },
+        { '@type': 'Country', name: 'United States' },
+        { '@type': 'AdministrativeArea', name: 'Worldwide' },
+      ],
+      audience: {
+        '@type': 'Audience',
+        audienceType: `${ind.name} Technical Leaders, CTOs, and Product Directors`,
+      },
+      termsOfService: 'https://aibizmod.com/terms',
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: 'https://aibizmod.com/contact',
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${pageUrl}/#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://aibizmod.com' },
+        { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://aibizmod.com/industries' },
+        { '@type': 'ListItem', position: 3, name: ind.name, item: pageUrl },
+      ],
+    },
+  ];
+
+  if (ind.faqs && ind.faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}/#faq`,
+      mainEntity: ind.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    });
+  }
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  };
 
   // Icon mapping for dynamic challenges
   const challengeIcons = [Compass, Zap, ShieldCheck, TrendingUp, Cpu, Layers];
@@ -78,12 +128,10 @@ export default function IndustryDetailPage({ params }: IndustryPageProps) {
       <Navbar />
       <StickyFooterLayout footer={<Footer />}>
         <main className="bg-white text-ink selection:bg-cyan-600 selection:text-white">
-          {faqSchema && (
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-            />
-          )}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
 
           {/* ── 1. HERO SECTION (2-Column with Cinematic Image Card) ───────── */}
           <section className="relative isolate overflow-hidden bg-white px-6 pb-20 pt-32 md:pb-28 md:pt-36">

@@ -161,7 +161,7 @@ export const industries: IndustryPage[] = [
     slug: 'professional-services',
     name: 'Professional Services',
     tagline: 'CRM automation, project management, and client delivery platforms for consultancies and agencies.',
-    description: 'Professional services firms use aibizmod to automate client delivery workflows, build custom CRM integrations, and create dashboards that show project health in real time. From scoping to invoicing, we streamline the operations that drive profitability.',
+    description: 'Professional services firms use aibizmod to automate client delivery workflows, build custom CRM integrations, and create dashboards that show project health in real time. From scoping to invoicing, we optimize the operations that drive profitability.',
     icon: '💼',
     heroImage: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80&auto=format&fit=crop',
     challenges: [
@@ -183,7 +183,7 @@ export const industries: IndustryPage[] = [
     faqs: [
       { q: 'Can you integrate with our existing project management tools?', a: 'Yes. We integrate with Jira, Asana, Monday.com, Harvest, Toggl, and custom tools via API to create unified dashboards without replacing your current workflow.' },
       { q: 'How do you handle different engagement models (fixed price, time & materials, retainer)?', a: 'We build systems that support all engagement models, with automated tracking and reporting for each. Fixed-price projects track milestones and margins; time-and-materials track utilisation and burn rates.' },
-      { q: 'Do you work with agencies or only consultancies?', a: 'Both. Marketing agencies, management consultancies, law firms, accounting firms, and design studios all benefit from the same operational improvements — automated reporting, better resource allocation, and streamlined client delivery.' },
+      { q: 'Do you work with agencies or only consultancies?', a: 'Both. Marketing agencies, management consultancies, law firms, accounting firms, and design studios all benefit from the same operational improvements — automated reporting, better resource allocation, and accelerated client delivery.' },
     ],
   },
   {
@@ -328,7 +328,7 @@ export const industries: IndustryPage[] = [
     faqs: [
       { q: 'Do you build custom CRM features or only integrate with existing ones?', a: 'Both. We build custom extensions, workflows, and dashboards for Salesforce, HubSpot, and Pipedrive, and we build entirely custom CRM platforms for teams with unique requirements.' },
       { q: 'How does AI improve lead scoring?', a: 'Traditional lead scoring uses static rules. AI models learn from your actual conversion data — which leads closed, which didn\'t, and what patterns distinguish them — to score new leads with higher accuracy that improves over time.' },
-      { q: 'Can you connect our CRM to marketing automation?', a: 'Yes. We build bi-directional integrations between CRMs and marketing platforms (Marketo, Mailchimp, ActiveCampaign, custom) so lead data flows seamlessly from campaign to sales handoff.' },
+      { q: 'Can you connect our CRM to marketing automation?', a: 'Yes. We build bi-directional integrations between CRMs and marketing platforms (Marketo, Mailchimp, ActiveCampaign, custom) so lead data flows directly from campaign to sales handoff.' },
     ],
   },
   {
@@ -443,7 +443,7 @@ export const industries: IndustryPage[] = [
     ],
     faqs: [
       { q: 'Do you build chatbots or integrate with existing ones?', a: 'Both. We build custom AI chatbots trained on your knowledge base and support history, and we integrate with Intercom, Zendesk, Freshdesk, and Drift for teams that want to enhance their existing support stack.' },
-      { q: 'How does AI reduce support ticket volume?', a: 'AI chatbots resolve 40-60% of common questions without human intervention. AI-powered knowledge base search helps customers find answers faster. Predictive routing reduces misrouted tickets and first-response delays.' },
+      { q: 'How does AI reduce support ticket volume?', a: 'AI chatbots resolve 40-60% of routine inquiries without human intervention, while semantic retrieval surfaces exact troubleshooting steps from technical documentation in seconds. Predictive routing reduces misrouted tickets and first-response delays.' },
       { q: 'Can you integrate with our existing help desk?', a: 'Yes. We build integrations with Zendesk, Freshdesk, Intercom, Salesforce Service Cloud, and custom help desk systems — adding AI capabilities without replacing your current platform.' },
     ],
   },
@@ -675,7 +675,7 @@ export const industries: IndustryPage[] = [
     ],
     faqs: [
       { q: 'Do you offer non-profit pricing or discounted rates?', a: 'Yes. We partner with registered non-profits, charities, and social enterprises with dedicated non-profit advisory and development rates.' },
-      { q: 'Can you integrate with donor CRMs like Salesforce NPSP, Blackbaud, or DonorPerfect?', a: 'Yes. We build seamless integrations for donor data synchronization, custom event registration, and automated gift receipts.' },
+      { q: 'Can you integrate with donor CRMs like Salesforce NPSP, Blackbaud, or DonorPerfect?', a: 'Yes. We build secure API integrations for donor data synchronization, custom event registration, and automated gift receipts.' },
       { q: 'Can you support recurring monthly giving and Gift Aid / tax deduction receipts?', a: 'Yes. We build donation flows supporting recurring direct debits, card payments, Apple Pay, Google Pay, and automated tax-deductible receipt generation.' },
     ],
   },

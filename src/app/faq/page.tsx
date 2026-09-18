@@ -48,6 +48,16 @@ const faqs = [
 			'Yes. We design automations that reduce manual work, connect tools, route data, generate reports, and improve team productivity with practical AI-assisted workflows.',
 	},
 	{
+		question: 'How does aibizmod ensure its AI search and workflow answers are accurate and verifiable?',
+		answer:
+			'Search and AI answers on aibizmod are engineered with VeritasGraph, an open-source GraphRAG knowledge-graph framework. Instead of guessing from similarity, VeritasGraph reasons over structured entity graphs and returns every answer with a verifiable citation and reasoning path.',
+	},
+	{
+		question: 'Can aibizmod deploy GraphRAG and enterprise AI solutions on-premises with zero data egress?',
+		answer:
+			'Yes. For regulated enterprises, healthcare organizations, and confidential operations, our GraphRAG solutions powered by VeritasGraph can be deployed 100% locally on-premise or in private clouds with zero external cloud data egress.',
+	},
+	{
 		question: 'How long does a typical project take?',
 		answer:
 			'Timelines depend on scope. A focused landing page or website can be delivered quickly, while custom platforms and mobile apps usually move through phased milestones.',
