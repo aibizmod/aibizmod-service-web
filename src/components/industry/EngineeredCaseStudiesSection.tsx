@@ -8,7 +8,6 @@ import {
   Layers,
   ShieldCheck,
   ArrowRight,
-  Sparkles,
   CheckCircle2,
 } from 'lucide-react';
 import AnimatedSection from '@/components/common/AnimatedSection';
@@ -49,7 +48,7 @@ function getCaseHighlights(uc: UseCase, index: number): [string, string] {
   if (percentMatches && percentMatches.length > 0) {
     b2 = `Measured ${percentMatches.join(' & ')} performance improvement`;
   } else if (parts[1]) {
-    let second = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+    const second = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
     b2 = second.length > 60 ? second.slice(0, 58).trim() + '...' : second;
   } else {
     const fallbacks = [

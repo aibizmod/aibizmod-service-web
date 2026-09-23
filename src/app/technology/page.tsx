@@ -12,10 +12,6 @@ import {
 	Lock,
 	HelpCircle,
 	ChevronDown,
-	Database,
-	Cpu,
-	FileText,
-	Sparkles,
 } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
