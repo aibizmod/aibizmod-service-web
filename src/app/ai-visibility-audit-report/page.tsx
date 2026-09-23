@@ -1424,15 +1424,17 @@ function AuditReport({ result, domain }: { result: AuditResult; domain: string }
     try {
       const html2canvas = (await import("html2canvas")).default;
       const { jsPDF } = await import("jspdf");
-      const canvas = await html2canvas(reportRef.current, { scale: 2, useCORS: true, backgroundColor: "#ffffff" });
-      const pdf = new jsPDF("p", "mm", "a4");
+      const canvas = await html2canvas(reportRef.current, { scale: 1.5, useCORS: true, backgroundColor: "#ffffff" });
+      const imgData = canvas.toDataURL("image/jpeg", 0.72);
+      const pdf = new jsPDF({ orientation: "p", unit: "mm", format: "a4", compress: true });
       const w = pdf.internal.pageSize.getWidth();
       const h = (canvas.height * w) / canvas.width;
-      let left = h, pos = 0;
       const page = pdf.internal.pageSize.getHeight();
-      pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, pos, w, h);
-      left -= page;
-      while (left > 0) { pos -= page; pdf.addPage(); pdf.addImage(canvas.toDataURL("image/png"), "PNG", 0, pos, w, h); left -= page; }
+      const totalPages = Math.ceil(h / page);
+      for (let i = 0; i < totalPages; i++) {
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, "JPEG", 0, -(i * page), w, h);
+      }
       pdf.save(`ai-visibility-report-${displayDomain}.pdf`);
     } catch (e) { console.error(e); }
     finally { setExporting(false); }

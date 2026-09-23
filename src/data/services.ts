@@ -1,4 +1,4 @@
-import { Code2, Smartphone, TrendingUp, Server, Zap, Users, Lightbulb, Cpu, type LucideIcon } from "lucide-react";
+import { Code2, Smartphone, TrendingUp, Server, Zap, Users, Lightbulb, Cpu, Bot, type LucideIcon } from "lucide-react";
 
 export interface ServiceData {
   id: string;
@@ -138,6 +138,24 @@ export const services: ServiceData[] = [
     gradient: "from-pink-500/15 to-rose-400/15",
     iconColor: "text-pink-600",
     borderHover: "hover:border-pink-400/40",
+  },
+  {
+    id: "microsoft-stack",
+    name: "Microsoft Stack & Copilot",
+    description:
+      "Deploy Microsoft Teams, Copilot Studio, Power Apps, Power BI, and Azure AI inside your existing Microsoft 365 tenant to automate reporting, approvals, and field operations.",
+    capabilities: [
+      "Microsoft Teams Copilot automations",
+      "Power Apps and workflow speedups",
+      "Power BI reporting dashboards",
+      "SharePoint and document intelligence",
+      "Azure AI and Microsoft 365 integration",
+    ],
+    href: "/services/microsoft-stack",
+    icon: Bot,
+    gradient: "from-sky-500/15 to-cyan-400/15",
+    iconColor: "text-sky-600",
+    borderHover: "hover:border-sky-400/40",
   },
   {
     id: "it-consulting-it-services",

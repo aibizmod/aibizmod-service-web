@@ -519,6 +519,27 @@ const serviceArtworks: Record<string, React.ReactNode> = {
       </g>
     </svg>
   ),
+  "microsoft-stack": (
+    <svg viewBox="0 0 240 240" className="w-full h-full">
+      <ellipse cx="120" cy="214" rx="72" ry="8" fill="#0F172A" opacity=".08" />
+      <rect x="56" y="66" width="54" height="54" rx="12" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.6" />
+      <rect x="118" y="66" width="54" height="54" rx="12" fill="var(--fc-light)" stroke="#0F172A" strokeWidth="1.6" />
+      <rect x="56" y="128" width="54" height="54" rx="12" fill="var(--fc)" stroke="#0F172A" strokeWidth="1.6" />
+      <rect x="118" y="128" width="54" height="54" rx="12" fill="#FFFFFF" stroke="#0F172A" strokeWidth="1.6" />
+      <path d="M81 93h6M106 93h6M81 117h6M106 117h6" stroke="#0F172A" strokeWidth="2.5" strokeLinecap="round" opacity=".7" />
+      <path d="M143 93h6M168 93h6M143 117h6M168 117h6" stroke="#0F172A" strokeWidth="2.5" strokeLinecap="round" opacity=".7" />
+      <path d="M81 155h6M106 155h6M81 178h6M106 178h6" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" opacity=".9" />
+      <path d="M143 155h6M168 155h6M143 178h6M168 178h6" stroke="#0F172A" strokeWidth="2.5" strokeLinecap="round" opacity=".7" />
+      <g className="float-slow">
+        <circle cx="192" cy="54" r="16" fill="var(--fc)" stroke="#0F172A" strokeWidth="1.4" />
+        <path d="M187 54l3 3 7-9" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      </g>
+      <g fill="var(--fc)" opacity=".55">
+        <circle cx="42" cy="96" r="2.5" />
+        <path d="M198 150l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z" />
+      </g>
+    </svg>
+  ),
 };
 
 const serviceCardVariants: Record<string, string> = {
@@ -530,6 +551,7 @@ const serviceCardVariants: Record<string, string> = {
   "hosting-infrastructure": "card orange",
   "customer-experience-management": "card pink",
   "it-consulting-it-services": "card gold",
+  "microsoft-stack": "card sky",
 };
 
 const marqueeImages = [
@@ -586,6 +608,7 @@ export default function ServicesPageContent() {
           .card.orange { --fc: #D97706; --fc-light: #FEF3C7; --fc-dark: #FFFBEB; }
           .card.pink { --fc: #E11D48; --fc-light: #FFE4E6; --fc-dark: #FFF1F2; }
           .card.gold { --fc: #2563EB; --fc-light: #DBEAFE; --fc-dark: #EFF6FF; }
+          .card.sky { --fc: #0EA5E9; --fc-light: #E0F2FE; --fc-dark: #F0F9FF; }
 
           .card .art { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
           .card:hover .art { transform: scale(1.12) translateY(-6px); }

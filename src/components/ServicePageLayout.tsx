@@ -67,6 +67,8 @@ const serviceImages: Record<string, string> = {
     "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80",
   "it-consulting-it-services":
     "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80",
+  "microsoft-stack":
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80",
 };
 
 // ─── Data types ───────────────────────────────────────────────────────────────

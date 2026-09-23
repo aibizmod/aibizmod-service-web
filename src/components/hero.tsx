@@ -373,6 +373,7 @@ const SERVICES = [
   "Hosting & Infrastructure",
   "Customer Experience",
   "IT Consulting",
+  "Microsoft Stack & Copilot",
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

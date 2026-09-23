@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Ad - AI Automation Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 1200px;
+            height: 627px;
+            background: linear-gradient(to right, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        /* Left side - Content */
+        .left-section {
+            flex: 1;
+            padding: 50px 60px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Right side - Visual accent */
+        .right-section {
+            flex: 0 0 40%;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative elements */
+        .accent-shape {
+            position: absolute;
+            opacity: 0.1;
+            color: white;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            border: 3px solid white;
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            border: 2px solid white;
+            border-radius: 20px;
+            bottom: 50px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #4f46e5;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .highlight {
+            color: #4f46e5;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            max-width: 500px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 900;
+            color: #4f46e5;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+            background: #4338ca;
+        }
+
+        .logo {
+            font-size: 11px;
+            font-weight: 800;
+            color: #4f46e5;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            position: absolute;
+            top: 20px;
+            left: 60px;
+        }
+
+        /* Right section content */
+        .visual-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .visual-stat {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-label {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                height: auto;
+                min-height: 600px;
+                flex-direction: column;
+            }
+
+            .right-section {
+                flex: 1;
+                width: 100%;
+                height: 200px;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .stats-row {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">aibizmod</div>
+            
+            <div class="badge">AI Automation Strategy</div>
+            
+            <h1>Automate <span class="highlight">Complexity</span></h1>
+            
+            <p class="description">
+                AI agents handle what traditional automation can't: reasoning, adaptation, and decision-making.
+            </p>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-value">25h</div>
+                    <div class="stat-label">Time Saved/Week</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">$150K</div>
+                    <div class="stat-label">Annual Savings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">4-6w</div>
+                    <div class="stat-label">To Deploy</div>
+                </div>
+            </div>
+
+            <button class="cta-button">Book Strategy Call</button>
+        </div>
+
+        <div class="right-section">
+            <div class="accent-shape shape-1"></div>
+            <div class="accent-shape shape-2"></div>
+            <div class="visual-content">
+                <div class="visual-stat">→</div>
+                <div class="visual-label">Transform Your Operations with AI</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

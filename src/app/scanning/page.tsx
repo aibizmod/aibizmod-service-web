@@ -1,3 +1,12 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
+
 "use client";
 
 import React, { useEffect, useState, useRef, useMemo, Suspense } from "react";

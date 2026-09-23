@@ -63,6 +63,7 @@ const entityGraph = {
 				'Business Process Automation',
 				'Customer Experience Management',
 				'IT Consulting',
+				'Microsoft 365 Copilot and Power Platform',
 			],
 		},
 		{

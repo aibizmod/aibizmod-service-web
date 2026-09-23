@@ -70,4 +70,11 @@ export const cardData: CardData[] = [
     color: "rgba(139, 92, 246, 0.8)",
     href: "/services/it-consulting-it-services",
   },
+  {
+    id: 9,
+    title: "Microsoft Stack & Copilot",
+    description: "Deploy Microsoft Teams, Power Apps, Power BI, SharePoint, and AI automations inside your existing Microsoft 365 environment.",
+    color: "rgba(14, 165, 233, 0.8)",
+    href: "/services/microsoft-stack",
+  },
 ];

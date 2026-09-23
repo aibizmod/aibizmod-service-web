@@ -44,6 +44,7 @@ const serviceOptions = [
 	'Automation',
 	'Customer Experience Management',
 	'IT Consulting & IT Services',
+	'Microsoft Stack & Copilot',
 ];
 
 interface ContactDetailItem {

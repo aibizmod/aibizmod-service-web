@@ -17,11 +17,13 @@ import {
 	Users,
 	Lightbulb,
 	Cpu,
+	Bot,
 	Phone,
 	type LucideIcon,
 } from 'lucide-react';
 
 import { countries } from '@/lib/countries';
+import { VoiceAssistant } from '@/components/voice-assistant';
 
 // ─── Service items (mirrors ServicesGrid data) ────────────────────────────────
 
@@ -78,6 +80,12 @@ const serviceItems: {
 		name: 'IT Consulting & IT Services',
 		desc: 'Strategic tech advisory & managed IT',
 		href: '/services/it-consulting-it-services',
+	},
+	{
+		icon: Bot,
+		name: 'Microsoft Stack & Copilot',
+		desc: 'Teams, Power Apps & Copilot automation',
+		href: '/services/microsoft-stack',
 	},
 ];
 
@@ -233,6 +241,7 @@ export default function Navbar() {
 		href === '/' ? pathname === '/' : pathname.startsWith(href);
 
 	return (
+		<>
 		<header
 			className={`fixed z-50 top-0 left-0 right-0 w-full pointer-events-none flex flex-col items-center transition-colors duration-300 ${
 				scrolled
@@ -900,5 +909,7 @@ export default function Navbar() {
 				)}
 			</AnimatePresence>
 		</header>
+		<VoiceAssistant />
+		</>
 	);
 }

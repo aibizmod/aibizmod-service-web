@@ -19,6 +19,8 @@ import {
   Clock,
   TrendingUp,
   ScanLine,
+  Bot,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -151,6 +153,24 @@ export const AUTOMATION_ROW2: CarouselIconItem[] = [
   luc(GitBranch, "Workflow"),
   luc(Clock, "Scheduling"),
   luc(Layers, "Integration"),
+];
+
+export const MICROSOFT_STACK_ROW1: CarouselIconItem[] = [
+  img("https://cdn.simpleicons.org/microsoftteams/6264A7", "Microsoft Teams"),
+  img("https://cdn.simpleicons.org/microsoftpowerbi/F2C811", "Power BI"),
+  img("https://cdn.simpleicons.org/microsoftpowerautomate/0066FF", "Power Automate"),
+  img("https://cdn.simpleicons.org/microsoftpowerapps/742774", "Power Apps"),
+  img("https://cdn.simpleicons.org/microsoftsharepoint/03838F", "SharePoint"),
+  img("https://cdn.simpleicons.org/microsoftoutlook/0078D4", "Outlook"),
+];
+
+export const MICROSOFT_STACK_ROW2: CarouselIconItem[] = [
+  img("https://cdn.simpleicons.org/azure/0089D6", "Azure AI"),
+  img("https://cdn.simpleicons.org/microsoftword/2B579A", "Word"),
+  img("https://cdn.simpleicons.org/microsoftexcel/217346", "Excel"),
+  img("https://cdn.simpleicons.org/microsoftonedrive/0078D4", "OneDrive"),
+  luc(Bot, "Copilot Studio"),
+  luc(Sparkles, "Microsoft Graph"),
 ];
 
 const iconCircleStyle: React.CSSProperties = {

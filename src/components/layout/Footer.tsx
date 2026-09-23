@@ -34,6 +34,10 @@ const services = [
 		label: 'IT Consulting & IT Services',
 		href: '/services/it-consulting-it-services',
 	},
+	{
+		label: 'Microsoft Stack & Copilot',
+		href: '/services/microsoft-stack',
+	},
 ];
 
 const company = [
